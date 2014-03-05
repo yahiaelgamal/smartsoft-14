@@ -16,7 +16,10 @@ hello!
 25-10301 Andrew Khouzam
 25-10301 Andrew Khouzam
 
+<<<<<<< HEAD
 >>>>>>> c0eba4108bb19ba1728ec390bef4e582bbeccd27
+=======
+>>>>>>> master
 
 25-10613 Karim El-bawab
 
@@ -48,6 +51,7 @@ hello!
 
 25-3541 Mahmoud ELdesouky
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -64,20 +68,32 @@ hello!
 25-1150 Mahmoud Awadeen
 =======
 >>>>>>> master
+=======
+>>>>>>> master
 
 
 
 25-1926 Omar Sherif Omar
 25-5187 Sameh Ashraf Ramsis Metias
+<<<<<<< HEAD
 >>>>>>> c0eba4108bb19ba1728ec390bef4e582bbeccd27
 
 
 
+=======
+>>>>>>> master
 
 
 
 
+<<<<<<< HEAD
 
 
 
 25-1150 Mahmoud Awadeen
+=======
+25-9450 mostafa adel
+
+
+
+>>>>>>> master
