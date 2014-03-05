@@ -10,25 +10,16 @@ hello!
 25-1150 Mahmoud Awadeen
 25-10301 Andrew Khouzam
 25-10301 Andrew Khouzam
+25-1150 Mahmoud Awadeen
+25-10301 Andrew Khouzam
+25-10301 Andrew Khouzam
 25-7347 Abdelrahman Sakr
 25-0565 Antoine Foti
 25-12064 Mohamed Saeed
 25-9506 Jihan Adel
 25-8385 Mohamed Lotfy
-
-
 25-11046 Ahmed abdelsattar
-
-
-
-
 22-0542 Hazem Amin
-
-
-
-
-<<<<<<< HEAD
-=======
-
 25-3541 Mahmoud ELdesouky
->>>>>>> master
+25-3541 Mahmoud ELdesouky
+
