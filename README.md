@@ -7,9 +7,9 @@ hello!
 
 25-7347 Abdelrahman Sakr
 25-0739 Fatma Tarek
-25-7908 Mennatallah ElKharbotly
+25-7908 Mennatallah Adel ElKharbotly
+
 25-10301 Andrew Khouzam
-<<<<<<< HEAD
 
 25-1150 Mahmoud Awadeen
 
@@ -38,14 +38,7 @@ hello!
 
 25-11046 Ahmed abdelsattar
 
-
 25-9966 mohamed halawa
-
-
-
-
-
-
 
 22-0542 Hazem Amin
 
