@@ -1,7 +1,7 @@
 smartsoft-14
 Smartsoft 2014 repo
 hello!
-
+25-1150 Mahmoud Awadeen
 25-9571 mina sedra
 
 
@@ -9,20 +9,11 @@ hello!
 25-0739 Fatma Tarek
 25-7908 Mennatallah ElKharbotly
 25-10301 Andrew Khouzam
-<<<<<<< HEAD
-=======
+
 25-1150 Mahmoud Awadeen
 
 25-10301 Andrew Khouzam
 25-10301 Andrew Khouzam
-
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> c0eba4108bb19ba1728ec390bef4e582bbeccd27
-=======
->>>>>>> master
-=======
->>>>>>> master
 
 25-10613 Karim El-bawab
 
@@ -53,9 +44,6 @@ hello!
 
 
 25-3541 Mahmoud ELdesouky
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
 
@@ -66,79 +54,9 @@ hello!
 
 
 
-
-
-
-
-=======
->>>>>>> master
-=======
->>>>>>> master
-=======
->>>>>>> master
 
 
 
 25-1926 Omar Sherif Omar
 25-5187 Sameh Ashraf Ramsis Metias
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> c0eba4108bb19ba1728ec390bef4e582bbeccd27
-
-
-
-=======
->>>>>>> master
-
-
-
-
-<<<<<<< HEAD
-
-
-
-
-=======
-=======
-
-
-
-
->>>>>>> master
 25-9450 mostafa adel
-
-
-
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> master
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-25-1150 Mahmoud Awadeen
