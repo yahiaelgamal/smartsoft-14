@@ -16,12 +16,16 @@ hello!
 25-10301 Andrew Khouzam
 25-10301 Andrew Khouzam
 
+<<<<<<< HEAD
 =======
 25-10301 Andrew Khouzam
 25-10301 Andrew Khouzam
 
 
 >>>>>>> master
+=======
+
+>>>>>>> 1bb74e59b426fd03e384fdb13338a77fd473a9ab
 25-10613 Karim El-bawab
 
 25-12064 Mohamed Saeed
@@ -33,6 +37,9 @@ hello!
 
 
 25-11046 Ahmed abdelsattar
+
+
+25-9966 mohamed halawa
 
 
 
@@ -48,10 +55,13 @@ hello!
 
 
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 1bb74e59b426fd03e384fdb13338a77fd473a9ab
 
 
 25-3541 Mahmoud ELdesouky
@@ -59,7 +69,10 @@ hello!
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 1bb74e59b426fd03e384fdb13338a77fd473a9ab
 25-1926 Omar Sherif Omar
 25-5187 Sameh Ashraf Ramsis Metias
 25-1532 Omar Helal
@@ -70,6 +83,7 @@ hello!
 25-2011 Ahmed Helali
 
 25-0565 Antoine Foti
+<<<<<<< HEAD
 
 
 
@@ -122,3 +136,5 @@ hello!
 
 25-1150 Mahmoud Walid
 
+=======
+>>>>>>> 1bb74e59b426fd03e384fdb13338a77fd473a9ab
