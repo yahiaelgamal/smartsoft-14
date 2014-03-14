@@ -1,5 +1,5 @@
 var $bio = $('<p id="r">Name : Omar Sherif<br/>Age : 21<br/>Education : German University in Cairo </p>');
-var $fb = $('<a id = "f"href="http://medias.unifrance.org/medias/122/88/22650/format_page/omar-sharif.jpg">link</a>');
+var $fb = $('<a id = "f"href="http://www.facebook.com/3omarsherif">link</a>');
 $(document).ready(function(){
 
 $('#bio').hover(function(){
