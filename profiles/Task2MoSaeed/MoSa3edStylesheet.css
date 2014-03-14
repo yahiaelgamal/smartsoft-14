@@ -1,0 +1,32 @@
+body {
+    background-color: #A9A9A9
+}
+
+
+div {
+    height:100px;
+    width:100px;
+    display: inline-block;
+    border-radius:100px;
+    margin-bottom:100px;
+}
+
+#one {
+    background-color:#DDA0DD;
+}
+
+#two {
+    background-color:#D8BFD8;
+}
+
+#three {
+    background-color:#C71585;
+}
+
+#four {
+    background-color:#D8BFD8;
+}
+
+#five {
+    background-color:#DDA0DD;
+}
