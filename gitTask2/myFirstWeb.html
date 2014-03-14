@@ -1,0 +1,210 @@
+<!DOCTYPE html> <!-- This Document is of type html-->
+<html> 			<!-- This is the beginning of the html document -->
+<head> 			<!-- There are two main parts in html header and body, This is the header -->
+
+<style>         /* This is how we comment in css and start a CSS code, must be exactly after the head */
+body
+{
+background-image:url("background.jpg");
+background-size:cover;
+}
+h1
+{
+color:black;
+text-align:center;
+}
+p
+{
+font-family:"Times New Roman";
+font-size:20px;
+}
+img.pos_fixed
+{
+position:fixed;
+top:300px;
+right:5px;
+}
+button.b
+{
+-moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+	background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
+	background-color:#79bbff;
+	-webkit-border-top-left-radius:18px;
+	-moz-border-radius-topleft:18px;
+	border-top-left-radius:18px;
+	-webkit-border-top-right-radius:18px;
+	-moz-border-radius-topright:18px;
+	border-top-right-radius:18px;
+	-webkit-border-bottom-right-radius:18px;
+	-moz-border-radius-bottomright:18px;
+	border-bottom-right-radius:18px;
+	-webkit-border-bottom-left-radius:18px;
+	-moz-border-radius-bottomleft:18px;
+	border-bottom-left-radius:18px;
+	text-indent:0;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	height:45px;
+	line-height:45px;
+	width:169px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #528ecc;
+}
+
+/*------------------------------------------------------------------------------------------------------------------*/
+img.element-animation{
+
+  animation: animationFrames linear 2s;
+  animation-iteration-count: 1;
+  transform-origin: ;
+  -webkit-animation: animationFrames linear 2s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-transform-origin: ;
+  -moz-animation: animationFrames linear 0.7s;
+  -moz-animation-iteration-count: 1;
+  -moz-transform-origin: ;
+  -o-animation: animationFrames linear 0.7s;
+  -o-animation-iteration-count: 1;
+  -o-transform-origin: ;
+  -ms-animation: animationFrames linear 0.7s;
+  -ms-animation-iteration-count: 1;
+  -ms-transform-origin: ;
+  position:fixed;
+top:300px;
+right:500px;
+}
+
+@keyframes animationFrames{
+  0% {
+    left:0px;
+    top:0px;
+    opacity:0;
+    transform:  rotate(-200deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    left:0px;
+    top:0px;
+    opacity:1;
+    transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-moz-keyframes animationFrames{
+  0% {
+    left:0px;
+    top:0px;
+    opacity:0;
+    -moz-transform:  rotate(-200deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    left:0px;
+    top:0px;
+    opacity:1;
+    -moz-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-webkit-keyframes animationFrames {
+  0% {
+    left:0px;
+    top:0px;
+    opacity:0;
+    -webkit-transform:  rotate(-200deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    left:0px;
+    top:0px;
+    opacity:1;
+    -webkit-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-o-keyframes animationFrames {
+  0% {
+    left:0px;
+    top:0px;
+    opacity:0;
+    -o-transform:  rotate(-200deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    left:0px;
+    top:0px;
+    opacity:1;
+    -o-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-ms-keyframes animationFrames {
+  0% {
+    left:0px;
+    top:0px;
+    opacity:0;
+    -ms-transform:  rotate(-200deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    left:0px;
+    top:0px;
+    opacity:1;
+    -ms-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+</style>
+<title>First WebSite</title> <!-- Here we can write on the top of the browser, which is the on the tab title -->
+<h1>	<!-- We have six types of headings in html, h1,h2,h3, etc... -->
+Andrew Khouzam
+</h1>
+<h2>
+
+</h2>
+<br>			<!-- this is System.out.println(); -->
+<br>
+<br>
+
+</head>         <!-- This is the end of the head -->
+
+<body>          <!-- There are two main parts in html header and body, This is the body --> 
+<img src = "mypicture.jpg" class="pos_fixed">
+
+<br>
+<p> <!-- Something in html called paragraphs, we do not have to end it with </p>-->
+<b><!-- Something in html called tags, this is the bold tag -->
+Facebook Profile
+</b>
+&nbsp
+
+<a href="https://www.facebook.com/andrew.khouzam.7">Click Here</a> <!-- This tag is for redirection called anchor!, href is used to make the hyperlink!-->
+
+<br>
+<br>
+<br>
+<script>
+function myFunction()
+{
+document.getElementById("1").innerHTML="I went to college De la Sainte Famille called 'Jesuites'";
+document.getElementById("2").innerHTML="Then I went to Saint Francis Prep in Fresh Meadows, New York";
+document.getElementById("3").innerHTML="And Finally, I went to Saint Fatima American school in Nasr City";
+}
+</script>
+
+<button type="button" onclick="myFunction()" class= "b">Biography</button>
+<ul type = "none"><li id = "1"></li>
+<li id = "2"></li>
+<li id = "3"></li>
+<li id = "4"></li>
+<li id = "5"></li></ul>
+
+<img src = "profile.png" class = "element-animation"> 
+
+</body>			<!-- End of the body -->
+</html>
