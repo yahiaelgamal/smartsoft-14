@@ -1,0 +1,161 @@
+<html>
+<head>
+<script>
+
+function getRandomColor2() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color2= '#';
+    for (var i = 0; i < 6; i++ ) {
+        color2 += letters[Math.round(Math.random() * 15)];
+    }
+document.getElementById("name2").style.color=color2;
+document.getElementById("age2").style.color=color2;
+document.getElementById("major2").style.color=color2;
+document.getElementById("semester2").style.color=color2;
+}
+function getRandomColor()
+{
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+document.getElementById("name").style.color=color;
+document.getElementById("age").style.color=color;
+document.getElementById("major").style.color=color;
+document.getElementById("semester").style.color=color;
+}
+function nextImg()
+{
+    var img1="https://scontent-b-cdg.xx.fbcdn.net/hphotos-prn1/t1/1544952_10203256768528183_1390264491_n.jpg";
+    var img2="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-prn1/t1/1017346_10201668687667154_1381637403_n.jpg";
+    var img3="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash2/t1.0-9/395858_4448067807993_1563589457_n.jpg";
+  var photo=document.getElementById("myPhoto");
+    if(photo.src==img1)
+    photo.src=img2;
+    else
+    if(photo.src==img2)
+    photo.src=img3;
+    else
+    if(photo.src==img3)
+    photo.src=img1;
+
+          }
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+t=setTimeout(function(){startTime()},500);
+}
+
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+
+function play()
+
+{   if(!document.getElementById("music")){
+    var obj = document.createElement("embed"); obj.setAttribute("src","http://cdn.radiolala.com/P/Pink%20Floyd/25.%20Pink%20Floyd%20-%20Shine%20on%20You%20Crazy%20Diamond%20Pts.%201-5.mp3");
+    obj.setAttribute("id","music");
+	obj.setAttribute("width","0");
+	obj.setAttribute("height","0");
+     obj.setAttribute("autostart", true);
+      document.body.appendChild(obj);
+}else{
+      document.getElementById("music").remove();
+    }
+}
+function nextTrack(){
+  if(document.getElementById("music")){
+  var music=document.getElementById("music");
+  var shineon="http://cdn.radiolala.com/P/Pink%20Floyd/25.%20Pink%20Floyd%20-%20Shine%20on%20You%20Crazy%20Diamond%20Pts.%201-5.mp3";
+  var numb="http://old.frendz4m.com/attachments/20/4/8/1263492988-pritraman-Pink_Floyd_-_Comfortably_Numb_By_PRiTRAMAN.mp3";
+  var hey="http://darkstarz.com/sounds/MP3/HeyYou.mp3";
+   var next;
+    if(music.src==shineon)
+      next=numb;
+    else
+      if(music.src==numb)
+        next=hey;
+    else
+      if(music.src==hey)
+        next=shineon;
+    document.getElementById("music").remove();
+    var obj = document.createElement("embed"); obj.setAttribute("src",next);
+	obj.setAttribute("width","0");
+	obj.setAttribute("height","0");
+    obj.setAttribute("id","music");
+      document.body.appendChild(obj);
+  }
+  
+}
+function prevTrack(){
+  if(document.getElementById("music")){
+  var music=document.getElementById("music");
+  var shineon="http://cdn.radiolala.com/P/Pink%20Floyd/25.%20Pink%20Floyd%20-%20Shine%20on%20You%20Crazy%20Diamond%20Pts.%201-5.mp3";
+  var numb="http://old.frendz4m.com/attachments/20/4/8/1263492988-pritraman-Pink_Floyd_-_Comfortably_Numb_By_PRiTRAMAN.mp3";
+  var hey="http://darkstarz.com/sounds/MP3/HeyYou.mp3";
+   var next;
+    if(music.src==shineon)
+      next=hey;
+    else
+      if(music.src==numb)
+        next=shineon;
+    else
+      if(music.src==hey)
+        next=numb;
+    document.getElementById("music").remove;
+    var obj = document.createElement("embed"); obj.setAttribute("src",next);
+	obj.setAttribute("width","0");
+	obj.setAttribute("height","0");
+    obj.setAttribute("id","music");
+      document.body.appendChild(obj);
+  }
+}
+</script>
+<style>
+body {background-image:url("http://3.bp.blogspot.com/-h43-CnATmxM/TZx5wi5UDQI/AAAAAAAAAKU/IHTSAZ-JOdY/s1600/1209941751687.jpg");}
+.facebook
+{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%
+}
+p1 {color:red;font-family:"Lucida Console", Times, serif;margin-left:50px;}
+p2 {color:white;}
+div2{color:green;font-family:"Lucida Console"Times,serif;font-size:50px;}
+
+</style>
+</head>
+<body onload="startTime()">
+<div2 id="txt"></div2>
+<img onclick="prevTrack()" src="http://www.samsung.com/us/system/support/content/2013/10/09/h13343/Icon_Music_Rewind[0].png">
+  <img onclick="play()" src="http://www.samsung.com/us/system/support/content/2013/10/09/h13343/Icon_Music_Play[0].png">
+  
+<img onclick="nextTrack()" src="http://www.samsung.com/us/system/support/content/2013/10/09/h13343/Icon_Music_Forward[0].png">
+<h1 style="color:white;text-align:center;letter-spacing:12px;">My Profile</h1>
+    <div class="facebook">
+       <a href="https://www.facebook.com/mahmoud.walid" target="_blank"><img src="http://runswithmarkers.files.wordpress.com/2012/12/transparent-facebook-logo-icon.png"  width="42" height="42"></a>
+        </div>
+            <img onclick="nextImg()" id="myPhoto" style="float:left" src="https://scontent-b-cdg.xx.fbcdn.net/hphotos-prn1/t1/1544952_10203256768528183_1390264491_n.jpg"  width="400" hieght="400">
+                <p1 id="name">Name</p1><p2 id="name2"> : Mahmoud Walid<br></p2>
+                <p1 id="age">Age</p1><p2 id="age2"> : 20<br></p2>
+                <p1 id="major">Major</p1><p2 id="major2"> : Cs<br></p2>
+                <p1 id="semester">Semester</p1><p2 id="semester2"> : 6th<br></p2>
+                <button type="button" onclick='getRandomColor()'>Don't like header colors ?</button>
+		<button type="button" onclick="getRandomColor2()">Don't like values colors ?</button>
+  <br>
+</body>
+</html>
