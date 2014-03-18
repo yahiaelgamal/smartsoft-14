@@ -115,13 +115,14 @@ function prevTrack(){
     else
       if(music.src==hey)
         next=numb;
-    document.getElementById("music").remove;
+    document.getElementById("music").remove();
     var obj = document.createElement("embed"); obj.setAttribute("src",next);
 	obj.setAttribute("width","0");
 	obj.setAttribute("height","0");
     obj.setAttribute("id","music");
       document.body.appendChild(obj);
   }
+  
 }
 </script>
 <style>
