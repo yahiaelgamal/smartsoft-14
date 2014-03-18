@@ -1,91 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1187.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px Helvetica; min-height: 20.0px}
-  </style>
+
+<script>
+var x=1;
+
+function personalInfo()
+{
+document.getElementById("text_area").innerHTML="<list><b>My Personal Info: </b><ul>Name: Abdelrahman Ahmed Mohamed Sakr</ul> <ul> Age: 20 </ul> <ul> Address: 9 Mohamed Sakr Street, 6th of October </ul> <ul>Mobile Number: 01207164642</ul> <ul> E-Mail: abdelrahmansakr@gmail.com </ul><b> Interests: </b><ul>Travelling </ul><ul>Reading </ul><ul>Watching Movies </ul></list>";
+}
+
+
+function careerInfo()
+{
+document.getElementById("text_area").innerHTML="<list><b>My Career Info: </b><ul>Highschool: Leaders Language Schools</ul> <ul> University: German University in Cairo </ul> <ul> Major: Computer Science & Engineering </ul> <b>Work: </b><ul>Software Developer at SmartSoft </ul>";
+}
+
+
+function changeBackground()
+{
+if (x == 0){
+document.body.style.backgroundImage="url('http://www.pixeden.com/media/k2/galleries/220/001-wood-melamine-subttle-pattern-background-pat.jpg')";
+x = 1;
+}
+else if (x == 1) {
+document.body.style.backgroundImage="url('http://6269-9001.zippykid.netdna-cdn.com/wp-content/uploads/2013/11/White-Wallpapers.jpg')";
+x = 2;
+}
+else if (x == 2) {
+document.body.style.backgroundImage="url('http://3.bp.blogspot.com/-wRJji6_ZQcc/T_T8Veq73kI/AAAAAAAAE_s/V5ERozDCSf8/s1600/Donald+Duck+Wallpapers+2.jpg')";
+x = 3;
+}
+else if (x == 3) {
+document.body.style.backgroundImage="url('http://www.cartoonnetwork.com/tv_shows/tomjerry/pictures/1600x1200-Tom-Jerry-Classic.jpg')";
+x = 0;
+}
+
+}
+
+</script>
+<style>
+#text_area
+{
+color:black;
+font-family:arial, Times, serif;
+font-style:italic;
+} 
+body
+{
+background-image:url("http://www.pixeden.com/media/k2/galleries/220/001-wood-melamine-subttle-pattern-background-pat.jpg");
+}
+</style>
 </head>
+
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1">var x=1;</p>
-<p class="p2"><br></p>
-<p class="p1">function personalInfo()</p>
-<p class="p1">{</p>
-<p class="p1">document.getElementById("text_area").innerHTML="&lt;list&gt;&lt;b&gt;My Personal Info: &lt;/b&gt;&lt;ul&gt;Name: Abdelrahman Ahmed Mohamed Sakr&lt;/ul&gt; &lt;ul&gt; Age: 20 &lt;/ul&gt; &lt;ul&gt; Address: 9 Mohamed Sakr Street, 6th of October &lt;/ul&gt; &lt;ul&gt;Mobile Number: 01207164642&lt;/ul&gt; &lt;ul&gt; E-Mail: abdelrahmansakr@gmail.com &lt;/ul&gt;&lt;b&gt; Interests: &lt;/b&gt;&lt;ul&gt;Travelling &lt;/ul&gt;&lt;ul&gt;Reading &lt;/ul&gt;&lt;ul&gt;Watching Movies &lt;/ul&gt;&lt;/list&gt;";</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1">function careerInfo()</p>
-<p class="p1">{</p>
-<p class="p1">document.getElementById("text_area").innerHTML="&lt;list&gt;&lt;b&gt;My Career Info: &lt;/b&gt;&lt;ul&gt;Highschool: Leaders Language Schools&lt;/ul&gt; &lt;ul&gt; University: German University in Cairo &lt;/ul&gt; &lt;ul&gt; Major: Computer Science &amp; Engineering &lt;/ul&gt; &lt;b&gt;Work: &lt;/b&gt;&lt;ul&gt;Software Developer at SmartSoft &lt;/ul&gt;";</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1">function changeBackground()</p>
-<p class="p1">{</p>
-<p class="p1">if (x == 0){</p>
-<p class="p1">document.body.style.backgroundImage="url('http://www.pixeden.com/media/k2/galleries/220/001-wood-melamine-subttle-pattern-background-pat.jpg')";</p>
-<p class="p1">x = 1;</p>
-<p class="p1">}</p>
-<p class="p1">else if (x == 1) {</p>
-<p class="p1">document.body.style.backgroundImage="url('http://6269-9001.zippykid.netdna-cdn.com/wp-content/uploads/2013/11/White-Wallpapers.jpg')";</p>
-<p class="p1">x = 2;</p>
-<p class="p1">}</p>
-<p class="p1">else if (x == 2) {</p>
-<p class="p1">document.body.style.backgroundImage="url('http://3.bp.blogspot.com/-wRJji6_ZQcc/T_T8Veq73kI/AAAAAAAAE_s/V5ERozDCSf8/s1600/Donald+Duck+Wallpapers+2.jpg')";</p>
-<p class="p1">x = 3;</p>
-<p class="p1">}</p>
-<p class="p1">else if (x == 3) {</p>
-<p class="p1">document.body.style.backgroundImage="url('http://www.cartoonnetwork.com/tv_shows/tomjerry/pictures/1600x1200-Tom-Jerry-Classic.jpg')";</p>
-<p class="p1">x = 0;</p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">}</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1">#text_area</p>
-<p class="p1">{</p>
-<p class="p1">color:black;</p>
-<p class="p1">font-family:arial, Times, serif;</p>
-<p class="p1">font-style:italic;</p>
-<p class="p1">}<span class="Apple-converted-space"> </span></p>
-<p class="p1">body</p>
-<p class="p1">{</p>
-<p class="p1">background-image:url("http://www.pixeden.com/media/k2/galleries/220/001-wood-melamine-subttle-pattern-background-pat.jpg");</p>
-<p class="p1">}</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;hr&gt;</p>
-<p class="p1">&lt;table style="width:100%" background=""https://pbs.twimg.com/profile_images/1227158486/163725_1673656956145_1079047313_1763138_6410082_a.jpg"&gt;</p>
-<p class="p1">&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;td align="left"&gt;&lt;img border="0" src="https://pbs.twimg.com/profile_images/1227158486/163725_1673656956145_1079047313_1763138_6410082_a.jpg" alt="Profile Picture" width="200" height="228"&gt;</p>
-<p class="p1">&lt;td style="font-family:arial;color:black;font-size:30px;" align="left"&gt; &lt;b&gt;Abdelrahman Sakr&lt;/b&gt; &lt;/td&gt;</p>
-<p class="p1">&lt;td&gt; &lt;img border="1" src="http://a1.mzstatic.com/us/r30/Purple6/v4/57/ec/13/57ec13ce-5052-d6a1-5251-b20650cf2af9/icon_256.png" alt="Pulpit rock" width="30" height="30" onclick="changeBackground()" &gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space"> </span>&lt;/tr&gt;</p>
-<p class="p1">&lt;/table&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;hr&gt;</p>
-<p class="p1">&lt;input type="button" value="Personal Info" style="float: left;<span class="Apple-converted-space">  </span>font-size:20px;" onclick="personalInfo()"&gt;</p>
-<p class="p1">&lt;input type="button" value="Career Info" style="margin-left: 40%; font-size:20px;" onclick="careerInfo()"&gt;</p>
-<p class="p1">&lt;a href="https://www.facebook.com/abdelrahman.sakr.17" style="float: right;<span class="Apple-converted-space">  </span>font-size:18px;"&gt;</p>
-<p class="p1">Facebook Page&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;p id="text_area"&gt;&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;<span class="Apple-converted-space"> </span></p>
+
+<hr>
+<table style="width:100%" background=""https://pbs.twimg.com/profile_images/1227158486/163725_1673656956145_1079047313_1763138_6410082_a.jpg">
+<tr>
+  <td align="left"><img border="0" src="https://pbs.twimg.com/profile_images/1227158486/163725_1673656956145_1079047313_1763138_6410082_a.jpg" alt="Profile Picture" width="200" height="228">
+<td style="font-family:arial;color:black;font-size:30px;" align="left"> <b>Abdelrahman Sakr</b> </td>
+<td> <img border="1" src="http://a1.mzstatic.com/us/r30/Purple6/v4/57/ec/13/57ec13ce-5052-d6a1-5251-b20650cf2af9/icon_256.png" alt="Pulpit rock" width="30" height="30" onclick="changeBackground()" ></td>
+ </tr>
+</table>
+
+<hr>
+<input type="button" value="Personal Info" style="float: left;  font-size:20px;" onclick="personalInfo()">
+<input type="button" value="Career Info" style="margin-left: 40%; font-size:20px;" onclick="careerInfo()">
+<a href="https://www.facebook.com/abdelrahman.sakr.17" style="float: right;  font-size:18px;">
+Facebook Page</a>
+
+<p id="text_area"></p>
+
 </body>
-</html>
+</html> 
