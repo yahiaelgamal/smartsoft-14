@@ -8,8 +8,8 @@ class Healthrecord
   field :weight, type: Integer
   field :program, type: String
   
-
-
+  
+  
   belongs_to :user , class_name: 'Customer' , inverse_of: :record 
   has_many :diseases , class_name: 'Disease' , inverse_of: :record
 
