@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  driver: 
+  capacity: 
+  status: false
+
+two:
+  driver: 
+  capacity: 
+  status: false
