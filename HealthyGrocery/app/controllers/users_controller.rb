@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    include Mongoid::Document
   # GET /users
   # GET /users.json
   def index

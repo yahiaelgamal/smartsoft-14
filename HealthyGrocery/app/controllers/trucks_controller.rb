@@ -1,9 +1,12 @@
 class TrucksController < ApplicationController
+  #handling sort table
+  handles_sortable_columns
   # GET /trucks
   # GET /trucks.json
   def index
-    @trucks = Truck.all
-
+    #handling table sort by
+    order = sortable_column_order
+    @trucks = Truck.all.order_by(order)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trucks }
