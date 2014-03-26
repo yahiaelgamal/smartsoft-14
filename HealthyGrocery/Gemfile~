@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 
+ruby '2.1.0'
 gem 'rails', '3.2.11'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
+gem 'mongoid'
+gem 'bson_ext'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
