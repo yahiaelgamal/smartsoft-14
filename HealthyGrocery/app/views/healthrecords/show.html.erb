@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @healthrecord.name %>
+</p>
+
+<p>
+  <b>Bmi:</b>
+  <%= @healthrecord.bmi %>
+</p>
+
+<p>
+  <b>Fats:</b>
+  <%= @healthrecord.fats %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @healthrecord.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @healthrecord.weight %>
+</p>
+
+<p>
+  <b>Program:</b>
+  <%= @healthrecord.program %>
+</p>
+
+<p>
+  <b>Id:</b>
+  <%= @healthrecord.id %>
+</p>
+
+
+<%= link_to 'Edit', edit_healthrecord_path(@healthrecord) %> |
+<%= link_to 'Back', healthrecords_path %>
