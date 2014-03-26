@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
+  # shows all the items in the table item
   def index
     @items = Item.all
 
@@ -12,6 +13,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   # GET /items/1.json
+  # show a certain item from a table item using the attribute id
   def show
     @item = Item.find(params[:id])
 
@@ -23,6 +25,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   # GET /items/new.json
+  # renders the information from the form then creates a new unsaved record 
   def new
     @item = Item.new
 
@@ -33,12 +36,14 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1/edit
+  # gets the item to be edited and store it in variable @item
   def edit
     @item = Item.find(params[:id])
   end
 
   # POST /items
   # POST /items.json
+  # takes unsaved record from new , checks for validations then saves if success
   def create
     @item = Item.new(params[:item])
 
@@ -55,6 +60,7 @@ class ItemsController < ApplicationController
 
   # PUT /items/1
   # PUT /items/1.json
+  # updated an existing record taking its info from the def edit
   def update
     @item = Item.find(params[:id])
 
@@ -71,6 +77,7 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   # DELETE /items/1.json
+  # deletes a record
   def destroy
     @item = Item.find(params[:id])
     @item.destroy

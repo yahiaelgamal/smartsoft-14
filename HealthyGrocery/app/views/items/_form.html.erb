@@ -10,11 +10,17 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+  <p> Status : </p>
+  <%= f.radio_button :status, true, :checked => true %> 
+  <%= label :status, 'True' %>
+  <%= f.radio_button :status, false, :checked => false %>
+  <%= label :status, 'False' %>
+</div>
   <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>
@@ -23,14 +29,12 @@
     <%= f.label :category %><br />
     <%= f.text_field :category %>
   </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
+  
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
