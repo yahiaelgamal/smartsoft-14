@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
+  # excuting the method by searchong 
+  #for the order number parameter that is passed from the view
   def index
-    @orders = Order.all
+    @orders = Order.search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
