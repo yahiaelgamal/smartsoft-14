@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Home Page here</title>
+<h1>Welcome to your personal organizer</h1>
+</head>
+<body>
+	<script src="home.js">
+function redirect(){
+window.location='choose.html';
+}
+</script>
+	<form>
+		Username : <input type="text" id="username" /> 
+		Password : <input type="password" id="password" name="valueId" /> 
+		<input type="button" id="theButton" value="Login" onclick="redirect()" />
+	</form>
+</body>
+</html>

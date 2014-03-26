@@ -1,0 +1,53 @@
+<html>
+
+
+<head>
+	<script>
+	var ti=document.URL.split("?")[1];
+	document.title="Todo List "+ti;
+    function addNewItem(list) 
+    {
+   	 var item= prompt("insert item text : ")
+    	var listItem = document.createElement("li");
+   	var checkbox = document.createElement('input');
+   	checkbox.type = "checkbox";
+   	checkbox.name = "name";
+   	checkbox.value = "value";
+   	checkbox.id = item;
+      listItem.innerText = item;
+      list.appendChild(listItem);
+      list.appendChild(checkbox);
+    }
+    function update(){
+    	var todo= document.getElementById("todolist");
+    	var items = todo.getElementsByTagName("li");
+    	var checkbox;
+    	for(var i=0;i<items.length;i++){
+    		checkbox=document.getElementById(items[i].innerHTML);
+    		if(checkbox.checked){
+    			todo.removeChild(items[i]);
+    			checkbox.remove();
+    			i--;
+    		}
+    		
+    		}
+    }
+	</script>
+</head>
+
+
+  
+  <style>
+  ul {list-style: none; padding:0;margin:0; width: 300px;}
+    li{ border: 1px solid #ccc ; background: #eee ; padding: spx 10px ; color : #000 ;}
+  </style>
+<body>
+
+ <h1>Todo List</h1>
+ <ul id="todolist">
+ </ul>
+ 
+  <button id = "btnAdd" onclick="addNewItem(todolist)">New Item</button>
+  <button id="update" onclick="update()">Update</button>
+</body>
+</html>
