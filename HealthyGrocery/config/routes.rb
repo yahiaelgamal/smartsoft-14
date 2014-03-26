@@ -1,6 +1,9 @@
-HealthyGrocery::Application.routes.draw do
-  resources :routes
+ HealthyGrocery::Application.routes.draw do
 
+  resources :items
+
+
+  resources :routes
 
   resources :shipments
 
