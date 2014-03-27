@@ -15,6 +15,7 @@ class DriversController < ApplicationController
   def show
     @driver = Driver.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @driver }
