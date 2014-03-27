@@ -80,4 +80,23 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-end
+  # SEARCHING FOR A PRODUCT
+  helper :searchitem
+   def void searchitem
+   session[:user_id] = user.id
+    @user.searchitem
+    @product_name = gets
+  @user = User.find(params[:id])
+@result = Array.new
+db = Mongo::Connection.new.db("mydb")
+mongoose.connect('mongodb://localhost:3000/users');
+result = db.Item.find(Item.customerID:@user)
+if(@result.include(@product_name))
+  puts 'Product Name #@product_name '
+  else
+  puts ' No Result Found / Item Not Recommended '
+   end
+   end
+ end
+
+
