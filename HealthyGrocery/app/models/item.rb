@@ -6,6 +6,6 @@ class Item
 	field :rating , type: Integer 
 	field :status , type: Boolean
 	field :category , type: String
-  belongs_to_many :orders , class_name: "Order" , inverse_of :items
-  belongs_to_many :packages , class_name: "Package" , inverse_of :items
+  belongs_to_many :orders , class_name: "Order" , inverse_of: :items
+  belongs_to_many :packages , class_name: "Package" , inverse_of: :items
 end
