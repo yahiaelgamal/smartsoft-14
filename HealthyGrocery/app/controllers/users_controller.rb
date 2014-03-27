@@ -80,4 +80,11 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_resources
+  @u = User.all
+  
+  end
+
+
 end
