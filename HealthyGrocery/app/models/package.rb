@@ -1,10 +1,11 @@
 class Package
   include Mongoid::Document
 
-  field :expiry_date  type: DateTimeStap 
+  field :expiry_date ,  type: Date 
   
   
-  has_many :products , class_name: 'Item'
-  has_many :recommendations , class_name: 'Recommendation'  
-  belongs_to_one :order , class_name: 'Order' , inverse_of: :package
+  has_many :items , class_name: 'Item' , inverse_of: :packages
+  #has_many :recommendations , class_name: 'Recommendation'  
+  belongs_to :order , class_name: 'Order' , inverse_of: :packages
+
 end
