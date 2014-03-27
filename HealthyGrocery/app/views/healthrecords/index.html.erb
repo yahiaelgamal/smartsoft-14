@@ -10,7 +10,6 @@
     <th>Program</th>
     <th>Id</th>
     <th>Blood Type</th>
-    <th>Aim (Lose/Gain Weight)</th>
     <th></th>
   </tr>
 
@@ -24,7 +23,6 @@
     <td><%= healthrecord.program %></td>
     <td><%= healthrecord.id %></td>
     <td><%= healthrecord.blood_type %></td>
-    <td><%= healthrecord.aim %></td>
     <td><%= link_to 'Show', healthrecord %></td>
     <td><%= link_to 'Edit', edit_healthrecord_path(healthrecord) %></td>
     <td><%= link_to 'Destroy', healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
