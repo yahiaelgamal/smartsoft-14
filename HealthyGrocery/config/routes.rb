@@ -1,11 +1,26 @@
 HealthyGrocery::Application.routes.draw do
+
+
+  resources :routes
+
+
+  resources :shipments
+
+
+  resources :trucks
+
+
   resources :orders
 
 
   resources :users
+
 match '/register' =>  'users#new'
+   
+  
+  
 
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -9,6 +9,7 @@ field :volume ,type: Integer
 field :status , type: String
 field :date  ,type: Date
 belongs_to :user ,class 'User'
+belongs_to :route
 #belongs_to :shipment, class 'Shipment'
 end
 

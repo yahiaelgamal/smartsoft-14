@@ -1,8 +1,8 @@
 <h1>Register</h1>
 
 <div>
-	<%if flash[:status]== true%>
-	<p> <%=flash[:alert]%></p>
+	<%if flash[:status]==true%>
+	<%=flash[:alert]%>
 	<%elsif flash[:status]==false%>
 	<%flash[:alert].each do |error| %>
 	<p><%=error%></p>
