@@ -81,10 +81,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def add_resources
-  @u = User.all
   
-  end
-
 
 end
