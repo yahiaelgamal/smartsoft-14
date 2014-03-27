@@ -1,5 +1,8 @@
 HealthyGrocery::Application.routes.draw do
+<<<<<<< HEAD
   resources :items
+=======
+>>>>>>> 68e5cec7b9034241ea84cec0c9bda59f971ad21c
 
 
   resources :routes
@@ -17,6 +20,11 @@ HealthyGrocery::Application.routes.draw do
   resources :users
 
 
+   
+  
+  
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
