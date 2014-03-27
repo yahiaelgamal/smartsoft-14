@@ -1,6 +1,9 @@
 HealthyGrocery::Application.routes.draw do
 
 
+  resources :drivers
+
+
   resources :routes
 
 
