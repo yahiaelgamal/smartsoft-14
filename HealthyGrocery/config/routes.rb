@@ -1,11 +1,24 @@
 HealthyGrocery::Application.routes.draw do
-  resources :users do
 
-   collection do
-        get 'add_resources'
-   end
+
+  resources :routes
+
+
+  resources :shipments
+
+
+  resources :trucks
+
+
+  resources :orders
+
+
+  resources :users
+
+
+   
   
-  end
+  
 
   
   # The priority is based upon order of creation:
