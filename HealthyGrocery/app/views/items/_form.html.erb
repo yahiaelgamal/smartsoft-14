@@ -1,5 +1,5 @@
-<%= form_for(@item) do |f| %>
-  <% if @item.errors.any? %>
+<%= form_for @item, :url => items_path, :html => { :multipart => true } do |f| %>  
+<% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
@@ -10,7 +10,23 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+   <div class="field">
+   <%= f.label :image %>  
+   <%= f.file_field :image %>
+   </div>
+  <%= form_for @item do |f| %>  
+<% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
@@ -34,8 +50,8 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>

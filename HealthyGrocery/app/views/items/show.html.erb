@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+  <div style="float:left; text-align:center;">
+        <%= image_tag @item.image.url %>
+        <br/>
+    </div>
+  <br>
   <b>Name:</b>
   <%= @item.name %>
 </p>
@@ -14,7 +17,6 @@
   <b>Category:</b>
   <%= @item.category %>
 </p>
-
 <p>
   <b>Status:</b>
   <%= @item.status %>

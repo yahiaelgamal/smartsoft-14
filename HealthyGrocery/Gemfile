@@ -1,10 +1,13 @@
+source 'https://rubygems.org/'
 ruby '1.9.3'
 gem 'rails', '3.2.11'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'mongoid'
 gem 'bson_ext'
-
+gem "paperclip"
+gem "mongoid-paperclip", :require => "mongoid_paperclip" 
+gem 'aws-sdk'
 
 gem "mongo_mapper"
 # Bundle edge Rails instead:
