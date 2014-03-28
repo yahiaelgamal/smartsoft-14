@@ -22,6 +22,7 @@ has_many :diseases , class_name: 'Disease' , inverse_of: :customers
 
 
 
+# needed for login .. still needs the sign up info added by Lotfy
 
 def self.validate_login(email, password)
 	user = User.find_by_email(email)
