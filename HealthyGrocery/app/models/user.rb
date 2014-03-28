@@ -64,7 +64,12 @@ self.password = Digest::MD5.hexdigest(password)
 end
 
 
+field :firstname  ,type: String
+field :lastname  ,type: String
+field :birthdate  ,type: Date
+field :phonenumber  ,type: Integer
+field :gender  ,type: String
+
+validates :phonenumber, :length => { :is => 11 }
+validates :gender, :inclusion => { :in => %w(male female), :message => "%{value} is not a valid gender" }
 end
-
-
-
