@@ -1,5 +1,6 @@
 HealthyGrocery::Application.routes.draw do
 
+  resources :items
 
   resources :drivers
 
@@ -17,11 +18,6 @@ HealthyGrocery::Application.routes.draw do
 
 
   resources :users
-
-
-   
-  
-  
 
   
   # The priority is based upon order of creation:
