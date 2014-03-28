@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<%#Here for showing the values of the different attributes of the healthrecords%>
+<p>
+  <b>Name:</b>
+  <%= @healthrecord.name %>
+</p>
+
+<p>
+  <b>Bmi:</b>
+  <%= @healthrecord.bmi %>
+</p>
+
+<p>
+  <b>Fats:</b>
+  <%= @healthrecord.fats %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @healthrecord.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @healthrecord.weight %>
+</p>
+
+<p>
+  <b>Program:</b>
+  <%= @healthrecord.program %>
+</p>
+
+<p>
+  <b>Bloodtype:</b>
+  <%= @healthrecord.bloodtype %>
+</p>
+
+<%#Here for going to edit the values of the attributes of the healthrecords%>
+<%= link_to 'Edit', edit_healthrecord_path(@healthrecord) %> |
+<%= link_to 'Back', healthrecords_path %>
