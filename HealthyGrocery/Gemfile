@@ -12,6 +12,9 @@ gem 'bson_ext'
 gem 'sqlite3'
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
+gem 'jquery-rails'
+#gem 'will_paginate', '3.0.pre2'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
