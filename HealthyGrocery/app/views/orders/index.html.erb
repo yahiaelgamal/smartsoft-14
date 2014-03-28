@@ -1,7 +1,26 @@
 <h1>Listing orders</h1>
 
+
+
+<!--Creating a text label to take the order number that the method should search for and passing this parameter to the controller-->
+<%= form_tag orders_path, :method => 'get' do %>
+<p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
+
+
 <table>
   <tr>
+    <th>Orderno</th>
+    <th>Price</th>
+    <th>Weight</th>
+    <th>Volume</th>
+    <th>Status</th>
+    <th>Date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +28,12 @@
 
 <% @orders.each do |order| %>
   <tr>
+    <td><%= order.orderNo %></td>
+    <td><%= order.price %></td>
+    <td><%= order.weight %></td>
+    <td><%= order.volume %></td>
+    <td><%= order.status %></td>
+    <td><%= order.date %></td>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
     <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

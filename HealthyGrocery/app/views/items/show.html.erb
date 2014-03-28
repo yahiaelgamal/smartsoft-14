@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+ <%-# desplaying the image of the item floating next to the text-%>
+  <div style="float:left; text-align:center;">
+        <%= image_tag @item.image.url %>
+        <br/>
+    </div>
+  <br>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @item.price %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @item.category %>
+</p>
+<p>
+  <b>Stock:</b>
+  <%= @item.amount %>
+</p>
+<p>
+  <b>Status:</b>
+  <%= @item.status %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @item.description %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @item.rating %>
+</p>
+
+<%-# a link redirecting to the edit page-%>
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%-# a link redirecting back to the item page-%>
+<%= link_to 'Back', items_path %>

@@ -1,0 +1,115 @@
+
+<head>
+<style>
+navigationbar{
+height:800px;
+width:230px;
+background:#003366;
+font-size: 30px;
+  float:left;
+}
+
+h1{
+
+
+height:10px;
+font-size: 40px;
+width:100%;
+position:relative;
+  text-align:center;
+  float:left;
+
+}
+
+table{
+  margin:5px;
+  padding: 5px;
+  border:1px solid #0000ff;
+  height:auto;
+  width:auto;
+  float:left;
+  text-align:center;
+background:orange;
+
+}
+s
+opt
+{
+
+position:absolute;
+width:130px;
+height:50px;
+-webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
+transition:width 0.4s;
+padding:10px;
+left-margin:10px;
+  text-align:center;
+}
+</style>
+
+<script type="text/javascript">
+
+</script>
+
+
+</head>
+<body>
+<!-- Title for the page -->
+<h1>My Warehouse</h1>
+
+
+<navigationbar>
+</br>
+Navigate Here </br></br>
+<!-- link to the shipment page -->
+   <opt><%= link_to 'Shipments',{:controller  => 'shipments', :action => 'index'} , :class => "opt"%></opt></br></br>
+<!-- link to the trucks page -->
+<opt><%= link_to 'Trucks',{:controller  => 'trucks', :action => 'index'} , :class => "opt"%></opt></br></br>
+<!-- link to the orders page -->
+   <opt><%= link_to 'Orders',{:controller  => 'orders', :action => 'index'} , :class => "opt"%></opt></br></br>
+<!-- link to the users page -->
+   <opt><%= link_to 'Users',{:controller  => 'users', :action => 'index'} , :class => "opt"%></opt></br></br>
+</navigationbar>
+<!-- end of navigation bar -->
+
+<!-- printing the rows of the table -->
+<table>
+  <tr>
+      <th>Name</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th>Stock</th>
+    <th>Status</th>
+    <th>Description</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<!-- looping on the items in the items model in the DB-->
+<% @items.each do |item| %>
+  <tr>
+   <td><%= item.name %></td>
+    <td><%= item.price %></td>
+    <td><%= item.category %></td>
+    <td><%= item.amount %></td>
+    <td><%= item.status %></td>
+    <td><%= item.description %></td>
+    <td><%= item.rating %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+ <td><%= button_to 'Pause', item %></td>
+
+ <td><%= button_to 'Resume', item %></td>
+  
+</tr>
+<% end %>
+</table></br>
+
+<br />
+<!-- link to insert new item page -->
+</br>
+<%= link_to 'Insert New Item', new_item_path %>
+</body>
