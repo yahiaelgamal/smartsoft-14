@@ -79,6 +79,7 @@ Navigate Here </br></br>
     <th>Price</th>
     <th>Category</th>
     <th>Stock</th>
+    <th>Paused</th>
     <th>Status</th>
     <th>Description</th>
     <th>Rating</th>
@@ -93,6 +94,7 @@ Navigate Here </br></br>
     <td><%= item.price %></td>
     <td><%= item.category %></td>
     <td><%= item.amount %></td>
+    <td><%= item.paused %></td>
     <td><%= item.status %></td>
     <td><%= item.description %></td>
     <td><%= item.rating %></td>
@@ -100,9 +102,6 @@ Navigate Here </br></br>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
- <td><%= button_to 'Pause', item %></td>
-
- <td><%= button_to 'Resume', item %></td>
   
 </tr>
 <% end %>
