@@ -26,6 +26,14 @@
   <%= f.radio_button :status, false, :checked => false %>
   <%= label :status, 'False' %>
 </div>
+<%-# radio button for paused-%>
+  <div class="field">
+  <p> Paused : </p>
+  <%= f.radio_button :paused, true, :checked => true %> 
+  <%= label :status, 'True' %>
+  <%= f.radio_button :paused, false, :checked => false %>
+  <%= label :paused, 'False' %>
+</div>
  <div class="field">
     <%= f.label :stock %><br />
     <%= f.text_field :amount %>

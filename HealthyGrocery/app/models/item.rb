@@ -5,9 +5,11 @@ class Item
   field :price , type: Float 
   field :amount , type: Float
  	field :name , type: String  
+  field :whatever, type: String
  	field :description , type: String  
 	field :rating , type: Integer 
 	field :status , type: Boolean
+  field :paused , type: Boolean
 	field :category , type: String
 
   # checks if price is a number greater than 0
