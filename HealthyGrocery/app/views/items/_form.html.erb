@@ -1,3 +1,4 @@
+ <%-# makes the form asking the retailer for attributes about the item -%>
   <%= form_for @item, :url => items_path, :html => { :multipart => true } do |f| %>  
 <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -10,11 +11,14 @@
       </ul>
     </div>
   <% end %>
+<%-# label and file_field for uploading an image-%>
+ <%-f.label :image -%> 
 <%= f.file_field :image%>
     <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <%-# radio button for status-%>
   <div class="field">
   <p> Status : </p>
   <%= f.radio_button :status, true, :checked => true %> 
