@@ -15,6 +15,24 @@ has_many :records ,class_name: 'Healthrecord' , inverse_of: :user
 has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
 has_many :diseases , class_name: 'Disease' , inverse_of: :customers
 
+
+
+
+
+
+
+
+
+def self.validate_login(email, password)
+	user = User.find_by_email(email)
+
+	if user && user.password == Digest::MD5.hexdigest(password)
+		user
+	else
+		nil
+	end
+end
+
 end
 
 
