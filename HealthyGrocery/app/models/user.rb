@@ -76,4 +76,5 @@ validates :phonenumber, :length => { :is => 11 }
 
 #Checking/Validating that the gender is either "male" or "female" and not anything else
 validates :gender, :inclusion => { :in => %w(male female), :message => "%{value} is not a valid gender" }
+
 end
