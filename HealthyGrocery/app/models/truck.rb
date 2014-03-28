@@ -5,4 +5,5 @@ class Truck
   field :status, type: Boolean
   belongs_to :shipment , class_name: 'Shipment' 
   belongs_to :route , class_name: 'Route' , inverse_of: :trucks
+
 end
