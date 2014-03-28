@@ -141,8 +141,6 @@ GEM
       json (>= 1.8.0)
     uuidtools (2.1.4)
 
-
-
 PLATFORMS
   ruby
   x86-mingw32
