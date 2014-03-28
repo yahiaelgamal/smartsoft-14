@@ -3,3 +3,44 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', users_path %>
+
+<div>
+	
+        <%flash[:alert] = @user.errors.full_messages%>
+	<%flash[:alert].each do |error| %>
+	<p><%=error%></p>
+	<%end%>
+</div>
+
+
+
+
+
+
+<%= form_for User.new do |user|%>
+<div>
+	<%= user.label(:first_name,"First Name")%>
+	<%=user.text_field :first_name%>
+</div>
+<div>
+	<%= user.label(:last_name,"Last Name")%>
+	<%=user.text_field :last_name%>
+</div>
+<div>
+	<%= user.label(:password,"Password")%>
+	<%=user.password_field :password%>
+</div>
+<div>
+	<%= user.label(:password_confirmation,"Confirm Password")%>
+	<%=user.password_field :password_confirmation%>
+</div>
+<div>
+	<%= user.label(:email,"Email")%>
+	<%=user.text_field :email%>
+</div>
+<div>
+<%= submit_tag "Register"%>
+</div>
+<%end%>
+
+
