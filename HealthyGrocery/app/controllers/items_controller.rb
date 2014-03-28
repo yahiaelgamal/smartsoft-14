@@ -41,6 +41,18 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  # GET /items/1/rate
+  # gets the rate and the item to be rated and store it in variable @item
+  def rate
+    @item = Item.find(params[:id])
+    @rating
+    @item.sum = @item.sum + @rating
+    @item.total = @item.total + 1
+    @item.save
+    @item.rating = @item.sum / @item.total
+    @item.save
+  end
+
   # POST /items
   # POST /items.json
   # takes unsaved record from new , checks for validations then saves if success
