@@ -140,13 +140,10 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     uuidtools (2.1.4)
+<<<<<<< .merge_file_u13fvS
+=======
 
-
-
-
-
-
-
+>>>>>>> .merge_file_8VwgSR
 PLATFORMS
   ruby
   x86-mingw32
