@@ -1,5 +1,9 @@
 HealthyGrocery::Application.routes.draw do
 
+  resources :sessions , :only => [:new, :create, :destroy]
+  match 'login' => 'sessions#new'
+  match 'logout' => 'sessions#destroy'
+
   resources :items
 
   resources :routes

@@ -78,6 +78,25 @@ validates :phonenumber, :length => { :is => 11 }
 validates :gender, :inclusion => { :in => %w(male female), :message => "%{value} is not a valid gender" }
 
 
+
+
+
+
+
+
+
+# needed for login .. still needs the sign up info added by Lotfy
+
+def self.validate_login(email, password)
+	user = User.find_by_email(email)
+
+	if user && user.password == Digest::MD5.hexdigest(password)
+		user
+	else
+		nil
+	end
+end
+
 end
 
 
