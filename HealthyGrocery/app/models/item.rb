@@ -6,7 +6,7 @@ class Item
   field :amount , type: Float
  	field :name , type: String  
  	field :description , type: String  
-	field :rating , type: Integer 
+	field :rating , type: Float 
 	field :status , type: Boolean
 	field :category , type: String
 
@@ -18,6 +18,8 @@ class Item
   validates :category, :presence => true
   # checks if description is present
   validates :description, :presence => true
+  # checks if rating between 0 : 10
+  validates :rating, :presence => true, :numericality => { :greater_than_or_equal_to => 0, :less_than => 10 }
   # checks if amount is present
   validates :amount, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
   # declares an attached file as an attribute
