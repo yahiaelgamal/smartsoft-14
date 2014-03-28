@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%-# displaying the attributes and values-%>
+<%#Here for showing the values of the different attributes of the healthrecords%>
 <p>
   <b>Name:</b>
   <%= @healthrecord.name %>
@@ -35,7 +35,6 @@
   <%= @healthrecord.bloodtype %>
 </p>
 
-<%-# a link redirecting to the edit page-%>
+<%#Here for going to edit the values of the attributes of the healthrecords%>
 <%= link_to 'Edit', edit_healthrecord_path(@healthrecord) %> |
-<%-# a link redirecting back to the item page-%>
 <%= link_to 'Back', healthrecords_path %>
