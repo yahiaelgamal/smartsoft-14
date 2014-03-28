@@ -7,7 +7,7 @@ class Healthrecord
   field :height, type: Integer
   field :weight, type: Integer
   field :program, type: String
-  
+  field :blood_type, type: String
   
   
   belongs_to :user , class_name: 'User' , inverse_of: :records 

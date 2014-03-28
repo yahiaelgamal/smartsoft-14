@@ -1,0 +1,47 @@
+<%= form_for(@healthrecord) do |f| %>
+  <% if @healthrecord.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@healthrecord.errors.count, "error") %> prohibited this healthrecord from being saved:</h2>
+
+      <ul>
+      <% @healthrecord.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :bmi %><br />
+    <%= f.text_field :bmi %>
+  </div>
+  <div class="field">
+    <%= f.label :fats %><br />
+    <%= f.text_field :fats %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :program %><br />
+    <%= f.text_field :program %>
+  </div>
+  <div class="field">
+    <%= f.label :blood_type %><br />
+    <%= f.text_field :blood_type %>
+  </div>
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
