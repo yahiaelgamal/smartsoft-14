@@ -4,8 +4,8 @@
 
 <%= link_to 'Back', users_path %>
 
-<div>
-	
+<div>   
+<!--to print the errors comes from entering the values in the text boxes-->	
         <%flash[:alert] = @user.errors.full_messages%>
 	<%flash[:alert].each do |error| %>
 	<p><%=error%></p>
@@ -16,7 +16,7 @@
 
 
 
-
+<!--to draw the register form -->
 <%= form_for User.new do |user|%>
 <div>
 	<%= user.label(:first_name,"First Name")%>

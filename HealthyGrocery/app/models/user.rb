@@ -1,6 +1,9 @@
 class User
 include Mongoid::Document
+
+#gets the library required to encrypt the password
 require 'digest/md5' 
+#to call the method before save
   before_save :encrypt_password
 
 
@@ -23,6 +26,7 @@ has_many :orders , class_name: 'Order'
 has_many :records ,class_name: 'Healthrecord' , inverse_of: :user
 has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
 has_many :diseases , class_name: 'Disease' , inverse_of: :customers
+#to validate the presence of the text boxes
 
 validates :first_name,
 :presence => true,
@@ -54,7 +58,7 @@ validates :password_confirmation,
 validates :email,
 :presence => true,
 :uniqueness => true
-
+#for encrypting password
 def encrypt_password
 self.password = Digest::MD5.hexdigest(password)
 end

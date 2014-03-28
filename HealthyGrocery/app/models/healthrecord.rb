@@ -15,7 +15,3 @@ class Healthrecord
 
  
 end
-<<<<<<< .merge_file_rZLsg1
-
-=======
->>>>>>> .merge_file_5xAHT2
