@@ -17,8 +17,6 @@ class Order
 
 #This method is responsible of getting the 
 #exact order that user searched for using the order number
-end
-  
 
   def self.search(search)
     if search
@@ -26,5 +24,6 @@ end
       else
       scoped
     end
+end
 end
 
