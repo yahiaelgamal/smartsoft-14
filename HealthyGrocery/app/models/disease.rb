@@ -1,11 +1,11 @@
 class Disease
   include Mongoid::Document
 
- field: name ,type: String
+ field :name ,type: String
 
- field: level ,type: String
+ field :level ,type: String
 
- field: information , type: String
+ field :information , type: String
  
  has_many :restricted_items , class_name: 'Item'
  has_many :recommended_items , class_name: 'Item'
