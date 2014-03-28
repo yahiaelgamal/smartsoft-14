@@ -50,6 +50,7 @@ GEM
     coffee-script-source (1.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    handles_sortable_columns (0.1.4)
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
@@ -149,6 +150,7 @@ DEPENDENCIES
   aws-sdk
   bson_ext
   coffee-rails (~> 3.2.1)
+  handles_sortable_columns
   jquery-rails
   mongo_mapper
   mongoid

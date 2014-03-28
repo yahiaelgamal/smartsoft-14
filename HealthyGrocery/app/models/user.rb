@@ -64,6 +64,7 @@ self.password = Digest::MD5.hexdigest(password)
 end
 
 
+<<<<<<< HEAD
 
 
   #show the total calories and the average intake
@@ -98,6 +99,41 @@ end
 
 
 
+=======
+#Additional attributes needed for the user to complete sign-up
+field :firstname  ,type: String
+field :lastname  ,type: String
+field :birthdate  ,type: Date
+field :phonenumber  ,type: Integer
+field :gender  ,type: String
+
+#Checking/Validating that the phone number is exactly 11 digits
+validates :phonenumber, :length => { :is => 11 }
+
+#Checking/Validating that the gender is either "male" or "female" and not anything else
+validates :gender, :inclusion => { :in => %w(male female), :message => "%{value} is not a valid gender" }
+
+
+
+
+
+
+
+
+
+# needed for login .. still needs the sign up info added by Lotfy
+
+def self.validate_login(email, password)
+	user = User.find_by_email(email)
+
+	if user && user.password == Digest::MD5.hexdigest(password)
+		user
+	else
+		nil
+	end
+end
+
+>>>>>>> 6c4e06152b3fe0d72284cf8b21a7319d936a1bf4
 end
 
 

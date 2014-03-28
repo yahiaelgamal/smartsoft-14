@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+
+    include Mongoid::Document
+
+  before_filter :check_login, :only => [:index]
+
+
+
   # GET /users
   # GET /users.json
   def index

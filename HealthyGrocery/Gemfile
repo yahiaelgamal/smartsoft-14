@@ -18,6 +18,13 @@ gem 'jquery-rails'
       
 
 
+#handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
+gem "handles_sortable_columns"
+
+
+
+
+
 
 
 
