@@ -1,7 +1,8 @@
 class User
+include Mongoid::Document
 require 'digest/md5' 
   before_save :encrypt_password
-include Mongoid::Document
+
 
 
 

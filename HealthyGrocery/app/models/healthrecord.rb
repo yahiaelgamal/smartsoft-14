@@ -15,4 +15,4 @@ class Healthrecord
 
  
 end
-end
+
