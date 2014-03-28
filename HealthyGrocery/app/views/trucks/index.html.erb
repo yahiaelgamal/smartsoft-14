@@ -1,4 +1,48 @@
-<h1>Listing trucks</h1>
+<style>body {background-color:#EEEEEE;}</style>
+<style type="text/css">
+h1.mainheader {
+color:#FF8C00;
+text-align:center;
+font-family:"Comic Sans MS";
+font-size:50px;}
+</style>
+<style type="text/css">
+th {
+color:#FFFFFF;
+text-align:center;
+font-family:"Comic Sans MS";
+font-size:20px;}
+</style>
+
+<style type="text/css">
+td {
+color:#FFFFFF;
+text-align:center;
+font-family:"Comic Sans MS";
+font-size:15px;}
+</style>
+<div id="container" style="width:1350px;">
+
+<div id="header" style="background-color:#980000 ;height:120px;width:1350px;">
+<br/>
+<h1 class="mainheader">My Trucks</h1>
+
+
+</div>
+
+</div>
+
+<div id="left" style="background-color:#EEEEEE;height:50px;width:450px;float:left;"></div>
+
+<div id="center" style="background-color:#EEEEEE;height:50px;width:550px;float:left;">
+</div>
+
+<div id="right" style="background-color:#EEEEEE;height:50px;width:500px;float:left;"></div>
+
+
+
+<div id="left2" style="background-color:#EEEEEE;height:100px;width:300px;float:left;">
+
 
 <table>
   <tr>
@@ -14,8 +58,8 @@
   <tr>
     <td><%= truck.driver %></td>
     <td><%= truck.capacity %></td>
-    <td><%= truck.status %></td>
-    <td><%= link_to 'Show', truck %></td>
+    <td><%= truck.status %></td>    
+<td><%= link_to 'Show', truck %></td>
     <td><%= link_to 'Edit', edit_truck_path(truck) %></td>
     <td><%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -23,5 +67,17 @@
 </table>
 
 <br />
-
 <%= link_to 'New Truck', new_truck_path %>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
