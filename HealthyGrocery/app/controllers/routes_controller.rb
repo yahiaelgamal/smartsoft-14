@@ -1,6 +1,7 @@
 class RoutesController < ApplicationController
   # GET /routes
   # GET /routes.json
+#lists all routes in the database
   def index
     @routes = Route.all
 
@@ -12,6 +13,7 @@ class RoutesController < ApplicationController
 
   # GET /routes/1
   # GET /routes/1.json
+#shows information about a specific route
   def show
     @route = Route.find(params[:id])
 
@@ -23,6 +25,7 @@ class RoutesController < ApplicationController
 
   # GET /routes/new
   # GET /routes/new.json
+#gives a form for entering information about a new truck
   def new
     @route = Route.new
 
@@ -33,12 +36,14 @@ class RoutesController < ApplicationController
   end
 
   # GET /routes/1/edit
+#gives a form for editing information about an existing truck 
   def edit
     @route = Route.find(params[:id])
   end
 
   # POST /routes
   # POST /routes.json
+#saves a new route to the database
   def create
     @route = Route.new(params[:route])
 
@@ -55,6 +60,7 @@ class RoutesController < ApplicationController
 
   # PUT /routes/1
   # PUT /routes/1.json
+#updates infomration about a certain route
   def update
     @route = Route.find(params[:id])
 
@@ -71,6 +77,7 @@ class RoutesController < ApplicationController
 
   # DELETE /routes/1
   # DELETE /routes/1.json
+#deletes a certain route from the database
   def destroy
     @route = Route.find(params[:id])
     @route.destroy
