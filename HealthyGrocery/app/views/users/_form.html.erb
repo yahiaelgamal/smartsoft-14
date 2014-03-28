@@ -11,6 +11,44 @@
     </div>
   <% end %>
 
+
+  <%# Label and text field for firstname %>
+    <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </div>
+
+  <%# Label and text field for lastname %>
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </div>
+
+  <%# Label and text field for birthdate %>
+  <div class="field">
+    <%= f.label :birthdate %><br />
+    <%= f.text_field :birthdate %>
+  </div>
+
+<%# Label and text field for phonenumber %>
+  <div class="field">
+    <%= f.label :phonenumber %><br />
+    <%= f.text_field :phonenumber %>
+  </div>
+
+  <%# Label and text field for gender %>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.text_field :gender %>
+  </div>
+
+  <%# Label and text field for address %>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <%# Submit button %>
   <div class="actions">
     <%= f.submit %>
   </div>
