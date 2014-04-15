@@ -7,11 +7,11 @@
     <th></th>
   </tr>
 
-<% @users.each do |user| %>
+<% @members.each do |member| %>
   <tr>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure? This user will not be able to access the website!' } %></td>
+    <td><%= link_to 'Show', member %></td>
+    <td><%= link_to 'Edit', edit_member_path(member) %></td>
+    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure? This user will not be able to access the website!' } %></td>
   </tr>
 <% end %>
 </table>

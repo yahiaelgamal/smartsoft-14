@@ -1,0 +1,6 @@
+<h3>Home</h3>
+
+<% @members.each do |member| %>
+  <p>Member: <%=link_to member.email, member %></p>
+<% end %>
+
