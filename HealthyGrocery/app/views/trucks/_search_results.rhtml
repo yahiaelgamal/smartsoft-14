@@ -1,8 +1,0 @@
-<%# results page containing the results of the search process in the trucks database
-Author : Hani Zaatar %>
-<ul>
-    <% @trucks.each do |truck| %>
-  <li><%= link_to truck.title, 
-    :action => 'show', :id => truck.id  %></li>
-  <% end %>
-</ul>
