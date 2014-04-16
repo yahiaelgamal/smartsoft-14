@@ -3,7 +3,9 @@ HealthyGrocery::Application.routes.draw do
 
  root :to => "members#index"
 devise_for :members, :controllers => {:registrations => "registrations", }
-  resources :members
+  resources :members do
+    get 'myprofile'
+  end
  
 
   resources :items
