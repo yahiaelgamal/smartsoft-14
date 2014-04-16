@@ -83,4 +83,12 @@ class TrucksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  #Executes the search for the database of trucks searching via keywords in :search
+  #Author : Hani Zaatar
+   def search
+    @trucks = Truck.search params[:search]
+  end
+
 end
