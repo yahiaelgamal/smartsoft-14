@@ -83,4 +83,10 @@ class TrucksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #Execution of the method search in truck.rb
+  #Author: Hani Zaatar
+   def search
+    @trucks = Truck.search params[:search]
+  end
 end

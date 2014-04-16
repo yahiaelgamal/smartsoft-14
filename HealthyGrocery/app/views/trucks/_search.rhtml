@@ -1,0 +1,7 @@
+<%# A search page as part of the views of the truck %>
+<%# Author: Hani Zaatar%>
+<%= form_tag :controller => 'trucks', :action => 'search', :method => 'get' do %>
+<%= text_field_tag :search, params[:search], :id => 'search_field' %>
+<%= submit_tag "Search", :name => nil %> 
+<%= link_to_function "Clear", "$('search_field').clear()" %>
+<% end %> 

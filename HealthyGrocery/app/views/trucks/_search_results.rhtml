@@ -1,0 +1,8 @@
+<%#A results page that shows the results of the search inquiry %>
+<%# Author Hani Zaatar %>
+<ul>
+    <% @trucks.each do |truck| %>
+  <li><%= link_to truck.title, 
+    :action => 'show', :id => truck.id  %></li>
+  <% end %>
+</ul>
