@@ -98,4 +98,9 @@ def viewusers
       format.json { head :no_content }
     end
   end
+
+  def members_items_index
+  @items = Item.all
+  end
+
 end

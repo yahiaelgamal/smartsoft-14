@@ -15,6 +15,4 @@ class MembersController < ApplicationController
    end
 
 
-
-
 end
