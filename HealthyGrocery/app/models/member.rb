@@ -1,10 +1,13 @@
 class Member
   include Mongoid::Document
+  include Geocoder::Model::Mongoid
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  geocoded_by :address       
+  after_validation :geocode 
   # Setup accessible (or protected) attributes for your model
  field :first_name, type: String
  field :last_name, type: String
@@ -12,6 +15,7 @@ class Member
  field :address, type: String
  field :phone_num, type: Integer
  field :birth_date, type: Date 
+ field :coordinates, :type => Array
   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
 
   ## Database authenticatable
