@@ -1,6 +1,10 @@
 HealthyGrocery::Application.routes.draw do
 
-  resources :items
+  resources :items do
+    member do
+      post 'toggle_pause'
+    end
+  end 
 
   resources :routes
 

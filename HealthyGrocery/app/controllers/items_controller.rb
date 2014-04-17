@@ -41,11 +41,32 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def toggle_pause
+    @item = Item.find(params[:id])
+
+    if @item.amount <= 0 && @item.paused == true 
+      flash[:notice] = "Can't resume because stock equals #{@item.amount}"
+    else 
+      @item.paused = !@item.paused
+      @item.save
+      flash[:notice] = "Item toggled successfully"
+    end
+
+    redirect_to items_url
+  end
+
   # POST /items
   # POST /items.json
   # takes unsaved record from new , checks for validations then saves if success
   def create
     @item = Item.new(params[:item])
+
+    # initial value of paused
+    if @item.amount <= 0
+      @item.paused = true
+    else 
+      @item.paused = false
+    end
 
     respond_to do |format|
       if @item.save
@@ -59,7 +80,7 @@ class ItemsController < ApplicationController
   end
 
 #views the users without the create button
-def viewusers
+  def viewusers
     @users = User.all
 
     respond_to do |format|

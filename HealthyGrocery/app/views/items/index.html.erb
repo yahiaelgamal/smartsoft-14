@@ -87,6 +87,7 @@ Navigate Here </br></br>
     <th></th>
     <th></th>
   </tr>
+
 <!-- looping on the items in the items model in the DB-->
 <% @items.each do |item| %>
   <tr>
@@ -98,11 +99,11 @@ Navigate Here </br></br>
     <td><%= item.status %></td>
     <td><%= item.description %></td>
     <td><%= item.rating %></td>
+    <td><%= button_to (item.paused ? "Resume" : "Pause" ) , toggle_pause_item_path(item)  %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-  
 </tr>
 <% end %>
 </table></br>
