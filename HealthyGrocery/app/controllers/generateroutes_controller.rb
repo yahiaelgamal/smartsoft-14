@@ -1,9 +1,6 @@
 class GenerateroutesController < ApplicationController
 
-def index
-  @time = Time.now
-
- 
+def index 
 end
 
 #Author: Ahmed AbdElsattar
@@ -32,8 +29,8 @@ def gen
   if Shipment.last.created_at.day < Time.now.day
     Shipment.create 
   end 
-  @trucks =Truck.where(status: true).order_by([:capacity, :desc])
- for truck in @trucks
+  trucks =Truck.where(status: true).order_by([:capacity, :desc])
+ for truck in trucks
       if Order.where(delivered: false).count < 0
        break
       end 
