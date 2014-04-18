@@ -2,6 +2,8 @@ class GenerateroutesController < ApplicationController
 
 def index
   @time = Time.now
+
+ 
 end
 
 #Author: Ahmed AbdElsattar
@@ -36,33 +38,34 @@ def gen
        break
       end 
       totalvolume = truck.capacity  
-        @order = Order.where(delivered: false).where(isfinished: true).order_by([:created_at, :asc])
+        order = Order.where(delivered: false).where(isfinished: true).order_by([:created_at, :asc])
         sum = 0
       arr_of_sel_orders = Array.new
       arr_of_points = Array.new
-        @order.each do |order|
-      if order.created_at.hour < Shipment.last.cut_off_time || order.created_at.day < Time.now.day
-          if sum+order.volume > totalvolume      
+        order.each do |order_N|
+      if order_N.created_at.hour < Shipment.last.cut_off_time || order_N.created_at.day < Time.now.day
+          if sum+order_N.volume > totalvolume      
           elsif sum < totalvolume
-             sum += order.volume
-             arr_of_sel_orders.push(order) 
+             sum += order_N.volume
+             arr_of_sel_orders.push(order_N) 
           end
       end
     end
     arr_of_sel_orders.each do |p|
-       @user = Order.where(id: p.id).first.member.coordinates
+       user = Order.where(id: p.id).first.member.coordinates
         Order.where(id: p.id).update(delivered: true)
-        arr_of_points.push(@user)
-    end      
+        arr_of_points.push(user)
+    end
+  
    if  arr_of_points.count > 0
-   @route = Route.where(arrofpoints: arr_of_points).create
+   route = Route.where(arrOfPoints: arr_of_points).create
    arr_of_sel_orders.each do |o|
-   Route.where(id: @route.id).first.orders.push(o)
+   Route.where(id: route.id).first.orders.push(o)
   Truck.where(id:  truck.id).update(status: false)
    end 
-   @truck = Truck.where(id: truck.id).first.routes.push(@route)
-   @Shipment_last = Shipment.last
-   Shipment.where(id: @Shipment_last.id).first.trucks.push(@truck)
+   truck_N = Truck.where(id: truck.id).first.routes.push(route)
+   shipment_last = Shipment.last
+   Shipment.where(id: shipment_last.id).first.trucks.push(truck_N)
     end 
   end
   end
@@ -77,11 +80,11 @@ end
 
 def shipmentupdate
         cut_off_time = params[:newcutofftime].to_i
-        @last = Shipment.last
+        last_N = Shipment.last
        if Shipment.last.created_at.day < Time.now.day 
                   Shipment.where(cut_off_time: cut_off_time).create
        elsif Shipment.last.cut_off_time <  cut_off_time
-           Shipment.where(id: @last.id).update(cut_off_time: cut_off_time)
+           Shipment.where(id: last_N.id).update(cut_off_time: cut_off_time)
        end  
        redirect_to :action => :index
 end
