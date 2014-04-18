@@ -1,7 +1,6 @@
 HealthyGrocery::Application.routes.draw do
   
 
-  resources :uses
 
 
  root :to => "members#index"
