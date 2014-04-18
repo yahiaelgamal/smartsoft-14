@@ -23,69 +23,50 @@ end
 #   orderno        3  
 #truck_no_3_route {6}/
 def gen
-
   if Truck.where(status: true).count > 0 && Order.where(delivered: false).count > 0
-  
   if Shipment.all.count === 0
      Shipment.create
   end
-
-  #if Time.now.hour >= Shipment.last.cut_off_time 
-
   if Shipment.last.created_at.day < Time.now.day
     Shipment.create 
   end 
-  
   @trucks =Truck.where(status: true).order_by([:capacity, :desc])
  for truck in @trucks
       if Order.where(delivered: false).count < 0
        break
       end 
-      @totalvolume = truck.capacity
-  
+      totalvolume = truck.capacity  
         @order = Order.where(delivered: false).where(isfinished: true).order_by([:created_at, :asc])
-
-
-        @sum = 0
-
-      @arrofselorders = Array.new
-      @arrofpoints = Array.new
-    
+        sum = 0
+      arr_of_sel_orders = Array.new
+      arr_of_points = Array.new
         @order.each do |order|
       if order.created_at.hour < Shipment.last.cut_off_time || order.created_at.day < Time.now.day
-      
-          if @sum+order.volume > @totalvolume      
-              
-          elsif @sum < @totalvolume
-             @sum += order.volume
-             @arrofselorders.push(order) 
+          if sum+order.volume > totalvolume      
+          elsif sum < totalvolume
+             sum += order.volume
+             arr_of_sel_orders.push(order) 
           end
       end
     end
-
-    @arrofselorders.each do |p|
+    arr_of_sel_orders.each do |p|
        @user = Order.where(id: p.id).first.member.coordinates
         Order.where(id: p.id).update(delivered: true)
-        @arrofpoints.push(@user)
+        arr_of_points.push(@user)
     end      
-   if  @arrofpoints.count > 0
-   @route = Route.where(arrOfPoints: @arrofpoints).create
-   @arrofselorders.each do |o|
+   if  arr_of_points.count > 0
+   @route = Route.where(arrofpoints: arr_of_points).create
+   arr_of_sel_orders.each do |o|
    Route.where(id: @route.id).first.orders.push(o)
   Truck.where(id:  truck.id).update(status: false)
    end 
    @truck = Truck.where(id: truck.id).first.routes.push(@route)
-   @Shipmentlast = Shipment.last
-   Shipment.where(id: @Shipmentlast.id).first.trucks.push(@truck)
+   @Shipment_last = Shipment.last
+   Shipment.where(id: @Shipment_last.id).first.trucks.push(@truck)
     end 
   end
-  #end
-
   end
-
       redirect_to :action => :index
-
-  
 end
 
 #Author: Ahmed AbdElsattar
@@ -95,16 +76,14 @@ end
 #Parameters:  cut_off_time integer 
 
 def shipmentupdate
-        @cut_off_time = params[:newcutofftime].to_i
+        cut_off_time = params[:newcutofftime].to_i
         @last = Shipment.last
        if Shipment.last.created_at.day < Time.now.day 
-                  Shipment.where(cut_off_time: @cut_off_time).create
-       elsif Shipment.last.cut_off_time <  @cut_off_time
-           Shipment.where(id: @last.id).update(cut_off_time: @cut_off_time)
+                  Shipment.where(cut_off_time: cut_off_time).create
+       elsif Shipment.last.cut_off_time <  cut_off_time
+           Shipment.where(id: @last.id).update(cut_off_time: cut_off_time)
        end  
-
        redirect_to :action => :index
-  
 end
  
 end 
