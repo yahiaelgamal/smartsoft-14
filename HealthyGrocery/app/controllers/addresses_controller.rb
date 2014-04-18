@@ -44,7 +44,8 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        current_member.addresses.push(@address)
+        format.html { redirect_to showaddresses_path, notice: 'Address was successfully created.' }
         format.json { render json: @address, status: :created, location: @address }
       else
         format.html { render action: "new" }
@@ -76,7 +77,7 @@ class AddressesController < ApplicationController
     @address.destroy
 
     respond_to do |format|
-      format.html { redirect_to addresses_url }
+      format.html { redirect_to showaddresses_path }
       format.json { head :no_content }
     end
   end

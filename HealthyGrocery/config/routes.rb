@@ -2,7 +2,7 @@ HealthyGrocery::Application.routes.draw do
   
 
   resources :addresses
-
+  get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
 
  root :to => "members#index"
 devise_for :members, :controllers => {:registrations => "registrations", }
