@@ -1,6 +1,9 @@
 HealthyGrocery::Application.routes.draw do
   
 
+  resources :addresses
+
+
  root :to => "members#index"
 devise_for :members, :controllers => {:registrations => "registrations", }
   resources :members 
