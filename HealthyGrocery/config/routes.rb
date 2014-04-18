@@ -1,6 +1,9 @@
 HealthyGrocery::Application.routes.draw do
   
 
+  resources :uses
+
+
  root :to => "members#index"
 devise_for :members, :controllers => {:registrations => "registrations", }
   resources :members 
@@ -26,8 +29,11 @@ devise_for :members, :controllers => {:registrations => "registrations", }
 
 
   resources :users
+    match '/generateroutes' => 'generateroutes#index'
+  
+  post "generateroutes/gen" => "generateroutes#gen" 
 
-
+ # get "generateroutes/gen"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

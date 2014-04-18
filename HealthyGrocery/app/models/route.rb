@@ -6,8 +6,10 @@
 #  arrOfPoints    :Array
 class Route
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
+
   field :arrOfPoints, type: Array
   belongs_to :shipment , counter_cache: true
-  has_many :orders , class_name: 'Order' ,  :inverse_of => :route
-  has_many :trucks , class_name: 'Truck'  ,  :inverse_of => :route
+  has_one :orders , class_name: 'Order' ,  :inverse_of => :route
+  belongs_to :truck , class_name: 'Truck' ,  :inverse_of => :route
 end
