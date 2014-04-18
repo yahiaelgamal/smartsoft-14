@@ -29,8 +29,10 @@ devise_for :members, :controllers => {:registrations => "registrations", }
 
 
   resources :users
-    match '/generateroutes' => 'generateroutes#index'
   
+
+  match '/generateroutes' => 'generateroutes#index'
+  post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
 
  # get "generateroutes/gen"

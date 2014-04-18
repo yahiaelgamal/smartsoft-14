@@ -1,3 +1,15 @@
-<%= button_to "Generate Route", { :controller => "generateroutes", :action => "gen"} %>
+<!--#Author : Ahmed AbdElsattar
+#attr :     Generate Route 
+#function:  calling the function gen in the generatroute controller  
+#attr :     Update Cutoff time
+#function:  calling the function updatecutofftime in the generatroute controller and passing the new value to it   
+-->
+<p><%= button_to "Generate Route", { :controller => "generateroutes", :action => "gen"} %>
 
-  <%= @shipment %>
+<%= form_tag("/generateroutes/shipmentupdate", method: "post") do %>
+  <p>
+    <%= text_field_tag :newcutofftime, params[:newcutofftime] %>
+    <%= submit_tag "Update Cutoff time", :name => nil %>
+  </p>
+<% end %>
+</p>
