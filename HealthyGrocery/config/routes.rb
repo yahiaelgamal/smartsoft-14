@@ -3,14 +3,10 @@ HealthyGrocery::Application.routes.draw do
 
  root :to => "members#index"
 devise_for :members, :controllers => {:registrations => "registrations", }
-  resources :members 
+  resources :members
  
 
-  resources :items do
-  collection do
-  get "members_items_index"
-  end
-  end
+  resources :items
   match '/items' => 'items#index'
 
   resources :routes
