@@ -88,6 +88,28 @@ class UsersController < ApplicationController
     end
   end
 
-  
+  def recommended_items 
+    @user = User.find(params[:id])
+    @diseases = @user.diseases
+    @recommended_items = Array.new
+
+    @diseases.each do |f|
+      f.recommended_items.each do |r|
+        unless  (@recommended_items.include ? r)
+          @recommended_items.push(r)
+        end
+      end
+    end
+    
+    @diseases.each do |f|
+      @restricted_items = f.restricted_items
+      @recommended_items.each do |r|
+        if (@restricted_items.include ? r)
+          @recommended_items.delete(r)
+        end
+      end
+    end
+
+  end
 
 end
