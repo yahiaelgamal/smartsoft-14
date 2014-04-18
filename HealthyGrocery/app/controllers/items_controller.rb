@@ -10,7 +10,9 @@ class ItemsController < ApplicationController
       format.json { render json: @items }
     end
   end
-
+def editprice
+    @item = Item.find(params[:id])
+  end
   # GET /items/1
   # GET /items/1.json
   # show a certain item from a table item using the attribute id

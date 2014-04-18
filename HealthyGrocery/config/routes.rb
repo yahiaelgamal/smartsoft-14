@@ -12,7 +12,7 @@ devise_for :members, :controllers => {:registrations => "registrations", }
   end
   end
   match '/items' => 'items#index'
-
+  get '/items/:id/editprice', to: 'items#editprice', as: 'editprice'
   resources :routes
 
 
