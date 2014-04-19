@@ -49,7 +49,7 @@ def gen
       end
     end
     arr_of_sel_orders.each do |p|
-       user = Order.where(id: p.id).first.member.coordinates
+       user = Order.where(id: p.id).first.coordinates
         Order.where(id: p.id).update(delivered: true)
         arr_of_points.push(user)
     end
