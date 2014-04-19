@@ -1,6 +1,7 @@
 class Order
   include Mongoid::Document
 #Author : Ahmed AbdElsattar
+#Team: 4
 #attr :     include Mongoid::Timestamps::Created
 #function:  indicating the time of creating the order 
   include Mongoid::Timestamps::Created
@@ -13,11 +14,14 @@ class Order
 	field :status , type: String
 	field :date  ,type: Date
 #Author : Ahmed AbdElsattar
+#Team: 4
 #attr :   isfinished , delivered
 #function: indicating the status of the orde 
 	field :isfinished,type: Boolean
 	field :delivered ,type: Boolean
 	belongs_to :user ,class_name: 'User'
+	belongs_to :use ,class_name: 'Use'
+
 	belongs_to :route , class_name: 'Route' , inverse_of: :orders
 	belongs_to :shipment, class_name: 'Shipment'
 	has_many :packages , class_name: 'Package' , inverse_of: :order
