@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        current_member.orders.push(@order)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
