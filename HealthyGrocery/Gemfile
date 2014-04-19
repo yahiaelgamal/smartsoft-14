@@ -1,7 +1,7 @@
 source 'https://rubygems.org/'
 ruby '1.9.3'
 gem 'rails', '3.2.11'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+
 
 gem 'mongoid'
 gem 'bson_ext'
@@ -15,7 +15,8 @@ gem "mongo_mapper"
 
 gem 'sqlite3'
 gem 'jquery-rails'
-      
+gem 'devise'
+
 
 
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns

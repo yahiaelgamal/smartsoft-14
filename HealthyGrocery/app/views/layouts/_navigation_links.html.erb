@@ -1,0 +1,14 @@
+<%# add navigation links to this file %>
+<% if member_signed_in? %>
+
+  <li><%= link_to 'Logout', destroy_member_session_path, :method=>'delete' %></li>
+  <li><%= link_to 'Edit account', edit_member_registration_path %></li>
+ <% else %>
+  <li><%= link_to 'Login', new_member_session_path %></li>
+  <li><%= link_to 'Sign up', new_member_registration_path %></li>
+
+
+
+  
+
+<% end %>

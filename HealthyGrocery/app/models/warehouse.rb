@@ -3,5 +3,5 @@ class Warehouse
   field :address , type: String
   field :phone , type: Integer
 
-  has_one :retailer , class_name: 'User' , inverse_of: :warehouse
+  has_one :retailer , class_name: 'Member' , inverse_of: :warehouse
 end
