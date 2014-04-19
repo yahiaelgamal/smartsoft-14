@@ -8,11 +8,17 @@ class MembersController < ApplicationController
   end
 
   def show
+@member = Member.find(params[:id])
 
-    @member = Member.find(params[:id])
+  	if current_member.email == 'admin@gmail.com'
+  		@admin = true
+else 
+	@admin = false
+    end
    
-
    end
+
+
 
 
 end
