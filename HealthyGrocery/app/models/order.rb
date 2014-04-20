@@ -19,9 +19,7 @@ class Order
 #function: indicating the status of the orde 
 	field :isfinished,type: Boolean
 	field :delivered ,type: Boolean
-	belongs_to :user ,class_name: 'User'
-	belongs_to :use ,class_name: 'Use'
-
+	belongs_to :member ,class_name: 'Member'
 	belongs_to :route , class_name: 'Route' , inverse_of: :orders
 	belongs_to :shipment, class_name: 'Shipment'
 	has_many :packages , class_name: 'Package' , inverse_of: :order
