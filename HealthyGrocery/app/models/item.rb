@@ -30,5 +30,19 @@ class Item
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
   has_and_belongs_to_many :orders , class_name: "Order" , inverse_of: :items
+
+  has_many :lineitems, class_name: "Lineitem"
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+  private
+    # ensure that there are no line items referencing this product
+def ensure_not_referenced_by_any_line_item 
+  if lineitems.empty?
+return true 
+else
+errors.add(:base, 'Line Items present')
+return false 
+end
+end
 end
 
