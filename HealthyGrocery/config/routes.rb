@@ -1,5 +1,10 @@
 HealthyGrocery::Application.routes.draw do
   
+  # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
+ get 'members/hub'
+
+  resources :health_records
+
 
  root :to => "members#index"
 devise_for :members, :controllers => {:registrations => "registrations", }
@@ -22,6 +27,8 @@ devise_for :members, :controllers => {:registrations => "registrations", }
 
 
   resources :users
+
+
 
 
   
