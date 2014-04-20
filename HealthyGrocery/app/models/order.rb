@@ -13,6 +13,7 @@ class Order
 	field :volume ,type: Integer
 	field :status , type: String
 	field :date  ,type: Date
+	field :coordinates ,type: Array
 #Author : Ahmed AbdElsattar
 #Team: 4
 #attr :   isfinished , delivered
@@ -21,9 +22,7 @@ class Order
 	field :delivered ,type: Boolean
 	belongs_to :member ,class_name: 'Member'
 	belongs_to :route , class_name: 'Route' , inverse_of: :orders
-	belongs_to :shipment, class_name: 'Shipment'
 	has_many :packages , class_name: 'Package' , inverse_of: :order
-
 	has_many :items , class_name: 'Item' , inverse_of: :order
 
 #This method is responsible of getting the 

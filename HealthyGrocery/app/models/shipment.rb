@@ -10,5 +10,5 @@ class Shipment
 #attr :     cut_off_time
 #function:  choosing defualt value to be 4 pm 
   field :cut_off_time, type: Integer, default: -> { 16 }
-  has_many :trucks , class_name: 'Truck' ,  :inverse_of => :shipment
+  has_many :routes , class_name: 'Route' ,  :inverse_of => :shipment
 end

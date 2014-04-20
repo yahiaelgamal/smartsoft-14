@@ -20,7 +20,7 @@ end
 #   orderno        2
 #truck_no_2_route {7}
 #   orderno        3  
-#truck_no_3_route {6}/
+#truck_no_3_route {6}
 def gen
   if Truck.where(status: true).count > 0 && Order.where(delivered: false).count > 0
   if Shipment.all.count === 0
@@ -62,7 +62,7 @@ def gen
    end 
    truck_N = Truck.where(id: truck.id).first.routes.push(route)
    shipment_last = Shipment.last
-   Shipment.where(id: shipment_last.id).first.trucks.push(truck_N)
+   Shipment.where(id: shipment_last.id).first.routes.push(route)
     end 
   end
   end
