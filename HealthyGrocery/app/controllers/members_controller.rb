@@ -4,21 +4,26 @@ class MembersController < ApplicationController
 
   def index
     @members = Member.all
+
+if current_member.email == 'admin@gmail.com'
+      @admin = true
+else 
+      @admin = false
+end    
      
   end
 
   def show
-@member = Member.find(params[:id])
-
-  	if current_member.email == 'admin@gmail.com'
+ @member = Member.find(params[:id])
+if current_member.email == 'admin@gmail.com'
   		@admin = true
 else 
-	@admin = false
-    end
+	    @admin = false
+   end
    
    end
 
 
 
 
-end
+ end

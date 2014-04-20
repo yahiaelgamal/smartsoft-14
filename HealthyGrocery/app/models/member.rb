@@ -12,7 +12,8 @@ class Member
  field :address, type: String
  field :phone_num, type: Integer
  field :birth_date, type: Date 
-  attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
+ 
+   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
 
   ## Database authenticatable
   field :email,              type: String, default: ""

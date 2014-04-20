@@ -1,8 +1,14 @@
 HealthyGrocery::Application.routes.draw do
   
 
- root :to => "members#index"
-devise_for :members, :controllers => {:registrations => "registrations", }
+ root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+
+ devise_for :members, :controllers => {:registrations => "registrations", }
+  
+ 
+  
+
+
   resources :members
  
 

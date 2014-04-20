@@ -1,4 +1,4 @@
-
+<!--to check the adminstration level-->
 <% if @admin == true%>
 <h1>hello admin</h1>
 <%= link_to 'Site Members', members_path%>
@@ -6,6 +6,8 @@
 
 
 
+
+<!--to check the adminstration level-->
 <%elsif @admin == false%>
 
 <h3>Member</h3>
@@ -22,4 +24,6 @@
 <%else%>
 <h4>Female</h4>
 <%end%>
+
+
 <%end%>
