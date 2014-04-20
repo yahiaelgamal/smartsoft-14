@@ -94,7 +94,7 @@ end
 private
 
   def require_login
-    unless current_member.email=='admin@gmail.com'
+    unless session["isAdmin"] 
       redirect_to action: :invalid
     end
   end
