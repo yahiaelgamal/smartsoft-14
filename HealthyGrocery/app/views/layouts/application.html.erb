@@ -53,7 +53,7 @@
                 <% @tmp = Member.find(session["user_id"]) %>
               <li><%= link_to "Hub", '/members'+'/hub' %></li>
               <li><%= link_to "Profile", @tmp %></li>
-              <% if @admin == true %>
+              <% if session["isAdmin"] == true %>
               <li><%= link_to "Items", items_path  %></li>
                 <% end %>
             <li style="padding-left: 735px; "><%= link_to 'Logout', destroy_member_session_path, :method=> 'delete' %></li>
