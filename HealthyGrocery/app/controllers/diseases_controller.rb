@@ -1,6 +1,13 @@
 class DiseasesController < ApplicationController
   # GET /diseases
   # GET /diseases.json
+
+  # Author: Ahmed Helali
+  # Team: 2
+  # Method name: index
+  # Function: Get all diseases in the databases
+  # Parameters: none
+
   def index
     @diseases = Disease.all
 
@@ -12,6 +19,13 @@ class DiseasesController < ApplicationController
 
   # GET /diseases/1
   # GET /diseases/1.json
+
+  # Author: Ahmed Helali
+  # Team: 2
+  # Method name: show
+  # Function: Get a specific disease in the databases
+  # Parameters: none
+
   def show
     @disease = Disease.find(params[:id])
 
@@ -23,6 +37,14 @@ class DiseasesController < ApplicationController
 
   # GET /diseases/new
   # GET /diseases/new.json
+
+  # Author: Ahmed Helali
+  # Team: 2
+  # Method name: new
+  # Function: sends the user (in this case the retailler)
+  # to a the view new in order to create a new disease
+  # Parameters: none
+
   def new
     @disease = Disease.new
 
@@ -33,12 +55,28 @@ class DiseasesController < ApplicationController
   end
 
   # GET /diseases/1/edit
+
+  # Author: Ahmed Helali
+  # Team: 2
+  # Method name: edit
+  # Function: send the user (in this case the retailler)
+  # to the edit view so he can the update the disease instance
+  # Parameters: none
+
   def edit
     @disease = Disease.find(params[:id])
   end
 
   # POST /diseases
   # POST /diseases.json
+  
+  # Author: Ahmed Helali
+  # Team: 2
+  # Method name: create
+  # Function: it takes the input from the new view page
+  # and creates the new disease and puts it in the database
+  # Parameters: none
+
   def create
     @disease = Disease.new(params[:disease])
 
@@ -55,6 +93,14 @@ class DiseasesController < ApplicationController
 
   # PUT /diseases/1
   # PUT /diseases/1.json
+
+  # Author: Ahmed Helali
+  # Team: 2
+  # Method name: update
+  # Function: takes the input from the edit view 
+  # and then update the entry in the database 
+  # Parameters: none
+
   def update
     @disease = Disease.find(params[:id])
 
@@ -71,6 +117,13 @@ class DiseasesController < ApplicationController
 
   # DELETE /diseases/1
   # DELETE /diseases/1.json
+
+  # Author: Ahmed Helali
+  # Team: 2
+  # Method name: show
+  # Function: Get a specific disease in the databases
+  # Parameters: none
+
   def destroy
     @disease = Disease.find(params[:id])
     @disease.destroy
