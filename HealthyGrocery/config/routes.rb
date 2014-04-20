@@ -18,7 +18,11 @@ devise_for :members, :controllers => {:registrations => "registrations", }
   resources :trucks
 
 
-  resources :orders
+  resources :orders do
+collection do
+ get 'invalid'
+end
+end
 
 
   resources :users

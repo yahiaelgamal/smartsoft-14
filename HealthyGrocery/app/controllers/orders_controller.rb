@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   # excuting the method by searchong 
   #for the order number parameter that is passed from the view
+before_filter :require_login ,:except=>[:invalid]
   def index
     @orders = Order.where(:status=>'pending')
 
@@ -33,7 +34,13 @@ class OrdersController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @order }
     end
-  end
+end
+  def invalid
+@msg = "You don't have access to this page"
+end
+
+
+  
 
   # GET /orders/1/edit
   def edit
@@ -83,4 +90,14 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+private
+
+  def require_login
+    unless current_member.email=='admin@gmail.com'
+      redirect_to action: :invalid
+    end
+  end
+
+
 end
