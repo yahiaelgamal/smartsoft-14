@@ -1,6 +1,7 @@
 class ShipmentsController < ApplicationController
   # GET /shipments
   # GET /shipments.json
+# to show the shipment list in a table 
   def index
     @shipments = Shipment.all
 
@@ -12,6 +13,7 @@ class ShipmentsController < ApplicationController
 
   # GET /shipments/1
   # GET /shipments/1.json
+# to show the information of a specific shipment
   def show
     @shipment = Shipment.find(params[:id])
 
@@ -23,6 +25,7 @@ class ShipmentsController < ApplicationController
 
   # GET /shipments/new
   # GET /shipments/new.json
+# to start provide infofrmation about a new shipment in order to create it
   def new
     @shipment = Shipment.new
 
@@ -33,13 +36,15 @@ class ShipmentsController < ApplicationController
   end
 
   # GET /shipments/1/edit
+# to give the opportunity to update the information of a specific shipment 
   def edit
     @shipment = Shipment.find(params[:id])
   end
 
   # POST /shipments
   # POST /shipments.json
-  def create
+# to create a new shipment with its informations  
+def create
     @shipment = Shipment.new(params[:shipment])
 
     respond_to do |format|
@@ -55,6 +60,7 @@ class ShipmentsController < ApplicationController
 
   # PUT /shipments/1
   # PUT /shipments/1.json
+# to update the information of a specific shipment
   def update
     @shipment = Shipment.find(params[:id])
 
@@ -71,6 +77,7 @@ class ShipmentsController < ApplicationController
 
   # DELETE /shipments/1
   # DELETE /shipments/1.json
+# to delete a specific shipment that has been already deleted
   def destroy
     @shipment = Shipment.find(params[:id])
     @shipment.destroy
