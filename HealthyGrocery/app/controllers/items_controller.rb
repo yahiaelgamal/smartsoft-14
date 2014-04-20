@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  # (GUI TEAM) This line is made so that the /items does not follow bootstrap
+  layout false
   # GET /items
   # GET /items.json
   # shows all the items in the table item
@@ -98,9 +100,4 @@ def viewusers
       format.json { head :no_content }
     end
   end
-
-  def members_items_index
-  @items = Item.all
-  end
-
 end
