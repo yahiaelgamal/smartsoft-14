@@ -1,11 +1,17 @@
 class ItemsController < ApplicationController
+  # (GUI TEAM) This line is made so that the /items does not follow bootstrap
+  layout false
   # GET /items
   # GET /items.json
   # shows all the items in the table item
   def index
+   if current_member.email == 'admin@gmail.com'
+      @admin = true
+else 
+      @admin = false
+end    
     @items = Item.all
-
-    respond_to do |format|
+respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
     end
