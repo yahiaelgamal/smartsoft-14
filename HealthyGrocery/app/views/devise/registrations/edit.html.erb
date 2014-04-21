@@ -18,6 +18,12 @@
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %></div>
+	
+	
+	<%-# for phone num-%>
+    <div><%= f.label :phone_num %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :phone_num, autocomplete: "off" %></div>
+	
 
   <div><%= f.submit "Update" %></div>
 <% end %>

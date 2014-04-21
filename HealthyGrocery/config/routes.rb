@@ -5,6 +5,8 @@ HealthyGrocery::Application.routes.draw do
 devise_for :members, :controllers => {:registrations => "registrations", }
   resources :members do
     get 'myprofile'
+    get 'edit'
+    
   end
  
 
