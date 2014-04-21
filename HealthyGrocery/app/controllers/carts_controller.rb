@@ -14,7 +14,15 @@ class CartsController < ApplicationController
   # GET /carts/1.json
   def show
     #@cart = Cart.find(params[:id])
+    if current_member.cart.nil?
+      @cart = Cart.create!
+    current_member.cart = @cart
+    current_member.save
+    else
     @cart = current_member.cart
+  end
+
+  
 
     respond_to do |format|
       format.html # show.html.erb

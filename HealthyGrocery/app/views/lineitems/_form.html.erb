@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :quantity %><br/>
-    <%= f.text_field :quantity, :onclick => "return validateform();"  %>
+    <%= f.text_field :quantity%>
+    <% @newq = @lineitem.quantity %>
   </div>
 
   <div class="actions">

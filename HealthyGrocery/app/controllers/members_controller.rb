@@ -15,6 +15,12 @@ class MembersController < ApplicationController
 else 
 	@admin = false
     end
+
+    if current_member.cart.nil?
+      @exist = false
+    else
+      @exist = true
+    end
    
    end
 

@@ -26,8 +26,10 @@ def current_cart_new
     @newcart = Cart.create!
     current_member.cart = @newcart
     current_member.save
+    @exist = true
   else
     @newcart = current_member.cart
+    @exist = true
   end
   @newcart
   end

@@ -42,8 +42,13 @@ class LineitemsController < ApplicationController
   def create
     @car = current_cart_new
     @item = Item.find(params[:item_id])
+    if @item.amount > 0
     @lineitem = @car.lineitems.build
     @lineitem.item = @item
+    @item.amount = @item.amount - 1
+    @item.save
+    
+    
 
     respond_to do |format|
       if @lineitem.save
@@ -55,18 +60,35 @@ class LineitemsController < ApplicationController
         format.json { render json: @lineitem.errors, status: :unprocessable_entity }
       end
     end
+    else
+      redirect_to 'http://localhost:3000/itemnotfound.html/'
+    end
+  
+
+  
+  
   end
 
   # PUT /lineitems/1
   # PUT /lineitems/1.json
   def update
     @lineitem = Lineitem.find(params[:id])
+    @item = Item.find(@lineitem.item_id)
+    @quantitytemp = @lineitem.quantity
 
     respond_to do |format|
       if @lineitem.update_attributes(params[:lineitem])
+        if @item.amount - @lineitem.quantity >= 0
+          @item.amount = @item.amount - @lineitem.quantity
+          @item.save
         format.html { redirect_to 'http://localhost:3000/carts/show'}
         #format.html { redirect_to 'http://localhost:3000/carts/show', notice: 'Lineitem was successfully updated.' }
         format.json { head :no_content }
+        else
+          @lineitem.quantity = @quantitytemp
+          @lineitem.save
+        format.html {redirect_to 'http://localhost:3000/exceededstock.html/' }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @lineitem.errors, status: :unprocessable_entity }
