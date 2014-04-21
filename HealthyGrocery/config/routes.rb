@@ -1,5 +1,12 @@
 HealthyGrocery::Application.routes.draw do
   
+  # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
+ get 'members/hub'
+
+  resources :health_records
+
+
+
 
   resources :wishlines
 
@@ -34,7 +41,11 @@ HealthyGrocery::Application.routes.draw do
 
 
   resources :users
+  
 
+  match '/generateroutes' => 'generateroutes#index'
+  post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
+  post "generateroutes/gen" => "generateroutes#gen" 
 
   
   # The priority is based upon order of creation:

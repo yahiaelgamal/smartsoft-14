@@ -8,6 +8,7 @@ class MembersController < ApplicationController
 #it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin 
 def index
     @members = Member.all
+
   if current_member.email == 'admin@gmail.com'
       @admin = true
   else 
@@ -22,11 +23,25 @@ end
 def show
     @member = Member.find(params[:id])
   if current_member.email == 'admin@gmail.com'
+
+     
+  end
+
+  def show
+@member = Member.find(params[:id])
+
+
+#(GUI Team) This session is used to be able to navigate from the navigation bar to user's profile
+session["user_id"]= params[:id]
+
+  	if current_member.email == 'admin@gmail.com'
+
   		@admin = true
   else 
 	    @admin = false
   end
    
+
   if current_member.wishlist.nil?
       @wishexist = false
   else 
@@ -34,7 +49,13 @@ def show
   end
 end
 
+   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
+session["isAdmin"]= @admin
 
 
+   end
+
+
+   
 
  end
