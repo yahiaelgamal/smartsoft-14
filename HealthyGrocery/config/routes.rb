@@ -23,6 +23,11 @@ devise_for :members, :controllers => {:registrations => "registrations", }
 
   resources :users
 
+  #Author: Ahmed Helali
+  #Team 2
+  # simply to configure model Disease routes
+  resources :diseases
+
 
   
   # The priority is based upon order of creation:

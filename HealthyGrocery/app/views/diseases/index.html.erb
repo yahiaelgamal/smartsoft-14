@@ -9,6 +9,7 @@
 
 <% @diseases.each do |disease| %>
   <tr>
+    <td><%= disease.name %> <!-- shows the name of the disease -->
     <td><%= link_to 'Show', disease %></td>
     <td><%= link_to 'Edit', edit_disease_path(disease) %></td>
     <td><%= link_to 'Destroy', disease, method: :delete, data: { confirm: 'Are you sure?' } %></td>
