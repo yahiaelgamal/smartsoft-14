@@ -36,30 +36,41 @@ class DiseasesController < ApplicationController
   # GET /diseases/1/edit
   def edit
     @disease = Disease.find(params[:id])
+    
+
   end
 
   # POST /diseases
   # POST /diseases.json
   def create
-    @disease = Disease.new(params[:disease])
+     @disease = Disease.new(params[:disease])
     
-    @products = params[:i]
-    @disease.recommended_items << Item.find(@products.first)
-    @disease.save
-    @products.each do |p|
+     @reco = params[:ii]
+    if @reco != nil
+     @disease.recommended_items << Item.find(@reco.first)
+     @disease.save
+     @reco.each do |p|
        
         @disease.recommended_items << Item.find(p)
         @disease.save
 
     end 
-     
-    
-    #@disease.recommended_items = Item.find_by(params[:i])
+  end
+    @rest = params[:r]
+   if @rest != nil 
+    @disease.restricted_items << Item.find(@rest.first)
+    @disease.save
+    @rest.each do |f|
+       
+        @disease.restricted_items << Item.find(f)
+        @disease.save
+     end
+    end     
     
     respond_to do |format|
       if @disease.save
-        format.html { redirect_to @disease, notice: 'Disease was successfully created.' }
-        format.json { render json: @disease, status: :created, location: @disease }
+        format.html { redirect_to diseases_url }
+        format.json { head :no_content }
       else
         format.html { render action: "new" }
         format.json { render json: @disease.errors, status: :unprocessable_entity }
@@ -74,7 +85,7 @@ class DiseasesController < ApplicationController
 
     respond_to do |format|
       if @disease.update_attributes(params[:disease])
-        format.html { redirect_to @disease, notice: 'Disease was successfully updated.' }
+        format.html { redirect_to diseases_url}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

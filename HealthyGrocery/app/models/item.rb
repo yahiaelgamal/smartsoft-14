@@ -30,6 +30,7 @@ class Item
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
   has_and_belongs_to_many :orders , class_name: "Order" , inverse_of: :items
-  belongs_to :diseases , class_name: 'Disease' , inverse_of: :recommended_items
+  belongs_to :good_for_diseases , class_name: 'Disease' , inverse_of: :recommended_items
+  belongs_to :bad_for_diseases , class_name: 'Disease' , inverse_of: :restricted_items
 end
 
