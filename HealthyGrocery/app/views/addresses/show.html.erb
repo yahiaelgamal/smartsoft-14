@@ -7,12 +7,12 @@
 
 <p>
   <b>First:</b>
-  <%= @address.first %>
+  <%= @address.firstname %>
 </p>
 
 <p>
   <b>Last:</b>
-  <%= @address.last %>
+  <%= @address.lastname %>
 </p>
 
 <p>
@@ -34,7 +34,5 @@
   <b>Street:</b>
   <%= @address.street %>
 </p>
-
-
 <%= link_to 'Edit', edit_address_path(@address) %> |
 <%= link_to 'Back', showaddresses_path %>

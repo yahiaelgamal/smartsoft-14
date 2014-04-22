@@ -29,7 +29,16 @@
   <b>Date:</b>
   <%= @order.date %>
 </p>
-
+<p>
+  <b>Address:</b>
+  <% if @order.address.last%>
+  <%= @order.address.last.name %> 
+  <%= link_to 'show', @order.address.last %>
+  <% else %>
+  no address choosen yet 
+  <%= link_to 'Choose now', chooseOrder_path(@order) %>
+  <%end%>
+</p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

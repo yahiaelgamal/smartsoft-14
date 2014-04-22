@@ -41,10 +41,11 @@ class AddressesController < ApplicationController
   # POST /addresses.json
   def create
     @address = Address.new(params[:address])
-
     respond_to do |format|
       if @address.save
         current_member.addresses.push(@address)
+        @address.first=@address.id
+        @address.save
         format.html { redirect_to showaddresses_path, notice: 'Address was successfully created.' }
         format.json { render json: @address, status: :created, location: @address }
       else
