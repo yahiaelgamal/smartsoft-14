@@ -43,7 +43,7 @@ class Member
 #relations  related to the member
   has_one :wishlist ,class_name: 'Wishlist'
 has_many :historyItems ,class_name: 'Item'
-has_many :orders , class_name: 'Order'
+has_many :orders , class_name: 'Order' , inverse_of: :member
 #has_many :recommendation, class 'Recommendation'
 has_many :records ,class_name: 'Healthrecord' , inverse_of: :user
 has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
