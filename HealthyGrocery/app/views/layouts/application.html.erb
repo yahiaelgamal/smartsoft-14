@@ -50,7 +50,7 @@
           <div class="container nav-collapse">
             <ul class="nav">
            
-                <% @tmp = Member.find(session["user_id"]) %>
+                <% @tmp = current_member %>
               <li><%= link_to "Hub", '/members'+'/hub' %></li>
               <li><%= link_to "Profile", @tmp %></li>
               <% if session["isAdmin"] == true %>
