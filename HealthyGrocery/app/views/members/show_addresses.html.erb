@@ -1,0 +1,4 @@
+<h2>List of all your addresses</h2>
+<% current_member.addresses.each do |ad| %>
+   <p><%= ad.name %> <%= link_to 'Show', ad %> <%= link_to 'Edit', edit_address_path(ad)%> <%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
