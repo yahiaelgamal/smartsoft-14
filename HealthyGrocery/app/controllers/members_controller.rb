@@ -55,6 +55,16 @@ session["isAdmin"]= @admin
 
    end
 
+ def edit_r
+    @member = Member.find(params[:id])
+    @healthrecord = @member.records
+    # @user = User.find(params[:id])
+    # @healthrecord = HealthRecord.find(@user.id)
+  respond_to do |format|
+      format.html# show.html.erb
+      format.json { render json: @healthrecord }
+  end
+  end
 
    
 

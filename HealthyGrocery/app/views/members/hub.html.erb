@@ -1,5 +1,5 @@
 <!-- This the Users/Admins Hub Page which is the Home page that shows New/Recommended Items -->
 
 <h1> Hub </h1>
-<% @tmp = Member.find(session["user_id"]) %>
+<% @tmp = current_member %>
 <t> User ID = <%= @tmp.id %> </t>

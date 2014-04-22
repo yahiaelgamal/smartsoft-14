@@ -12,7 +12,7 @@ HealthyGrocery::Application.routes.draw do
 
 
   resources :wishlines
-get "/members/:id/edit_r" , :to =>"members#edit_r" , as: "indexhealthrecord"
+
 
   resources :wishlists
 
@@ -25,9 +25,7 @@ get "/members/:id/edit_r" , :to =>"members#edit_r" , as: "indexhealthrecord"
   
 
 
-  resources :members  
- # get "edit_r"
-
+  resources :members
  
 
   resources :items
