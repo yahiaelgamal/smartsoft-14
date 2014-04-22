@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
       format.json { render json: @orders }
     end
   end
-  
 
   # GET /orders/1
   # GET /orders/1.json
@@ -39,7 +38,9 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find(params[:id])
   end
-
+   def choose
+    @order = Order.find(params[:id])
+  end
   # POST /orders
   # POST /orders.json
   def create
@@ -47,6 +48,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        current_member.orders.push(@order)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
@@ -71,6 +73,30 @@ class OrdersController < ApplicationController
       end
     end
   end
+  def submit
+     @order = Order.find(params[:id])
+
+    respond_to do |format|
+      if @order.update_attributes(params[:order])
+        format.html { redirect_to change_path, notice: 'Order was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def change
+    @order = Order.find(params[:id])
+    @ad = Address.find(@order.pass)
+    @order.address.push(@ad)
+    if(@order.address)
+      @order.save
+      redirect_to showOrders_path
+    else
+      redirect_to @order
+    end
+  end
 
   # DELETE /orders/1
   # DELETE /orders/1.json
@@ -79,7 +105,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to showOrders_path }
       format.json { head :no_content }
     end
   end

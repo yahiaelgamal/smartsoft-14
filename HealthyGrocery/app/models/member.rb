@@ -1,22 +1,30 @@
 class Member
   include Mongoid::Document
-  include Geocoder::Model::Mongoid
+
+#Author: mohamed lotfy 
+#team : 1
+#model of the member
+#contains all the needed attributes and relations for the member  
+
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  geocoded_by :address       
-  after_validation :geocode 
+
   # Setup accessible (or protected) attributes for your model
  field :first_name, type: String
  field :last_name, type: String
  field :gender, type: String
- field :address, type: String
  field :phone_num, type: Integer
  field :birth_date, type: Date 
- field :coordinates, :type => Array
-  attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
+
+ attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender ,:phone_num , :birth_date
+
+ 
+
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -38,13 +46,14 @@ class Member
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 #relations  related to the member
-  has_many :wishItems ,class_name: 'Item'
+  has_one :wishlist ,class_name: 'Wishlist'
 has_many :historyItems ,class_name: 'Item'
-has_many :orders , class_name: 'Order'
+has_many :orders , class_name: 'Order' , inverse_of: :member
 #has_many :recommendation, class 'Recommendation'
 has_many :records ,class_name: 'Healthrecord' , inverse_of: :user
 has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
 has_many :diseases , class_name: 'Disease' , inverse_of: :customers
+has_many :addresses , class_name: "Address" , inverse_of: :member
 
 validates :first_name,
 :presence => true,
@@ -65,8 +74,6 @@ validates :birth_date,
 :presence => true
 
 
-validates :address,
-:presence => true
 
 
 

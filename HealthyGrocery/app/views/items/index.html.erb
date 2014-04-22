@@ -1,3 +1,8 @@
+<!--to check the adminstration level-->
+<% if @admin == false%>
+<h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
+<%= link_to_function "Back", "history.back()" %>
+<%elsif @admin == true%>
 
 <head>
 <style>
@@ -68,7 +73,7 @@ Navigate Here </br></br>
 <!-- link to the orders page -->
    <opt><%= link_to 'Orders',{:controller  => 'orders', :action => 'index'} , :class => "opt"%></opt></br></br>
 <!-- link to the users page -->
-   <opt><%= link_to 'Members','members/index', :class => "opt"%></opt></br></br>
+   <opt><%= link_to 'Members',members_path, :class => "opt"%></opt></br></br>
 </navigationbar>
 <!-- end of navigation bar -->
 
@@ -100,6 +105,9 @@ Navigate Here </br></br>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
+    <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
+    <td><%= button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>
+
  <td><%= button_to 'Pause', item %></td>
 
  <td><%= button_to 'Resume', item %></td>
@@ -113,3 +121,4 @@ Navigate Here </br></br>
 </br>
 <%= link_to 'Insert New Item', new_item_path %>
 </body>
+<%end%>
