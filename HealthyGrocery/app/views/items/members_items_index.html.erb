@@ -30,8 +30,17 @@ border-color: black;
     <td>Available: <%= item.status %></td><br/>
     <td>Description: <%= item.description %></td></br>
     <td>Rating: <%= item.rating %></td></br>
-    <textarea rows="1" cols="4"></textarea> KG  <button>Add to shopping cart</button></br>
+
+    <td>Proteins: <%= item.protein %></td></br>
+    <td>Carbohydrates: <%= item.carbohydrate %></td></br>
+    <td>Calcium: <%= item.calcium %></td></br>
+    <td>Fats: <%= item.fat %></td></br>
+
+    <textarea rows="1" cols="4"></textarea> KG  
+
+    <%= button_to "Add to shopping cart", :controller => :items, :action => 'Add', :item => item, :method => :post %>
     <button>Add to wishlist</button></br>
+
 </icon>
 <% end %>
 

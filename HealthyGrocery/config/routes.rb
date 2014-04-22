@@ -1,6 +1,18 @@
 HealthyGrocery::Application.routes.draw do
   
 
+  resources :healths
+
+
+  resources :healthrecords
+
+
+  resources :uses
+
+
+  resources :healthrecs
+
+
  root :to => "members#index"
 devise_for :members, :controllers => {:registrations => "registrations", }
   resources :members 
@@ -9,6 +21,7 @@ devise_for :members, :controllers => {:registrations => "registrations", }
   resources :items do
   collection do
   get "members_items_index"
+  post "Add"
   end
   end
   match '/items' => 'items#index'
@@ -27,7 +40,7 @@ devise_for :members, :controllers => {:registrations => "registrations", }
 
   resources :users
 
-
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

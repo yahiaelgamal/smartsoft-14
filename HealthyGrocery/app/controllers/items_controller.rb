@@ -100,7 +100,82 @@ def viewusers
   end
 
   def members_items_index
-  @items = Item.all
+     /Use.where(name: "Ahmed").create/
+   /Use.first.records.push(Healthrecord.where(fats: 200).create)/
+  / Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(height: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(weight: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_protein_per_week: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_carbohydrate_per_week: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_calcium_per_week: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_fat_per_week: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(protein_till_now: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(carbohydrate_till_now: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(calcium_till_now: 170)
+    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(fat_till_now: 170)
+/
+    
+   @items = Item.all    
   end
+   
+   def Add
+
+    item_id = params[:item]
+    # @item =  Item.where(id: @item_id).first
+    Item.where(id:  item_id).update(protein: 200)
+    Item.where(id:  item_id).update(carbohydrate: 200)
+    Item.where(id:  item_id).update(calcium: 200)
+    Item.where(id:  item_id).first.update(fat: 200)
+     item =  Item.where(id:  item_id).first
+
+  #if ( acceptable_protein_per_week <=  item.protein )
+  # Item.where(id:  item_id).update(protein: 33333) 
+  #else 
+  #flash[:notice] = "This request with its quantity exceeds the protein acceptable range"
+  # end 
+  #  redirect_to :action => :members_items_index
+ if  item.amount > 0
+        user = Use.first
+        healthrecord =  user.records.first
+
+   flag = true
+ if  healthrecord.acceptable_protein_per_week < ( item.protein +  healthrecord.protein_till_now)
+        flash[:notice] = "This request with its quantity exceeds the proteins acceptable range"
+        flag = false
+  end  
+  if  healthrecord.acceptable_carbohydrate_per_week < ( item.carbohydrate +  healthrecord.carbohydrate_till_now)
+        flash[:notice] = "This request with its quantity exceeds the carbohydrates  acceptable range"
+        flag = false
+  end
+  if  healthrecord.acceptable_calcium_per_week < ( item.calcium +  healthrecord.calcium_till_now)
+        flash[:notice] = "This request with its quantity exceeds the calcium acceptable range"
+        flag = false
+  end    
+  if  healthrecord.acceptable_fat_per_week < ( item.fat +  healthrecord.fat_till_now) 
+        flash[:notice] = "This request with its quantity exceeds the fats acceptable range"
+        flag = false
+  end
+  
+  if  flag   
+  
+      protein =  healthrecord.protein_till_now +  item.protein
+      carbohydrate =  healthrecord.carbohydrate_till_now +  item.carbohydrate
+      calcium  =   healthrecord.calcium_till_now +  item.calcium
+      fat  =   healthrecord.fat_till_now +  item.fat
+
+     Use.where(id: user.id).first.records.update(protein_till_now: protein)
+     Use.where(id: user.id).first.records.update(carbohydrate_till_now: carbohydrate)
+     Use.where(id: user.id).first.records.update(calcium_till_now: calcium)
+     Use.where(id: user.id).first.records.update(fat_till_now: fat)
+  
+     flash[:notice] = '' + protein.to_s
+ end 
+    else
+
+         flash[:notice] = "The amount of this is not enough"
+          
+    end
+      
+    redirect_to :action => :members_items_index
+ end
 
 end
