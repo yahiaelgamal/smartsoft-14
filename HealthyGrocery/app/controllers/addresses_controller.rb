@@ -14,7 +14,14 @@ class AddressesController < ApplicationController
   # GET /addresses/1.json
   def show
     @address = Address.find(params[:id])
-
+      @hash = Gmaps4rails.build_markers(@address) do |address, marker|
+      
+        marker.lat address.coordinates[1]
+      
+      
+        marker.lng address.coordinates[0]
+      
+    end  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @address }
@@ -41,12 +48,11 @@ class AddressesController < ApplicationController
   # POST /addresses.json
   def create
     @address = Address.new(params[:address])
+
     respond_to do |format|
       if @address.save
         current_member.addresses.push(@address)
-        @address.first=@address.id
-        @address.save
-        format.html { redirect_to showaddresses_path, notice: 'Address was successfully created.' }
+        format.html { redirect_to addressesposition_path(@address.id), notice: 'To ensure high-quality service please make sure that your address was putted on the map correctly.' }
         format.json { render json: @address, status: :created, location: @address }
       else
         format.html { render action: "new" }
@@ -62,7 +68,7 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.update_attributes(params[:address])
-        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+        format.html { redirect_to addressesposition_path(@address.id), notice: 'To ensure high-quality service please make sure that your address was putted on the map correctly.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,5 +87,13 @@ class AddressesController < ApplicationController
       format.html { redirect_to showaddresses_path }
       format.json { head :no_content }
     end
+  end
+
+  def position
+    @address = Address.find(params[:id])
+  
+    gon.lat = @address.coordinates[1]
+    gon.lng = @address.coordinates[0]  
+   
   end
 end

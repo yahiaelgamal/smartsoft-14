@@ -11,6 +11,8 @@ HealthyGrocery::Application.routes.draw do
     get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
   get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
  
+ match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
+  get "addresses/position"
 
   resources :items do
   collection do

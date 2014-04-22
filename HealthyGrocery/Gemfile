@@ -66,5 +66,5 @@ end
 # gem 'debugger'
 
 gem 'geocoder'
-
 gem 'gmaps4rails'
+gem 'gon' 

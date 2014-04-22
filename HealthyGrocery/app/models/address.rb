@@ -1,5 +1,10 @@
 class Address
   include Mongoid::Document
+  include Geocoder::Model::Mongoid
+
+  geocoded_by :street       
+  after_validation :geocode 
+
   field :name, type: String
   field :first , type: String
   field :firstname, type: String
@@ -8,8 +13,8 @@ class Address
   field :city, type: String
   field :postal, type: Integer
   field :street, type: String
-
-
+  field :coordinates, :type => Array , :default => [31.235726308822677,30.044366207449162]
+  
    validates :name , :presence => true
    validates :firstname , :presence => true
    validates :lastname , :presence => true
