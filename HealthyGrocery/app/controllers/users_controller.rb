@@ -115,4 +115,11 @@ class UsersController < ApplicationController
     end
   end
 
+  #Author : Magd Elshebokshy
+  #Component : 3
+  #Method name : recommended_items
+  #Function : Make a list of recommended items to the user, using the 
+  #recommended items and restricted items for his diseases.
+  #Parameters : diseases - diseases' recommended items - diseases' restricted items.
+
 end
