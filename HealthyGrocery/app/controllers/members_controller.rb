@@ -33,12 +33,12 @@ end
 
 
 def edit
-   @member = Member.find(params[:member_id])
+  @member = Member.find(params[:member_id])
    
-   #Author : mostafa adel
-   #team : 3
-   #method: edit profile
-   #params : @member
+  #Author : mostafa adel
+  #team : 3
+  #method: edit profile
+  #params : @member
 end
 
 
