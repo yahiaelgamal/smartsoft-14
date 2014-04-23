@@ -1,5 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-
-<%= link_to 'Edit', edit_disease_path(@disease) %> |
-<%= link_to 'Back', diseases_path %>
+<table class="table table-bordered table-responsive">
+  
+  <tr>
+    <th colspan="1" ,style="width:30%">Name:</th>
+    <td><%= @disease.name %></td>
+  </tr>
+  <tr>   
+    <th colspan="1">Information:</th>
+    <td><%= @disease.information %></td>
+  </tr>
+  <tr>  
+    <th colspan="1">Recommended:</th>
+    <td>
+        <% @disease.recommended_items.each do |f| %>
+          <%= f.name %>
+        </br>
+        <% end %>
+      </td>
+     </tr>
+     <tr> 
+    <th colspan="1">Restricted:</th>
+     <td>
+        <% @disease.restricted_items.each do |c| %>
+          <%= c.name %>
+          </br>
+        <% end %>
+      </td>
+      <tr>
+    <th colspan="1">Actions:</th>
+     <td><%#= link_to 'Edit', edit_person_path(person) %> 
+        <%= link_to(edit_disease_path(@disease), class: "btn btn-small") do %>
+          Edit <i class="icon-edit icon-white"></i>
+        <% end %>
+        
+      </td>
+  </tr>
+                                       
+</table>
+     

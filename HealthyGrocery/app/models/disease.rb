@@ -3,6 +3,7 @@ class Disease
 
  field :name ,type: String
  validates_presence_of :name ,:message=> "must be Mentioned"
+ validates_uniqueness_of :name, :message=> "must be unique"
  field :level ,type: String
 
  field :information , type: String
