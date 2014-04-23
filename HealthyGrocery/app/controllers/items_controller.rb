@@ -110,6 +110,6 @@ def viewusers
 #function: retreives all teh items in the instance variable @items in order to show the items from
 #the member point of view 
   def members_items_index
-  @items = Item.all
+    @items = Item.all
   end
 end
