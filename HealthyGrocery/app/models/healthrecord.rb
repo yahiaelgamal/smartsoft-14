@@ -10,7 +10,8 @@ class Healthrecord
   
   
   
-  belongs_to :user , class_name: 'User' , inverse_of: :records 
+  belongs_to :user , class_name: 'Member' , inverse_of: :records
+  belongs_to :ordered_user , class_name: 'Member' , inverse_of: :active_records 
   has_many :diseases , class_name: 'Disease' , inverse_of: :records
 
  

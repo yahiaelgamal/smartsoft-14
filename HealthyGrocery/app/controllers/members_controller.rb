@@ -51,7 +51,12 @@ end
 
    #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
 #session["isAdmin"]= @admin
-
+def order_checkboxes
+  @healthrecords = current_member.records
+  @records_ids = params[:all]
+  current_member.active_records = @records
+  current_member.save
+end
 
    end
 

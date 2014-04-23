@@ -22,8 +22,11 @@ HealthyGrocery::Application.routes.draw do
   
 
 
-  resources :members
- 
+  resources :members do
+   member do 
+    post :order_checkboxes
+    end 
+  end
 
   resources :items
   match '/items' => 'items#index'

@@ -1,0 +1,7 @@
+<%  @healthrecords.each do |h| %> 
+ 
+ <%= check_box_tag "all[]", h.id %> <label> <%= h.name %> </label>
+
+ <% end %>
+<%= button_to "New Health record", new_health_record_path, :class => "button" %> <br />
+<%= button_to "Order Now", new_order_path, :class => "button" %>
