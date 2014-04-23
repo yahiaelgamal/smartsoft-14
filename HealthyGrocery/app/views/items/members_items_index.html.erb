@@ -24,9 +24,6 @@ border-color: black;
 </style>
 
 
-
-
-
 </head>
 
 <body>
@@ -37,7 +34,7 @@ border-color: black;
 
 <% @items.each do |item| %>
   <icon>
-    <img src= "<%= item.image%>" height=150 width=150></img></br>
+    <img src= "<%= item.image%>" height=150 width=150 ></img></br>
     <td>Name: <%= item.name %></td> </br>
     <td>Price: <%= item.price %></td></br>
     <td>Category: <%= item.category %></td></br>
