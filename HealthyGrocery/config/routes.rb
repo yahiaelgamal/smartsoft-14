@@ -25,7 +25,11 @@ HealthyGrocery::Application.routes.draw do
   resources :members
  
 
-  resources :items
+  resources :items do
+  collection do
+  get "members_items_index"
+  end
+  end
   match '/items' => 'items#index'
 
   resources :routes
