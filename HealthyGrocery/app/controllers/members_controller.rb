@@ -42,16 +42,6 @@ def edit
 end
 
 
-  def myprofile
-  @member = Member.find(params[:member_id])
-  
-  #Author : mostafa adel
-  #team : 3
-  #method: show profile
-  #params : @member
-   end
-
-
 
 
 

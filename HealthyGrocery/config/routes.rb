@@ -20,8 +20,7 @@ HealthyGrocery::Application.routes.draw do
  
  #for user profile page
  resources :members do
-   get 'myprofile'
-   get 'edit'
+  get 'edit'
    
  end
 
