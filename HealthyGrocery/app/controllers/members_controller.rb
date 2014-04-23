@@ -49,8 +49,20 @@ end
   end
 end
 
+
+#author : halawa
+#team 2
+#function : search for items
+#parameters : name of item to search for
+
+def search
+  @member = Member.search params[:search]
+end
+
    #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
 #session["isAdmin"]= @admin
+
+ 
 
 
    end
