@@ -18,9 +18,15 @@ team : 1-->
 
 
 
+
+
 <!--to check the adminstration level
 author:mohamed lotfy team:1-->
 <%elsif @admin == false%>
+
+
+<!-- to show user profile -->
+<%= link_to "my profile" , member_myprofile_path(current_member)%>
 
 <h3>Member</h3>
 <p>Email: <%= @member.email %></p>

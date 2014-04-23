@@ -31,6 +31,30 @@ end
 @member = Member.find(params[:id])
 
 
+
+def edit
+   @member = Member.find(params[:member_id])
+   
+   #Author : mostafa adel
+   #team : 3
+   #method: edit profile
+   #params : @member
+end
+
+
+  def myprofile
+  @member = Member.find(params[:member_id])
+  
+  #Author : mostafa adel
+  #team : 3
+  #method: show profile
+  #params : @member
+   end
+
+
+
+
+
 #(GUI Team) This session is used to be able to navigate from the navigation bar to user's profile
 #session["user_id"]= params[:id]
 
