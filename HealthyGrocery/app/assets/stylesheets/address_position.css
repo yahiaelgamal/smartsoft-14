@@ -1,3 +1,9 @@
+/* Author: Karim El-Bawab
+ Team: 4
+ Stylesheet name: address_position
+ Function: This style used on the the map div in the view of 
+ position action of address controller   
+*/
 html, body, #map-canvas {
  height: 100%;
  margin: 0px;

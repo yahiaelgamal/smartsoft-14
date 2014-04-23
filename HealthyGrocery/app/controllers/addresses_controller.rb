@@ -14,11 +14,15 @@ class AddressesController < ApplicationController
   # GET /addresses/1.json
   def show
     @address = Address.find(params[:id])
+      
+      # Author: Karim El-Bawab
+      # Team: 4
+      # Function: this block of code below is used in order to show
+      # a map with a marker setted on the user address 
+
       @hash = Gmaps4rails.build_markers(@address) do |address, marker|
       
         marker.lat address.coordinates[1]
-      
-      
         marker.lng address.coordinates[0]
       
     end  
@@ -88,7 +92,15 @@ class AddressesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  # Author: Karim El-Bawab
+  # Team: 4
+  # Method: position
+  # Parameters: There are 3 parameters that passed to its view : the
+  # current member id , the latiude and longitude (both latiude and 
+  # longitude passed using gon gem to be able to use them into javascript
+  # code)
+  # Function: this action is used to give the user the ability to set
+  # his address in the map using the marker 
   def position
     @address = Address.find(params[:id])
   
