@@ -1,5 +1,11 @@
 class Member
   include Mongoid::Document
+#Author: mohamed lotfy 
+#team : 1
+#model of the member
+#contains all the needed attributes and relations for the member  
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,7 +18,8 @@ class Member
  field :address, type: String
  field :phone_num, type: Integer
  field :birth_date, type: Date 
-  attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
+ 
+   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -34,7 +41,7 @@ class Member
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 #relations  related to the member
-  has_many :wishItems ,class_name: 'Item'
+  has_one :wishlist ,class_name: 'Wishlist'
 has_many :historyItems ,class_name: 'Item'
 has_many :orders , class_name: 'Order'
 #has_many :recommendation, class 'Recommendation'

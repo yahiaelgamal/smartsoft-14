@@ -8,11 +8,19 @@ HealthyGrocery::Application.routes.draw do
 
 
 
-  resources :diseases
+
+ 
+
+  resources :wishlines
 
 
- root :to => "members#index"
-devise_for :members, :controllers => {:registrations => "registrations", }
+  resources :wishlists
+
+
+ root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+
+ devise_for :members, :controllers => {:registrations => "registrations", }
+  
   resources :members
  
 
@@ -38,7 +46,7 @@ devise_for :members, :controllers => {:registrations => "registrations", }
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
 
-  
+  resources :diseases
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
