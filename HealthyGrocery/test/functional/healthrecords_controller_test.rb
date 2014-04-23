@@ -44,6 +44,6 @@ class HealthrecordsControllerTest < ActionController::TestCase
       delete :destroy, id: @healthrecord
     end
 
-    assert_redirected_to healthrecords_path
+    assert_redirected_to indexhealthrecord_path(current_member)
   end
 end

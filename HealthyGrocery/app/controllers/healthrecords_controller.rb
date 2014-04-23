@@ -1,6 +1,13 @@
 class HealthrecordsController < ApplicationController
   # GET /healthrecords
   # GET /healthrecords.json
+
+
+#Author : mina sedra
+#team : 2
+#method: index
+#params : none
+#it shows all the  healthrecord in the database
   def index
     @healthrecords = Healthrecord.all
 
@@ -12,6 +19,12 @@ class HealthrecordsController < ApplicationController
 
   # GET /healthrecords/1
   # GET /healthrecords/1.json
+#Author : mina sedra
+#team : 2
+#method: show
+#params : none
+#it shows  the  healthrecord in details
+
   def show
     @healthrecord = Healthrecord.find(params[:id])
 
@@ -23,6 +36,11 @@ class HealthrecordsController < ApplicationController
 
   # GET /healthrecords/new
   # GET /healthrecords/new.json
+  #Author : mina sedra
+#team : 2
+#method: index
+#params : none
+#render the form to create new healthrecord
   def new
     @healthrecord = Healthrecord.new
 
@@ -33,12 +51,22 @@ class HealthrecordsController < ApplicationController
   end
 
   # GET /healthrecords/1/edit
+  #Author : mina sedra
+#team : 2
+#method: index
+#params : none
+#render the form to edit that healthrecord
   def edit
     @healthrecord = Healthrecord.find(params[:id])
   end
 
   # POST /healthrecords
   # POST /healthrecords.json
+#Author : mina sedra
+#team : 2
+#method: index
+#params : none
+#create new healthrecord for a member 
   def create
     @healthrecord = Healthrecord.new(params[:healthrecord])
 
@@ -56,6 +84,11 @@ class HealthrecordsController < ApplicationController
 
   # PUT /healthrecords/1
   # PUT /healthrecords/1.json
+  #Author : mina sedra
+#team : 2
+#method: index
+#params : none
+#update healthrecord
   def update
     @healthrecord = Healthrecord.find(params[:id])
 
@@ -72,6 +105,11 @@ class HealthrecordsController < ApplicationController
 
   # DELETE /healthrecords/1
   # DELETE /healthrecords/1.json
+  #Author : mina sedra
+#team : 2
+#method: index
+#params : none
+#delete healthrecord
   def destroy
     @healthrecord = Healthrecord.find(params[:id])
     @healthrecord.destroy

@@ -74,7 +74,9 @@
               <h3>Sidebar</h3>
               <ul class="nav nav-list">
                 <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
+<!--                 to mange his/her healthrecords mina sedra
+ -->                <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
+
                 <li><%= link_to "Link2", "/path2"  %></li>
                 <li><%= link_to "Link3", "/path3"  %></li>
               </ul>

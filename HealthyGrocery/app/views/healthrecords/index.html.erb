@@ -1,4 +1,4 @@
-<h1>Listing healthrecords</h1>
+<!-- <h1>Listing healthrecords</h1>
 
 <table>
   <tr>
@@ -39,11 +39,18 @@
     <td><%= healthrecord.fat_till_now %></td>
     <td><%= link_to 'Show', healthrecord %></td>
     <td><%= link_to 'Edit', edit_healthrecord_path(healthrecord) %></td>
-    <td><%= link_to 'Destroy', healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Remove', healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+ -->
+ <% @healthrecords.each do |healthrecord| %>
+     <%= healthrecord.name %>
+     <%= link_to 'Show', healthrecord %>
+     <%= link_to 'Edit', edit_healthrecord_path(healthrecord) %>
+     <%= link_to 'Remove', healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %>
+     <br/>
+     <% end %>
 <%= link_to 'New Healthrecord', new_healthrecord_path %>

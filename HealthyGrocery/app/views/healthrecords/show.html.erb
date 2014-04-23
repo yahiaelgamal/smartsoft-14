@@ -50,7 +50,7 @@
   <%= @healthrecord.protein_per_day %>
 </p>
 
-<p>
+<!-- <p>
   <b>Protein till now:</b>
   <%= @healthrecord.protein_till_now %>
 </p>
@@ -69,7 +69,7 @@
   <b>Fat till now:</b>
   <%= @healthrecord.fat_till_now %>
 </p>
-
+ -->
 
 <%= link_to 'Edit', edit_healthrecord_path(@healthrecord) %> |
-<%= link_to 'Back', healthrecords_path %>
+<%= link_to 'Back', indexhealthrecord_path(current_member) %>

@@ -54,8 +54,12 @@ session["isAdmin"]= @admin
 
 
    end
-
- def edit_r
+#Author : mina sedra
+#team : 2
+#method: get healthrecord
+#params : none
+#it shows the page of the member's healthrecord 
+ def get_records
     @member = Member.find(params[:id])
     @healthrecord = @member.records
     # @user = User.find(params[:id])
