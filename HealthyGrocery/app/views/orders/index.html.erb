@@ -1,26 +1,31 @@
-<h1>Listing orders</h1>
+<h1 style="font-family: courier, 'courier new', monospace;
+color: #595454;
+font-weight: bold;"
+>Listing orders</h1>
 
 
 
 <!--Creating a text label to take the order number that the method should search for and passing this parameter to the controller-->
-<%= form_tag orders_path, :method => 'get' do %>
-<p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+<form class="form-search">
+  <div class="input-append">
+    <input type="text" class="span2 search-query" id="search" name="search">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+ </form>
 
 
 
 
-<table>
+
+
+<table class="table">
   <tr>
-    <th>Orderno</th>
-    <th>Price</th>
-    <th>Weight</th>
-    <th>Volume</th>
-    <th>Status</th>
-    <th>Date</th>
+    <th><%= sortable_column "Orderno" %></th>
+    <th><%= sortable_column "Price"%></th>
+    <th><%= sortable_column "Weight"%></th>
+    <th><%= sortable_column "Volume"%></th>
+    <th><%= sortable_column "Status"%></th>
+    <th><%= sortable_column "Date"%></th>
     <th></th>
     <th></th>
     <th></th>

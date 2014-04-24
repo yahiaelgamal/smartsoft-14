@@ -3,9 +3,10 @@ class OrdersController < ApplicationController
   # GET /orders.json
   # excuting the method by searchong 
   #for the order number parameter that is passed from the view
+   handles_sortable_columns
 before_filter :require_login ,:except=>[:invalid]
   def index
-    @orders = Order.where(:status=>'pending')
+    @orders = Order.where(:status=>'pending').order_by(sortable_column_order).search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
