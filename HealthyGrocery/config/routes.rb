@@ -5,11 +5,13 @@ HealthyGrocery::Application.routes.draw do
 
   resources :health_records
 
+
   # Author: Hazem Amin
   # Component: 5
   # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
   # it's invoked on a single item (member)
   
+  #sameh metias: removed hazem's route down to be with all the routes belonging to the items
 
 
   resources :wishlines
@@ -52,6 +54,17 @@ HealthyGrocery::Application.routes.draw do
 
 
   resources :users
+
+
+    resources :items do
+    member do
+      post 'toggle_pause'
+    end
+  end
+  # Author: Hazem Amin
+  # Component: 5
+  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
+  # it's invoked on a single item (member)
   
 
   match '/generateroutes' => 'generateroutes#index'
