@@ -6,50 +6,7 @@
 
 <head>
 <style>
-navigationbar{
-height:800px;
-width:230px;
-background:#003366;
-font-size: 30px;
-  float:left;
-}
 
-h1{
-
-
-height:10px;
-font-size: 40px;
-width:100%;
-position:relative;
-  text-align:center;
-  float:left;
-
-}
-
-table{
-  margin:5px;
-  padding: 5px;
-  border:1px solid #0000ff;
-  height:auto;
-  width:auto;
-  float:left;
-  text-align:center;
-background:orange;
-
-}
-s
-opt
-{
-
-position:absolute;
-width:130px;
-height:50px;
--webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
-transition:width 0.4s;
-padding:10px;
-left-margin:10px;
-  text-align:center;
-}
 </style>
 
 <script type="text/javascript">
@@ -85,6 +42,8 @@ Navigate Here </br></br>
     <th>Category</th>
     <th>Stock</th>
     <th>Status</th>
+    <% # Author: Hazem Amin %>
+    <% # Printing the column name "paused" in the table %>
     <th>Description</th>
     <th>Rating</th>
     <th></th>
@@ -92,27 +51,29 @@ Navigate Here </br></br>
     <th></th>
   </tr>
 <!-- looping on the items in the items model in the DB-->
-<% @items.each do |item| %>
 <%= javascript_include_tag "application" %>
+<% @items.each do |item| %>
   <tr>
    <td><%= item.name %></td>
     <td><%= item.price %></td>
     <td><%= item.category %></td>
     <td><%= item.amount %></td>
-    <td><%= item.status %></td>
+    <td><%= item.paused %></td>
+    <% # Author: Hazem Amin %>
+    <% #Component: 5 %>
+    <% # Printing the value of paused (true or false) for each and every item, depending on that record %>
     <td><%= item.description %></td>
     <td><%= item.rating %></td>
+    <td><%= button_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %></td>
+    <% # Author: Hazem Amin%>
+    <% # Component: 5%>
+    <% # button_to %>
+    <% # A paused button which name is Paused/Resume based on the status of paused for each specific item, it then goes to the toggle pause as dedined in routes%>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
-    <td><%= button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>
-
- <td><%= button_to 'Pause', item %></td>
-
- <td><%= button_to 'Resume', item %></td>
-  
+    <td><%= button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
 </tr>
 <% end %>
 </table></br>

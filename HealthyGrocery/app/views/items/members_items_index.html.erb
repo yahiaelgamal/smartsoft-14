@@ -3,28 +3,41 @@
 <!-- This page is the view of the items from the members' point of view-->
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
 
-<head>
-
 <style>
+.comments {
+    float: right;
+}
 
-icon{
+.box {
+    background: white;   
+}
 
-font-size: 20px;
+img.in-box{
+    width: 70%;        
+    float: left;   
+}
 
-float:left;
-
-border-width: thick;
-
-border-style: dotted;
-
-border-color: black;
-
+img {
+    width: 20%;
+}
+.comments {
+    margin: 5px;
+}
+.comments li {
+    border-bottom: 1px solid gray;
+    padding: 5px;
 }
 
 </style>
 
-
-</head>
+<script type="text/javascript">
+$('.image').click(function(e) {
+    $('.box').lightbox_me({
+        centered: true
+        });
+    e.preventDefault();
+});
+</script>
 
 <body>
 
@@ -33,9 +46,9 @@ border-color: black;
 <h1>Items as shown to members</h1>
 
 <% @items.each do |item| %>
-  <icon>
-    <img src= "<%= item.image%>" height=150 width=150 ></img></br>
-    <td>Name: <%= item.name %></td> </br>
+  <icon class="box">
+    <img class="in-box" src= "<%= item.image%>"  height=150 width=150 ></img></br>
+    <td class="comment">Name: <%= item.name %></td> </br>
     <td>Price: <%= item.price %></td></br>
     <td>Category: <%= item.category %></td></br>
     <td>Stock: <%= item.amount %></td></br>

@@ -5,7 +5,11 @@ HealthyGrocery::Application.routes.draw do
 
   resources :health_records
 
-
+  # Author: Hazem Amin
+  # Component: 5
+  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
+  # it's invoked on a single item (member)
+  
 
 
   resources :wishlines
@@ -29,6 +33,9 @@ HealthyGrocery::Application.routes.draw do
   collection do
   get "members_items_index"
   end
+    member do
+      post 'toggle_pause'
+   end
   end
   match '/items' => 'items#index'
 
