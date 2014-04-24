@@ -3,6 +3,9 @@
   <% # Component: 5 %>
   <% # Page for viewing all drivers %>
 <table>
+  <div class="panel panel-default">
+    <div class="panel-heading">Panel heading</div>
+    <table class="table table-nonfluid">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,6 +16,7 @@
       <th></th>
     </tr>
   </thead>
+
   <tbody>
     <% @drivers.each do |driver| %>
       <tr>
