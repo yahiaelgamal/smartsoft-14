@@ -1,9 +1,24 @@
 <!-- This the Users/Admins Hub Page which is the Home page that shows New/Recommended Items -->
 
-<h1> New Arrivals </h1>
+<h1 style="
+padding-top:100px;
+right:5px"> New Arrivals </h1>
 
-<br>
-
+ <!--	#Author: Andrew Khouzam
+	 	#Team: 1
+	 	#Method name: CSS for the items in the table.
+		#Function: make float on the 10 latest items of the tables
+	 	#Example:  -->
+<style>
+.thumbnail 
+{
+float:left;
+padding:25px 25px;
+width:90px;
+height:90px;
+margin:10px;
+}
+</style>
 
  <!--	#Author: Andrew Khouzam
 	 	#Team: 1
@@ -20,7 +35,6 @@
 
 
 
-
  <!--#Author: Andrew Khouzam
 	 #Team: 1
 	 #Method name: 
@@ -28,8 +42,6 @@
 	 #Example: allItemscounter = 23 => allItemscounter = 13 -->
 
 <% allItemsCounter = allItemsCounter - 10  %>
-
-
 
 
  <!--#Author: Andrew Khouzam
@@ -40,28 +52,26 @@
 	 the counter will start off by 0 and then will increment and when it hits 10, it will 
 	 start showing the items in the hub. -->
 
+<table>
 <% counter = 0 %>
 <% @allItems.each do |item| %>
 	<% counter += 1 %>
- <tr>
-  <% if counter > allItemsCounter %>
-		<td><%= image_tag item.image.url %></td>
-   		<td><%= link_to item.name , item_path(item) %></td>
-   		<td><%= button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>
-    <br>
-  	<% end %>
-  </tr>
-<% end %>
 
-<br>
-<br>
-<br>
+
+  <% if counter > allItemsCounter %>
+
+
+		<td class = "thumbnail"><%= image_tag item.image.url %>
+		<tag ><%= link_to item.name , item_path(item) %></tag>
+		</td>
+   		
+  	<% end %>
+<% end %>
+ </table>
+
 
 <h1> Recommended Items </h1>
 
 <!-- This part of the code cannot be coded until the story 2.8 is finished because the calculations of the recommendations is not my user story.  
 2.8: As a user, I should see a recommendation section in the hub according to the information the user provided in the sign-up-->
 
-<br>
-<br>
-<br>
