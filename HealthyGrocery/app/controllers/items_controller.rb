@@ -1,11 +1,17 @@
 class ItemsController < ApplicationController
+  # (GUI TEAM) This line is made so that the /items does not follow bootstrap
+  layout false
   # GET /items
   # GET /items.json
   # shows all the items in the table item
   def index
+   if current_member.email == 'admin@gmail.com'
+      @admin = true
+else 
+      @admin = false
+end    
     @items = Item.all
-
-    respond_to do |format|
+respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
     end
@@ -99,83 +105,96 @@ def viewusers
     end
   end
 
-  def members_items_index
-     /Use.where(name: "Ahmed").create/
-   /Use.first.records.push(Healthrecord.where(fats: 200).create)/
-  / Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(height: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(weight: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_protein_per_week: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_carbohydrate_per_week: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_calcium_per_week: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(acceptable_fat_per_week: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(protein_till_now: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(carbohydrate_till_now: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(calcium_till_now: 170)
-    Use.where(name: "Ahmed").first.healthrecord.where(fats: 200).update(fat_till_now: 170)
-/
-    
+#Author: Sameh Metias
+#team: 3
+#function: retreives all teh items in the instance variable @items in order to show the items from
+#the member point of view 
+#AUTHOR: Mahmoud Eldesouky
+#Team :5
+#parameter : flag, message
+#sends the message that is set by def Add to the members_item_index view
+  def members_items_index    
+
+   gon.flag =  flash[:flag]
+   gon.message =  flash[:message]
+
    @items = Item.all    
   end
    
+    #AUTHOR: Mahmoud Eldesouky
+    #Team :5
+    #parameter : item, quantity
+    #checks that the choosen item with its nutrition does not exceed the acceptable limit of 
+    #this user nutrients that we keep track of through his healthrecord. Each time an item within the 
+    #nutrition limits is choosen his till_now attribute in the healthrecord is updated else if a violation happens
+    #the message attribute is set with the approprite message to the user describing his violations
    def Add
 
     item_id = params[:item]
-    # @item =  Item.where(id: @item_id).first
-    Item.where(id:  item_id).update(protein: 200)
-    Item.where(id:  item_id).update(carbohydrate: 200)
-    Item.where(id:  item_id).update(calcium: 200)
-    Item.where(id:  item_id).first.update(fat: 200)
-     item =  Item.where(id:  item_id).first
-
-  #if ( acceptable_protein_per_week <=  item.protein )
-  # Item.where(id:  item_id).update(protein: 33333) 
-  #else 
-  #flash[:notice] = "This request with its quantity exceeds the protein acceptable range"
-  # end 
-  #  redirect_to :action => :members_items_index
+    amount = params[:amount].to_i 
+    item =  Item.where(id:  item_id).first
  if  item.amount > 0
-        user = Use.first
+        user = current_member
         healthrecord =  user.records.first
+        
+        
 
-   flag = true
- if  healthrecord.acceptable_protein_per_week < ( item.protein +  healthrecord.protein_till_now)
-        flash[:notice] = "This request with its quantity exceeds the proteins acceptable range"
-        flag = false
+  
+
+   @flag = true
+       
+   @message = "This request with its quantity exceeds the acceptable range of the following: "
+   v_counter=1
+ if  healthrecord.acceptable_protein_per_week < ( (item.protein * amount )+  healthrecord.protein_till_now)
+        #flash[:notice] 
+        @message = @message+v_counter.to_s+".proteins "
+        v_counter = v_counter+1
+        @flag = false
   end  
-  if  healthrecord.acceptable_carbohydrate_per_week < ( item.carbohydrate +  healthrecord.carbohydrate_till_now)
-        flash[:notice] = "This request with its quantity exceeds the carbohydrates  acceptable range"
-        flag = false
+  if  healthrecord.acceptable_carbohydrate_per_week < ( (item.carbohydrate * amount) +  healthrecord.carbohydrate_till_now)
+        @message = @message + v_counter.to_s+".carbohydrates "
+        v_counter = v_counter+1
+        @flag = false
   end
-  if  healthrecord.acceptable_calcium_per_week < ( item.calcium +  healthrecord.calcium_till_now)
-        flash[:notice] = "This request with its quantity exceeds the calcium acceptable range"
-        flag = false
+  if  healthrecord.acceptable_calcium_per_week < ( (item.calcium * amount)+  healthrecord.calcium_till_now)
+        @message = @message +v_counter.to_s+ ".calcium "
+        v_counter = v_counter+1
+        @flag = false
   end    
-  if  healthrecord.acceptable_fat_per_week < ( item.fat +  healthrecord.fat_till_now) 
-        flash[:notice] = "This request with its quantity exceeds the fats acceptable range"
-        flag = false
+  if  healthrecord.acceptable_fat_per_week < ( (item.fat * amount) +  healthrecord.fat_till_now) 
+        @message = @message +v_counter.to_s+ ".fats"
+        v_counter = v_counter+1
+        @flag = false
   end
-  
-  if  flag   
-  
-      protein =  healthrecord.protein_till_now +  item.protein
-      carbohydrate =  healthrecord.carbohydrate_till_now +  item.carbohydrate
-      calcium  =   healthrecord.calcium_till_now +  item.calcium
-      fat  =   healthrecord.fat_till_now +  item.fat
+    if (amount === 0 )
+         @flag = false 
+         @message = "please enter the quantity"
+        end 
 
-     Use.where(id: user.id).first.records.update(protein_till_now: protein)
-     Use.where(id: user.id).first.records.update(carbohydrate_till_now: carbohydrate)
-     Use.where(id: user.id).first.records.update(calcium_till_now: calcium)
-     Use.where(id: user.id).first.records.update(fat_till_now: fat)
+  if  @flag   
   
-     flash[:notice] = '' + protein.to_s
+      protein =  healthrecord.protein_till_now +  (item.protein * amount )
+      carbohydrate =  healthrecord.carbohydrate_till_now +  (item.carbohydrate * amount)
+      calcium  =   healthrecord.calcium_till_now +  (item.calcium * amount)
+      fat  =   healthrecord.fat_till_now +  (item.fat * amount) 
+
+     Member.where(id: user.id).first.records.update(protein_till_now: protein)
+     Member.where(id: user.id).first.records.update(carbohydrate_till_now: carbohydrate)
+     Member.where(id: user.id).first.records.update(calcium_till_now: calcium)
+     Member.where(id: user.id).first.records.update(fat_till_now: fat)
+ 
+
  end 
     else
+             
+             @message = "Sorry! This item is not available in stock"
 
-         flash[:notice] = "The amount of this is not enough"
           
     end
-      
+       flash[:message] = @message 
+       flash[:flag] = @flag
+
+
     redirect_to :action => :members_items_index
  end
-
 end

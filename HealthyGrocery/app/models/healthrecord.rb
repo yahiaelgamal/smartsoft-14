@@ -15,7 +15,6 @@ class Healthrecord
   field :calcium_till_now, type: Integer
   field :fat_till_now, type: Integer
 
-  belongs_to :user , class_name: 'User' , inverse_of: :healthrecord 
+  belongs_to :member  , class_name: 'Member' , inverse_of: :healthrecord 
   has_many :diseases , class_name: 'Disease' , inverse_of: :healthrecords
-   belongs_to :use , class_name: 'Use' ,  :inverse_of => :healthrecord
 end
