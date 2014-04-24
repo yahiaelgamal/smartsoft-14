@@ -1,18 +1,40 @@
 HealthyGrocery::Application.routes.draw do
   
+  # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
+ get 'members/hub'
 
-  resources :lineitems
+  resources :health_records
 
 
-  resources :carts
+
+
+  resources :wishlines
+
+
+  resources :wishlists
+
+
+ root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+
+ devise_for :members, :controllers => {:registrations => "registrations", }
+  
+ resources :lineitems
+
+
+ resources :carts
 
 
  root :to => "members#index"
-devise_for :members, :controllers => {:registrations => "registrations", }
-  resources :members
+ devise_for :members, :controllers => {:registrations => "registrations", }
+
+ resources :members
  
 
-  resources :items
+  resources :items do
+  collection do
+  get "members_items_index"
+  end
+  end
   match '/items' => 'items#index'
 
   resources :routes
@@ -28,7 +50,11 @@ devise_for :members, :controllers => {:registrations => "registrations", }
 
 
   resources :users
+  
 
+  match '/generateroutes' => 'generateroutes#index'
+  post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
+  post "generateroutes/gen" => "generateroutes#gen" 
 
   
   # The priority is based upon order of creation:

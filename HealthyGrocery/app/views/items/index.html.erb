@@ -1,3 +1,8 @@
+<!--to check the adminstration level-->
+<% if @admin == false%>
+<h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
+<%= link_to_function "Back", "history.back()" %>
+<%elsif @admin == true%>
 
 <head>
 <style>
@@ -88,6 +93,7 @@ Navigate Here </br></br>
   </tr>
 <!-- looping on the items in the items model in the DB-->
 <% @items.each do |item| %>
+<%= javascript_include_tag "application" %>
   <tr>
    <td><%= item.name %></td>
     <td><%= item.price %></td>
@@ -102,6 +108,9 @@ Navigate Here </br></br>
     <td><%= button_to 'Add to Cart', lineitems_path(item_id: item) %></td>
     
 
+    <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
+    <td><%= button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>
+
  <td><%= button_to 'Pause', item %></td>
 
  <td><%= button_to 'Resume', item %></td>
@@ -115,3 +124,4 @@ Navigate Here </br></br>
 </br>
 <%= link_to 'Insert New Item', new_item_path %>
 </body>
+<%end%>
