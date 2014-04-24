@@ -47,9 +47,16 @@ HealthyGrocery::Application.routes.draw do
   resources :users
   
 
+
+  #Author: Ahmed Helali
+  #Team 2
+  # simply to configure model Disease routes
+  resources :diseases
+
   match '/generateroutes' => 'generateroutes#index'
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
+
 
   
   # The priority is based upon order of creation:
