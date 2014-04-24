@@ -48,38 +48,29 @@ def current_wish_new
 end  
 
 
-def current_cart
-if session[:cart_id].nil?
-      @current_cart = Cart.create!
-      session[:cart_id] = @current_cart.id
-    end
-    @current_cart
-  end
 
+
+#Authour: Abdelrahman Sakr
+#Team : 1
+#Method : current_cart_new
+#Paramters : None
+#This method checks whether the user has a shopping cart or not, if exists it returns it, else it creates
+#a new cart and returns it.
 
 def current_cart_new
   if current_member.cart.nil?
     @newcart = Cart.create!
     current_member.cart = @newcart
     current_member.save
-    @exist = true
   else
     @newcart = current_member.cart
-    @exist = true
   end
   @newcart
-  end
+end
 
 
 
 
-  def current_cart_old
-    Cart.find(session[:cart_id])
-    rescue ActiveRecord::RecordNotFound
-      cart = Cart.create
-      session[:cart_id] = cart.id
-      cart
-  end
-  helper_method :current_cart_old
+  
 
 end

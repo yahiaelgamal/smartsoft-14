@@ -12,18 +12,16 @@ class CartsController < ApplicationController
 
   # GET /carts/1
   # GET /carts/1.json
+
+
+#Authour: Abdelrahman Sakr
+#Team : 1
+#Method : show
+#Paramters : None
+#This method gets the user's cart by calling the method current_cart_new to be able to show it.
   def show
-    #@cart = Cart.find(params[:id])
-    if current_member.cart.nil?
-      @cart = Cart.create!
-    current_member.cart = @cart
-    current_member.save
-    else
-    @cart = current_member.cart
-  end
-
+    @cart = current_cart_new
   
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cart }
@@ -51,11 +49,7 @@ class CartsController < ApplicationController
   def create
 
     @cart = Cart.new(params[:cart])
-    #@item = Item.find(params[:item_id])
-    #@cart = @member.cart.build
-    #@lineitem.item = @item
-    #current_cart.member = current_member
-    #current_cart.save
+    
 
     respond_to do |format|
       if @cart.save

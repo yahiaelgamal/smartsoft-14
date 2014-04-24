@@ -46,21 +46,13 @@ end
     else 
       @wishexist = true
     end
-  
+  end
 
    #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
 #session["isAdmin"]= @admin
 
 
-   end
-
-   def current_cart_one
-     if session[:cart_id].nil?
-       @current_cart = Cart.create!
-       session[:cart_id] = @current_cart.id
-     end
-     @current_cart
-   end
+  end
 
 
    
