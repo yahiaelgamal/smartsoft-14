@@ -161,96 +161,96 @@ def viewusers
     if (params[:status] == 'available') 
       @items = Item.where :name => params[:name], :category => params[:category], :price => params[:price], :rating => params[:rating], :status => true 
       if (params[:name] == '') 
-      @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating], :status => true 
+        @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating], :status => true 
       end 
       if (params[:category] == '') 
-      @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating], :status => true 
+        @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating], :status => true 
       end 
       if (params[:price] == '') 
-      @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating], :status => true 
+        @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating], :status => true 
       end 
       if (params[:rating] == '') 
-      @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price], :status => true 
+        @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price], :status => true 
       end 
       if (params[:name] == '') && (params[:category] == '') 
-      @items = Item.where :rating => params[:rating], :price => params[:price], :status => true 
+        @items = Item.where :rating => params[:rating], :price => params[:price], :status => true 
       end 
       if (params[:name] == '') && (params[:price] == '') 
-      @items = Item.where :rating => params[:rating], :category => params[:category], :status => true 
+        @items = Item.where :rating => params[:rating], :category => params[:category], :status => true 
       end 
       if (params[:name] == '') && (params[:rating] == '') 
-      @items = Item.where :category => params[:category], :price => params[:price], :status => true 
+        @items = Item.where :category => params[:category], :price => params[:price], :status => true 
       end 
       if (params[:category] == '') && (params[:price] == '') 
-      @items = Item.where :name => params[:name], :rating => params[:rating], :status => true 
+        @items = Item.where :name => params[:name], :rating => params[:rating], :status => true 
       end 
       if (params[:category] == '') && (params[:rating] == '') 
-      @items = Item.where :name => params[:rating], :price => params[:price], :status => true 
+        @items = Item.where :name => params[:rating], :price => params[:price], :status => true 
       end 
       if (params[:price] == '') && (params[:rating] == '') 
-      @items = Item.where :name => params[:name], :category => params[:category], :status => true 
+        @items = Item.where :name => params[:name], :category => params[:category], :status => true 
       end 
       if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') 
-      @items = Item.where :rating => params[:rating], :status => true 
+        @items = Item.where :rating => params[:rating], :status => true 
       end 
       if (params[:name] == '') && (params[:category] == '') && (params[:rating] == '') 
-      @items = Item.where :price => params[:price], :status => true 
+        @items = Item.where :price => params[:price], :status => true 
       end 
       if (params[:name] == '') && (params[:rating] == '') && (params[:price] == '') 
-      @items = Item.where :category => params[:category], :status => true 
+        @items = Item.where :category => params[:category], :status => true 
       end 
       if (params[:rating] == '') && (params[:category] == '') && (params[:price] == '') 
-      @items = Item.where :name => params[:name], :status => true 
+        @items = Item.where :name => params[:name], :status => true 
       end 
       if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') && (params[:rating] == '') 
-      @items = Item.where :status => true 
+        @items = Item.where :status => true 
       end 
     else 
       @items = Item.where :name => params[:name], :category => params[:category], :price => params[:price], :rating => params[:rating] 
       if (params[:name] == '') 
-      @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating] 
+        @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating] 
       end 
       if (params[:category] == '') 
-      @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating] 
+        @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating] 
       end 
       if (params[:price] == '') 
-      @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating] 
+        @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating] 
       end 
       if (params[:rating] == '') 
-      @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price] 
+        @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price] 
       end 
       if (params[:name] == '') && (params[:category] == '') 
-      @items = Item.where :rating => params[:rating], :price => params[:price] 
+        @items = Item.where :rating => params[:rating], :price => params[:price] 
       end 
       if (params[:name] == '') && (params[:price] == '') 
-      @items = Item.where :rating => params[:rating], :category => params[:category] 
+        @items = Item.where :rating => params[:rating], :category => params[:category] 
       end 
       if (params[:name] == '') && (params[:rating] == '') 
-      @items = Item.where :category => params[:category], :price => params[:price] 
+        @items = Item.where :category => params[:category], :price => params[:price] 
       end 
       if (params[:category] == '') && (params[:price] == '') 
-      @items = Item.where :name => params[:name], :rating => params[:rating] 
+        @items = Item.where :name => params[:name], :rating => params[:rating] 
       end 
       if (params[:category] == '') && (params[:rating] == '') 
-      @items = Item.where :name => params[:rating], :price => params[:price] 
+        @items = Item.where :name => params[:rating], :price => params[:price] 
       end 
       if (params[:price] == '') && (params[:rating] == '') 
-      @items = Item.where :name => params[:name], :category => params[:category] 
+        @items = Item.where :name => params[:name], :category => params[:category] 
       end 
       if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') 
-      @items = Item.where :rating => params[:rating] 
+        @items = Item.where :rating => params[:rating] 
       end 
       if (params[:name] == '') && (params[:category] == '') && (params[:rating] == '') 
-      @items = Item.where :price => params[:price] 
+        @items = Item.where :price => params[:price] 
       end 
       if (params[:name] == '') && (params[:rating] == '') && (params[:price] == '') 
-      @items = Item.where :category => params[:category] 
+        @items = Item.where :category => params[:category] 
       end 
       if (params[:rating] == '') && (params[:category] == '') && (params[:price] == '') 
-      @items = Item.where :name => params[:name] 
+        @items = Item.where :name => params[:name] 
       end 
       if (params[:name] == '' || params[:name].nil?) && (params[:category] == '' || params[:category].nil?) && (params[:price] == '' || params[:price].nil?) && (params[:rating] == '' || params[:rating].nil?) 
-      @items = Item.all 
+        @items = Item.all 
       end 
     end 
   end    
