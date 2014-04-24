@@ -17,5 +17,12 @@
   <%= @driver.address %>
 </p>
 
-<%= link_to 'Edit', edit_driver_path(@driver) %> |
-<%= link_to 'Back', drivers_path %>
+<div class="btn-group">
+  <button type="button" class="btn btn-default"> 
+  	<%= link_to 'Edit', edit_driver_path(@driver) %>
+  </button>
+  <button type="button" class="btn btn-default">
+  	<%= link_to 'Back', drivers_path %>
+  </button>
+</div>
+

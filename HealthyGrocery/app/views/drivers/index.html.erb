@@ -13,7 +13,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @drivers.each do |driver| %>
       <tr>
@@ -27,10 +26,11 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
+<br>
+  <button type="button" class="btn btn-default">
 <%= link_to 'New Driver', new_driver_path %>
-<br>
-<br>
+</button> 
+  <button type="button" class="btn btn-default">
 <%= link_to 'Back to My Warehouse', items_path %>
+</button>
