@@ -38,7 +38,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -46,30 +46,46 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">HealthyGrocery</a>
+          <a class="brand" href="/members/hub">HealthyGrocery</a>
           <div class="container nav-collapse">
             <ul class="nav">
+              <!--Author: Andrew Khouzam -->
+              <!--Team: GUI -->
+              <!--Function: Any links here are showed to members AND Users -->
               <% @tmp = current_member %>
               <li><%= link_to "Hub", '/members'+'/hub' %></li>
               <li><%= link_to "Profile", @tmp %></li>
-	      
-              <!--Author: Sameh Metias -->
-	      <!--Team: 3 -->
-              <!--Function: Checking if the logged in user is not an admin
-              to link him to the shopping page-->
-              <% if current_member.email!='admin@gmail.com' %>
+	          
+              <!--Author: Andrew Khouzam -->
+	            <!--Team: GUI -->
+              <!--Function: Any links here are showed to Users Only-->
+      <% if current_member.email!='admin@gmail.com' %>
                 <li><%= link_to 'Go Shopping',{:controller  => 'items', :action => 
                 'members_items_index'}, :class => "opt"%></li>
-              <% end %>
-	      
-              <% if session["isAdmin"] == true %>
-                <li><%= link_to "Items", items_path  %></li>  
-              <% end %>      
+                 <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
+      <% end %>
 
-            <li style="padding-left: 735px; "><%= link_to 'Logout',
+              <!--Author: Andrew Khouzam -->
+              <!--Team: GUI -->
+              <!--Function: Any links here are showed to Admins Only-->
+      <% if current_member.email == 'admin@gmail.com' %>
+                  <li><%= link_to "Diseases", '/members'+'/hub' %></li>
+                <li><%= link_to "Items", items_path  %></li>  
+      <% end %>      
+          
+           <!--Author: Andrew Khouzam -->
+              <!--Team: GUI -->
+              <!--Function: This is the search bar in the top navbar-->
+          <li style="padding-left: 30px;padding-top: 4px; "><input type="text" class="form-control" placeholder="Search"></li>
+        
+            
+            <li style="padding-left: 300px; "><%= link_to 'Logout',
             destroy_member_session_path, :method=> 'delete' %></li>
             </ul>
           </div><!--/.nav-collapse -->
+
+
+
         </div>
       </div>
     </div>
@@ -80,17 +96,7 @@
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
-          <div class="span3">
-            <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
-              <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
-              </ul>
-            </div><!--/.well -->
-          </div><!--/span-->
+          
         </div><!--/row-->
 
       <footer>
