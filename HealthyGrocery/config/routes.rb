@@ -24,7 +24,7 @@ HealthyGrocery::Application.routes.draw do
    
  end
 
-
+  match 'user_root' => redirect("/member/show")
   resources :members
  
 
