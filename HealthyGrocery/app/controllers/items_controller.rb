@@ -110,7 +110,7 @@ def viewusers
 #function: retreives all teh items in the instance variable @items in order to show the items from
 #the member point of view 
   def members_items_index
-    #Author: Antoine Foti
+#Author: Antoine Foti
 #Team: 2
 #Function: After adding the filter search, it retreives all the required items in the instance variable @items after
 #filtering them according to the different fields the user would like to filter on in order to show the desired items 
