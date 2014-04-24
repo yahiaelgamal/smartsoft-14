@@ -21,7 +21,16 @@ team : 1-->
 <!--to check the adminstration level
 author:mohamed lotfy team:1-->
 <%elsif @admin == false%>
-
+<% @member.orders.each do |ord| %>
+		<%if(@member && not(ord.coordinates))%>
+			<%if(not flash[:alert])%>
+				<% flash[:alert] = "you have an order without billing and shipping addresses please #{link_to('click here', chooseOrder_path(ord))} to choose now".html_safe %>
+			
+			<%else%>
+				<% flash[:alert] = "you have more than one order without billing and shipping addresses please #{link_to('click here', showOrders_path)} to show your orders".html_safe %>
+			<%end%>
+		<%end%>
+<%end%>
 
 <h3>Member</h3>
 <p>Email: <%= @member.email %></p>
@@ -36,7 +45,6 @@ author:mohamed lotfy team:1-->
 <%else%>
 <h4>Female</h4>
 <%end%>
-
 
 
 

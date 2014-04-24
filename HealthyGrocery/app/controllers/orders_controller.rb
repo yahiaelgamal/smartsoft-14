@@ -88,13 +88,18 @@ class OrdersController < ApplicationController
   end
   def change
     @order = Order.find(params[:id])
-    @ad = Address.find(@order.pass)
-    @order.address.push(@ad)
+    @shipping=Address.find(@order.pass)
+    @order.address.push(@shipping)
+    @order.update_attribute(:coordinates,@shipping.coordinates)
+    @billing =Address.find(@order.pass_billing)
+    @order.address.push(@billing)
+    @order.update_attribute(:coordinates_billing , @billing.coordinates)
     if(@order.address)
       @order.save
-      redirect_to showOrders_path
-    else
+      @order.update_attribute(:isfinished, true)
       redirect_to @order
+    else
+      redirect_to showOrders_path
     end
   end
 

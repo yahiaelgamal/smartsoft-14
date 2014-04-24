@@ -14,6 +14,8 @@
   <div class="field">
     <%= f.label :pass %><br />
     <%= f.select :pass , options_from_collection_for_select(current_member.addresses, :id, :name) %>
+    <%= f.label :pass_billing %><br />
+    <%= f.select :pass_billing , options_from_collection_for_select(current_member.addresses, :id, :name) %>
     <%= link_to 'Add new address', new_address_path %>
   <div class="actions">
     <%= f.submit %>

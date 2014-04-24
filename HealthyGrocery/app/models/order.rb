@@ -15,6 +15,7 @@ class Order
 	field :date  ,type: Date
 
 	field :coordinates ,type: Array
+	field :coordinates_billing ,type: Array
 #Author : Ahmed AbdElsattar
 #Team: 4
 #attr :   isfinished , delivered
@@ -22,6 +23,8 @@ class Order
 	field :isfinished,type: Boolean
 	field :delivered ,type: Boolean
 	field :pass , type: String
+	field :pass_billing , type: String
+
 
 	belongs_to :member ,class_name: 'Member' , inverse_of: :orders
 	belongs_to :route , class_name: 'Route' , inverse_of: :orders
