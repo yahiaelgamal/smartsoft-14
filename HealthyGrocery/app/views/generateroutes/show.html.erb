@@ -1,0 +1,105 @@
+
+<html>
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrCIfOiT2ZKLF_W_ddFtswvLKoXK3S9FI&sensor=false">
+</script>
+<script>
+<% @routes.each do |route| %>
+<%= route.arrOfPoints %>
+//Author: Mennatallah Aziz
+//Team: 4
+//Method name: initialize in JS
+//Function: it takes the array of Points of each route from the controller file in order to be accessed and showed on the map 
+//parameters: arrayOf points
+var map;
+    var directionsDisplay;
+    var start;
+var directionsService = new google.maps.DirectionsService();
+    var rendererOptions = {
+draggable: false,
+suppressMarkers: true,
+//end redererOptions
+};
+ 
+    function initialize() {
+   /* var myArray=[
+      [30.926979,31.517385, 3],
+      [30.514873,31.506486, 2],
+      [30.0599153,31.2620199, 1]
+    ];*/ //a test array of points to know if the map works correctly if we want to test we put it instead of gon.points 
+    var locations=[];
+ for(var i=0; i<route.arrOfPoints.length;i++){
+  var myLatlng=new google.maps.LatLng(route.arrOfPoints[i][0],route.arrOfPoints[i][1]);
+  locations.push([myLatlng,true]);
+ 	}
+ 
+directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+var center = new google.maps.LatLng(30.9909581, 31.9431722);
+var myOptions = {
+ zoom: 7,
+ mapTypeId: google.maps.MapTypeId.ROADMAP,
+ center: center,
+}
+ 
+map = new google.maps.Map(document.getElementById("map"), myOptions);
+directionsDisplay.setMap(map);
+ 
+for (i = 0; i < locations.length; i++) { 
+ marker = new google.maps.Marker({
+position: locations[i][0],
+map: map
+ });
+ google.maps.event.addListener(marker, 'click', (function(marker, i) {
+return function() {
+ infowindow.open(map, marker);
+}
+ })(marker, i));
+}
+ 
+var waypts = [];
+for (var i = 1; i < locations.length-1; i++) {
+waypts.push({
+location:locations[i][0],
+stopover:locations[i][1]
+});
+}
+ 
+var request = {
+ origin: locations[0][0],
+ destination: locations[locations.length-1][0],
+ waypoints: waypts,
+ optimizeWaypoints: true,
+ travelMode: google.maps.TravelMode.DRIVING
+};
+ 
+directionsService.route(request, function(response, status) {
+dump(response);
+if (status == google.maps.DirectionsStatus.OK) {
+ directionsDisplay.setDirections(response);
+}
+});
+ 
+ 
+    }
+function dump(obj) {
+var out = '';
+for (var i in obj) {
+out += i + ": " + obj[i] + "\n";
+}
+
+alert(out);
+
+// or, if you wanted to avoid alerts...
+
+var pre = document.createElement('pre');
+pre.innerHTML = out;
+document.body.appendChild(pre)
+}
+ 
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+<div id="map" style="width: 900px; height: 700px;"></div>
+</html>
+
+
