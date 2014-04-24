@@ -55,7 +55,7 @@ respond_to do |format|
   def toggle_pause
     @item = Item.find(params[:id])
 
-    if @item.amount <= 0 && @item.paused == true 
+    if @item.amount <= 0 && @item.paused == false 
       flash[:notice] = "Can't resume because stock equals #{@item.amount}"
     else 
       @item.paused = !@item.paused
