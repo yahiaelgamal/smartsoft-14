@@ -2,10 +2,16 @@
  Team: 4
  Stylesheet name: address_position
  Function: This style used on the the map div in the view of 
- position action of address controller   
+ position's action of address's controller   
 */
 html, body, #map-canvas {
  height: 100%;
  margin: 0px;
  padding: 0px
 }
+
+/* Author: Karim El-Bawab
+ Team: 4
+ Function: This style used to fix the map with the twitter bootstrap   
+*/
+img, object, embed { max-width: none; }

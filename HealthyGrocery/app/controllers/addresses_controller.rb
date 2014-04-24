@@ -56,7 +56,7 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.save
         current_member.addresses.push(@address)
-        format.html { redirect_to addressesposition_path(@address.id), notice: 'To ensure high-quality service please make sure that your address was putted on the map correctly.' }
+        format.html { redirect_to addressesposition_path(@address.id) }
         format.json { render json: @address, status: :created, location: @address }
       else
         format.html { render action: "new" }
@@ -72,7 +72,7 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.update_attributes(params[:address])
-        format.html { redirect_to addressesposition_path(@address.id), notice: 'To ensure high-quality service please make sure that your address was putted on the map correctly.' }
+        format.html { redirect_to addressesposition_path(@address.id)}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

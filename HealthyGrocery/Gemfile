@@ -64,7 +64,10 @@ end
 
 # To use debugger
 # gem 'debugger'
-
-gem 'geocoder'
-gem 'gmaps4rails'
-gem 'gon' 
+#-----------------------------------------------------------------------------------------------------------
+#Author: Karim El-Bawab
+#Team: 4
+gem 'geocoder' #This gem used to translate an address String to real coordinates of this place or vice versa
+gem 'gmaps4rails'#This gem used to help in intialising a map 
+gem 'gon' #This gem used to pass values from rails controler to javascript
+#-----------------------------------------------------------------------------------------------------------

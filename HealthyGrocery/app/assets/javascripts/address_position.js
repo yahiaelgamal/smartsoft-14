@@ -57,6 +57,7 @@ function initialize() {
     google.maps.event.addListener(marker, 'click', toggleBounce);
     console.log(marker.getPosition().lat());
     console.log(marker.getPosition().lng());
+    
 }
 
 // Author: Karim El-Bawab
@@ -66,7 +67,7 @@ function initialize() {
 // that can be moved by the user to locate his address accurately.
 // Whenever the user click on the marker the coordinates of his 
 // address will be written in the url and the page will reload 
-// again with the new coordinates. 
+// again with the new coordinates on the map. 
 
 function toggleBounce() {
     if (marker.getAnimation() != null) {
