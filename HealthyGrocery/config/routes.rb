@@ -3,6 +3,19 @@ HealthyGrocery::Application.routes.draw do
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
  get 'members/hub'
   resources :health_records
+
+  
+  resources :items do
+    member do
+      post 'toggle_pause'
+    end
+  end
+  # Author: Hazem Amin
+  # Component: 5
+  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
+  # it's invoked on a single item (member)
+
+
   resources :wishlines
  root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
  devise_for :members, :controllers => {:registrations => "registrations", }
