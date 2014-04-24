@@ -1,7 +1,7 @@
 class Lineitem
   include Mongoid::Document
 
-#Authour: Abdelrahman Sakr
+#Author: Abdelrahman Sakr
 #Team : 1
 #Model : Lineitem
 #This is the object which will be added to the shopping cart, it has item_id, cart_id, and quantity as attributes

@@ -40,7 +40,7 @@ class LineitemsController < ApplicationController
   # POST /lineitems
   # POST /lineitems.json
 
-#Authour: Abdelrahman Sakr
+#Author: Abdelrahman Sakr
 #Team : 1
 #Method : create
 #Paramters : None
@@ -76,7 +76,7 @@ class LineitemsController < ApplicationController
 
 
 
-#Authour: Abdelrahman Sakr
+#Author: Abdelrahman Sakr
 #Team : 1
 #Method : update
 #Paramters : None

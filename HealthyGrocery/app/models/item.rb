@@ -9,6 +9,10 @@ class Item
 	field :rating , type: Integer 
 	field :status , type: Boolean
 	field :category , type: String
+  field :paused , type: Boolean
+  # Author: Hazem
+  #Component: 5
+  # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
 
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
@@ -31,7 +35,7 @@ class Item
   # declares a relationship between orders and items
   has_and_belongs_to_many :orders , class_name: "Order" , inverse_of: :items
   
-  #Authour: Abdelrahman Sakr
+  #Author: Abdelrahman Sakr
   #Team : 1
   #Declaring a relationship between the two classes Item, and Lineitem.
   has_many :lineitems, class_name: "Lineitem"

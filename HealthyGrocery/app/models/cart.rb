@@ -1,7 +1,7 @@
 class Cart
   include Mongoid::Document
 
-#Authour: Abdelrahman Sakr
+#Author: Abdelrahman Sakr
 #Team : 1
 #Model : Cart
 #This is the shopping cart where we will add the items which the user will buy, it has totalcost attribute

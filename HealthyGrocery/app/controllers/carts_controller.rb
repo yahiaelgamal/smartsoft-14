@@ -14,7 +14,7 @@ class CartsController < ApplicationController
   # GET /carts/1.json
 
 
-#Authour: Abdelrahman Sakr
+#Author: Abdelrahman Sakr
 #Team : 1
 #Method : show
 #Paramters : None
