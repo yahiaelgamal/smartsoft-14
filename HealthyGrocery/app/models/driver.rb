@@ -4,6 +4,13 @@ class Driver
   field :name, type: String
   field :phone, type: Integer
   field :address, type: String
+
+  #validates :name, presence: true
+  #validates :phone, presence: true, numericality: true
+  #validates :address, presence: true
+  # Author: Hazem Amin
+  # Component: 5 
+  #Added some validations in order not to get bad data
 end
   # Author: Hazem Amin
   # Component: 5
