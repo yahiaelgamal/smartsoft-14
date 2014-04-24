@@ -87,39 +87,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def recommended_items 
-    @user = User.find(params[:id])
-    if !@user.diseases.empty?
-      @recommended_items = Array.new
-
-      @user.diseases.each do |disease|
-        if !@disease.recommended_items.empty?
-          @disease.recommended_items.each do |item|
-            unless  @recommended_items.include? (item)
-              @recommended_items.push(item)
-            end
-          end
-        end
-      end
-    
-      @user.diseases.each do |disease|
-        if !@disease.restricted_items.empty?
-          @recommended_items.each do |item|
-            if @disease.restricted_items.include? (item)
-              @recommended_items.delete(item)
-            end
-          end
-        end
-      end
-    end
-  end
-
-  #Author : Magd Elshebokshy
-  #Component : 3
-  #Method name : recommended_items
-  #Function : Make a list of recommended items to the user, using the 
-  #recommended items and restricted items for his diseases.
-  #Parameters : diseases - diseases' recommended items - diseases' restricted items.
-
+  
 end

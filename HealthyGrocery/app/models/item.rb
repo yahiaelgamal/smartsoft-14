@@ -10,6 +10,8 @@ class Item
 	field :status , type: Boolean
 	field :category , type: String
 
+  belongs_to :member , class_name: 'Member' , inverse_of: :recommended_items
+
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # checks if name is present 
