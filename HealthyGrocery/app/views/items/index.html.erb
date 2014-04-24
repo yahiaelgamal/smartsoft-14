@@ -93,6 +93,7 @@ Navigate Here </br></br>
   </tr>
 <!-- looping on the items in the items model in the DB-->
 <% @items.each do |item| %>
+<%= javascript_include_tag "application" %>
   <tr>
    <td><%= item.name %></td>
     <td><%= item.price %></td>
