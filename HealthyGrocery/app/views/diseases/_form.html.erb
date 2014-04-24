@@ -20,28 +20,36 @@
     <%= f.label :information %><br />
     <%= f.text_field :information %>
   </div>
-
   <br/>       
 
-<label>Recommended Items:</label>
-
+  <label>Recommended Items:</label>
   <div class="scrollbox">
- <%  Item.each do |i| %> 
- 
- <%= check_box_tag "ii[]", i.id %> <label> <%= i.name %> </label>
+    <%  Item.each do |i| %>
+      <div class="checkbox">
+        <% if @disease.recommended_items != nil &&  @disease.recommended_items.include?(i) %>
+         <%= check_box_tag "ii[]",i.id, true %> <label> <%= i.name %> </label>
+        <%else%>
+         <%= check_box_tag "ii[]",i.id %> <label> <%= i.name %> </label>
+        <%end%>
+      </div>
+    <% end %>
+  </div>
+  <br/>
 
- <% end %>
-</div>
-<br/>
-<label>Restricted Items:</label>
-
+  <label>Restricted Items:</label>
   <div class="scrollbox">
- <%  Item.each do |i| %> 
-
- <%= check_box_tag "r[]", i.id %> <label> <%= i.name %> </label>
-
- <% end %>
-</div>
+    <%  Item.each do |i| %> 
+      <div class="checkbox">
+        <% if @disease.restricted_items != nil &&  @disease.restricted_items.include?(i) %>
+          <%= check_box_tag "r[]",i.id, true %> <label> <%= i.name %> </label>
+        <%else%>
+          <%= check_box_tag "r[]",i.id %> <label> <%= i.name %> </label>
+        <%end%>
+      </div>
+    <% end %>
+  </div>
+  <br />
+  
   <div class="actions">
     <%= f.submit %>
   </div>
