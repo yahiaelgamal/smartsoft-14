@@ -1,24 +1,55 @@
-<!-- to show all the records for that member : mina sedra 
- --><h1><%= current_member.first_name %> 's healthrecords</h1>
 
-<table>
+<!-- Author: mina sedra -->
+<!-- Team: 2-->
+<!-- This page is the view of the  members'health record  -->
+<!DOCTYPE html>
+<br/>
+<br/>
+
+<head>
+
+<style>
+.form_caja {
+        width: 524px;
+        padding-top: 8px;
+        padding-bottom: 15px;
+        margin: 0 auto 20px auto;
+        background-color: #446bb3;    
+         border-radius: 15px;    
+        -moz-border-radius: 15px;    
+        -webkit-border-radius: 15px;
+        color: #446bb3;
+        padding:10px;
+         /*opacity:0.8;*/
+    }
+    
+    
+    body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");
+}
+    table { background-color : #fff; color : #453}
+    thead {  background-image:url("http://simplywallpaper.net/pictures/2010/12/08/aqua-texture-wallpaper.jpg") ; color :#fff; padding:4px; line-height:30px;}
+    </style>
+
+
+</head>
+
+<body>
+    <div class="form_caja">
+  <p > <%= current_member.first_name %> 's HEALTHRECORDS</p>
+  <table width="100%" >
   
-
 <% @healthrecord.each do |healthrecord| %>
-<tr>
-    <th>Name</th>
+  <thead><tr> 
   
-  </tr>
-  <tr>
-    <td><%= healthrecord.name %></td>
-    <td><%= link_to  "<button>Show</button>".html_safe, healthrecord %></td>
+      <td>Name: <%= healthrecord.name %></td> 
+<td><%= link_to  "<button>Show</button>".html_safe, healthrecord %></td>
     <td><%= link_to  "<button>Edit</button>".html_safe, edit_healthrecord_path(healthrecord) %></td>
     <td><%= link_to  "<button>Remove</button>".html_safe, healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+    </tr></thead>
+  <% end %>
+  </table>
+</div>
 <%= link_to "<button>New Healthrecord</button>".html_safe, new_healthrecord_path %>
 
+</body>
 
