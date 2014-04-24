@@ -30,5 +30,16 @@ class Item
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
   has_and_belongs_to_many :orders , class_name: "Order" , inverse_of: :items
+
+#author : halawa
+#team 2
+#function : search for items
+#parameters : text - the word to be searched
+
+def self.search(search)
+  search_condition = "%" + search + "%"
+  find(:all, :conditions => ['title LIKE ? OR description LIKE ?', search_condition, search_condition])
+end
+
 end
 

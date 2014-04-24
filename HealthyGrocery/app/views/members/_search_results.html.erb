@@ -4,8 +4,8 @@
 #parameters : name of item to search for-->
 
 <ul>
-    <% @members.each do |member| %>
+    <% @items.each do |item| %>
   <li><%= link_to member.title, 
-    :action => 'show', :id => member.id  %></li>
+    :action => 'show', :id => item.id  %></li>
   <% end %>
 </ul>

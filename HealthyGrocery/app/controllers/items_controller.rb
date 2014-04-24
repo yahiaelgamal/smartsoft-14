@@ -104,4 +104,13 @@ def viewusers
       format.json { head :no_content }
     end
   end
+
+#author : halawa
+#team 2
+#function : search for items
+#parameters : name of item to search for
+
+def search
+  @item = Item.search params[:search]
+end
 end

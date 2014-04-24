@@ -79,18 +79,6 @@ validates :phone_num,
  validates_numericality_of :phone_num
 #validates_date :birth_date
 
-
-#author : halawa
-#team 2
-#function : search for items
-#parameters : text - the word to be searched
-
-def self.search(search)
-  search_condition = "%" + search + "%"
-  find(:all, :conditions => ['title LIKE ? OR description LIKE ?', search_condition, search_condition])
-end
-
-
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
