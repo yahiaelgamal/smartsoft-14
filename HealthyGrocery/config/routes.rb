@@ -8,12 +8,28 @@ HealthyGrocery::Application.routes.draw do
 
 
 
- root :to => "members#index"
-devise_for :members, :controllers => {:registrations => "registrations", }
+  resources :wishlines
+
+
+  resources :wishlists
+
+
+ root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+
+ devise_for :members, :controllers => {:registrations => "registrations", }
+  
+ 
+  
+
+
   resources :members
  
 
-  resources :items
+  resources :items do
+  collection do
+  get "members_items_index"
+  end
+  end
   match '/items' => 'items#index'
 
   resources :routes

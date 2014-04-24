@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<h2><%= current_member.first_name%>'s wishlist</h2>
+<% @wishlist.wishline.each do |w|%>
+<ul>
+	<td><%= w.item.name%></td>
+    <td><%= link_to 'show item' , item_path(w.item)%></td>
+    <td><%= link_to 'remove item' , w ,method: :delete, data: {confirm: 'Are you sure?'} %></td>
+</ul>
+<%end%>    
+
+<%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
+<%= link_to 'Back', wishlists_path %>

@@ -1,13 +1,25 @@
 
+<!--to check the adminstration level
+author : mohamed lotfy
+team : 1-->
+
+
 <!-- This is the Users/Admins Profile -->
+
 
 <% if @admin == true%>
 <h1>hello admin</h1>
 <%= link_to 'Site Members', members_path%>
  <%= link_to 'My WareHouse', items_path%> 
+<%if @wishexist == true%>
+<%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
+<%end%>
 
 
 
+
+<!--to check the adminstration level
+author:mohamed lotfy team:1-->
 <%elsif @admin == false%>
 
 <h3>Member</h3>
@@ -24,4 +36,9 @@
 <%else%>
 <h4>Female</h4>
 <%end%>
+<%if @wishexist == true%>
+<%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
+<%end%>
+
+
 <%end%>

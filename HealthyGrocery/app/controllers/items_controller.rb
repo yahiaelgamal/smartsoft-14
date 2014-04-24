@@ -5,9 +5,13 @@ class ItemsController < ApplicationController
   # GET /items.json
   # shows all the items in the table item
   def index
+   if current_member.email == 'admin@gmail.com'
+      @admin = true
+else 
+      @admin = false
+end    
     @items = Item.all
-
-    respond_to do |format|
+respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
     end
@@ -99,5 +103,13 @@ def viewusers
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
+  end
+
+#Author: Sameh Metias
+#team: 3
+#function: retreives all teh items in the instance variable @items in order to show the items from
+#the member point of view 
+  def members_items_index
+    @items = Item.all
   end
 end
