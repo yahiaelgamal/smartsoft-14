@@ -19,6 +19,11 @@ HealthyGrocery::Application.routes.draw do
 
   resources :wishlines
 
+  resources :drivers
+  # Author: Hazem Amin 
+  # Component: 5
+  # Drivers page
+
 
   resources :wishlists
 

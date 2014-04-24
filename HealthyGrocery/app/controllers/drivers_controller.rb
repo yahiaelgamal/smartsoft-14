@@ -8,6 +8,10 @@ class DriversController < ApplicationController
       format.json { render json: @drivers }
     end
   end
+  #Author: Hazem Amin
+  #Component: 5
+  #Action_Name: index
+  #To view all drivers
 
   def show
     @driver = Driver.find(params[:id])
@@ -17,6 +21,10 @@ class DriversController < ApplicationController
       format.json { render json: @driver }
     end
   end
+  #Author: Hazem Amin
+  #Component: 5
+  #Action_Name: show
+  #To view a specific driver
 
   def new
     @driver = Driver.new
@@ -26,10 +34,18 @@ class DriversController < ApplicationController
       format.json { render json: @driver }
     end
   end
+  #Author: Hazem Amin
+  #Component: 5
+  #Action_Name: new
+  #To create a new driver
 
   def edit
     @driver = Driver.find(params[:id])
   end
+  #Author: Hazem Amin
+  #Component: 5
+  #Action_Name: edit
+  #To edit a specific driver
 
   def create
     @driver = Driver.new(params[:driver])
@@ -43,8 +59,11 @@ class DriversController < ApplicationController
         format.json { render json: @driver.errors, status: :unprocessable_entity }
       end
     end
-
   end
+  #Author: Hazem Amin
+  #Component: 5
+  #Action_Name: edit
+  #To create a driver
 
 
   def update
@@ -60,6 +79,10 @@ class DriversController < ApplicationController
       end
     end
   end
+  #Author: Hazem Amin
+  #Component: 5
+  #Action_Name: update
+  #To update a specific driver
 
   def destroy
     @driver = Driver.find(params[:id])
@@ -71,4 +94,8 @@ class DriversController < ApplicationController
       format.json { head :no_content }
     end
   end
+  #Author: Hazem Amin
+  #Component: 5
+  #Action_Name: destroy
+  #To delete a specific driver
 end
