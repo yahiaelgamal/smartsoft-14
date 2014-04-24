@@ -93,12 +93,11 @@ end
 #Parameters: shipment
 def show
     @shipment = Shipment.find(params[:id])
-       @myroutes=@shipment.routes
+       @routes=@shipment.routes
 
     respond_to do |format|
       format.html # show.html.erb
-      format.javascript
-      format.json { render json: @myroutes }
+      format.json { render json: @routes }
     end
 
  
