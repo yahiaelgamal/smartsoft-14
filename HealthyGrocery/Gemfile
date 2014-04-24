@@ -67,7 +67,7 @@ end
 #-----------------------------------------------------------------------------------------------------------
 #Author: Karim El-Bawab
 #Team: 4
-gem 'geocoder' #This gem used to translate an address String to real coordinates of this place or vice versa
-gem 'gmaps4rails'#This gem used to help in intialising a map 
-gem 'gon' #This gem used to pass values from rails controler to javascript
+gem 'geocoder', '~> 1.2.0' #This gem used to translate an address String to real coordinates of this place or vice versa
+gem 'gmaps4rails', '~> 2.1.2'#This gem used to help in intialising a map 
+gem 'gon', '~> 5.0.4' #This gem used to pass values from rails controler to javascript
 #-----------------------------------------------------------------------------------------------------------
