@@ -79,9 +79,9 @@ respond_to do |format|
 
     # initial value of paused
     if @item.amount <= 0
-      @item.paused = true
-    else 
       @item.paused = false
+    else 
+      @item.paused = true
     end
     respond_to do |format|
       if @item.save
