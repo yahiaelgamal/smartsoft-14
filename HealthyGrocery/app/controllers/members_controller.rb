@@ -41,11 +41,7 @@ end
 	    @admin = false
   end
    
-    @hash = Gmaps4rails.build_markers(@member) do |user, marker|
-      marker.lat user.coordinates[1]
-      marker.lng user.coordinates[0]
-      marker.infowindow user.address
-    end
+    
 
   if current_member.wishlist.nil?
       @wishexist = false
