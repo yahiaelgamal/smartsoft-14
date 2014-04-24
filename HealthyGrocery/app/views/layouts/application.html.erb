@@ -62,7 +62,7 @@
       <% if current_member.email!='admin@gmail.com' %>
                 <li><%= link_to 'Go Shopping',{:controller  => 'items', :action => 
                 'members_items_index'}, :class => "opt"%></li>
-                 <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
+                 <li><%= link_to 'My Healthrecords','/members'+'/hub' %></li>
       <% end %>
 
               <!--Author: Andrew Khouzam -->
