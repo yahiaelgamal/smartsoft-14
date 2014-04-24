@@ -30,7 +30,11 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
 
  
 
-  resources :items
+  resources :items do
+  collection do
+  get "members_items_index"
+  end
+  end
   match '/items' => 'items#index'
 
   resources :routes
