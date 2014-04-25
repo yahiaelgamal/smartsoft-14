@@ -1,0 +1,23 @@
+<h1>Listing wishlines</h1>
+
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wishlines.each do |wishline| %>
+  <tr>
+    <td><%= wishline.quantity %></td>
+    <td><%= link_to 'Show', wishline %></td>
+    <td><%= link_to 'Edit', edit_wishline_path(wishline) %></td>
+    <td><%= link_to 'Destroy', wishline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wishline', new_wishline_path %>

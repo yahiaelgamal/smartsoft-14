@@ -1,3 +1,8 @@
+<!--to check the adminstration level-->
+<% if @admin == false%>
+<h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
+<%= link_to_function "Back", "history.back()" %>
+<%elsif @admin == true%>
 
 <head>
 <style>
@@ -68,8 +73,7 @@ Navigate Here </br></br>
 <!-- link to the orders page -->
    <opt><%= link_to 'Orders',{:controller  => 'orders', :action => 'index'} , :class => "opt"%></opt></br></br>
 <!-- link to the users page -->
-   <opt><%= link_to 'Members','members/index', :class => "opt"%></opt></br></br>
-   <opt><%= link_to 'Items for members',{:controller  => 'items', :action => 'members_items_index'}, :class => "opt"%></opt></br></br>
+   <opt><%= link_to 'Members',members_path, :class => "opt"%></opt></br></br>
 </navigationbar>
 <!-- end of navigation bar -->
 
@@ -81,6 +85,8 @@ Navigate Here </br></br>
     <th>Category</th>
     <th>Stock</th>
     <th>Status</th>
+    <% # Author: Hazem Amin %>
+    <% # Printing the column name "paused" in the table %>
     <th>Description</th>
     <th>Rating</th>
     <th></th>
@@ -88,23 +94,29 @@ Navigate Here </br></br>
     <th></th>
   </tr>
 <!-- looping on the items in the items model in the DB-->
+<%= javascript_include_tag "application" %>
 <% @items.each do |item| %>
   <tr>
    <td><%= item.name %></td>
     <td><%= item.price %></td>
     <td><%= item.category %></td>
     <td><%= item.amount %></td>
-    <td><%= item.status %></td>
+    <td><%= item.paused %></td>
+    <% # Author: Hazem Amin %>
+    <% #Component: 5 %>
+    <% # Printing the value of paused (true or false) for each and every item, depending on that record %>
     <td><%= item.description %></td>
     <td><%= item.rating %></td>
+    <td><%= button_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %></td>
+    <% # Author: Hazem Amin%>
+    <% # Component: 5%>
+    <% # button_to %>
+    <% # A paused button which name is Paused/Resume based on the status of paused for each specific item, it then goes to the toggle pause as dedined in routes%>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
- <td><%= button_to 'Pause', item %></td>
-
- <td><%= button_to 'Resume', item %></td>
-  
+    <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
+    <td><%= button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
 </tr>
 <% end %>
 </table></br>
@@ -114,3 +126,4 @@ Navigate Here </br></br>
 </br>
 <%= link_to 'Insert New Item', new_item_path %>
 </body>
+<%end%>

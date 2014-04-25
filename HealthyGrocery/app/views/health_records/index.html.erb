@@ -1,0 +1,21 @@
+<h1>Listing health_records</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @health_records.each do |health_record| %>
+  <tr>
+    <td><%= link_to 'Show', health_record %></td>
+    <td><%= link_to 'Edit', edit_health_record_path(health_record) %></td>
+    <td><%= link_to 'Destroy', health_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Health record', new_health_record_path %>
