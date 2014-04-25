@@ -31,7 +31,7 @@ gem 'formtastic'
 gem 'formtastic-bootstrap' 
 
 
-
+gem "gon" , '5.0.4'
 
 
 
