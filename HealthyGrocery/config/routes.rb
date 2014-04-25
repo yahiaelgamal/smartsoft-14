@@ -3,13 +3,13 @@ HealthyGrocery::Application.routes.draw do
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
  get 'members/hub'
 
-  resources :health_records
+resources :health_records
   
-  resources :items do
-    member do
-      post 'toggle_pause'
-    end
+ resources :items do
+  member do
+   post 'toggle_pause'
   end
+ end
   # Author: Hazem Amin
   # Component: 5
   # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
