@@ -47,22 +47,59 @@ respond_to do |format|
     @item = Item.find(params[:id])
   end
 
-  # POST /items
-  # POST /items.json
-  # takes unsaved record from new , checks for validations then saves if success
-  def create
-    @item = Item.new(params[:item])
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+  def toggle_pause
+    @item = Item.find(params[:id])
+
+    if @item.amount <= 0 && @item.paused == false 
+      flash[:notice] = "Can't resume because stock equals #{@item.amount}"
+    else 
+      @item.paused = !@item.paused
+      @item.save
+      flash[:notice] = "Item toggled successfully"
     end
+
+    redirect_to items_url
   end
+  #Author: Hazem Amin
+  #Method_Name: toggle_pause
+  #What does it do? It simply finds that specific item that needs to be paused and pauses
+  # it if the conditions applies that the item is not out of stock.
+  #Author: Hazem Amin
+  #Method_Name: toggle_pause
+  #What does it do? It simply finds that specific item that needs to be paused and pauses
+  # it if the conditions applies that the item is not out of stock.
+  
+ def create
+  @item = Item.new(params[:item])
+
+    # initial value of paused
+  if @item.amount <= 0
+   @item.paused = false
+  else 
+   @item.paused = true
+  end
+  respond_to do |format|
+   if @item.save
+    format.html { redirect_to @item, notice: 'Item was successfully created.' }
+    format.json { render json: @item, status: :created, location: @item }
+   else
+    format.html { render action: "new" }
+    format.json { render json: @item.errors, status: :unprocessable_entity }
+   end
+  end
+ end
+  #Author: Hazem Amin
+  #Component: 5
+  #Method_Name: create
+  #What does it do? It simply CEATES an item, as being one of the 4 fundumentals of CRUD.
+  #What about the part commented below? I decide the initial values of paused when it is 
+  # created, whether it should be initially paused or resumed.
+  #    if @item.amount <= 0
+  #    @item.paused = true
+  #  else 
+  #    @item.paused = false
+  #  end
 
 #views the users without the create button
 def viewusers

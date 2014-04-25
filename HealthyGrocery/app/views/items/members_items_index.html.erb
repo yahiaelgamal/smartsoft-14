@@ -2,10 +2,15 @@
 <!-- Team: 3-->
 <!-- This page is the view of the items from the members' point of view-->
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
-
-<head>
-
 <style>
+
+
+/*    <!-- Author: mina sedra -->
+<!-- Team: 2 -->*/
+    body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");}
+  
+
+
 
 icon{
 font-size: 20px;
@@ -66,10 +71,11 @@ left-margin:50px;
 
 </head>
 
+
 <body>
 
 <!-- Title for the page -->
-
+ <% if current_member.records.count > 0 %>
 <h1>Items as shown to members</h1>
 
 <navigationbar>
@@ -133,6 +139,16 @@ left-margin:50px;
 <% end %>
     
   </icon>
+<% end %>
+
+<% end %>
+    <!-- Author: mina sedra -->
+<!-- Team: 2 -->
+
+ <% if current_member.records.count == 0 %>
+  <h2><p>PLEASE     ADD     YOUR    HEALTHRECORD FIRST </p></h2> 
+                   <li><%= link_to "<button>My Healthrecords</button>".html_safe,indexhealthrecord_path(current_member)%></li>
+
 <% end %>
 
 </body>
