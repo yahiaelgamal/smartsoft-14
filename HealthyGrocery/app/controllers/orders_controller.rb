@@ -3,8 +3,15 @@ class OrdersController < ApplicationController
   # GET /orders.json
   # excuting the method by searchong 
   #for the order number parameter that is passed from the view
+   handles_sortable_columns
+before_filter :require_login ,:except=>[:invalid]
+#Author: Omar Sherif
+#Team: 4
+#Method name: index
+#Function: gets the pending orders from the database and orders them by the slected column,and also supports searching 
+#for keywords 
   def index
-    @orders = Order.search(params[:search])
+    @orders = Order.where(:isfinished=>true).order_by(sortable_column_order).search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,7 +40,17 @@ class OrdersController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @order }
     end
-  end
+end
+#Author: Omar Sherif
+#Team: 4
+#Method name: index
+#Function: displays a message to users who aren't allowed to view the orders page
+  def invalid
+@msg = "You don't have access to this page"
+end
+
+
+  
 
   # GET /orders/1/edit
   def edit
@@ -83,4 +100,17 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+private
+#Author: Omar Sherif
+#Team: 4
+#Method name: index
+#Function: checks if the logged in user is an admin,if not then the user will be redirected to the invalid page
+  def require_login
+    unless current_member.email=='admin@gmail.com' 
+      redirect_to action: :invalid
+    end
+  end
+
+
 end

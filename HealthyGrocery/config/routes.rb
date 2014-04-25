@@ -80,7 +80,11 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   resources :trucks
 
 
-  resources :orders
+  resources :orders do
+collection do
+ get 'invalid'
+end
+end
 
 
   resources :users
