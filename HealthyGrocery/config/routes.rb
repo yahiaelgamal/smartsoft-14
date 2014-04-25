@@ -73,7 +73,7 @@ HealthyGrocery::Application.routes.draw do
     member do
       post 'toggle_pause'
     end
-    collectiond do 
+    collection do 
        get "members_items_index"
     end 
   end
