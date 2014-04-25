@@ -19,8 +19,6 @@ team : 1-->
 <!--to check the adminstration level
 author:mohamed lotfy team:1-->
 
-<%elsif @admin == false%>
-
 <h3>Member</h3>
 <p>Email: <%= @member.email %></p>
 <h1> hello <%= @member.email%></h1>
@@ -47,7 +45,6 @@ Author: Abdelrahman Sakr
 <%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
 <%end%>
 
-
 <%end%>
 
 
@@ -71,6 +68,8 @@ Author: Abdelrahman Sakr
   <%-# to edit profile-%>  
    <%= link_to 'Edit Profile', edit_member_path(@member) %>  
   <%-# to show the basic info -%>  
+ 
+
     <h2><p>Email: </p></h2>  
     <%= @member.email %>  
     <h2><p>First Name:</p></h2>  
