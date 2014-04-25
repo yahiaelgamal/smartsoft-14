@@ -1,3 +1,9 @@
+//     Author: Karim El-Bawab
+//     Team: 4
+//     Function: This useful script is used in order to complete the operation of showing 
+//     the map in easy way
+//     Underscore is a JavaScript library that provides a whole mess of useful functional 
+//     programming helpers without extending any built-in objects. 
 //     Underscore.js 1.6.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors

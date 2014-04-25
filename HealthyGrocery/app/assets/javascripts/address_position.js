@@ -1,6 +1,16 @@
-// The following codee creates a marker in the member address
-// using a DROP animation. Clicking on the marker will toggle
-// the animation between a BOUNCE animation and no animation.
+// Author: Karim El-Bawab
+// Team: 4
+// Script name: address_position
+// Function: This script is used to show a map while the user
+// add an address to give him the ability to locate his 
+// address accurately using an animated marker.
+
+
+
+// Author: Karim El-Bawab
+// Team: 4
+// Function: This is block of code below used to get the values 
+// of the latitude and the longitude passed through the url 
 
 var latitude = gon.lat;
 var longitude = gon.lng;
@@ -22,6 +32,13 @@ var map;
 var lat;
 var lng;
 
+
+// Author: Karim El-Bawab
+// Team: 4
+// Method name: initialize
+// Function: This function is used in order to initiate a map
+// that has specific features.
+
 function initialize() {
     
     var mapOptions = {
@@ -40,7 +57,17 @@ function initialize() {
     google.maps.event.addListener(marker, 'click', toggleBounce);
     console.log(marker.getPosition().lat());
     console.log(marker.getPosition().lng());
+    
 }
+
+// Author: Karim El-Bawab
+// Team: 4
+// Method name: toggleBounce
+// function: This function is used to initiate an animated marker 
+// that can be moved by the user to locate his address accurately.
+// Whenever the user click on the marker the coordinates of his 
+// address will be written in the url and the page will reload 
+// again with the new coordinates on the map. 
 
 function toggleBounce() {
     if (marker.getAnimation() != null) {
@@ -52,7 +79,6 @@ function toggleBounce() {
         lng = marker.getPosition().lng();
 
     }
-
 
     if (latitude != lat || longitude != lng) {
         var url = window.location.href;

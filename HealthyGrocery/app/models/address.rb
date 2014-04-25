@@ -1,5 +1,14 @@
 class Address
   include Mongoid::Document
+
+# ------------------------------------------------------------------------------------
+#   Author: Karim El-Bawab
+#   Team: 4
+#   Function: Geocode is a gem that used here in this model in 
+#   order to transform the string street to its coordinates on 
+#   the real map and save it on the array coordinates 
+# ------------------------------------------------------------------------------------
+
   include Geocoder::Model::Mongoid
 
   geocoded_by :street       
@@ -13,6 +22,14 @@ class Address
   field :city, type: String
   field :postal, type: Integer
   field :street, type: String
+
+  # Author:Karim El-Bawab
+  # Team: 4
+  # Function: The array coordinates contains the value of the
+  # longitude in position [0] and the value of the latiude in
+  # position [1]. it is by default had the coordinates of the 
+  # tahrir square in cairo but it is overwriten by the values 
+  # that generates by the geocode  
   field :coordinates, :type => Array , :default => [31.235726308822677,30.044366207449162]
   
    validates :name , :presence => true

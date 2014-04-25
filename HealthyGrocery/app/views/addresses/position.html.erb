@@ -1,3 +1,10 @@
+<!--# Author : Karim El-Bawab
+# Team: 4
+# View name: position 
+# Function: this is the view that show the user the map 
+# that containes the animated marker in order to move it
+# to his address and verify its location on the map  
+-->
 <%= include_gon %>
 <!DOCTYPE html>
 <html>
@@ -9,6 +16,10 @@
       <%= javascript_include_tag("address_position") %>
    </head>
    <body>
+      <br>
+      <br>
+      <br>
+      <h4>To ensure high-quality service please make sure that your address was putted on the map correctly.</h4>
       <div style='width: 800px;'>
          <div id="map-canvas" style='width: 800px; height: 400px;'></div>
       </div>
