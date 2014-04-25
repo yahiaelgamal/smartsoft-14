@@ -11,4 +11,8 @@ class Lineitem
   field :quantity, type: Float, default: 1
   belongs_to :item ,class_name: 'Item'
   belongs_to :cart ,class_name: 'Cart'
+  #author: FatmaEmran
+  #T2
+  #function: Items of order realtion
+  belongs_to :order , class_name: 'Order' , inverse_of: :lines
 end

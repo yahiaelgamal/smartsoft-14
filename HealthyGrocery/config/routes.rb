@@ -58,10 +58,19 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
    get :calculated_ideal, :on => :collection
    
  end
-
+#Author:FatmaEmran
+#T2
+#Link to the health records of the people whom the user chose to order for
+  resources :members  
+ #get "get_records"
+  resources :members do
+   member do 
+    post :order_checkboxes
+    end 
+  end
   match 'user_root' => redirect("/member/show")
- 
-
+  resources :members
+  match 'user_root' => redirect("/member/show")
   resources :items do
   collection do
   get "members_items_index"
