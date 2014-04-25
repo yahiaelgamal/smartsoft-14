@@ -19,10 +19,6 @@ team : 1-->
 <!--to check the adminstration level
 author:mohamed lotfy team:1-->
 
-<%elsif @admin == false%>
-  <%- if current_member.records.count == 0 %> 
-   <h2><p>TO     START     SHOPPING     PLEASE     ADD     YOUR    HEALTHRECORD ^^^^</p></h2> 
-      <%end%>  
 <h3>Member</h3>
 <p>Email: <%= @member.email %></p>
 <h1> hello <%= @member.email%></h1>
