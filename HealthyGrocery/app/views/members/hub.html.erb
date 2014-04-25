@@ -3,3 +3,9 @@
 <h1> Hub </h1>
 <t> User ID = <%= current_member.id %> </t>
 <opt><%= link_to 'Go Shopping',{:controller  => 'items', :action => 'members_items_index'}, :class => "opt"%></opt></br></br>
+
+<%unless current_member.email == "admin@gmail.com" %>
+<h1><%= button_to "see restricted items",{:controller  => 'members', :action => 'show_restricted_items'}%></h1>
+</br>
+<%end%>
+

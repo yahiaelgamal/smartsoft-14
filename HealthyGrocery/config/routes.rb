@@ -21,7 +21,17 @@ HealthyGrocery::Application.routes.draw do
 
  devise_for :members, :controllers => {:registrations => "registrations", }
   
-  resources :members
+  
+#Author: Ahmed Helali
+#Team 2
+# I added this path for the show_restricted_items
+#controller and view
+
+  resources :members do
+    post :show_restricted_items, :on => :collection
+  end
+
+
  
 
   resources :items do

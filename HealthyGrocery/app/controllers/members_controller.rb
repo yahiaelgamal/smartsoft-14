@@ -52,8 +52,26 @@ end
    #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
 #session["isAdmin"]= @admin
 
+#Author: Ahmed Helali
+#Team 2
+#method: show_restricted_items  
+#parameters: none
+#function: it is the controller for the view
+#show_restricted_items, I simply am saving the
+#member instance in the variable @member to maniuplate it later.
 
-   end
+  def show_restricted_items
+    
+    @member = current_member
+    
+  if current_member.email == 'admin@gmail.com'
+      @admin = true
+  else 
+      @admin = false
+    end
+  end
+
+end
 
 
    
