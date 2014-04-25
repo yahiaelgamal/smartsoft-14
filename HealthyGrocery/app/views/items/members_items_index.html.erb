@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
 // display the lightbox
-function lightbox(insertContent, ajaxContentUrl){
+  function lightbox(insertContent, ajaxContentUrl){
 
 	// add lightbox/shadow <div/>'s if not previously added
 	if($('#lightbox').size() == 0){
@@ -38,10 +38,10 @@ function lightbox(insertContent, ajaxContentUrl){
 	$('#lightbox').show();
 	$('#lightbox-shadow').show();
 
-}
+  } 
 
-// close the lightbox
-function closeLightbox(){
+  // close the lightbox
+  function closeLightbox(){
 
 	// hide lightbox and shadow <div/>'s
 	$('#lightbox').hide();
@@ -49,18 +49,16 @@ function closeLightbox(){
 
 	// remove contents of lightbox in case a video or other content is actively playing
 	$('#lightbox').empty();
-}
+  }  
 </script>
 
 <body>
 
 <!-- Title for the page -->
 
-<h1>Items as shown to members</h1>
-
+<h1>Click on items to see their properties</h1>
 <% @items.each do |item| %>
   <icon>
-
 <a href="javascript:lightbox(
 '   <img src= <%= item.image%>  height=150 width=150 ></img></br>
     <td>Name: <%= item.name %></td> </br>
@@ -72,8 +70,7 @@ function closeLightbox(){
     <td>Rating: <%= item.rating %></td></br>
     <textarea rows=1 cols=4></textarea> KG  <button>Add to shopping cart</button></br>
     <button>Add to wishlist</button></br>');"><img src= "<%= item.image%>"  height=150 width=150 >
-</img></a> </br>
-
+    </img></a> </br>
 
     <td>Name: <%= item.name %></td> </br>
     <td>Price: <%= item.price %></td></br>
@@ -81,7 +78,6 @@ function closeLightbox(){
     <td>Rating: <%= item.rating %></td></br>
     <textarea rows="1" cols="4"></textarea> KG  <button>Add to shopping cart</button></br>
     <button>Add to wishlist</button></br>
-
 
   </icon>
 <% end %>
