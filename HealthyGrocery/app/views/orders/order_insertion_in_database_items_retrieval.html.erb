@@ -1,0 +1,14 @@
+ <p>your order includes: </p>
+ <br/>
+  
+ <% @items.each do |i| %>
+ 
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%=@l_items[@count].quantity %><p> of </p> <%= i.name %>
+   <% @count = @count + 1 %>
+  </div>
+</div>
+<%end%>
+
+link_to "confirm order", {:controller => :orders, :action => :create}, {:method => :put }
