@@ -27,11 +27,10 @@ resources :health_records
   # Drivers page
 
    resources :wishlists
-
-  resources :wishlines
+   
 get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
 
-   root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+ root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
 
  devise_for :members, :controllers => {:registrations => "registrations", }
 
@@ -45,23 +44,22 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
 
  root :to => "members#index"
  devise_for :members, :controllers => {:registrations => "registrations", }
-
- resources :members
-
- 
    #for user profile page
    resources :members do
    get 'edit'
    
+   #Author: Ahmed Helali
+   #Team 2
+   # I added this path for the show_restricted_items
+   #controller and view
+   
+   get :show_restricted_items, :on => :collection
+   get :show_ideal_calories, :on => :collection
+   get :calculated_ideal, :on => :collection
+   
  end
 
-  resources :members  
- # get "get_records"
-
   match 'user_root' => redirect("/member/show")
-  resources :members
-
-
  
 
   resources :items do
@@ -92,8 +90,11 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   match '/generateroutes' => 'generateroutes#index'
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
+
+  resources :diseases
+
   post "items/members_items_index/add" => "items#add"
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

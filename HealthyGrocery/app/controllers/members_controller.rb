@@ -71,7 +71,40 @@ end
     end
 
 class MembersController < ApplicationController  
- before_filter :authenticate_member!  
+ before_filter :authenticate_member! 
+
+  def show_restricted_items
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+
+  def show_ideal_calories
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+
+  def calculated_ideal
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
 #Author : mohamed lotfy  
 #team : 1  
 #method:index  
@@ -117,7 +150,49 @@ end
  end  
 end  
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin   
-#session["isAdmin"]= @admin  
-  end  
+#session["isAdmin"]= @admin
+
+  #Atuhor: ahmed helali
+  #team 2
+  #method: show_restricted_items
+  #parameters: none
+  #function: reponsible for the view of the same name
+  
+  def show_restricted_items
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+  
+  #Atuhor: ahmed helali
+  #team 2
+  #method: show_ideal_calories
+  #parameters: none
+  #function: reponsible for the view of the same name
+
+  def show_ideal_calories
+    
+    @member = current_member
+    @weight = ""
+    @duration = ""
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+
+  def calculated_ideal
+    @member = current_member
+  end
+
+end  
+
 
 
