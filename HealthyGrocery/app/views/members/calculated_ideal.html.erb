@@ -1,0 +1,95 @@
+<!-- Author: ahmed helali
+	team 2
+-->
+
+<FORM NAME="calculate">
+<INPUT TYPE="hidden" NAME="weight">
+</FORM>
+
+<center> <h1> Calculations </h1>
+</br>
+<h2> Average Calories per day = 
+
+<!-- here I loop on the records to get the 
+	repective health record of the member -->
+
+<% Healthrecord.all.each do |x| %>
+	<%if x.member_id == current_member.id %>
+	  <% @id = x.id %>
+	  <% @record = Healthrecord.find(@id) %>
+	  <% break %>
+	<%end%>
+<%end%> 
+<!--
+	in this function I get the information I need
+	from the web address itself then calculate
+	the calories
+-->
+<SCRIPT LANGUAGE="javascript">
+
+var pounds = 10
+var locate = window.location
+document.calculate.weight.value = locate
+
+var text = document.calculate.weight.value
+
+function delineate(str)
+{
+theleft = str.indexOf("=") + 1;
+theright = str.lastIndexOf("&");
+return(str.substring(theleft, theright));
+}
+
+var flag1 = delineate(text)
+
+var locate = window.location
+document.calculate.weight.value = locate
+var text = document.calculate.weight.value
+
+function delineate2(str)
+{
+point = str.lastIndexOf("=");
+return(str.substring(point+1,str.length));
+}
+var flag2 = delineate2(text)
+var x;
+if( flag1 == "bulk") {
+	if(flag2 == "1+week") {
+		x = 1000/pounds +7
+	}
+	if(flag2 == "2+weeks") {
+		x = 1000/pounds +14
+	}
+	if(flag2 == "1+month") {
+		x = 1000/pounds +30
+	}
+	if(flag2 == "3+months") {
+		x = 1000/pounds +90
+	}
+	if(flag2 == "6+months") {
+		x = 1000/pounds +180
+	}
+}
+else {
+	if(flag2 == "1+week") {
+		x = 500/pounds +7
+	}
+	if(flag2 == "2+weeks") {
+		x = 500/pounds +14
+	}
+	if(flag2 == "1+month") {
+		x = 500/pounds +30
+	}
+	if(flag2 == "3+months") {
+		x = 500/pounds +90
+	}
+	if(flag2 == "6+months") {
+		x = 500/pounds +180
+	}
+}
+
+document.write(x);
+
+</SCRIPT>
+</h2> </center>
+
