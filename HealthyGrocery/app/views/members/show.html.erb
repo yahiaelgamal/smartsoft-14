@@ -12,6 +12,9 @@
  <!--to check the adminstration level  
  author:mohamed lotfy team:1-->  
  <%elsif @admin == false%> 
+ <!-- Author: Mahmoud Walid
+ Team: 3
+ Function: show alerts if there is any order without an address-->
   <%if @member%>
     <% @count = true%>
     <% @member.orders.each do |ord|%>

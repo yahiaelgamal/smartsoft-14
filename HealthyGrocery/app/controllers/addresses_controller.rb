@@ -55,6 +55,9 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
+      # Author: Mahmoud Walid
+      # Team: 3
+      # Function: adding the created address to the list of addresses of the signed in user
         current_member.addresses.push(@address)
         format.html { redirect_to addressesposition_path(@address.id) }
         format.json { render json: @address, status: :created, location: @address }

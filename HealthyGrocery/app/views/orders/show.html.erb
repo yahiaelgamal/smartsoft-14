@@ -30,6 +30,9 @@
   <%= @order.date %>
 </p>
 <p>
+  <!-- Author: Mahmoud Walid
+ Team: 3
+ Function: showing a button if there is no address chosen-->
   <b>Shipping address:</b>
   <% if @order.address[@order.address.length-2]%>
   <%= @order.address[@order.address.length-2].name %> 

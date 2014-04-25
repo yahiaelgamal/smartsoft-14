@@ -1,3 +1,7 @@
+      # Author: Mahmoud Walid
+      # Team: 3
+      # Function: this model is used to create an address book for 
+      #the member through the has_many addresses relation 
 class Address
   include Mongoid::Document
 
@@ -31,7 +35,9 @@ class Address
   # tahrir square in cairo but it is overwriten by the values 
   # that generates by the geocode  
   field :coordinates, :type => Array , :default => [31.235726308822677,30.044366207449162]
-  
+    # Author: Mahmoud Walid
+    # Team: 3
+    # Function: validating presence of the attributes and numericality of the postal code
    validates :name , :presence => true
    validates :firstname , :presence => true
    validates :lastname , :presence => true

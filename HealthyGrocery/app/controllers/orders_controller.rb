@@ -48,6 +48,9 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+      # Author: Mahmoud Walid
+      # Team: 3
+      # Function: adding the order creared to the list of orders of the signed in member
         current_member.orders.push(@order)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
@@ -73,6 +76,11 @@ class OrdersController < ApplicationController
       end
     end
   end
+      # Author: Mahmoud Walid
+      # Team: 3
+      # Function: updates the pass and pass_billing with the ids 
+      #of the addresses of the shipping and billing addresss
+      # to add their coordinates in the order fields coorindates and coordinates_billing
   def submit
      @order = Order.find(params[:id])
 
@@ -86,6 +94,10 @@ class OrdersController < ApplicationController
       end
     end
   end
+  # Author: Mahmoud Walid
+  # Team: 3
+  # Function: updating the coordinates and coordinates_billing attributes 
+  #with the choosed addresses and adding the two addresses to the order
   def change
     @order = Order.find(params[:id])
     @shipping=Address.find(@order.pass)

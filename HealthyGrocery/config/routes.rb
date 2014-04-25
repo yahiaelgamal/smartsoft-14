@@ -11,6 +11,9 @@ HealthyGrocery::Application.routes.draw do
  root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
  devise_for :members, :controllers => {:registrations => "registrations", }
   resources :addresses
+    #Author: Mahmoud Walid
+    #Team: 3
+    #Function: adding routes for showing orders and addresses of the member
     get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
   get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
 
@@ -56,7 +59,10 @@ HealthyGrocery::Application.routes.draw do
   resources :trucks
 
 
-
+ #Author: Mahmoud Walid
+ #Team: 3
+ #Function: adding routes for chaning pass and pass_billing attributes for updating shipping
+ #and billing addresses
   get   '/orders/:id/choose', to:'orders#choose' , as: 'chooseOrder'
   put '/orders/:id/submit' , to: 'orders#submit' , as: 'submit'
   get '/orders/:id/change' , to: 'orders#change' , as: 'change'
