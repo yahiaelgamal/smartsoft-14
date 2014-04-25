@@ -6,10 +6,14 @@ HealthyGrocery::Application.routes.draw do
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
 
  get 'members/hub'
- resources :healthrecords
+ 
 resources :health_records
   
  resources :items do
+   collection do
+  get "members_items_index"
+  post "add"
+  end
   member do
    post 'toggle_pause'
   end
@@ -19,6 +23,9 @@ resources :health_records
   # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
   # it's invoked on a single item (member)
 
+
+ 
+
   resources :wishlines
 
   resources :drivers
@@ -27,12 +34,13 @@ resources :health_records
   # Drivers page
 
    resources :wishlists
-   
+
 get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
 
  root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
 
  devise_for :members, :controllers => {:registrations => "registrations", }
+
 
   
  resources :lineitems
@@ -44,6 +52,7 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
 
  root :to => "members#index"
  devise_for :members, :controllers => {:registrations => "registrations", }
+
    #for user profile page
    resources :members do
    get 'edit'
@@ -58,10 +67,24 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
    get :calculated_ideal, :on => :collection
    
  end
+
+
+ 
+ # get "get_records"
+
+  match 'user_root' => redirect("/member/show")
+
+  
+
+
+ 
+
+  
+
 #Author:FatmaEmran
 #T2
 #Link to the health records of the people whom the user chose to order for
-  resources :members  
+   
  #get "get_records"
   resources :members do
    member do 
@@ -69,14 +92,10 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
     end 
   end
   match 'user_root' => redirect("/member/show")
-  resources :members
-  match 'user_root' => redirect("/member/show")
-  resources :items do
-  collection do
-  get "members_items_index"
-  post "add"
-  end
-  end
+ 
+  
+  
+
   match '/items' => 'items#index'
 
   resources :routes
@@ -100,9 +119,11 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
 
+
   resources :diseases
 
   post "items/members_items_index/add" => "items#add"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
