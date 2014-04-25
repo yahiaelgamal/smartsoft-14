@@ -107,7 +107,7 @@ private
 #Method name: index
 #Function: checks if the logged in user is an admin,if not then the user will be redirected to the invalid page
   def require_login
-    unless session["isAdmin"] 
+    unless current_member.email=='admin@gmail.com' 
       redirect_to action: :invalid
     end
   end
