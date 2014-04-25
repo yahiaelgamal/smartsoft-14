@@ -11,7 +11,21 @@
  <%end%>  
  <!--to check the adminstration level  
  author:mohamed lotfy team:1-->  
- <%elsif @admin == false%>  
+ <%elsif @admin == false%> 
+  <%if @member%>
+    <% @count = true%>
+    <% @member.orders.each do |ord|%>
+      <%if not ord.coordinates%>
+        <% if @count%>
+          <%flash[:alert] = "You have an order that needs shipping and billing addresses, please #{link_to "click here",chooseOrder_path(ord)} to choose now".html_safe%>
+          <%@count=false%>
+        <% else %>
+          <%flash[:alert] = "You have more than one order that needs shipping and billing addresses, please #{link_to "click here",showOrders_path} to show your orders".html_safe%>
+        <%end%>
+      <%end%>
+    <%end%>
+  <%end%>
+
   <!-- to show user profile -->  
   <%-# to show basic info-%>  
    <h2><%= @member.first_name%> 's Profile</h2>   
