@@ -233,51 +233,60 @@ def viewusers
     item_id = params[:item]
     amount = params[:amount].to_i 
     item =  Item.where(id:  item_id).first
- if  item.amount > 0
-        user = current_member
-        healthrecord =  user.records.first
-        
-   @flag = true
 
-   @message = "This request with its quantity exceeds the acceptable range of the following: "
-   v_counter=1
-   if  healthrecord.acceptable_protein_per_week < ( (item.protein * amount )+  healthrecord.protein_till_now)
-      
-        @message = @message+v_counter.to_s+".proteins "
-        v_counter = v_counter+1
-        @flag = false
+ if item.amount > 0
+    user = current_member
+    healthrecord =  user.records.first
+     
+    if  healthrecord.blank? 
+    @message = "Please fill your health record before ordering"
+    @flag = false
+    flash[:message] = @message 
+    flash[:flag] = @flag
+    redirect_to :action => :members_items_index
+    return 
+    end 
+
+    @flag = true
+    @message = "This request with its quantity exceeds the acceptable range of the following: "
+    v_counter=1
+
+  if  healthrecord.acceptable_protein_per_week < ( (item.protein * amount )+  healthrecord.protein_till_now)
+    @message = @message+v_counter.to_s+".proteins "
+    v_counter = v_counter+1
+    @flag = false
   end  
   if  healthrecord.acceptable_carbohydrate_per_week < ( (item.carbohydrate * amount) +  healthrecord.carbohydrate_till_now)
-        @message = @message + v_counter.to_s+".carbohydrates "
-        v_counter = v_counter+1
-        @flag = false
+    @message = @message + v_counter.to_s+".carbohydrates "
+    v_counter = v_counter+1
+    @flag = false
   end
   if  healthrecord.acceptable_calcium_per_week < ( (item.calcium * amount)+  healthrecord.calcium_till_now)
-        @message = @message +v_counter.to_s+ ".calcium "
-        v_counter = v_counter+1
-        @flag = false
+    @message = @message +v_counter.to_s+ ".calcium "
+    v_counter = v_counter+1
+    @flag = false
   end    
-  if  healthrecord.acceptable_fat_per_week < ( (item.fat * amount) +  healthrecord.fat_till_now) 
-        @message = @message +v_counter.to_s+ ".fats"
-        v_counter = v_counter+1
-        @flag = false
+  if healthrecord.acceptable_fat_per_week < ( (item.fat * amount) +  healthrecord.fat_till_now) 
+    @message = @message +v_counter.to_s+ ".fats"
+    v_counter = v_counter+1
+    @flag = false
   end
-    if (amount === 0 )
-         @flag = false 
-         @message = "please enter the quantity"
-        end 
+  if (amount === 0 )
+    @flag = false 
+    @message = "please enter the quantity"
+  end 
 
   if  @flag   
   
-      protein =  healthrecord.protein_till_now +  (item.protein * amount )
-      carbohydrate =  healthrecord.carbohydrate_till_now +  (item.carbohydrate * amount)
-      calcium  =   healthrecord.calcium_till_now +  (item.calcium * amount)
-      fat  =   healthrecord.fat_till_now +  (item.fat * amount) 
+    protein =  healthrecord.protein_till_now +  (item.protein * amount )
+    carbohydrate =  healthrecord.carbohydrate_till_now +  (item.carbohydrate * amount)
+    calcium  =   healthrecord.calcium_till_now +  (item.calcium * amount)
+    fat  =   healthrecord.fat_till_now +  (item.fat * amount) 
 
-     Member.where(id: user.id).first.records.update(protein_till_now: protein)
-     Member.where(id: user.id).first.records.update(carbohydrate_till_now: carbohydrate)
-     Member.where(id: user.id).first.records.update(calcium_till_now: calcium)
-     Member.where(id: user.id).first.records.update(fat_till_now: fat)
+    Member.where(id: user.id).first.records.update(protein_till_now: protein)
+    Member.where(id: user.id).first.records.update(carbohydrate_till_now: carbohydrate)
+    Member.where(id: user.id).first.records.update(calcium_till_now: calcium)
+    Member.where(id: user.id).first.records.update(fat_till_now: fat)
  
  end 
     else
