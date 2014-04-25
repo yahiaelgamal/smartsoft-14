@@ -4,11 +4,71 @@
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
 <style>
 
+
 /*    <!-- Author: mina sedra -->
 <!-- Team: 2 -->*/
     body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");}
-    </style>
+  
 
+
+
+icon{
+font-size: 20px;
+float:left;
+border-width: thick;
+border-style: dotted;
+border-color: black;
+}
+
+navigationbar{
+height:800px;
+width:235px;
+background:#FF9933;
+font-size: 15px;
+  float:left;
+}
+
+h1{
+
+height:10px;
+font-size: 40px;
+width:100%;
+position:relative;
+  text-align:center;
+  float:left;
+}
+
+table{
+  margin:5px;
+  padding: 5px;
+  border:1px solid #0000ff;
+  height:auto;
+  width:auto;
+  float:left;
+  text-align:center;
+background:orange;
+}
+s
+opt
+{
+
+position:absolute;
+width:130px;
+height:50px;
+-webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
+transition:width 0.4s;
+padding:50px;
+left-margin:50px;
+  text-align:center;
+}
+
+</style>
+
+<script type="text/javascript">
+
+</script>
+
+</head>
 
 
 <body>
@@ -16,6 +76,40 @@
 <!-- Title for the page -->
  <% if current_member.records.count > 0 %>
 <h1>Items as shown to members</h1>
+
+<navigationbar>
+  <h5>Filter for products </h5>
+  <%# Author : Antoine Foti
+      Team : 2
+      Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated %>
+<%= form_tag '/items/members_items_index', :method => 'get' do %>
+  <p>
+    <opt>
+    <span class="label">Name :</span>
+    <%= text_field_tag :name, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <span class="label">Category :</span>
+    <%= text_field_tag :category, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <span class="label">Price :</span>
+    <%= text_field_tag :price, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <span class="label">Rating :</span>
+    <%= text_field_tag :rating, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <%= radio_button_tag 'status', "available" %> <span class="badge">Available Only</span> 
+    </opt></br>
+    <opt>
+    <%= radio_button_tag 'status', "all", :checked => true %> <span class="badge">All Products</span> 
+    </opt></br></br>
+    <%= submit_tag "Filter" %>
+  </p>
+<% end %>
+</navigationbar>
 
 <% @items.each do |item| %>
   <icon>
@@ -32,13 +126,15 @@
     <button>Add to wishlist</button></br>
   </icon>
 <% end %>
+
 <% end %>
-/*    <!-- Author: mina sedra -->
-<!-- Team: 2 -->*/
+    <!-- Author: mina sedra -->
+<!-- Team: 2 -->
 
  <% if current_member.records.count == 0 %>
   <h2><p>PLEASE     ADD     YOUR    HEALTHRECORD FIRST </p></h2> 
                    <li><%= link_to "<button>My Healthrecords</button>".html_safe,indexhealthrecord_path(current_member)%></li>
 
 <% end %>
+
 </body>
