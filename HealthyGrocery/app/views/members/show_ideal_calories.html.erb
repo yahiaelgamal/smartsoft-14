@@ -4,7 +4,20 @@
      from meber, so we can calculate
      his average calories intake
  -->
- <% unless @admin %>
+
+ <!-- here I loop on the records to get the 
+	repective health record of the member -->
+
+ <% @id %>
+ <% Healthrecord.all.each do |x| %>
+	<%if x.member_id == current_member.id %>
+	  <% @id = x.id %>
+	  <% @record = Healthrecord.find(@id) %>
+	  <% break %>
+	<%end%>
+<%end%> 
+
+ <% unless @admin ||  @id.nil? %>
  <h1>So...</h1>
 <form name="input" action='calculated_ideal' method="get">
 <p>Are you hoping to bulk up or lose weight?</p>
@@ -28,6 +41,6 @@
 <%if @admin %>
  	<center><h1>You are the admin of the site</h1></br>
  	<h2>go get busy!!!</h2></center>
-<%elsif false %>
+<%elsif @id.nil? %>
 	<center><h1>Please complete your health profile</h1></center>
 <%end%>
