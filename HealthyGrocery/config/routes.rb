@@ -6,6 +6,7 @@ HealthyGrocery::Application.routes.draw do
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
  get 'members/hub'
 
+
   resources :health_records
 
 
@@ -17,7 +18,13 @@ HealthyGrocery::Application.routes.draw do
   #sameh metias: removed hazem's route down to be with all the routes belonging to the items
 
 
+
   resources :wishlines
+
+  resources :drivers
+  # Author: Hazem Amin 
+  # Component: 5
+  # Drivers page
 
 
    resources :wishlists

@@ -74,25 +74,25 @@ respond_to do |format|
   #What does it do? It simply finds that specific item that needs to be paused and pauses
   # it if the conditions applies that the item is not out of stock.
   
-  def create
-    @item = Item.new(params[:item])
+ def create
+  @item = Item.new(params[:item])
 
     # initial value of paused
-    if @item.amount <= 0
-      @item.paused = false
-    else 
-      @item.paused = true
-    end
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+  if @item.amount <= 0
+   @item.paused = false
+  else 
+   @item.paused = true
   end
+  respond_to do |format|
+   if @item.save
+    format.html { redirect_to @item, notice: 'Item was successfully created.' }
+    format.json { render json: @item, status: :created, location: @item }
+   else
+    format.html { render action: "new" }
+    format.json { render json: @item.errors, status: :unprocessable_entity }
+   end
+  end
+ end
   #Author: Hazem Amin
   #Component: 5
   #Method_Name: create
