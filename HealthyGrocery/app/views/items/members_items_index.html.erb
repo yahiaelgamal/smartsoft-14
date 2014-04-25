@@ -38,7 +38,7 @@
 
   // insert HTML content
   if(insertContent != null){
-  $('#lightbox').append(insertContent);
+    $('#lightbox').append(insertContent);
   }
 
 
@@ -80,9 +80,9 @@
   <navigationbar>
   <h5>Filter for products </h5>
   <%# Author : Antoine Foti
-      Team : 2
-      Here is the filter search form where the user can fill any 
-      desired field and submit so that according to it the filter will be calculated %>
+  Team : 2
+  Here is the filter search form where the user can fill any 
+  desired field and submit so that according to it the filter will be calculated %>
   <%= form_tag '/items/members_items_index', :method => 'get' do %>
   <p>
     <opt>
