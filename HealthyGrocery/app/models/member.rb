@@ -45,6 +45,8 @@ class Member
 has_many :historyItems ,class_name: 'Item'
 has_many :orders , class_name: 'Order'
 #has_many :recommendation, class 'Recommendation'
+has_many :records ,class_name: 'Healthrecord' , inverse_of: :user
+has_many :active_records ,class_name: 'Healthrecord' , inverse_of: :ordered_user
 has_many :records ,class_name: 'Healthrecord' , inverse_of: :member
 has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
 has_many :diseases , class_name: 'Disease' , inverse_of: :customers

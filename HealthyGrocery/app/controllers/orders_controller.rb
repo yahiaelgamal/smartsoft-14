@@ -42,19 +42,36 @@ class OrdersController < ApplicationController
 
   # POST /orders
   # POST /orders.json
-  def create
-    @order = Order.new(params[:order])
+  # author: Fatma Emran
+  #T2
+  #Function: Creating an order with the items in the shoppingcart/wishlist and inserting it in the database
+  def order_insertion_in_database_items_retrieval
+      @l_items = current_member.cart.lineitems
+      @items = []  
+      @count = 0
+      #retrieving the items of each order
+      @l_items.each do |l| 
+      @items << l.item
+      @items.save
+   end
+end
 
-    respond_to do |format|
+  def create
+   @order = Order.new
+   current_member.cart.lineitems.each do |l|
+   @order.lines.push(l)
+   end
+   @order.orderNo = current_member.orders.count + 1
+  respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to chooseOrder_path(@order), notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: "new" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
-  end
+end
 
   # PUT /orders/1
   # PUT /orders/1.json
