@@ -79,3 +79,14 @@ margin:10px;
 <t> User ID = <%= current_member.id %> </t>
 <opt><%= link_to 'Go Shopping',{:controller  => 'items', :action => 'members_items_index'}, :class => "opt"%></opt></br></br>
 
+
+<!-- halawa
+team2-->
+<%= button_to "new health record", :action=>"new", :controller=>"health_records", :method => "get" %>    
+<%= button_to "edit health record", redirect_to= 'http://localhost:3000/health_records/create', :method => "get" %>
+<%= submit_tag "Test me!", :type => 'button', :onclick => 'alert("It works!")' %>
+
+
+
+
+

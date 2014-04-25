@@ -1,6 +1,8 @@
 <h1>Editing health_record</h1>
 
 <%= render 'form' %>
+<%=render('health_record/edit')%>
+<%=redirect_to('health_record/edit')%>
 
 <%= link_to 'Show', @health_record %> |
 <%= link_to 'Back', health_records_path %>

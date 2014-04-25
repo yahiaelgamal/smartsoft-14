@@ -35,6 +35,14 @@ HealthyGrocery::Application.routes.draw do
 
   resources :routes
 
+#halawa
+#team2
+resources :health_records do
+  collection do
+    get "new"
+  end  
+end
+#match '/health_records' => 'health_records#index'
 
   resources :shipments
 

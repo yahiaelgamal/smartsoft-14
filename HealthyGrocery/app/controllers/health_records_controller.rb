@@ -1,4 +1,4 @@
-class HealthRecordsController < ApplicationController
+  class HealthRecordsController < ApplicationController
   # GET /health_records
   # GET /health_records.json
   def index
@@ -30,6 +30,7 @@ class HealthRecordsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @health_record }
     end
+    render('health_record/new')
   end
 
   # GET /health_records/1/edit
@@ -40,6 +41,7 @@ class HealthRecordsController < ApplicationController
   # POST /health_records
   # POST /health_records.json
   def create
+    render ('health_record/new')
     @health_record = HealthRecord.new(params[:health_record])
 
     respond_to do |format|
