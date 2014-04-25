@@ -4,7 +4,6 @@
   <% # Page for viewing all drivers %>
 <table>
   <div class="panel panel-default">
-    <div class="panel-heading">Panel heading</div>
     <table class="table table-nonfluid">
   <thead>
     <tr>
@@ -23,18 +22,15 @@
         <td><%= driver.name %></td>
         <td><%= driver.phone %></td>
         <td><%= driver.address %></td>
-        <td><%= link_to 'Show', driver %></td>
-        <td><%= link_to 'Edit', edit_driver_path(driver) %></td>
-        <td><%= link_to 'Destroy', driver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <h5> <%= link_to 'Show', driver %> </h5> </td>
+        <td> <h5> <%= link_to 'Edit', edit_driver_path(driver) %> </h5> </td>
+        <td> <h5> <%= link_to 'Destroy', driver, method: :delete, data: { confirm: 'Are you sure?' } %> </h5> </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 <br>
-  <button type="button" class="btn btn-default">
-<%= link_to 'New Driver', new_driver_path %>
-</button> 
-  <button type="button" class="btn btn-default">
-<%= link_to 'Back to My Warehouse', items_path %>
-</button>
+<h2> <%= link_to 'New Driver', new_driver_path %> </h2>
+
+ <h2>  <%= link_to 'Back to My Warehouse', items_path %> </h2>
