@@ -19,11 +19,16 @@ gem 'devise'
 
 
 
+
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
 
-
-
+# (GUI Team) Gems to handle bootstrap
+gem 'therubyracer'   # require JS runtime.
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'formtastic'
+gem 'formtastic-bootstrap' 
 
 
 

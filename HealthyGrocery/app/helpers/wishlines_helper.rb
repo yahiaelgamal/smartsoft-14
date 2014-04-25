@@ -1,0 +1,2 @@
+module WishlinesHelper
+end
