@@ -6,6 +6,9 @@ HealthyGrocery::Application.routes.draw do
   resources :health_records
   
 
+
+ 
+
   resources :wishlines
 
 
@@ -15,15 +18,24 @@ HealthyGrocery::Application.routes.draw do
    root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
 
  devise_for :members, :controllers => {:registrations => "registrations", }
+
  
    #for user profile page
    resources :members do
    get 'edit'
    
+   #Author: Ahmed Helali
+   #Team 2
+   # I added this path for the show_restricted_items
+   #controller and view
+   
+   post :show_restricted_items, :on => :collection
+   
  end
 
   match 'user_root' => redirect("/member/show")
   resources :members
+
  
 
   resources :items do
@@ -63,7 +75,7 @@ HealthyGrocery::Application.routes.draw do
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
 
-  
+  resources :diseases
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

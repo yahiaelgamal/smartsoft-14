@@ -45,5 +45,18 @@ end
  end  
 end  
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin   
-#session["isAdmin"]= @admin  
-  end  
+#session["isAdmin"]= @admin
+
+  def show_restricted_items
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+
+end  
+
