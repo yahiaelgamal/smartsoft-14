@@ -74,25 +74,25 @@ respond_to do |format|
   #What does it do? It simply finds that specific item that needs to be paused and pauses
   # it if the conditions applies that the item is not out of stock.
   
-  def create
-    @item = Item.new(params[:item])
+ def create
+  @item = Item.new(params[:item])
 
     # initial value of paused
-    if @item.amount <= 0
-      @item.paused = false
-    else 
-      @item.paused = true
-    end
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+  if @item.amount <= 0
+   @item.paused = false
+  else 
+   @item.paused = true
   end
+  respond_to do |format|
+   if @item.save
+    format.html { redirect_to @item, notice: 'Item was successfully created.' }
+    format.json { render json: @item, status: :created, location: @item }
+   else
+    format.html { render action: "new" }
+    format.json { render json: @item.errors, status: :unprocessable_entity }
+   end
+  end
+ end
   #Author: Hazem Amin
   #Component: 5
   #Method_Name: create
@@ -151,6 +151,108 @@ def viewusers
 #function: retreives all teh items in the instance variable @items in order to show the items from
 #the member point of view 
   def members_items_index
-    @items = Item.all
-  end
+#Author: Antoine Foti
+#Team: 2
+#Function: After adding the filter search, it retreives all the required items in the instance variable @items after
+#filtering them according to the different fields the user would like to filter on in order to show the desired items 
+#from the member point of view. 
+#And if the user leaves any field empty without specifying what to filter, it will not be considered as a value and 
+#the filter search will be calculated according to the remaining non-empty filtering fields.
+    if (params[:status] == 'available') 
+      @items = Item.where :name => params[:name], :category => params[:category], :price => params[:price], :rating => params[:rating], :status => true 
+      if (params[:name] == '') 
+        @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating], :status => true 
+      end 
+      if (params[:category] == '') 
+        @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating], :status => true 
+      end 
+      if (params[:price] == '') 
+        @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating], :status => true 
+      end 
+      if (params[:rating] == '') 
+        @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price], :status => true 
+      end 
+      if (params[:name] == '') && (params[:category] == '') 
+        @items = Item.where :rating => params[:rating], :price => params[:price], :status => true 
+      end 
+      if (params[:name] == '') && (params[:price] == '') 
+        @items = Item.where :rating => params[:rating], :category => params[:category], :status => true 
+      end 
+      if (params[:name] == '') && (params[:rating] == '') 
+        @items = Item.where :category => params[:category], :price => params[:price], :status => true 
+      end 
+      if (params[:category] == '') && (params[:price] == '') 
+        @items = Item.where :name => params[:name], :rating => params[:rating], :status => true 
+      end 
+      if (params[:category] == '') && (params[:rating] == '') 
+        @items = Item.where :name => params[:rating], :price => params[:price], :status => true 
+      end 
+      if (params[:price] == '') && (params[:rating] == '') 
+        @items = Item.where :name => params[:name], :category => params[:category], :status => true 
+      end 
+      if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') 
+        @items = Item.where :rating => params[:rating], :status => true 
+      end 
+      if (params[:name] == '') && (params[:category] == '') && (params[:rating] == '') 
+        @items = Item.where :price => params[:price], :status => true 
+      end 
+      if (params[:name] == '') && (params[:rating] == '') && (params[:price] == '') 
+        @items = Item.where :category => params[:category], :status => true 
+      end 
+      if (params[:rating] == '') && (params[:category] == '') && (params[:price] == '') 
+        @items = Item.where :name => params[:name], :status => true 
+      end 
+      if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') && (params[:rating] == '') 
+        @items = Item.where :status => true 
+      end 
+    else 
+      @items = Item.where :name => params[:name], :category => params[:category], :price => params[:price], :rating => params[:rating] 
+      if (params[:name] == '') 
+        @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating] 
+      end 
+      if (params[:category] == '') 
+        @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating] 
+      end 
+      if (params[:price] == '') 
+        @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating] 
+      end 
+      if (params[:rating] == '') 
+        @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price] 
+      end 
+      if (params[:name] == '') && (params[:category] == '') 
+        @items = Item.where :rating => params[:rating], :price => params[:price] 
+      end 
+      if (params[:name] == '') && (params[:price] == '') 
+        @items = Item.where :rating => params[:rating], :category => params[:category] 
+      end 
+      if (params[:name] == '') && (params[:rating] == '') 
+        @items = Item.where :category => params[:category], :price => params[:price] 
+      end 
+      if (params[:category] == '') && (params[:price] == '') 
+        @items = Item.where :name => params[:name], :rating => params[:rating] 
+      end 
+      if (params[:category] == '') && (params[:rating] == '') 
+        @items = Item.where :name => params[:rating], :price => params[:price] 
+      end 
+      if (params[:price] == '') && (params[:rating] == '') 
+        @items = Item.where :name => params[:name], :category => params[:category] 
+      end 
+      if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') 
+        @items = Item.where :rating => params[:rating] 
+      end 
+      if (params[:name] == '') && (params[:category] == '') && (params[:rating] == '') 
+        @items = Item.where :price => params[:price] 
+      end 
+      if (params[:name] == '') && (params[:rating] == '') && (params[:price] == '') 
+        @items = Item.where :category => params[:category] 
+      end 
+      if (params[:rating] == '') && (params[:category] == '') && (params[:price] == '') 
+        @items = Item.where :name => params[:name] 
+      end 
+      if (params[:name] == '' || params[:name].nil?) && (params[:category] == '' || params[:category].nil?) && (params[:price] == '' || params[:price].nil?) && (params[:rating] == '' || params[:rating].nil?) 
+        @items = Item.all 
+      end 
+    end 
+  end    
+
 end

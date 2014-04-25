@@ -1,0 +1,36 @@
+<h1>Listing drivers</h1>
+  <% # Author: Hazem Amin %>
+  <% # Component: 5 %>
+  <% # Page for viewing all drivers %>
+<table>
+  <div class="panel panel-default">
+    <table class="table table-nonfluid">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.name %></td>
+        <td><%= driver.phone %></td>
+        <td><%= driver.address %></td>
+        <td> <h5> <%= link_to 'Show', driver %> </h5> </td>
+        <td> <h5> <%= link_to 'Edit', edit_driver_path(driver) %> </h5> </td>
+        <td> <h5> <%= link_to 'Destroy', driver, method: :delete, data: { confirm: 'Are you sure?' } %> </h5> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+<h2> <%= link_to 'New Driver', new_driver_path %> </h2>
+
+ <h2>  <%= link_to 'Back to My Warehouse', items_path %> </h2>
