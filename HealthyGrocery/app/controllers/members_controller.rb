@@ -47,3 +47,4 @@ end
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin   
 #session["isAdmin"]= @admin  
   end  
+

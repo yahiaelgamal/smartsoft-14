@@ -58,7 +58,46 @@
 
 <!-- Title for the page -->
 
+
 <h1>Click on items to see their properties</h1>
+
+<h1>Items as shown to members</h1>
+
+<navigationbar>
+  <h5>Filter for products </h5>
+  <%# Author : Antoine Foti
+      Team : 2
+      Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated %>
+<%= form_tag '/items/members_items_index', :method => 'get' do %>
+  <p>
+    <opt>
+    <span class="label">Name :</span>
+    <%= text_field_tag :name, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <span class="label">Category :</span>
+    <%= text_field_tag :category, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <span class="label">Price :</span>
+    <%= text_field_tag :price, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <span class="label">Rating :</span>
+    <%= text_field_tag :rating, params[:filter] %>
+    </opt></br></br>
+    <opt>
+    <%= radio_button_tag 'status', "available" %> <span class="badge">Available Only</span> 
+    </opt></br>
+    <opt>
+    <%= radio_button_tag 'status', "all", :checked => true %> <span class="badge">All Products</span> 
+    </opt></br></br>
+    <%= submit_tag "Filter" %>
+  </p>
+<% end %>
+</navigationbar>
+
+
 <% @items.each do |item| %>
   <icon>
 <a href="javascript:lightbox(
@@ -70,6 +109,7 @@
     <td>Available: <%= item.status %></td><br/>
     <td>Description: <%= item.description %></td></br>
     <td>Rating: <%= item.rating %></td></br>
+
     <textarea rows=1 cols=4></textarea> KG  <button>Add to shopping cart</button></br>
     <button>Add to wishlist</button></br>');"><img src= "<%= item.image%>"  height=150 width=150 >
     </img></a> </br>
@@ -78,7 +118,11 @@
     <td>Price: <%= item.price %></td></br>
     <td>Available: <%= item.status %></td><br/>
     <td>Rating: <%= item.rating %></td></br>
-    <textarea rows="1" cols="4"></textarea> KG  <button>Add to shopping cart</button></br>
+
+
+    <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart', lineitems_path(item_id: item) %>
+    </br>
+
     <button>Add to wishlist</button></br>
 
   </icon>
