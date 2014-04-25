@@ -1,7 +1,22 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
  
+# ---------------------------------------------------------------------------------------
+  # (By the GUI Team) This part is added so that Sign in, 
+  # Sign Up or Forgot my Password Have a different
+  # layout than the layout of 'application.html.erb' and inherets the layout
+  # of 'sample.html.erb'
 
+   layout :signIn
+ def signIn
+    if devise_controller?
+      "signIn"
+    else
+      "application"
+    end
+end
+
+# ---------------------------------------------------------------------------------------
  
 
      
@@ -10,6 +25,7 @@ def after_sign_in_path_for(resource_or_scope)
 
 	@member
 end
+
 
 
 
@@ -30,5 +46,31 @@ def current_wish_new
 	end
 		  @newwish 
 end  
+
+
+
+
+#Author: Abdelrahman Sakr
+#Team : 1
+#Method : current_cart_new
+#Paramters : None
+#This method checks whether the user has a shopping cart or not, if exists it returns it, else it creates
+#a new cart and returns it.
+
+def current_cart_new
+  if current_member.cart.nil?
+    @newcart = Cart.create!
+    current_member.cart = @newcart
+    current_member.save
+  else
+    @newcart = current_member.cart
+  end
+  @newcart
+end
+
+
+
+
+  
 
 end

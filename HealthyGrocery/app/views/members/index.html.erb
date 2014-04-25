@@ -1,4 +1,5 @@
 
+
 <!--to check the adminstration level-->
 <%if @admin == false%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE !</h1>
@@ -9,14 +10,25 @@
 <%elsif @admin == true %>
 
  <h3>Users</h3>
+
+<!--(GUI Team) This is the page where admin sees All Members in the System -->
+
+<h3>Users</h3>
+
 <ul class="members">
   <% @members.each do |member| %>
     <li>
       <%= link_to member.email, member %> 
     </li>
   <% end %>
+
    </ul>
 
 
   <%end%>
+
+
+</ul>
+
+
 
