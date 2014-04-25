@@ -46,25 +46,23 @@ class OrdersController < ApplicationController
   #T2
   #Function: Creating an order with the items in the shoppingcart/wishlist and inserting it in the database
   def order_insertion_in_database_items_retrieval
-    @l_items = current_member.cart.lineitems
-  @items = []  
-  @count = 0
-#retrieving the items of each order
-  @l_items.each do |l| 
-   
-    @items << l.item
-    @items.save
+      @l_items = current_member.cart.lineitems
+      @items = []  
+      @count = 0
+      #retrieving the items of each order
+      @l_items.each do |l| 
+      @items << l.item
+      @items.save
    end
 end
 
   def create
-    
-  @order = Order.new
-  current_member.cart.lineitems.each do |l|
-    @order.lines.push(l)
-  end
-  @order.orderNo = current_member.orders.count + 1
- respond_to do |format|
+   @order = Order.new
+   current_member.cart.lineitems.each do |l|
+   @order.lines.push(l)
+   end
+   @order.orderNo = current_member.orders.count + 1
+  respond_to do |format|
       if @order.save
         format.html { redirect_to chooseOrder_path(@order), notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }

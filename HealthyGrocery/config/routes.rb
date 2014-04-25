@@ -54,9 +54,11 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
    get 'edit'
    
  end
-
+#Author:FatmaEmran
+#T2
+#Link to the health records of the people whom the user chose to order for
   resources :members  
- # get "get_records"
+ #get "get_records"
   resources :members do
    member do 
     post :order_checkboxes
