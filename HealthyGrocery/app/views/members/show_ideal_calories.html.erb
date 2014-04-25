@@ -1,0 +1,33 @@
+<!-- Author: Ahmed Helali
+     Team 2
+     a form to recieve input 
+     from meber, so we can calculate
+     his average calories intake
+ -->
+ <% unless @admin %>
+ <h1>So...</h1>
+<form name="input" action='calculated_ideal' method="get">
+<p>Are you hoping to bulk up or lose weight?</p>
+<input type="radio" name="weight" value="bulk">Bulk Up</br>
+<input type="radio" name="weight" value="lose">Lose Weight</br>
+</br>
+<label>Duration:</label>
+  <div class="scrollbox">
+        <select name="Duration">
+        <option value="1 week">1 week</option>
+		<option value="2 weeks">2 weeks</option>
+		<option value="1 month">1 month</option>
+		<option value="3 month">3 months</option>
+		<option value="6 month">6 months</option>
+		</select>
+	</div>
+	<br/>
+
+<input type="submit" value="let's see...">
+<%end%>
+<%if @admin %>
+ 	<center><h1>You are the admin of the site</h1></br>
+ 	<h2>go get busy!!!</h2></center>
+<%elsif false %>
+	<center><h1>Please complete your health profile</h1></center>
+<%end%>

@@ -178,12 +178,18 @@ end
   def show_ideal_calories
     
     @member = current_member
+    @weight = ""
+    @duration = ""
     
     if current_member.email == 'admin@gmail.com'
         @admin = true
     else 
       @admin = false
     end
+  end
+
+  def calculated_ideal
+    @member = current_member
   end
 
 end  
