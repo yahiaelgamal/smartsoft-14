@@ -3,13 +3,15 @@
 <!-- This page is the view of the items from the members' point of view-->
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
 
-   <style>
- 
-    </style>
+
+<!-- I added the lightbox to the items in order not no show all of the items' in formation
+ on the main page. when you click on the picture of the item the light bos pops up
+ with all the information
+-->
 
 <script type="text/javascript">
 // display the lightbox
-  function lightbox(insertContent, ajaxContentUrl){
+  function lightbox(insertContent){
 
 	// add lightbox/shadow <div/>'s if not previously added
 	if($('#lightbox').size() == 0){
