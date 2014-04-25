@@ -35,8 +35,12 @@
   <%= @order.address[@order.address.length-2].name %> 
   <%= link_to 'show', @order.address[@order.address.length-2] %>
   <% else %>
-  no address choosen yet 
+  <%if @order.coordinates%>
+    some coordinates are used for this order , however , the address crossponding to these coordinates is deleted from you address book
+    <%else%> 
+    no address is choosen yet
   <%= link_to 'Choose now', chooseOrder_path(@order) %>
+  <%end%>
   <%end%>
 </p>
 <p>
@@ -45,8 +49,12 @@
   <%= @order.address.last.name %> 
   <%= link_to 'show', @order.address.last %>
   <% else %>
-  no address choosen yet 
-  <%= link_to 'Choose now', chooseOrder_path(@order) %>
+      <%if @order.coordinates%>
+        some coordinates are used for this order , however , the address crossponding to these coordinates is deleted from you address book
+      <%else%>
+        no address is choosen yet
+        <%= link_to 'Choose now', chooseOrder_path(@order) %>
+      <%end%>
   <%end%>
 </p>
 <%= link_to 'Edit', edit_order_path(@order) %> |

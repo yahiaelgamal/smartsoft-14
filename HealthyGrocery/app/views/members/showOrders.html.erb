@@ -1,7 +1,7 @@
 <h2>List of all your orders</h2>
 <% current_member.orders.each do |ord| %>
    <p><%= ord.orderNo %>  
-   <% if not ord.address.last%>
+   <% if not ord.coordinates%>
    <%= link_to 'choose', chooseOrder_path(ord) %>
    <%end%>
    <%= link_to 'Show', ord %> <%= link_to 'Edit', edit_order_path(ord)%>
