@@ -67,7 +67,7 @@ left-margin:10px;
 </br>
 Navigate Here </br></br>
 <!-- link to the shipment page -->
-   <opt><%= link_to 'Shipments',{:controller  => 'shipments', :action => 'index'} , :class => "opt"%></opt></br></br>
+   <opt><%= link_to 'Shipments', shipments_path, :class => "opt" %></opt></br></br>
 <!-- link to the trucks page -->
 <opt><%= link_to 'Trucks',{:controller  => 'trucks', :action => 'index'} , :class => "opt"%></opt></br></br>
 <!-- link to the orders page -->
@@ -106,7 +106,12 @@ Navigate Here </br></br>
     <% #Component: 5 %>
     <% # Printing the value of paused (true or false) for each and every item, depending on that record %>
     <td><%= item.description %></td>
-    <td><%= item.rating %></td>
+    <td><%= item.rating %>
+
+
+        <%= rating_ballot %>
+
+    </td>
     <td><%= button_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %></td>
     <% # Author: Hazem Amin%>
     <% # Component: 5%>

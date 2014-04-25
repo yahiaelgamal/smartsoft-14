@@ -1,5 +1,13 @@
 class Member
   include Mongoid::Document
+
+  has_many :ratings
+  has_many :rated_items
+
+  def rated_items
+    Item.in(id: rating.map(&:member_id))
+  end
+
 #Author: mohamed lotfy 
 #team : 1
 #model of the member

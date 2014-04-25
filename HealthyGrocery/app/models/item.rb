@@ -2,6 +2,12 @@ class Item
   include Mongoid::Document
   include Mongoid::Paperclip
 
+  has_many :ratings
+  
+  def raters
+    Member.in(id: rating.map(&:member_id))
+  end
+
   field :price , type: Float 
   field :amount , type: Integer
  	field :name , type: String  

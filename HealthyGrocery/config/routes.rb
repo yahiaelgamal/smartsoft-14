@@ -65,10 +65,10 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
  
 
   resources :items do
-  collection do
-  get "members_items_index"
-  post "add"
-  end
+    collection do
+      get "members_items_index"
+      post "add"
+    end
   end
   match '/items' => 'items#index'
 
