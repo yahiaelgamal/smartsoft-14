@@ -47,10 +47,6 @@ respond_to do |format|
     @item = Item.find(params[:id])
   end
 
-  # POST /items
-  # POST /items.json
-  # takes unsaved record from new , checks for validations then saves if success
-
 
   def toggle_pause
     @item = Item.find(params[:id])
@@ -150,7 +146,14 @@ def viewusers
 #team: 3
 #function: retreives all teh items in the instance variable @items in order to show the items from
 #the member point of view 
-  def members_items_index
+
+#AUTHOR: Mahmoud Eldesouky
+#Team :5
+#parameter : flag, message
+#sends the message that is set by def Add to the members_item_index view
+  def members_items_index    
+   gon.flag =  flash[:flag]
+   gon.message =  flash[:message]
 #Author: Antoine Foti
 #Team: 2
 #Function: After adding the filter search, it retreives all the required items in the instance variable @items after
@@ -252,7 +255,84 @@ def viewusers
       if (params[:name] == '' || params[:name].nil?) && (params[:category] == '' || params[:category].nil?) && (params[:price] == '' || params[:price].nil?) && (params[:rating] == '' || params[:rating].nil?) 
         @items = Item.all 
       end 
+    end   
+  end
+   
+    #AUTHOR: Mahmoud Eldesouky
+    #Team :5
+    #parameter : item, amount
+    #checks that the choosen item with its nutrition does not exceed the acceptable limit of 
+    #this user nutrients that we keep track of through his healthrecord. Each time an item within the 
+    #nutrition limits is choosen his till_now attribute in the healthrecord is updated else if a violation happens
+    #the message attribute is set with the approprite message to the user describing his violations
+   def add
+
+    item_id = params[:item]
+    amount = params[:amount].to_i 
+    item =  Item.where(id:  item_id).first
+
+ if item.amount > 0
+    user = current_member
+    healthrecord =  user.records.first
+     
+    if  healthrecord.blank? 
+    @message = "Please fill your health record before ordering"
+    @flag = false
+    flash[:message] = @message 
+    flash[:flag] = @flag
+    redirect_to :action => :members_items_index
+    return 
     end 
+
+    @flag = true
+    @message = "This request with its quantity exceeds the acceptable range of the following: "
+    v_counter=1
+
+  if  healthrecord.acceptable_protein_per_week < ( (item.protein * amount )+  healthrecord.protein_till_now)
+    @message = @message+v_counter.to_s+".proteins "
+    v_counter = v_counter+1
+    @flag = false
+  end  
+  if  healthrecord.acceptable_carbohydrate_per_week < ( (item.carbohydrate * amount) +  healthrecord.carbohydrate_till_now)
+    @message = @message + v_counter.to_s+".carbohydrates "
+    v_counter = v_counter+1
+    @flag = false
+  end
+  if  healthrecord.acceptable_calcium_per_week < ( (item.calcium * amount)+  healthrecord.calcium_till_now)
+    @message = @message +v_counter.to_s+ ".calcium "
+    v_counter = v_counter+1
+    @flag = false
   end    
+  if healthrecord.acceptable_fat_per_week < ( (item.fat * amount) +  healthrecord.fat_till_now) 
+    @message = @message +v_counter.to_s+ ".fats"
+    v_counter = v_counter+1
+    @flag = false
+  end
+  if (amount === 0 )
+    @flag = false 
+    @message = "please enter the quantity"
+  end 
+
+  if  @flag   
+  
+    protein =  healthrecord.protein_till_now +  (item.protein * amount )
+    carbohydrate =  healthrecord.carbohydrate_till_now +  (item.carbohydrate * amount)
+    calcium  =   healthrecord.calcium_till_now +  (item.calcium * amount)
+    fat  =   healthrecord.fat_till_now +  (item.fat * amount) 
+
+    Member.where(id: user.id).first.records.update(protein_till_now: protein)
+    Member.where(id: user.id).first.records.update(carbohydrate_till_now: carbohydrate)
+    Member.where(id: user.id).first.records.update(calcium_till_now: calcium)
+    Member.where(id: user.id).first.records.update(fat_till_now: fat)
+ 
+ end 
+    else
+    @message = "Sorry! This item is not available in stock"
+     
+    end
+    flash[:message] = @message 
+    flash[:flag] = @flag
+    redirect_to :action => :members_items_index
+ end
 
 end

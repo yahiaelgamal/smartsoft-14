@@ -4,10 +4,10 @@ HealthyGrocery::Application.routes.draw do
 
 
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
- get 'members/hub'
 
 
   resources :health_records
+
 
 
   # Author: Hazem Amin
@@ -25,7 +25,6 @@ HealthyGrocery::Application.routes.draw do
   # Author: Hazem Amin 
   # Component: 5
   # Drivers page
-
 
    resources :wishlists
 
@@ -68,6 +67,7 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   resources :items do
   collection do
   get "members_items_index"
+  post "add"
   end
     member do
       post 'toggle_pause'
@@ -90,21 +90,12 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   resources :users
 
 
-    resources :items do
-    member do
-      post 'toggle_pause'
-    end
-  end
-  # Author: Hazem Amin
-  # Component: 5
-  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
-  # it's invoked on a single item (member)
+    
   
-
   match '/generateroutes' => 'generateroutes#index'
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
-
+  post "items/members_items_index/add" => "items#add"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
