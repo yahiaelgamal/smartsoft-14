@@ -123,12 +123,12 @@ def viewusers
    
     #AUTHOR: Mahmoud Eldesouky
     #Team :5
-    #parameter : item, quantity
+    #parameter : item, amount
     #checks that the choosen item with its nutrition does not exceed the acceptable limit of 
     #this user nutrients that we keep track of through his healthrecord. Each time an item within the 
     #nutrition limits is choosen his till_now attribute in the healthrecord is updated else if a violation happens
     #the message attribute is set with the approprite message to the user describing his violations
-   def Add
+   def add
 
     item_id = params[:item]
     amount = params[:amount].to_i 
@@ -137,16 +137,12 @@ def viewusers
         user = current_member
         healthrecord =  user.records.first
         
-        
-
-  
-
    @flag = true
-       
+
    @message = "This request with its quantity exceeds the acceptable range of the following: "
    v_counter=1
- if  healthrecord.acceptable_protein_per_week < ( (item.protein * amount )+  healthrecord.protein_till_now)
-        #flash[:notice] 
+   if  healthrecord.acceptable_protein_per_week < ( (item.protein * amount )+  healthrecord.protein_till_now)
+      
         @message = @message+v_counter.to_s+".proteins "
         v_counter = v_counter+1
         @flag = false
@@ -183,7 +179,6 @@ def viewusers
      Member.where(id: user.id).first.records.update(calcium_till_now: calcium)
      Member.where(id: user.id).first.records.update(fat_till_now: fat)
  
-
  end 
     else
              

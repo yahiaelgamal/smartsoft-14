@@ -43,13 +43,14 @@ border-color: black;
     <td>Available: <%= item.status %></td><br/>
     <td>Description: <%= item.description %></td></br>
     <td>Rating: <%= item.rating %></td></br>
-
     <td>Proteins: <%= item.protein %></td></br>
     <td>Carbohydrates: <%= item.carbohydrate %></td></br>
     <td>Calcium: <%= item.calcium %></td></br>
     <td>Fats: <%= item.fat %></td></br>
-
-<%= form_tag("members_items_index/Add", method: "post", multipart: true) do %>
+<!--AUTHOR: Mahmoud Eldesouky
+    Team :5
+    takes the quantiy from the user -->
+<%= form_tag("members_items_index/add", method: "post", multipart: true) do %>
   <p>
     <%= hidden_field_tag(:item, item.id ) %>
     <%= text_field_tag :amount %>
@@ -58,6 +59,7 @@ border-color: black;
   <button>Add to wish list</button>
 <% end %>
     
+
   </icon>
 <% end %>
 </body>

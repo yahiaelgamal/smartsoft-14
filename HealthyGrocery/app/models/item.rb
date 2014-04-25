@@ -13,7 +13,10 @@ class Item
   field :carbohydrate , type: Integer 
   field :calcium , type: Integer 
   field :fat , type: Integer 
-
+  field :paused , type: Boolean
+  # Author: Hazem
+  #Component: 5
+  # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
 
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
@@ -41,5 +44,13 @@ class Item
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
   has_and_belongs_to_many :orders , class_name: "Order" , inverse_of: :items
+  
+  #Author: Abdelrahman Sakr
+  #Team : 1
+  #Declaring a relationship between the two classes Item, and Lineitem.
+  has_many :lineitems, class_name: "Lineitem"
+  
+
+  
 end
 

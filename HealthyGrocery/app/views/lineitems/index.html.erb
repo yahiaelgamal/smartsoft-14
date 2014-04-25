@@ -1,0 +1,21 @@
+<h1>Listing lineitems</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lineitems.each do |lineitem| %>
+  <tr>
+    <td><%= link_to 'Show', lineitem %></td>
+    <td><%= link_to 'Edit', edit_lineitem_path(lineitem) %></td>
+    <td><%= link_to 'Destroy', lineitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lineitem', new_lineitem_path %>
