@@ -50,6 +50,12 @@ has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
 has_many :diseases , class_name: 'Disease' , inverse_of: :customers
 has_many :recommended_items , class_name: 'Item' , inverse_of: :member
 
+#Author: Abdelrahman Sakr
+#Team : 1
+#Declaring a new relationship between the User and the Cart.
+has_one :cart , class_name: 'Cart'
+
+
 validates :first_name,
 :presence => true,
 :length => {

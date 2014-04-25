@@ -9,18 +9,35 @@ HealthyGrocery::Application.routes.draw do
   resources :wishlines
 
 
-  resources :wishlists
+   resources :wishlists
 
 
- root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+   root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
 
  devise_for :members, :controllers => {:registrations => "registrations", }
+
   
+ resources :lineitems
+
+
+ resources :carts
+
+
+ root :to => "members#index"
+ devise_for :members, :controllers => {:registrations => "registrations", }
+
+ resources :members
+
  
-  
+   #for user profile page
+   resources :members do
+   get 'edit'
+   
+ end
 
-
+  match 'user_root' => redirect("/member/show")
   resources :members
+
  
 
   resources :items do

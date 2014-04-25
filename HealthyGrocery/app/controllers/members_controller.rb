@@ -90,8 +90,5 @@ end
   #Function : Make a list of recommended items to the member, using the 
   #recommended items and restricted items for his diseases.
   #Parameters : diseases - diseases' recommended items - diseases' restricted items.
-
-
-   
-
+end
 

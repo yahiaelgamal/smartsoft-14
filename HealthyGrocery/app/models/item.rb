@@ -36,5 +36,13 @@ class Item
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
   has_and_belongs_to_many :orders , class_name: "Order" , inverse_of: :items
+  
+  #Author: Abdelrahman Sakr
+  #Team : 1
+  #Declaring a relationship between the two classes Item, and Lineitem.
+  has_many :lineitems, class_name: "Lineitem"
+  
+
+  
 end
 
