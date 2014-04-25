@@ -3,15 +3,10 @@
 <!-- This page is the view of the items from the members' point of view-->
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
 <style>
-
-
 /*    <!-- Author: mina sedra -->
 <!-- Team: 2 -->*/
-    body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");}
-  navigationbar{
-float=right;
-}
-
+    body { background-image:url("http://
+    freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");}
 </style>
 
 
@@ -23,48 +18,48 @@ float=right;
 -->
 
 
-<script type="text/javascript">
+  <script type="text/javascript">
 // display the lightbox
   function lightbox(insertContent){
 
-	// add lightbox/shadow <div/>'s if not previously added
-	if($('#lightbox').size() == 0){
-		var theLightbox = $('<div id="lightbox"/>');
-		var theShadow = $('<div id="lightbox-shadow"/>');
-		$(theShadow).click(function(e){
-			closeLightbox();
-		});
-		$('body').append(theShadow);
-		$('body').append(theLightbox);
-	}
+  // add lightbox/shadow <div/>'s if not previously added
+  if($('#lightbox').size() == 0){
+  var theLightbox = $('<div id="lightbox"/>');
+  var theShadow = $('<div id="lightbox-shadow"/>');
+  $(theShadow).click(function(e){
+  closeLightbox();
+  });
+  $('body').append(theShadow);
+  $('body').append(theLightbox);
+  }  
 
-	// remove any previously added content
-	$('#lightbox').empty();
+  // remove any previously added content
+  $('#lightbox').empty();
 
-	// insert HTML content
-	if(insertContent != null){
-		$('#lightbox').append(insertContent);
-	}
+  // insert HTML content
+  if(insertContent != null){
+  $('#lightbox').append(insertContent);
+  }
 
 
-	// move the lightbox to the current window top + 100px
-	$('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
+  // move the lightbox to the current window top + 100px
+  $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
 
-	// display the lightbox
-	$('#lightbox').show();
-	$('#lightbox-shadow').show();
+  // display the lightbox
+  $('#lightbox').show();
+  $('#lightbox-shadow').show();
 
   } 
 
   // close the lightbox
   function closeLightbox(){
 
-	// hide lightbox and shadow <div/>'s
-	$('#lightbox').hide();
-	$('#lightbox-shadow').hide();
+  // hide lightbox and shadow <div/>'s
+  $('#lightbox').hide();
+  $('#lightbox-shadow').hide();
 
-	// remove contents of lightbox in case a video or other content is actively playing
-	$('#lightbox').empty();
+  // remove contents of lightbox in case a video or other content is actively playing
+  $('#lightbox').empty();
   }  
 </script>
 
@@ -75,19 +70,20 @@ float=right;
 
 
 
-<h1>Click on items to see their properties</h1>
+  <h1>Click on items to see their properties</h1>
 
 
- <% if current_member.records.count > 0 %>
+  <% if current_member.records.count > 0 %>
 
-<h1>Items as shown to members</h1>
+  <h1>Items as shown to members</h1>
 
-<navigationbar>
+  <navigationbar>
   <h5>Filter for products </h5>
   <%# Author : Antoine Foti
       Team : 2
-      Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated %>
-<%= form_tag '/items/members_items_index', :method => 'get' do %>
+      Here is the filter search form where the user can fill any 
+      desired field and submit so that according to it the filter will be calculated %>
+  <%= form_tag '/items/members_items_index', :method => 'get' do %>
   <p>
     <opt>
     <span class="label">Name :</span>
@@ -109,7 +105,8 @@ float=right;
     <%= radio_button_tag 'status', "available" %> <span class="badge">Available Only</span> 
     </opt></br>
     <opt>
-    <%= radio_button_tag 'status', "all", :checked => true %> <span class="badge">All Products</span> 
+    <%= radio_button_tag 'status', "all", :checked => true %> 
+    <span class="badge">All Products</span> 
     </opt></br></br>
     <%= submit_tag "Filter" %>
   </p>
@@ -139,7 +136,8 @@ float=right;
     <td>Rating: <%= item.rating %></td></br>
 
 
-    <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart', lineitems_path(item_id: item) %>
+    <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart',
+    lineitems_path(item_id: item) %>
     </br>
 
     <button>Add to wishlist</button></br>
@@ -149,11 +147,12 @@ float=right;
 
 <% end %>
     <!-- Author: mina sedra -->
-<!-- Team: 2 -->
+    <!-- Team: 2 -->
 
  <% if current_member.records.count == 0 %>
   <h2><p>PLEASE     ADD     YOUR    HEALTHRECORD FIRST </p></h2> 
-                   <li><%= link_to "<button>My Healthrecords</button>".html_safe,indexhealthrecord_path(current_member)%></li>
+                   <li><%= link_to "<button>My Healthrecords
+  </button>".html_safe,indexhealthrecord_path(current_member)%></li>
 
 <% end %>
 
