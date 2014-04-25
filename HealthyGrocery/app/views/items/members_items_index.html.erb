@@ -45,9 +45,14 @@
     // move the lightbox to the current window top + 100px
     $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
 
+
     // display the lightbox
     $('#lightbox').show();
     $('#lightbox-shadow').show();
+
+    <%= include_gon %>
+<script type="text/javascript">
+
 
     }  
 
@@ -125,7 +130,6 @@
     <td>Available: <%= item.status %></td><br/>
     <td>Description: <%= item.description %></td></br>
     <td>Rating: <%= item.rating %></td></br>
-
     <textarea rows=1 cols=4></textarea> KG  <button>Add to shopping cart</button></br>
     <button>Add to wishlist</button></br>');"><img src= "<%= item.image%>"  height=150 width=150 >
     </img></a> </br>
@@ -142,6 +146,24 @@
 
     <button>Add to wishlist</button></br>
 
+
+    <td>Proteins: <%= item.protein %></td></br>
+    <td>Carbohydrates: <%= item.carbohydrate %></td></br>
+    <td>Calcium: <%= item.calcium %></td></br>
+    <td>Fats: <%= item.fat %></td></br>
+<!--AUTHOR: Mahmoud Eldesouky
+    Team :5
+    takes the quantiy from the user -->
+<%= form_tag("members_items_index/add", method: "post", multipart: true) do %>
+  <p>
+    <%= hidden_field_tag(:item, item.id ) %>
+    <%= text_field_tag :amount %>
+    <%= submit_tag "Add to shopping cart", :name => nil %>
+  </p>
+  <button>Add to wish list</button>
+<% end %>
+    
+
   </icon>
 <% end %>
 
@@ -157,3 +179,12 @@
 <% end %>
 
 </body>
+<!--AUTHOR: Mahmoud Eldesouky
+    Team :5
+    parameter : message
+    recieving the violation message as a parameter from items_controller and poping it to the user -->
+<script type="text/javascript">
+if (!gon.flag&&gon.message!=null){
+alert(gon.message)
+}
+</script>
