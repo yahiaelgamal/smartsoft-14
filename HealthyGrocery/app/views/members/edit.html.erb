@@ -1,5 +1,6 @@
 <h2>Edit Profile </h2>  
- <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>  
+ <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %> 
+ <%if @admin == false%>   
  <%= devise_error_messages! %>  
    <div><%= f.label :email %><br />  
    <%= f.email_field :email, autofocus: true , :value=> @member.email%></div>  
@@ -28,7 +29,16 @@
   <%-# for Address  but it is removed from the master -%>  
    <!-- <div><%= f.label :address %> <i>(we need your current password to confirm your changes)</i><br />  
    <%= f.text_field :address, autocomplete: "off" , :value=> @member.address%></div> -->  
-  <hr>  
+  <hr> 
+
+    <%else%> 
+  <h3>Edit Security settings</h3>  
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />  
+   <%= f.password_field :password, autocomplete: "off" %></div>  
+  <div><%= f.label :password_confirmation %><br />  
+   <%= f.password_field :password_confirmation, autocomplete: "off" %></div>  
+  <hr> 
+    <%end%>  
   <%-# for the current password to confrim the changes-%>  
      <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />  
     <%= f.password_field :current_password, autocomplete: "off" %></div>  
