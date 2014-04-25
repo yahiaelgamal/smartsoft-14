@@ -28,6 +28,7 @@ end
 
 
 
+
 #Authour: mohamed lotfy 
 #Team : 1
 #method : current_wish_new
@@ -45,5 +46,31 @@ def current_wish_new
 	end
 		  @newwish 
 end  
+
+
+
+
+#Author: Abdelrahman Sakr
+#Team : 1
+#Method : current_cart_new
+#Paramters : None
+#This method checks whether the user has a shopping cart or not, if exists it returns it, else it creates
+#a new cart and returns it.
+
+def current_cart_new
+  if current_member.cart.nil?
+    @newcart = Cart.create!
+    current_member.cart = @newcart
+    current_member.save
+  else
+    @newcart = current_member.cart
+  end
+  @newcart
+end
+
+
+
+
+  
 
 end

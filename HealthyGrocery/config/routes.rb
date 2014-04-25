@@ -19,6 +19,17 @@ HealthyGrocery::Application.routes.draw do
 
  devise_for :members, :controllers => {:registrations => "registrations", }
 
+  
+ resources :lineitems
+
+
+ resources :carts
+
+
+ root :to => "members#index"
+ devise_for :members, :controllers => {:registrations => "registrations", }
+
+ resources :members
  
    #for user profile page
    resources :members do

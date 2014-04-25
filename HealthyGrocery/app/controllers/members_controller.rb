@@ -45,6 +45,7 @@ end
  end  
 end  
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin   
+<<<<<<< HEAD
 #session["isAdmin"]= @admin
 
   def show_restricted_items
@@ -70,4 +71,8 @@ end
   end
 
 end  
+=======
+#session["isAdmin"]= @admin  
+  end  
+>>>>>>> master
 
