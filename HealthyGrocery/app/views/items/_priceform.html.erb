@@ -1,4 +1,6 @@
-<%-# makes the form for the retailer to be able to update the price of an item-%>
+<!-- Author : Amr Nabil -->
+<!-- Team 3 -->
+<!-- makes the form for the retailer to be able to update the price of an item -->
 <%= form_for @item, url: updateprice_path(@item) do |f| %>  
  <% if @item.errors.any? %>
    <div id="error_explanation">

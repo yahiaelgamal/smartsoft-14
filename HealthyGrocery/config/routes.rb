@@ -69,9 +69,12 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   end
   end
   match '/items' => 'items#index'
-   
+  #Author : Amr Nabil
+  #Team 3 
   #path for editing the price of an item  
   get '/items/:id/editprice', to: 'items#editprice', as: 'editprice'
+  #Author : Amr Nabil
+  #Team : 3
   #in order to update the price of an item
   put 'items/:id/updateprice', to:'items#updateprice', as: 'updateprice'
 

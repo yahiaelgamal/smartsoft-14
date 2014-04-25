@@ -16,6 +16,8 @@ respond_to do |format|
       format.json { render json: @items }
     end
   end
+  #Author : Amr Nabil
+  #Team 3
   # GET /items/1/editprice
   # gets the item with the price to be edited and store it in variable @item
   def editprice
@@ -132,8 +134,11 @@ def viewusers
       end
     end
   end
-  
-  # update the existing price for an item taking its value from the def editprice
+  #Author : Amr Nabil
+  #Team 3
+  #Put /items/1
+  #put /items/1.json
+  #update the existing price for an item taking its value from the def editprice
   def updateprice
     @item = Item.find(params[:id])
     respond_to do |format|
