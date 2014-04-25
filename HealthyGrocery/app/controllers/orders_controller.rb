@@ -60,16 +60,10 @@ end
   def create
     
   @order = Order.new
+  current_member.cart.lineitems.each do |l|
+    @order.lines.push(l)
+  end
   @order.orderNo = current_member.orders.count + 1
-  @l_items = current_member.cart.lineitems
-    
-#getting the items
-  @l_items.each do |l| 
-
-    @order.items << l.item
-    @order.save
-   end
-
  respond_to do |format|
       if @order.save
         format.html { redirect_to chooseOrder_path(@order), notice: 'Order was successfully created.' }
