@@ -29,7 +29,7 @@ HealthyGrocery::Application.routes.draw do
    # I added this path for the show_restricted_items
    #controller and view
    
-   post :show_restricted_items, :on => :collection
+   get :show_restricted_items, :on => :collection
    
  end
 
