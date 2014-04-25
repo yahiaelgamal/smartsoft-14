@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <table class="table">
-  <caption>Order</caption>
+  <caption><h1 style='font-family:Courier'>Order</h1></caption>
   <thead>
     <tr>
       <th>attribute</th>
@@ -44,6 +44,14 @@
       <td><b>Route:</b></td>
       <td><%= @order.route%></td>
     </tr>
+     <tr>
+      <td><b>Finished:</b></td>
+      <td><%= @order.isfinished%></td>
+    </tr>
+     <tr>
+      <td><b>Delivered:</b></td>
+      <td><%= @order.delivered%></td>
+    </tr>
   </tbody>
 </table>
 
@@ -51,9 +59,32 @@
 
 
 <table class="table">
-<thead></thead>
+<thead>
+  <th>Item</th>
+  <th></th>
+</thead>
 
+<tbody>
+<% @items.each do |item|%>
+<td><%= item.id %></td>
+<td><%= link_to 'item',{:controller  => 'items', :action => 'show',id: item}%></td>
+<% end %>
+</tbody>
 
+</table>
+
+<table class="table">
+<thead>
+  <th>Package</th>
+  <th></th>
+</thead>
+
+<tbody>
+<% @packages.each do |package|%>
+<td><%= package.id %></td>
+<td><%= link_to 'package',{:controller  => 'packages', :action => 'show',id: package}  %></td>
+<% end %>
+</tbody>
 
 </table>
 
