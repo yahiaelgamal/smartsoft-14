@@ -134,10 +134,12 @@ class DiseasesController < ApplicationController
   #  array ii - contains the ids of the new recommended items "from the checkboxes"
   #  array  r - contains the ids of the new restricted items "from the checkboxes"     
   def update
-    @disease = Disease.new(params[:disease])
+    @disease = Disease.find(params[:id])
     @reco = params[:ii]
     @rest = params[:r]
     @flag = true
+    @disease.recommended_items = []
+    @disease.restricted_items = []
 
     if @reco != nil
         @reco.each do |s| 
@@ -170,7 +172,7 @@ class DiseasesController < ApplicationController
     respond_to do |format|
       if (!@flag)
         @disease.errors.add(:same_item, "can`t be picked for both recommended and restricted items")
-        format.html { render action: "new" }
+        format.html { render action: "edit" }
         format.json { render json: @disease.errors, status: :unprocessable_entity }
         
       elsif (@disease.save)
@@ -178,7 +180,7 @@ class DiseasesController < ApplicationController
         format.json { head :no_content }
         
       else 
-        format.html { render action: "new" }
+        format.html { render action: "edit" }
         format.json { render json: @disease.errors, status: :unprocessable_entity }
       end
     end

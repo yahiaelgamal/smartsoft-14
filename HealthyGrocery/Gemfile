@@ -19,6 +19,7 @@ gem 'devise'
 
 
 
+
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
 
@@ -30,7 +31,7 @@ gem 'formtastic'
 gem 'formtastic-bootstrap' 
 
 
-
+gem "gon" , '5.0.4'
 
 
 
