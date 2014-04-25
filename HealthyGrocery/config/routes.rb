@@ -70,14 +70,19 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   end
   end
   match '/items' => 'items#index'
+   
+  #path for editing the price of an item  
   get '/items/:id/editprice', to: 'items#editprice', as: 'editprice'
+  #in order to update the price of an item
+  put 'items/:id/updateprice', to:'items#updateprice', as: 'updateprice'
+
   resources :routes
 
 
   resources :shipments
 
 
-  resources :trucks
+  resources :trucks 
 
 
   resources :orders

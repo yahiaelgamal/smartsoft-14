@@ -16,7 +16,9 @@ respond_to do |format|
       format.json { render json: @items }
     end
   end
-def editprice
+  # GET /items/1/editprice
+  # gets the item with the price to be edited and store it in variable @item
+  def editprice
     @item = Item.find(params[:id])
   end
   # GET /items/1
@@ -134,6 +136,20 @@ def viewusers
       end
     end
   end
+  
+  # update the existing price for an item taking its value from the def editprice
+  def updateprice
+    @item = Item.find(params[:id])
+    respond_to do |format|
+      if @item.update_attributes(params[:item])
+        format.html {redirect_to @item, notice: 'Items price was successfully updated.'}
+        format.json {head :no_content}
+      else
+        format.html { render action: "editprice" } 
+        format.json { render json: @item.errors, status: :unprocessable_entity}
+      end
+    end
+  end       
 
   # DELETE /items/1
   # DELETE /items/1.json
