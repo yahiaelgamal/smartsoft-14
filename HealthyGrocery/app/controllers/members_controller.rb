@@ -46,7 +46,13 @@ end
 end  
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin   
 #session["isAdmin"]= @admin
-
+  
+  #Atuhor: ahmed helali
+  #team 2
+  #method: show_restricted_items
+  #parameters: none
+  #function: reponsible for the view of the same name
+  
   def show_restricted_items
     
     @member = current_member
@@ -57,6 +63,12 @@ end
       @admin = false
     end
   end
+  
+  #Atuhor: ahmed helali
+  #team 2
+  #method: show_ideal_calories
+  #parameters: none
+  #function: reponsible for the view of the same name
 
   def show_ideal_calories
     
