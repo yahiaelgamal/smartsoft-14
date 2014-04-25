@@ -13,6 +13,17 @@ team : 1-->
  <%= link_to 'My WareHouse', items_path%> 
 <%if @wishexist == true%>
 <%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
+
+<div>
+<h2>Actions summary:</h2>
+<ul>
+	<li>The last item you added is <%=Item.last.name%></li>
+	<li>The last disease you added is <%=Disease.last.name%></li>\
+	<li>You have added a truck and it's driver is <%=Truck.last.driver%></li>
+	
+
+</ul>
+<div/>
 <%end%>
 
 

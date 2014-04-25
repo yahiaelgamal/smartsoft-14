@@ -37,7 +37,9 @@ module HealthyGrocery
     # Configure the default encoding used in templates for Ruby 1.9.
 
 
-
+     config.generators do |g|
+      g.orm :active_record
+    end
 
 
     config.encoding = "utf-8"
