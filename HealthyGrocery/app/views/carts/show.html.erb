@@ -1,0 +1,29 @@
+<%#
+Author: Abdelrahman Sakr
+#Team : 1
+#View : Show Cart
+#This view shows the user's cart, it shows the quantity of each item, the price of each item, the total cost of all items, and it also have the functionalities: show item, remove item, change quantity.
+%>
+
+<% if notice %>
+<p id="notice"><%= notice %></p> <% end %>
+<h2><%= current_member.first_name %>'s Shopping Cart</h2>
+
+<% @cart.lineitems.each do |i| %> 
+  <ul>
+    <td><%= i.quantity %></td>
+    <td>x </td>
+    <td><%= i.item.name %></td>
+    <td><%= link_to 'Show Item', item_path(i.item) %></td>
+    <td><%= link_to 'Remove Item', i, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Change quantity', edit_lineitem_path(i) %> </td>
+    <td>Total price = <%= i.quantity*(i.item.price) %> </td>
+    <% @cart.totalcost = @cart.totalcost+(i.quantity*(i.item.price)) %>
+  </ul>
+<% end %>
+
+<td>Total Cost of All Items = <%= @cart.totalcost %> </td>
+
+<hr/>
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

@@ -1,34 +1,74 @@
 HealthyGrocery::Application.routes.draw do
   
+  resources :healthrecords
+
+
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
  get 'members/hub'
 
-  resources :health_records
-
-
-
+resources :health_records
+  
+ resources :items do
+  member do
+   post 'toggle_pause'
+  end
+ end
+  # Author: Hazem Amin
+  # Component: 5
+  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
+  # it's invoked on a single item (member)
 
   resources :wishlines
 
+  resources :drivers
+  # Author: Hazem Amin 
+  # Component: 5
+  # Drivers page
 
-  resources :wishlists
 
+   resources :wishlists
 
- root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+  resources :wishlines
+get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
+
+   root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
 
  devise_for :members, :controllers => {:registrations => "registrations", }
+
   
+ resources :lineitems
+
+
+
+ resources :carts
+
+
+ root :to => "members#index"
+ devise_for :members, :controllers => {:registrations => "registrations", }
+
+ resources :members
+
  
-  
+   #for user profile page
+   resources :members do
+   get 'edit'
+   
+ end
 
-
+  resources :members  
+ # get "get_records"
   resources :members do
    member do 
     post :order_checkboxes
     end 
   end
-
-  resources :items
+  match 'user_root' => redirect("/member/show")
+  resources :members
+  resources :items do
+  collection do
+  get "members_items_index"
+  end
+  end
   match '/items' => 'items#index'
 
   resources :routes
@@ -44,6 +84,17 @@ HealthyGrocery::Application.routes.draw do
 
 
   resources :users
+
+
+    resources :items do
+    member do
+      post 'toggle_pause'
+    end
+  end
+  # Author: Hazem Amin
+  # Component: 5
+  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
+  # it's invoked on a single item (member)
   
 
   match '/generateroutes' => 'generateroutes#index'
