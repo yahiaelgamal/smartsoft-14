@@ -58,5 +58,16 @@ end
     end
   end
 
+  def show_ideal_calories
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+
 end  
 

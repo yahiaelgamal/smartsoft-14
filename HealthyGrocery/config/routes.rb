@@ -30,6 +30,7 @@ HealthyGrocery::Application.routes.draw do
    #controller and view
    
    get :show_restricted_items, :on => :collection
+   get :show_ideal_calories, :on => :collection
    
  end
 
