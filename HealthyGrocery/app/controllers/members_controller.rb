@@ -42,7 +42,6 @@ def show
 end  
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin   
 #session["isAdmin"]= @admin  
-end  
 
 def edit  
   @member = Member.find(params[:member_id])  
@@ -66,37 +65,34 @@ end
    end
  end
 
-    end
+ def recommended_items 
+   @member = Member.find(params[:id])
+   if !@member.diseases.empty?
+     @recommended_items = Array.new
 
-
-   def recommended_items 
-    @member = Member.find(params[:id])
-    if !@member.diseases.empty?
-      @recommended_items = Array.new
-
-      @member.diseases.each do |disease|
-        if !@disease.recommended_items.empty?
-          @disease.recommended_items.each do |item|
-            unless  @recommended_items.include? (item)
-              @recommended_items.push(item)
-            end
-          end
-        end
-      end
+     @member.diseases.each do |disease|
+       if !@disease.recommended_items.empty?
+         @disease.recommended_items.each do |item|
+           unless  @recommended_items.include? (item)
+             @recommended_items.push(item)
+           end
+         end
+       end
+     end
     
-      @member.diseases.each do |disease|
-        if !@disease.restricted_items.empty?
-          @recommended_items.each do |item|
-            if @disease.restricted_items.include? (item)
-              @recommended_items.delete(item)
-            end
-          end
-        end
-      end
-      @member.recommended_items = recommended_items
-      @member.save
-    end
-  end
+     @member.diseases.each do |disease|
+       if !@disease.restricted_items.empty?
+         @recommended_items.each do |item|
+           if @disease.restricted_items.include? (item)
+             @recommended_items.delete(item)
+           end
+         end
+       end
+     end
+     @member.recommended_items = recommended_items
+     @member.save
+   end
+ end
 
   #Author : Magd Elshebokshy
   #Component : 3
