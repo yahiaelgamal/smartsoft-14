@@ -85,6 +85,20 @@ def shipmentupdate
        end  
        redirect_to :action => :index
 end
+#Author: Mennatallah Aziz
+#Team: 4
+#Method name: showMap
+#Function: it sends the array of Points of each route to the javascript file in order to be accessed and showed on the map 
+#Parameters: shipment
+def show
+    shipment = Shipment.find(params[:id])
+       routes=shipment.routes
+       for route in routes
+        points=route.arrOfPoints
+
+    gon.myarray=points
+end
+end
  
 end 
 
