@@ -67,6 +67,8 @@ Author: Abdelrahman Sakr
   <%-# to show basic info-%>  
    <h2><%= @member.first_name%> 's Profile</h2>   
   <%-# to edit profile-%>  
+   <%= link_to 'edit profile', edit_member_path(@member) %>  
+   <%= @admin%>    
   <%-# to show the basic info -%>  
  
 
