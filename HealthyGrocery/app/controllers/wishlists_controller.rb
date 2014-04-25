@@ -1,7 +1,8 @@
 class WishlistsController < ApplicationController
-  #Author: mohamed lotfy 
+
+  #Author: Mohamed Saeed
   #team : 1
-  #paramters: none
+  #Paramters: none
   # GET /wishlists
   # GET /wishlists.json
   def index
@@ -12,9 +13,10 @@ class WishlistsController < ApplicationController
       format.json { render json: @wishlists }
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # GET /wishlists/1
   # GET /wishlists/1.json
   def show
@@ -26,9 +28,10 @@ class WishlistsController < ApplicationController
       format.json { render json: @wishlist }
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # GET /wishlists/new
   # GET /wishlists/new.json
   def new
@@ -39,16 +42,18 @@ class WishlistsController < ApplicationController
       format.json { render json: @wishlist }
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # GET /wishlists/1/edit
   def edit
     @wishlist = Wishlist.find(params[:id])
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # POST /wishlists
   # POST /wishlists.json
   def create
@@ -64,9 +69,9 @@ class WishlistsController < ApplicationController
       end
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # PUT /wishlists/1
   # PUT /wishlists/1.json
   def update
@@ -82,9 +87,10 @@ class WishlistsController < ApplicationController
       end
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # DELETE /wishlists/1
   # DELETE /wishlists/1.json
   def destroy
