@@ -1,0 +1,55 @@
+<%= form_for(@disease) do |f| %>
+  <% if @disease.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@disease.errors.count, "error") %> prohibited this disease from being saved:</h2>
+
+      <ul>
+      <% @disease.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :information %>
+    <%= f.text_field :information %>
+  </div>       
+
+  <label>Recommended Items:</label>
+  <div class="scrollbox">
+    <%  Item.each do |i| %>
+      <div class="checkbox">
+        <% if @disease.recommended_items != nil &&  @disease.recommended_items.include?(i) %>
+         <%= check_box_tag "ii[]",i.id, true %> <label> <%= i.name %> </label>
+        <%else%>
+         <%= check_box_tag "ii[]",i.id %> <label> <%= i.name %> </label>
+        <%end%>
+      </div>
+    <% end %>
+  </div>
+  <br/>
+
+  <label>Restricted Items:</label>
+  <div class="scrollbox">
+    <%  Item.each do |i| %> 
+      <div class="checkbox">
+        <% if @disease.restricted_items != nil &&  @disease.restricted_items.include?(i) %>
+          <%= check_box_tag "r[]",i.id, true %> <label> <%= i.name %> </label>
+        <%else%>
+          <%= check_box_tag "r[]",i.id %> <label> <%= i.name %> </label>
+        <%end%>
+      </div>
+    <% end %>
+  </div>
+  <br />
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
