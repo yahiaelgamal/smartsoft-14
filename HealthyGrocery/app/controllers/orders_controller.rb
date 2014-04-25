@@ -11,7 +11,7 @@ before_filter :require_login ,:except=>[:invalid]
 #Function: gets the pending orders from the database and orders them by the slected column,and also supports searching 
 #for keywords 
   def index
-    @orders = Order.where(:status=>'pending').order_by(sortable_column_order).search(params[:search])
+    @orders = Order.where(:isfinished=>true).order_by(sortable_column_order).search(params[:search])
 
     respond_to do |format|
       format.html # index.html.erb
