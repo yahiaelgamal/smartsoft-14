@@ -36,7 +36,7 @@
 
     <%= javascript_include_tag "application" %>
   </head>
-  <body>
+  <body class='<%= controller.controller_name %>'>
 
     <div class="navbar navbar-inverse">
       <div class="navbar-inner">
@@ -49,9 +49,11 @@
           <a class="brand" href="/members/hub">HealthyGrocery</a>
           <div class="container nav-collapse">
             <ul class="nav">
+
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to members AND Users -->
+
               <% @tmp = current_member %>
               <li><%= link_to "Hub", '/members'+'/hub' %></li>
               <li><%= link_to "Profile", @tmp %></li>
@@ -62,8 +64,18 @@
       <% if current_member.email!='admin@gmail.com' %>
                 <li><%= link_to 'Go Shopping',{:controller  => 'items', :action => 
                 'members_items_index'}, :class => "opt"%></li>
+
                  <li><%= link_to 'My Healthrecords','/members'+'/hub' %></li>
+
+                 <!-- Author: Ahmed Helali
+                      Team 2
+                      Function: redirects the user to see his
+                      restricted items
+                  -->
+
+                 <li><%= link_to 'Restricted Items', {:controller  => 'members', :action => 'show_restricted_items'} %>
       <% end %>
+
 
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
