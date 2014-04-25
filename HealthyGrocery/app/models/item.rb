@@ -59,4 +59,5 @@ class Item
   #Declaring a relationship between the two classes Item, and Lineitem.
   has_many :lineitems, class_name: "Lineitem"
 
+end
 
