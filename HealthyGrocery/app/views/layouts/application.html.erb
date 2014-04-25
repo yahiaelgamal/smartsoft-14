@@ -62,10 +62,13 @@
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Users Only-->
       <% if current_member.email!='admin@gmail.com' %>
+      <!--Author: mina sedra -->
+              <!--Team: 2 -->
+            <!--   TO BE SURE THAT HE/SHE HAS AT LEAST ONE HEALTHRECORED -->
+           
+
                 <li><%= link_to 'Go Shopping',{:controller  => 'items', :action => 
                 'members_items_index'}, :class => "opt"%></li>
-
-                 <li><%= link_to 'My Healthrecords','/members'+'/hub' %></li>
 
                  <!-- Author: Ahmed Helali
                       Team 2
@@ -77,7 +80,12 @@
                   <li><%= link_to 'Calculate Calories', {:controller  => 'members', :action => 'show_ideal_calories'} %>
       <% end %>
 
-
+              
+              <!--Author: mina sedra -->
+              <!--Team: 2 -->
+              
+                   <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
+      <% end %>
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
@@ -109,7 +117,7 @@
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
-          
+
         </div><!--/row-->
 
       <footer>
