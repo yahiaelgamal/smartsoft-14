@@ -9,6 +9,10 @@ class Item
 	field :rating , type: Integer 
 	field :status , type: Boolean
 	field :category , type: String
+  field :paused , type: Boolean
+  # Author: Hazem
+  #Component: 5
+  # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
 
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }

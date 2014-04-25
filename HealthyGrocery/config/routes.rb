@@ -4,9 +4,7 @@ HealthyGrocery::Application.routes.draw do
  get 'members/hub'
 
   resources :health_records
-
-
-
+  
 
 
  
@@ -14,13 +12,22 @@ HealthyGrocery::Application.routes.draw do
   resources :wishlines
 
 
-  resources :wishlists
+   resources :wishlists
 
 
- root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+   root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
 
  devise_for :members, :controllers => {:registrations => "registrations", }
-  
+
+ 
+   #for user profile page
+   resources :members do
+   get 'edit'
+   
+ end
+
+  match 'user_root' => redirect("/member/show")
+
   resources :members
  
 
@@ -44,6 +51,17 @@ HealthyGrocery::Application.routes.draw do
 
 
   resources :users
+
+
+    resources :items do
+    member do
+      post 'toggle_pause'
+    end
+  end
+  # Author: Hazem Amin
+  # Component: 5
+  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
+  # it's invoked on a single item (member)
   
 
   match '/generateroutes' => 'generateroutes#index'
