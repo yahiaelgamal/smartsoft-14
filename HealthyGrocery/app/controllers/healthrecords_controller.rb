@@ -51,7 +51,7 @@ class HealthrecordsController < ApplicationController
   end
 
   # GET /healthrecords/1/edit
-  #Author : mina sedra
+#Author : mina sedra
 #team : 2
 #method: index
 #params : none
