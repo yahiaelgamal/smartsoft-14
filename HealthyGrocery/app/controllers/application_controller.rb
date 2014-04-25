@@ -26,13 +26,10 @@ def after_sign_in_path_for(resource_or_scope)
 	@member
 end
 
-
-
-
-#Authour: mohamed lotfy 
+#Authour: Mohamed Saeed
 #Team : 1
-#method : current_wish_new
-#paramters : none
+#Method : current_wish_new
+#Paramters : none
 #it checks if the user has a wishlist after the sign in or sign up if yes it uses it if no it creates a new one for him
 def current_wish_new
 	if current_member.wishlist.nil?
@@ -46,9 +43,6 @@ def current_wish_new
 	end
 		  @newwish 
 end  
-
-
-
 
 #Author: Abdelrahman Sakr
 #Team : 1
