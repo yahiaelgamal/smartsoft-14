@@ -47,6 +47,12 @@ end
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin   
 #session["isAdmin"]= @admin
 
+  #Author: Ahmed Helali
+  #Team 2
+  #method: show_restricted_items
+  #function: controller for the view by the same name
+  #parameters: none
+
   def show_restricted_items
     
     @member = current_member
