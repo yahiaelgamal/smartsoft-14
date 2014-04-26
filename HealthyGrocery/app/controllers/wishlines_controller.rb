@@ -1,7 +1,8 @@
 class WishlinesController < ApplicationController
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # GET /wishlines
   # GET /wishlines.json
   def index
@@ -12,9 +13,10 @@ class WishlinesController < ApplicationController
       format.json { render json: @wishlines }
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # GET /wishlines/1
   # GET /wishlines/1.json
   def show
@@ -25,9 +27,10 @@ class WishlinesController < ApplicationController
       format.json { render json: @wishline }
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # GET /wishlines/new
   # GET /wishlines/new.json
   def new
@@ -38,16 +41,18 @@ class WishlinesController < ApplicationController
       format.json { render json: @wishline }
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # GET /wishlines/1/edit
   def edit
     @wishline = Wishline.find(params[:id])
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # POST /wishlines
   # POST /wishlines.json
   def create
@@ -78,9 +83,10 @@ class WishlinesController < ApplicationController
     redirect_to 'http://localhost:3000/404.html'
   end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none
   # PUT /wishlines/1
   # PUT /wishlines/1.json
   def update
@@ -96,9 +102,10 @@ class WishlinesController < ApplicationController
       end
     end
   end
-  #Author: mohamed lotfy 
-  #team : 1
-  #paramters: none  
+
+  #Author: Mohamed Saeed
+  #Team : 1
+  #Paramters: none  
   # DELETE /wishlines/1
   # DELETE /wishlines/1.json
   def destroy
