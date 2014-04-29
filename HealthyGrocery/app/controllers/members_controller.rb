@@ -51,7 +51,15 @@ end
 
    #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
 #session["isAdmin"]= @admin
-
+#author: Fatma EmranS
+#Team 2
+#Funtion: Checkboxes for the people with health records of the user who wants to order.
+def order_checkboxes
+  @healthrecords = current_member.records
+  @records_ids = params[:all]
+  current_member.active_records = @records
+  current_member.save
+end
 
   
 #Author : mina sedra

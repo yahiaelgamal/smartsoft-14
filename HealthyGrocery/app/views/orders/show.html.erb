@@ -1,35 +1,92 @@
 <p id="notice"><%= notice %></p>
+<table class="table">
+  <caption><h1 style='font-family:Courier'>Order</h1></caption>
+  <thead>
+    <tr>
+      <th>attribute</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Orderno:</b></td>
+      <td><%= @order.orderNo %></td>
+    </tr>
+    <tr>
+      <td><b>Price:</b></td>
+      <td><%= @order.price %></td>
+    </tr>
+     <tr>
+      <td><b>Weight:</b></td>
+      <td><%= @order.weight %></td>
+    </tr>
+    <tr>
+      <td><b>Volume:</b></td>
+      <td><%= @order.volume%></td>
+    </tr>
+     <tr>
+      <td><b>Status:</b></td>
+      <td><%= @order.status%></td>
+    </tr>
+     <tr>
+      <td><b>Date:</b></td>
+      <td><%= @order.date%></td>
+    </tr>
+     <tr>
+      <td><b>Coordinates:</b></td>
+      <td><%= @order.coordinates%></td>
+    </tr>
+     <tr>
+      <td><b>Owner:</b></td>
+      <td><%= @order.member%></td>
+    </tr>
+     <tr>
+      <td><b>Route:</b></td>
+      <td><%= @order.route%></td>
+    </tr>
+     <tr>
+      <td><b>Finished:</b></td>
+      <td><%= @order.isfinished%></td>
+    </tr>
+     <tr>
+      <td><b>Delivered:</b></td>
+      <td><%= @order.delivered%></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <b>Orderno:</b>
-  <%= @order.orderNo %>
-</p>
 
-<p>
-  <b>Price:</b>
-  <%= @order.price %>
-</p>
 
-<p>
-  <b>Weight:</b>
-  <%= @order.weight %>
-</p>
 
-<p>
-  <b>Volume:</b>
-  <%= @order.volume %>
-</p>
+<table class="table">
+<thead>
+  <th>Item</th>
+  <th></th>
+</thead>
 
-<p>
-  <b>Status:</b>
-  <%= @order.status %>
-</p>
+<tbody>
+<% @items.each do |item|%>
+<td><%= item.id %></td>
+<td><%= link_to 'item',{:controller  => 'items', :action => 'show',id: item}%></td>
+<% end %>
+</tbody>
 
-<p>
-  <b>Date:</b>
-  <%= @order.date %>
-</p>
+</table>
 
+<table class="table">
+<thead>
+  <th>Package</th>
+  <th></th>
+</thead>
+
+<tbody>
+<% @packages.each do |package|%>
+<td><%= package.id %></td>
+<td><%= link_to 'package',{:controller  => 'packages', :action => 'show',id: package}  %></td>
+<% end %>
+</tbody>
+
+</table>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
