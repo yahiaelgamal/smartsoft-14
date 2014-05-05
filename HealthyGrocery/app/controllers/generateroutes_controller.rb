@@ -1,6 +1,9 @@
 class GenerateroutesController < ApplicationController
 
 def index 
+
+@orders = order_district  Order.all
+
 end
 
 #Author: Ahmed AbdElsattar
@@ -84,6 +87,30 @@ def shipmentupdate
            Shipment.where(id: last_N.id).update(cut_off_time: cut_off_time)
        end  
        redirect_to :action => :index
+end
+
+
+def order_district (orders)
+arr_of_orders_district = Array.new
+arr_of_district = Array.new
+#
+for order_1 in orders
+  district = order_1.district
+if !(arr_of_district.include? district)
+       arr_of_district.push(district)
+end 
+end 
+#
+for district in arr_of_district 
+arr_of_orders = Array.new
+for order in orders
+     if order.district === district
+     arr_of_orders.push(order)
+     end 
+end 
+arr_of_orders_district.push(arr_of_orders)
+end 
+return arr_of_orders_district
 end
  
 end 
