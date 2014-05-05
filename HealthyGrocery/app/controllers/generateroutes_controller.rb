@@ -89,29 +89,32 @@ def shipmentupdate
        redirect_to :action => :index
 end
 
+#Author: Ahmed AbdElsattar
+#Team: 4
+#Method name: order_district 
+#Function: take an array of orders and returns it into array of arrays according to the district 
+#Parameters:  orders Array  
 
-def order_district (orders)
-arr_of_orders_district = Array.new
-arr_of_district = Array.new
-#
-for order_1 in orders
-  district = order_1.district
-if !(arr_of_district.include? district)
-       arr_of_district.push(district)
-end 
-end 
-#
-for district in arr_of_district 
-arr_of_orders = Array.new
-for order in orders
-     if order.district === district
-     arr_of_orders.push(order)
-     end 
-end 
-arr_of_orders_district.push(arr_of_orders)
-end 
-return arr_of_orders_district
-end
+def order_district (orders)  
+ arr_of_orders_district = Array.new  
+ arr_of_district = Array.new   
+ for order_1 in orders  
+  district = order_1.district  
+ if !(arr_of_district.include? district)  
+     arr_of_district.push(district)  
+ end   
+ end   
+ for district in arr_of_district   
+ arr_of_orders = Array.new  
+ for order in orders  
+    if order.district === district  
+    arr_of_orders.push(order)  
+    end   
+ end   
+ arr_of_orders_district.push(arr_of_orders)  
+ end   
+ return arr_of_orders_district  
+ end  
  
-end 
+end   
 
