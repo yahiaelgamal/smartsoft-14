@@ -113,9 +113,9 @@ class HealthrecordsController < ApplicationController
   def destroy
     @healthrecord = Healthrecord.find(params[:id])
     @healthrecord.destroy
-
-    respond_to do |format|
-      format.html { redirect_to healthrecords_url }
+ # redirect_to "/members/current_member/get_records"
+     respond_to do |format|
+      format.html { redirect_to indexhealthrecord_path(current_member) }
       format.json { head :no_content }
     end
   end
