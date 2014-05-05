@@ -1,9 +1,6 @@
 class GenerateroutesController < ApplicationController
 
 def index 
-
-@orders = order_district  Order.all
-
 end
 
 #Author: Ahmed AbdElsattar
