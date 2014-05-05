@@ -31,7 +31,6 @@ HealthyGrocery::Application.routes.draw do
       #ROUTES FOR ITEMS
 #----------------------------------------------------------------------------------------------------#
  post "items/members_items_index/add" => "items#add"
-  match '/items' => 'items#index'
  resources :items do
    collection do
   get "members_items_index"
