@@ -106,15 +106,14 @@ body {
     
     <!-- HTML code from Bootply.com editor -->
     
-    <body style="background:orange;overflow:hidden;padding-top:50px"  >
+    <body style="overflow:hidden;background:#000000" >
         
-     
-
+     <div style="position:absolute;background:orange;width:90%;height:85%;left:70px;top: 60px;">
 
 <!-- Carousel
 ================================================== -->
-<div>
-<div id="myCarousel" class="carousel slide" style="left:200px; width:70%;padding; top:20px">
+
+<div id="myCarousel" class="carousel slide" style="left:200px; width:70%;padding; top:40px">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -162,20 +161,31 @@ body {
 </div>
 <!-- /.carousel -->
 
-<div id="home-row-2" class="row clearfix" style="position:relative;left: 160px;bottom:90px ">
+<div id="home-row-2" class="row clearfix" style="position:relative;left: 160px;bottom:70px ">
+
 
         <div class="col-12 col-sm-4" style="position:relative;left:300px;">
           <div class="home-hover navigation-slide" data-slide="4">
-            <a href="http://www.google.com"><img src="http://www.clipartbest.com/download?clipart=7Taor8BTA" style="width:20%"></a>
+            <a href="http://www.google.com"><img src="http://www.clipartbest.com/download?clipart=7Taor8BTA" style="width:20%"></a> 
           </div>
-          <span style = "position:relative;left:20px;font-size:20px">Sign Up</span>
+          <span style = "position:relative;left:20px;font-size:20px;bottom:20px">Sign Up</span>
         </div>
 
 
 
-        <div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="3"><a href="http://localhost:3000"><img src="http://pngimg.com/upload/banana_PNG850.png" style="width:20%"></a></div><span style="position:relative;left:10px;font-size:20px">Sign In</span></div>
-        <div class="col-12 col-sm-4" style="position:relative;right:300px;"><div class="home-hover navigation-slide" data-slide="5"><img src="http://www.freelogovectors.net/wp-content/uploads/2013/02/kiwi.png" style="width:20%"></div><span style="position:relative;right:10px;font-size:20px">Take a Tour</span></div>
+        <div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="3"><a href="http://localhost:3000"><img src="http://pngimg.com/upload/banana_PNG850.png" style="width:20%"></a></div><span style="position:relative;left:10px;font-size:20px;bottom:20px">Sign In</span></div>
+
+
+
+        <div class="col-12 col-sm-4" style="position:relative;right:300px;"><div class="home-hover navigation-slide" data-slide="5"><img src="http://www.freelogovectors.net/wp-content/uploads/2013/02/kiwi.png" style="width:20%"></div><span style="position:relative;right:10px;font-size:20px;bottom:20px">Take a Tour</span></div>
+
+
       </div><!-- /row -->
+      
+
+
+
+
       </div>  
         <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -188,8 +198,23 @@ body {
 
         
         <!-- JavaScript jQuery code from Bootply.com editor -->
-        
+          <script>
+  $(document).ready(function(e) {
+    var lis = $('.nav > li');
+    menu_focus( lis[0], 1 );
+    
+    $(".fancybox").fancybox({
+      padding: 10,
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  
+  });
+  </script>
 
-        
+        </div>
     </body>
 </html>
