@@ -60,25 +60,12 @@
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Users Only-->
       <% if current_member.email!='admin@gmail.com' %>
-
-      <!--Author: mina sedra -->
-              <!--Team: 2 -->
-            <!-- TO BE SURE THAT HE/SHE HAS AT LEAST ONE HEALTHRECORED -->
-           
-
-
                 <li><%= link_to 'Go Shopping',{:controller => 'items', :action =>
-
                 'members_items_index'}, :class => "opt"%></li>
-              
-              <!--Author: mina sedra -->
-              <!--Team: 2 -->
-              
                    <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
+                   <li><%= link_to 'My Wishlist' , 'http://localhost:3000/wishlists/show'%></li>
+                  <li><%= link_to "My Shopping Cart", 'http://localhost:3000/carts/show' %></li>
       <% end %>
-
-
-
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
@@ -93,7 +80,7 @@
           <li style="padding-left: 30px;padding-top: 4px; "><input type="text" class="form-control" placeholder="Search"></li>
         
             
-            <li style="padding-left: 300px; "><%= link_to 'Logout',
+            <li style="padding-left: 150px; "><%= link_to 'Logout',
             destroy_member_session_path, :method=> 'delete' %></li>
             </ul>
           </div><!--/.nav-collapse -->
