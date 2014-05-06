@@ -1,4 +1,5 @@
 <!--to check the adminstration level-->
+<%=csrf_meta_tag%>
 <% if @admin == false%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
 <%= link_to_function "Back", "history.back()" %>
