@@ -16,7 +16,13 @@ respond_to do |format|
       format.json { render json: @items }
     end
   end
-
+  #Author : Amr Nabil
+  #Team 3
+  # GET /items/1/editprice
+  # gets the item with the price to be edited and store it in variable @item
+  def editprice
+    @item = Item.find(params[:id])
+  end
   # GET /items/1
   # GET /items/1.json
   # show a certain item from a table item using the attribute id
@@ -128,6 +134,23 @@ def viewusers
       end
     end
   end
+  #Author : Amr Nabil
+  #Team 3
+  #Put /items/1
+  #put /items/1.json
+  #update the existing price for an item taking its value from the def editprice
+  def updateprice
+    @item = Item.find(params[:id])
+    respond_to do |format|
+      if @item.update_attributes(params[:item])
+        format.html {redirect_to @item, notice: 'Items price was successfully updated.'}
+        format.json {head :no_content}
+      else
+        format.html { render action: "editprice" } 
+        format.json { render json: @item.errors, status: :unprocessable_entity}
+      end
+    end
+  end       
 
   # DELETE /items/1
   # DELETE /items/1.json

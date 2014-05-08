@@ -12,6 +12,7 @@
 <p>
   <b>Price:</b>
   <%= @item.price %>
+<%= link_to 'Edit' , editprice_path(@item) %> 
 </p>
 
 <p>
@@ -42,3 +43,4 @@
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%-# a link redirecting back to the item page-%>
 <%= link_to 'Back', items_path %>
+
