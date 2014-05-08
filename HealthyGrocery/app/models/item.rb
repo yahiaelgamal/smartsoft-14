@@ -17,6 +17,56 @@ class Item
   # Author: Hazem
   #Component: 5
   # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
+  field :fiber , type: Integer
+  field :vitamin_a , type: Integer
+  field :vitamin_b , type: Integer
+  field :vitamin_c , type: Integer
+  field :vitamin_d , type: Integer
+  field :vitamin_e , type: Integer
+  field :vitamin_k , type: Integer
+  field :fiber , type: Integer
+  field :folate, type: Integer
+  field :thiamin, type: Integer
+  field :riboflavin, type: Integer
+  field :pantothenic_acid, type: Integer
+  field :choline, type: Integer
+  field :niacin, type: Integer
+  field :betaine, type: Integer
+  field :calcium, type: Integer
+  field :copper, type: Integer
+  field :fluoride, type: Integer
+  field :iron, type: Integer
+  field :magnesium, type: Integer
+  field :manganese, type: Integer
+  field :phosphorus, type: Integer
+  field :selenium, type: Integer
+  field :zinc, type: Integer
+  field :potassium, type: Integer
+  field :sodium, type: Integer
+  field :starch, type: Integer
+  field :sugar, type: Integer
+  field :fatty_acids, type: Integer
+  field :trans_fat, type: Integer
+  field :saturated_fat, type: Integer
+  field :monounsaturated, type: Integer
+  field :polyunsaturated, type: Integer
+  field :trans_monoenoic, type: Integer
+  field :trans_polyenoic, type: Integer
+  field :omega_3, type: Integer
+  field :cartenoids, type: Integer
+  field :tocopherol, type: Integer
+  field :retinol, type: Integer
+  field :beta_carotene, type: Integer
+  field :alpha_carotene, type: Integer
+  field :sucrose, type: Integer
+  field :glucose, type: Integer
+  field :fructose, type: Integer
+  field :maltose, type: Integer
+  field :calories, type: Integer
+  field :minerals, type: Integer
+  #Author: Hazem Amin
+  #Component: 5
+  #Adding additional attributes for the various items
 
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
