@@ -135,7 +135,6 @@ def viewusers
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-
     respond_to do |format|
       format.html { redirect_to items_url }
       format.json { head :no_content }
@@ -334,7 +333,7 @@ def viewusers
     flash[:flag] = @flag
     
     #Author: Abdelrahman Sakr
-    #Team : 1
+    #Team: 1
     #The following "if condition" checks if there are no violations found then the item will be
     #added to the user's shopping cart, else a popup message will appear without adding the item
     #to the cart.
