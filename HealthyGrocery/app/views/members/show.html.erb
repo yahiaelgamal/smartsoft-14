@@ -15,9 +15,9 @@ team : 1-->
   <%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
 <%end%>
 <% if Member.find_by(email:"admin@gmail.com").addresses.first%>
-  <%= button_to 'My WareHouse Location', current_member.addresses[0], :method => :get %>
+  <%= button_to 'My Warehouse Location', current_member.addresses[0], :method => :get %>
 <%else%>
-  <%= button_to 'My WareHouse Location', new_address_path, :method => :get, notice: 'You did not add your wareHouse Location yet'%>
+  <%= button_to 'My Warehouse Location', new_address_path, :method => :get, data: { confirm: 'You did not add your warehouse Location yet. Would you like to add it now ?'} %>
 <%end%>
 
 
