@@ -80,7 +80,7 @@ Navigate Here </br></br>
 <!-- printing the rows of the table -->
 <table>
   <tr>
-      <th>Name</th>
+    <th>Name</th>
     <th>Price</th>
     <th>Category</th>
     <th>Stock</th>
@@ -92,6 +92,53 @@ Navigate Here </br></br>
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
+    <th>Fiber</th>
+    <th>Vitamin a</th>
+    <th>Vitamin b</th>
+    <th>Vitamin c</th>
+    <th>Vitamin d</th>
+    <th>Vitamin e</th>
+    <th>Vitamin k</th>
+    <th>Folate</th>
+    <th>Thiamin</th>
+    <th>Riboflavin</th>
+    <th>Pantothenic acid</th>
+    <th>Choline</th>
+    <th>Niacin</th>
+    <th>Betaine</th>
+    <th>Calcium</th>
+    <th>Copper</th>
+    <th>Fluoride</th>
+    <th>Iron</th>
+    <th>Magnesium</th>
+    <th>Manganese</th>
+    <th>Phosphorus</th>
+    <th>Selenium</th>
+    <th>Zinc</th>
+    <th>Potassium</th>
+    <th>Sodium</th>
+    <th>Starch</th>
+    <th>Sugar</th>
+    <th>Fatty acids</th>
+    <th>Trans fat</th>
+    <th>Saturated_fat</th>
+    <th>Monounsaturated</th>
+    <th>Polyunsaturated</th>
+    <th>Trans_monoenoic</th>
+    <th>Trans_polyenoic</th>
+    <th>Omega_3</th>
+    <th>Cartenoids</th>
+    <th>Tocopherol</th>
+    <th>Retinol</th>
+    <th>Beta_carotene</th>
+    <th>Alpha_carotene</th>
+    <th>Sucrose</th>
+    <th>Glucose</th>
+    <th>Fructose</th>
+    <th>Maltose</th>
+    <th>Calories</th>
+    <th>Minerals</th>
   </tr>
 <!-- looping on the items in the items model in the DB-->
 <%= javascript_include_tag "application" %>
@@ -115,11 +162,52 @@ Navigate Here </br></br>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-    
-    
-
-
+    <td><%= item.fiber %></td>
+    <td><%= item.vitamin_a %></td>
+    <td><%= item.vitamin_b %></td>
+    <td><%= item.vitamin_c %></td>
+    <td><%= item.vitamin_d %></td>
+    <td><%= item.vitamin_e %></td>
+    <td><%= item.vitamin_k %></td>
+    <td><%= item.folate %></td>
+    <td><%= item.thiamin %></td>
+    <td><%= item.riboflavin %></td>
+    <td><%= item.pantothenic_acid %></td>
+    <td><%= item.choline %></td>
+    <td><%= item.niacin %></td>
+    <td><%= item.betaine %></td>
+    <td><%= item.calcium %></td>
+    <td><%= item.copper %></td>
+    <td><%= item.fluoride %></td>
+    <td><%= item.iron %></td>
+    <td><%= item.magnesium %></td>
+    <td><%= item.manganese %></td>
+    <td><%= item.phosphorus %></td>
+    <td><%= item.selenium %></td>
+    <td><%= item.zinc %></td>
+    <td><%= item.potassium %></td>
+    <td><%= item.sodium %></td>
+    <td><%= item.starch %></td>
+    <td><%= item.sugar %></td>
+    <td><%= item.fatty_acids %></td>
+    <td><%= item.trans_fat %></td>
+    <td><%= item.saturated_fat %></td>
+    <td><%= item.monounsaturated %></td>
+    <td><%= item.polyunsaturated %></td>
+    <td><%= item.trans_monoenoic %></td>
+    <td><%= item.trans_polyenoic %></td>
+    <td><%= item.omega_3 %></td>
+    <td><%= item.cartenoids %></td>
+    <td><%= item.tocopherol %></td>
+    <td><%= item.retinol %></td>
+    <td><%= item.beta_carotene %></td>
+    <td><%= item.alpha_carotene %></td>
+    <td><%= item.sucrose %></td>
+    <td><%= item.glucose %></td>
+    <td><%= item.fructose %></td>
+    <td><%= item.maltose %></td>
+    <td><%= item.calories %></td>
+    <td><%= item.minerals %></td>
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
     <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
 
