@@ -56,7 +56,7 @@ class DiseasesController < ApplicationController
   # POST /diseases
   # POST /diseases.json
 
-  #Authour: Jihan Adel 
+  #Author: Jihan Adel 
   #Team : 5
   #method name : create
   #function : creates a new disease with its name, information, recommended and restricted items
@@ -71,6 +71,19 @@ class DiseasesController < ApplicationController
   #  array  r - contains the ids of the restricted items "from the checkboxes"            
   def create
     @disease = Disease.new(params[:disease])
+    both = false
+    fats_up = params[:fat_up].to_i
+    fats_down = params[:fat_down].to_i
+    if (fats_up != 0 && fats_down != 0)
+      both = true
+    elsif fats_up != 0
+        @disease.fat =  fats_up
+        @disease.save
+     else   
+        @disease.fat = 0 - fats_down
+        @disease.save
+    end
+
     @reco = params[:ii]
     @rest = params[:r]
     @flag = true
@@ -104,7 +117,11 @@ class DiseasesController < ApplicationController
     end     
     
     respond_to do |format|
-      if (!@flag)
+      if both
+        @disease.errors.add(:vaules, "should be either raised up or dropped down, not both! ")
+        format.html { render action: "new" }
+        format.json { render json: @disease.errors, status: :unprocessable_entit}
+      elsif (!@flag)
         @disease.errors.add(:same_item, "can`t be picked for both recommended and restricted items")
         format.html { render action: "new" }
         format.json { render json: @disease.errors, status: :unprocessable_entity }
