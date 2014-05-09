@@ -24,7 +24,6 @@ class Item
   field :vitamin_d , type: Float
   field :vitamin_e , type: Float
   field :vitamin_k , type: Float
-  field :fiber , type: Float
   field :folate, type: Float
   field :thiamin, type: Float
   field :riboflavin, type: Float
