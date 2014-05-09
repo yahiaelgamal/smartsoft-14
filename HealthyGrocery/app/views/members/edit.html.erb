@@ -1,3 +1,16 @@
+<button type="button" class="btn btn-danger">Edit Profile</button>
+<button type="button" class="btn btn-danger">test</button>
+<%= link_to "Back", :back %>  
+<button type="button" class="btn btn-success"><p style="color: white"><%= link_to "Bacccck", :back %></p1></button>
+
+<%= button_to "Back", :back %>  
+<button type="button" class="btn btn-success"><p style="color: white"><%= button_to "Back", :back %>  </p1></button>
+
+<div class="btn btn-success">
+  <%= link_to "Back", :back %>  , :class => "btn" %>
+</div>
+
+
 <h2>Edit Profile</h2>  
  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>  
  <%= devise_error_messages! %>  
@@ -38,6 +51,8 @@
  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" },
 	  method: :delete %></p>  
  <%= link_to "Back", :back %>  
+ <a href="http://localhost:3000/members/" class="btn btn-primary" >Back</a>
+ <button type="button" class="btn btn-primary"><%= link_to "Back", :back %></button>
  <%-  
  # auther: mostafa Adel mohamed   
  # component: C3  
