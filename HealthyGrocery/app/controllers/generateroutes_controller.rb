@@ -85,6 +85,13 @@ def shipmentupdate
        end  
        redirect_to :action => :index
 end
+
+
+
+def get_optimised_points(arroforders,timelimit)
+   gon.longlat=[5,4,3,3]
+
+  end
  
 end 
 
