@@ -31,6 +31,10 @@ class Order
 	has_many :packages , class_name: 'Package' , inverse_of: :order
 	has_and_belongs_to_many :address , class_name: 'Address',inverse_of: :order
 	has_many :items , class_name: 'Item' , inverse_of: :order
+	#Author: FatmaEmran
+	#T2
+	#Function: lines of order items.
+	has_many :lines , class_name: 'Lineitem', inverse_of: :order
 
 #This method is responsible of getting the 
 #exact order that user searched for using the order number
