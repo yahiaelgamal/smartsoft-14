@@ -31,4 +31,9 @@
 <% if params[:lat] != nil || params[:lng] !=nil%>
 <% @address.update_attribute(:coordinates , [params[:lng],params[:lat]]) %>  
 <%end%>
-<%= button_to 'Verify address', showaddresses_path, :method => :get  %>
+<br>
+<% if current_member.email == 'admin@gmail.com' %>
+  <%= button_to 'Verify address', current_member, :method => :get %>
+<% else %>
+  <%= button_to 'Verify address', showaddresses_path, :method => :get %>
+<% end %>

@@ -69,4 +69,8 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 </script>
 
 <%= link_to 'Edit', edit_address_path(@address) %> |
-<%= link_to 'Back', showaddresses_path %>
+<% if current_member.email == 'admin@gmail.com' %>
+  <%= link_to 'Back', current_member %>
+<% else %>  
+  <%= link_to 'Back', showaddresses_path %>
+<% end %>

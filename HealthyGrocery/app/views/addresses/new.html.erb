@@ -1,5 +1,11 @@
-<h1>New address</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', showaddresses_path %>
+<% if current_member.email == 'admin@gmail.com' && current_member.addresses[0] %>
+  <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
+<% else %>
+  <h1>New address</h1>
+  <%= render 'form' %>
+<% end %>
+<% if current_member.email == 'admin@gmail.com' %>
+  <%= link_to 'Back', current_member %>
+<% else %>  
+  <%= link_to 'Back', showaddresses_path %>
+<% end %>

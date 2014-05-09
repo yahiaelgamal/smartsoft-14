@@ -8,14 +8,17 @@ team : 1-->
 
 
 <% if @admin == true%>
-<h1>hello admin</h1>
-<%= link_to 'Site Members', members_path%>
- <%= link_to 'My WareHouse', items_path%> 
-<%if @wishexist == true%>
-<%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
+  <h1>hello admin</h1>
+  <%= link_to 'Site Members', members_path%>
+  <%= link_to 'My WareHouse', items_path%> 
+<% if @wishexist == true%>
+  <%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
 <%end%>
-
-
+<% if Member.find_by(email:"admin@gmail.com").addresses.first%>
+  <%= button_to 'My WareHouse Location', current_member.addresses[0], :method => :get %>
+<%else%>
+  <%= button_to 'My WareHouse Location', new_address_path, :method => :get, notice: 'You did not add your wareHouse Location yet'%>
+<%end%>
 
 
 <!--to check the adminstration level
@@ -23,19 +26,19 @@ author:mohamed lotfy team:1-->
 <%elsif @admin == false%>
 
 
-<h3>Member</h3>
-<p>Email: <%= @member.email %></p>
-<h1> hello <%= @member.email%></h1>
-<p>First Name:</p>
-<h2> <%= @member.first_name%></h2>
-<p>Last Name:</p>
-<h2><%= @member.birth_date%></h2>
-<h2><%= @member.phone_num%></h2>
-<% if @member.gender %>
-<h4>Male</h4>
-<%else%>
-<h4>Female</h4>
-<%end%>
+  <h3>Member</h3>
+  <p>Email: <%= @member.email %></p>
+  <h1> hello <%= @member.email%></h1>
+  <p>First Name:</p>
+  <h2> <%= @member.first_name%></h2>
+  <p>Last Name:</p>
+  <h2><%= @member.birth_date%></h2>
+  <h2><%= @member.phone_num%></h2>
+  <% if @member.gender %>
+    <h4>Male</h4>
+  <%else%>
+    <h4>Female</h4>
+  <%end%>
 
 
 
@@ -44,13 +47,12 @@ author:mohamed lotfy team:1-->
 
 
 
-<%if @wishexist == true%>
-<%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
-<%end%>
+  <%if @wishexist == true%>
+    <%= link_to 'My wishlist' , 'http://localhost:3000/wishlists/show'%>
+  <%end%>
+  <%= link_to 'Add new address', new_address_path%>
+  <%= link_to 'Show addresses', showaddresses_path%>
+  <%= link_to 'Show orders', showOrders_path%>
+  <%= link_to 'add orders', new_order_path%>
 <%end%>
 </br>
-<%= link_to 'Add new address', new_address_path%>
-<%= link_to 'Show addresses', showaddresses_path%>
-<%= link_to 'Show orders', showOrders_path%>
-<%= link_to 'add orders', new_order_path%>
-
