@@ -64,12 +64,49 @@ Author: Abdelrahman Sakr
  <%elsif @admin == false%>  
   <!-- to show user profile -->  
   <%-# to show basic info-%>  
-   <h2><%= @member.first_name%> 's Profile</h2>   
+   <h2><%= @member.first_name%>'s Profile</h2>   
   <%-# to edit profile-%>  
    <%= link_to 'Edit Profile', edit_member_path(@member) %>  
+
+
+
+    <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="edit_member_path(@member)">
+                    Action 
+                    <span class="icon-cog icon-white"></span><span class="caret"></span>
+                </a>
+
+   <button type="button" class="btn btn-primary">Edit Profile</button>
+
+   <button class="btn btn-primary">EDITTTT</button>
+
+  <a href="http://localhost:3000/members/edit" class="btn btn-primary" > EDIT PROFILEeEeEE </a>
+
+  
+  <a class="btn btn-primary" href="http://localhost:3000/members/edit" ><h5 style="color: #white">
+      Edit Profile!
+    </h5></a>
+
+<br>
+<br><br><br>
+    <a href="http://localhost:3000/members/edit" ><button type="button" class="btn btn-primary">Edit Profile</button></a>
+    <a href="http://localhost:3000/members/edit" ><button type="button" class="btn btn-success">Edit Profile</button></a>
+    <a href="http://localhost:3000/members/edit" ><button type="button" class="btn btn-info">Edit Profile</button></a>
+    <a href="http://localhost:3000/members/edit" ><button type="button" class="btn btn-warning">Edit Profile</button></a>
+    <a href="http://localhost:3000/members/edit" ><button type="button" class="btn btn-danger">Edit Profile</button></a>
+
+
+
+
+
+    <a href="http://localhost:3000/members/edit" ><button type="button" class="btn btn-danger"><%= link_to 'Edit Profile', edit_member_path(@member) %>  </button></a>
+
+  
+
+  <button type="button" class="btn btn-success"><p style= "color: #red"><%= link_to 'Edit Profile', edit_member_path(@member) %></p></button>
+
   <%-# to show the basic info -%>  
  
-
+    <h3>HEYYYYYYYYyYYyyYyYY</h3>
     <h2><p>Email: </p></h2>  
     <%= @member.email %>  
     <h2><p>First Name:</p></h2>  
