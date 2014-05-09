@@ -24,8 +24,7 @@ HealthyGrocery::Application.routes.draw do
     post :order_checkboxes
     end 
  end
-  # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
-    # get "get_records"
+
 
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR ITEMS
