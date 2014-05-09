@@ -1,3 +1,52 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+icon{
+font-size: 20px;
+float:left;
+border-width: thick;
+border-style: dotted;
+border-color: black;
+}
+
+navigationbar{
+height:800px;
+width:235px;
+background:#FF9933;
+font-size: 15px;
+  float:left;
+}
+
+h1{
+
+height:10px;
+font-size: 40px;
+width:100%;
+position:relative;
+  text-align:center;
+  float:left;
+}
+
+table{
+  margin:5px;
+  padding: 5px;
+  border:1px solid #0000ff;
+  height:auto;
+  width:auto;
+  float:left;
+  text-align:center;
+background:orange;
+}
+
+opt
+{
+
+position:absolute;
+width:130px;
+height:50px;
+-webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
+transition:width 0.4s;
+padding:50px;
+left-margin:50px;
+  text-align:center;
+}

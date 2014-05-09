@@ -135,11 +135,16 @@ def viewusers
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
+
     respond_to do |format|
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
   end
+
+def is_a_number?(s)
+  s.to_s.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true
+end
 
 #Author: Sameh Metias
 #team: 3
@@ -160,101 +165,106 @@ def viewusers
 #from the member point of view. 
 #And if the user leaves any field empty without specifying what to filter, it will not be considered as a value and 
 #the filter search will be calculated according to the remaining non-empty filtering fields.
-    if (params[:status] == 'available') 
-      @items = Item.where :name => params[:name], :category => params[:category], :price => params[:price], :rating => params[:rating], :status => true 
-      if (params[:name] == '') 
-        @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating], :status => true 
-      end 
-      if (params[:category] == '') 
-        @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating], :status => true 
-      end 
-      if (params[:price] == '') 
-        @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating], :status => true 
-      end 
-      if (params[:rating] == '') 
-        @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price], :status => true 
-      end 
-      if (params[:name] == '') && (params[:category] == '') 
-        @items = Item.where :rating => params[:rating], :price => params[:price], :status => true 
-      end 
-      if (params[:name] == '') && (params[:price] == '') 
-        @items = Item.where :rating => params[:rating], :category => params[:category], :status => true 
-      end 
-      if (params[:name] == '') && (params[:rating] == '') 
-        @items = Item.where :category => params[:category], :price => params[:price], :status => true 
-      end 
-      if (params[:category] == '') && (params[:price] == '') 
-        @items = Item.where :name => params[:name], :rating => params[:rating], :status => true 
-      end 
-      if (params[:category] == '') && (params[:rating] == '') 
-        @items = Item.where :name => params[:rating], :price => params[:price], :status => true 
-      end 
-      if (params[:price] == '') && (params[:rating] == '') 
-        @items = Item.where :name => params[:name], :category => params[:category], :status => true 
-      end 
-      if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') 
-        @items = Item.where :rating => params[:rating], :status => true 
-      end 
-      if (params[:name] == '') && (params[:category] == '') && (params[:rating] == '') 
-        @items = Item.where :price => params[:price], :status => true 
-      end 
-      if (params[:name] == '') && (params[:rating] == '') && (params[:price] == '') 
-        @items = Item.where :category => params[:category], :status => true 
-      end 
-      if (params[:rating] == '') && (params[:category] == '') && (params[:price] == '') 
-        @items = Item.where :name => params[:name], :status => true 
-      end 
-      if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') && (params[:rating] == '') 
-        @items = Item.where :status => true 
-      end 
-    else 
-      @items = Item.where :name => params[:name], :category => params[:category], :price => params[:price], :rating => params[:rating] 
-      if (params[:name] == '') 
-        @items = Item.where :category => params[:category], :price => params[:price], :rating => params[:rating] 
-      end 
-      if (params[:category] == '') 
-        @items = Item.where :name => params[:name], :price => params[:price], :rating => params[:rating] 
-      end 
-      if (params[:price] == '') 
-        @items = Item.where :category => params[:category], :name => params[:name], :rating => params[:rating] 
-      end 
-      if (params[:rating] == '') 
-        @items = Item.where :category => params[:category], :name => params[:name], :price => params[:price] 
-      end 
-      if (params[:name] == '') && (params[:category] == '') 
-        @items = Item.where :rating => params[:rating], :price => params[:price] 
-      end 
-      if (params[:name] == '') && (params[:price] == '') 
-        @items = Item.where :rating => params[:rating], :category => params[:category] 
-      end 
-      if (params[:name] == '') && (params[:rating] == '') 
-        @items = Item.where :category => params[:category], :price => params[:price] 
-      end 
-      if (params[:category] == '') && (params[:price] == '') 
-        @items = Item.where :name => params[:name], :rating => params[:rating] 
-      end 
-      if (params[:category] == '') && (params[:rating] == '') 
-        @items = Item.where :name => params[:rating], :price => params[:price] 
-      end 
-      if (params[:price] == '') && (params[:rating] == '') 
-        @items = Item.where :name => params[:name], :category => params[:category] 
-      end 
-      if (params[:name] == '') && (params[:category] == '') && (params[:price] == '') 
-        @items = Item.where :rating => params[:rating] 
-      end 
-      if (params[:name] == '') && (params[:category] == '') && (params[:rating] == '') 
-        @items = Item.where :price => params[:price] 
-      end 
-      if (params[:name] == '') && (params[:rating] == '') && (params[:price] == '') 
-        @items = Item.where :category => params[:category] 
-      end 
-      if (params[:rating] == '') && (params[:category] == '') && (params[:price] == '') 
-        @items = Item.where :name => params[:name] 
-      end 
-      if (params[:name] == '' || params[:name].nil?) && (params[:category] == '' || params[:category].nil?) && (params[:price] == '' || params[:price].nil?) && (params[:rating] == '' || params[:rating].nil?) 
-        @items = Item.all 
-      end 
-    end   
+
+    @items = Item.all
+    @notification = ""
+    @warning = ""
+    @type_warning = "" 
+    if Item.all.count > 0
+    if (params[:status] == 'available' && @items.count > 0)
+      @items = @items.where :status => true
+      if !(Item.all.where :status => true).exists?
+          @warning += "Sorry..There is nothing available | "
+        else
+          @notification += "Showing available products only | "
+        end
+      else
+        @notification += "Showing available & not available products | " 
+    end
+    if (params[:name] != '' && !params[:name].nil? && @items.count > 0)
+      if !is_a_number?(params[:name])
+        @items = @items.where :name => Regexp.new(params[:name])
+      if !(Item.all.where :name => Regexp.new(params[:name])).exists?
+          @warning += "Sorry..There is no such name " + params[:name] + " | "
+        else 
+          @notification += "Showing results for " + params[:name] + " | "
+        end
+      else
+      @type_warning += "Please choose correct characters for searching the name | " 
+    end
+    end
+    if (params[:category] != '<None>' && !params[:category].nil? && @items.count > 0)
+      @items = @items.where :category => params[:category]
+      if !(Item.all.where :category => params[:category]).exists?
+          @warning += "Sorry..There is no items in this category | "
+        else
+          @notification += "Items in " + params[:category] + "'s category | "
+        end
+      end
+    if (params[:price_from] != '' && !params[:price_from].nil? && @items.count > 0)
+      if is_a_number?(params[:price_from])
+        @items = @items.where :price.gte => params[:price_from]
+      if !(Item.all.where :price.gte => params[:price_from]).exists?
+          @warning += "Sorry..There is no items starting from " + params[:price_from] + "$ | "
+        else
+          @notification += "Starting from " + params[:price_from] + "$ | "
+        end
+    else
+      @type_warning += "Please choose a number for the starting price | "
+    end
+    end
+    if (params[:price_to] != '' && !params[:price_to].nil? && @items.count > 0)
+      if is_a_number?(params[:price_to])
+        @items = @items.where :price.lte => params[:price_to]
+      if !(Item.all.where :price.lte => params[:price_to]).exists?
+          @warning += "Sorry..There is no items below " + params[:price_to] + "$ | "
+        else
+          @notification += "Going to " + params[:price_to] + "$ | "
+        end
+    else
+      @type_warning += "Please choose a number for the ending price | " 
+    end
+    end
+    if (params[:rating_from] != '' && !params[:rating_from].nil? && @items.count > 0)
+      if is_a_number?(params[:rating_from])
+        @items = @items.where :rating.gte => params[:rating_from]
+      if !(Item.all.where :rating.gte => params[:rating_from]).exists?
+          @warning += "Sorry..There is no rating starting from " + params[:rating_from] + " rate(s) | "
+        else
+          @notification += "Starting from " + params[:rating_from] + "rate(s) | "
+        end
+    else
+      @type_warning += "Please choose a number for the starting rating | "
+    end
+    end
+    if (params[:rating_to] != '' && !params[:rating_to].nil? && @items.count > 0)
+      if is_a_number?(params[:rating_to])
+        @items = @items.where :rating.lte => params[:rating_to]
+      if !(Item.all.where :rating.lte => params[:rating_to]).exists?
+          @warning += "Sorry..There is no items below " + params[:rating_to] + " rate(s) | "
+        else
+          @notification += "Going to " + params[:rating_to] + "rate(s) | "
+        end
+    else
+      @type_warning += "Please choose a number for the ending rating | "
+    end
+    end
+    if(params[:sort_by] == "Name" || params[:sort_by].nil? && @items.count > 0)
+      @items = @items.order_by(:name.asc)
+    end
+    if(params[:sort_by] == "Price")
+      @items = @items.order_by(:price.asc)
+    end
+    if(params[:sort_by] == "Category")
+      @items = @items.order_by(:category.asc)
+    end
+
+@items = @items.page(params[:page]).per(5)
+
+  end
+    
+    
+    
   end
    
     #AUTHOR: Mahmoud Eldesouky
