@@ -42,11 +42,11 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
  devise_for :members, :controllers => {:registrations => "registrations", }
 
 
-  
+ #Author: Abdelrahman Sakr
+ #Team: 1
+ #Routes for shopping cart to pass item_id and amount as parameters 
  resources :lineitems
-
-
-
+ get "/lineitems/:item_id/:amount/add_to_cart", :to =>"lineitems#add_to_cart", as:"addtocart"
  resources :carts
 
 

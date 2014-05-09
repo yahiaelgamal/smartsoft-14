@@ -122,20 +122,11 @@ left-margin:50px;
     <td>Available: <%= item.status %></td><br/>
     <td>Description: <%= item.description %></td></br>
     <td>Rating: <%= item.rating %></td></br>
-
-
-    <textarea rows="1" cols="4"></textarea> KG  <button>Add to shopping cart</button></br>
-    <%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1-->
-
-    <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart', lineitems_path(item_id: item) %>
-    </br>
-   
-
-
     <td>Proteins: <%= item.protein %></td></br>
     <td>Carbohydrates: <%= item.carbohydrate %></td></br>
     <td>Calcium: <%= item.calcium %></td></br>
     <td>Fats: <%= item.fat %></td></br>
+
 <!--AUTHOR: Mahmoud Eldesouky
     Team :5
     takes the quantiy from the user -->
@@ -143,11 +134,11 @@ left-margin:50px;
   <p>
     <%= hidden_field_tag(:item, item.id ) %>
     <%= text_field_tag :amount %>
-    <%= submit_tag "Add to shopping cart", :name => nil %>
-  </p>
- 
+    <%= submit_tag "Add to Cart", :name => nil %>
+  </p> 
 <% end %>
-    
+
+<%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1--> 
 
   </icon>
 <% end %>
