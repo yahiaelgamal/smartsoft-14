@@ -69,7 +69,7 @@ HealthyGrocery::Application.routes.draw do
   resources :lineitems
   #Author: Abdelrahman Sakr
   #Team: 1
-  #Passing item_id and amount as parameters for add_to_cart method
+  #Function: Passing item_id and amount as parameters for add_to_cart method
   get "/lineitems/:itemidnew/:amountnew/add_to_cart", :to =>"lineitems#add_to_cart", as:"addtocart"
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR CARTS

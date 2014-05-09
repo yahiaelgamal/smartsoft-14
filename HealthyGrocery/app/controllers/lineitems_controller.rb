@@ -6,7 +6,7 @@ class LineitemsController < ApplicationController
   #Team: 1
   #Method: add_to_cart
   #Parameters: item_id , amount
-  #This method adds lineitem to the shopping cart if it is available in stock.
+  #Function: This method adds lineitem to the shopping cart if it is available in stock.
   def add_to_cart
     @current_cart = current_cart_new
     @item = Item.find(params[:item_id])
@@ -71,7 +71,7 @@ class LineitemsController < ApplicationController
   #Author: Abdelrahman Sakr
   #Team: 1
   #Method: update
-  #This method updates the quantity of the items in the user's shopping cart,if the item
+  #Function: This method updates the quantity of the items in the user's shopping cart,if the item
   #is available in stock.
   def update
     @lineitem = Lineitem.find(params[:id])
@@ -101,7 +101,7 @@ class LineitemsController < ApplicationController
   #Author: Abdelrahman Sakr
   #Team: 1
   #Method: destroy
-  #This method deletes an item from the current user's shopping cart.
+  #Function: This method deletes an item from the current user's shopping cart.
   def destroy
     @lineitem = Lineitem.find(params[:id])
     @lineitem.destroy

@@ -334,7 +334,7 @@ def viewusers
     
     #Author: Abdelrahman Sakr
     #Team: 1
-    #The following "if condition" checks if there are no violations found then the item will be
+    #Function: The following "if condition" checks if there are no violations found then the item will be
     #added to the user's shopping cart, else a popup message will appear without adding the item
     #to the cart.
     if @flag
