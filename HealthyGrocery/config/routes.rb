@@ -1,11 +1,13 @@
 HealthyGrocery::Application.routes.draw do
+  get "welcome/index"
+
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR MEMBER
 #----------------------------------------------------------------------------------------------------#
   #for user profile page
   get 'members/hub'
   get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
-  root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+  root :to => 'welcome#index' # so as to not for the member to root to the page containnng site members!!
   devise_for :members, :controllers => {:registrations => "registrations", }
   match 'user_root' => redirect("/member/show")
    resources :members do
