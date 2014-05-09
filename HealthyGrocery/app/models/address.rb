@@ -1,7 +1,7 @@
       # Author: Mahmoud Walid
       # Team: 3
       # Function: this model is used to create an address book for 
-      #the member through the has_many addresses relation 
+      # the member through the has_many addresses relation 
 class Address
   include Mongoid::Document
 

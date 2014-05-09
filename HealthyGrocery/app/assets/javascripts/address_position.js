@@ -4,14 +4,10 @@
 // Function: This script is used to show a map while the user
 // add an address to give him the ability to locate his 
 // address accurately using an animated marker.
-
-
-
 // Author: Karim El-Bawab
 // Team: 4
 // Function: This is block of code below used to get the values 
 // of the latitude and the longitude passed through the url 
-
 var latitude = gon.lat;
 var longitude = gon.lng;
 var url = window.location.href;
@@ -23,16 +19,12 @@ if (urlsplit[1] != null) {
     urlsplit4 = urlsplit2[1].split("=");
     longitude = urlsplit4[1];
 }
-
-
 var mappos = new google.maps.LatLng(latitude, longitude);
 var markerpos = new google.maps.LatLng(latitude, longitude);
 var marker;
 var map;
 var lat;
 var lng;
-
-
 // Author: Karim El-Bawab
 // Team: 4
 // Method name: initialize
@@ -40,14 +32,11 @@ var lng;
 // that has specific features.
 
 function initialize() {
-    
     var mapOptions = {
         zoom: 13,
         center: mappos
     };
-
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
     marker = new google.maps.Marker({
         map: map,
         draggable: true,
@@ -57,9 +46,7 @@ function initialize() {
     google.maps.event.addListener(marker, 'click', toggleBounce);
     console.log(marker.getPosition().lat());
     console.log(marker.getPosition().lng());
-    
 }
-
 // Author: Karim El-Bawab
 // Team: 4
 // Method name: toggleBounce
@@ -72,14 +59,11 @@ function initialize() {
 function toggleBounce() {
     if (marker.getAnimation() != null) {
         marker.setAnimation(null);
-
     } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         lat = marker.getPosition().lat();
         lng = marker.getPosition().lng();
-
     }
-
     if (latitude != lat || longitude != lng) {
         var url = window.location.href;
         var urlsplit = url.split("?");
@@ -87,10 +71,7 @@ function toggleBounce() {
         latitude = lat;
         longitude = lng;
         window.location.href = url;
-
-
-
     }
 }
-
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize
+    
