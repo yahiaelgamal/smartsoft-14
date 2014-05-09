@@ -18,7 +18,7 @@ class AddressesController < ApplicationController
       # Author: Karim El-Bawab
       # Team: 4
       # Function: this block of code below is used in order to show
-      # a map with a marker setted on the user address 
+      # a map with a marker set on the user address 
 
       @hash = Gmaps4rails.build_markers(@address) do |address, marker|
       
