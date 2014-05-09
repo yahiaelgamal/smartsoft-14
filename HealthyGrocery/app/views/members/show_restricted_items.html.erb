@@ -1,0 +1,69 @@
+<!-- Author: Ahmed Helali
+     Team 2
+I first check wether this is the admin or not
+  if h the member is the admin I give a message telling
+  him you cannot view such page -->
+<% if @admin %>
+	<h1> You are the admin of the site!!!</h1>
+<%elsif @admin == false %>
+	<% unless @member.diseases.any? %>
+		<h1> Items </h1>
+        <t> No items restricted </t>
+	<% else %>
+  <!-- Author: Ahmed Helali
+       Team 2
+       the code loops on the member diseases, then it loops on every item in the disease
+      (loop inside a loop) and display the items attributes
+  -->
+		<table class="table table-bordered table-responsive" width="625">
+			<% @member.diseases.each do |x| %>
+    		
+    			<tr>   
+            <th colspan="7"><font size= "6">Name Of Disease:</font></th>
+            <td>
+              <b><font size= "6"><%= x.name %></font></b>
+            <br/>
+            </td>
+          </tr>
+
+    			<% x.restricted_items.each do |y| %>
+
+          <tr>   
+            <th colspan="7">name of Item:</th>
+            <td>
+              <%= y.name %>
+            </td>
+          </tr>
+
+          
+          <tr>   
+            <th colspan="7">image:</th>
+            <td>
+              <img src= "<%= y.image%>" height=150 width=150 ></img>
+            <br/>
+            </td>
+          </tr>
+
+  				<tr>  
+    				<th colspan="7">Category:</th>
+    				<td>
+      					<%= y.category %>
+        				</br>
+    				</td>
+  				</tr>
+
+  				<tr> 
+            <th colspan="7">Descritpion:</th>
+    				<td>
+        				<%= y.description%>
+        				</br>
+    				</td>
+  				</tr>
+  				<% end %>
+  			<% end %>
+  		</table>
+  	<%end %>
+<%end%>
+</br>
+
+<%= link_to 'Back', current_member %>
