@@ -33,8 +33,10 @@
  
 <!-- Title for the page -->
 
-</br></br>
+</br>
 
+<%= @notification %>
+</br>
 <%= @warning %>
 
 </br></br>
@@ -48,16 +50,9 @@ The retailer hasn't inserted any items yet.
   <%# Author : Antoine Foti
       Team : 2
       Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated %>
-      <%= @type_warning_name %>
+      <%= @type_warning %>
     </br>
-    <%= @type_warning_price_from %>
-    </br>
-    <%= @type_warning_price_to %>
-    </br>
-    <%= @type_warning_rating_from %>
-    </br>
-    <%= @type_warning_rating_to %>
-    </br>
+   
 <%= form_tag '/items/members_items_index', :method => 'get' do %>
   <p>
     <span class="label">Name :</span>

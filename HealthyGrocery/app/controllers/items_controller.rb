@@ -186,6 +186,7 @@ end
         @items = @items.where :name => Regexp.new(params[:name])
       if !(Item.all.where :name => Regexp.new(params[:name])).exists?
           @warning += "Sorry..There is no such name " + params[:name] + " | "
+          @notification = ""
         else 
           @notification += "Showing results for " + params[:name] + " | "
         end
@@ -197,6 +198,7 @@ end
       @items = @items.where :category => params[:category]
       if !(Item.all.where :category => params[:category]).exists?
           @warning += "Sorry..There is no items in this category | "
+          @notification = ""
         else
           @notification += "Items in " + params[:category] + "'s category | "
         end
@@ -206,6 +208,7 @@ end
         @items = @items.where :price.gte => params[:price_from]
       if !(Item.all.where :price.gte => params[:price_from]).exists?
           @warning += "Sorry..There is no items starting from " + params[:price_from] + "$ | "
+          @notification = ""
         else
           @notification += "Starting from " + params[:price_from] + "$ | "
         end
@@ -218,6 +221,7 @@ end
         @items = @items.where :price.lte => params[:price_to]
       if !(Item.all.where :price.lte => params[:price_to]).exists?
           @warning += "Sorry..There is no items below " + params[:price_to] + "$ | "
+          @notification = ""
         else
           @notification += "Going to " + params[:price_to] + "$ | "
         end
@@ -230,6 +234,7 @@ end
         @items = @items.where :rating.gte => params[:rating_from]
       if !(Item.all.where :rating.gte => params[:rating_from]).exists?
           @warning += "Sorry..There is no rating starting from " + params[:rating_from] + " rate(s) | "
+          @notification = ""
         else
           @notification += "Starting from " + params[:rating_from] + "rate(s) | "
         end
@@ -242,6 +247,7 @@ end
         @items = @items.where :rating.lte => params[:rating_to]
       if !(Item.all.where :rating.lte => params[:rating_to]).exists?
           @warning += "Sorry..There is no items below " + params[:rating_to] + " rate(s) | "
+          @notification = ""
         else
           @notification += "Going to " + params[:rating_to] + "rate(s) | "
         end
@@ -259,7 +265,10 @@ end
       @items = @items.order_by(:category.asc)
     end
 
-@items = @items.page(params[:page]).per(5)
+    @notification = @notification.chop.chop
+    @warning = @warning.chop.chop
+    @type_warning = @type_warning.chop.chop
+    @items = @items.page(params[:page]).per(5)
 
   end
     
