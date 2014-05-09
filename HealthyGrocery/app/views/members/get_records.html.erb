@@ -13,7 +13,7 @@
         padding-top: 8px;
         padding-bottom: 15px;
         margin: 0 auto 20px auto;
-        background-color: #446bb3;    
+        background-color: #25242c;    
          border-radius: 15px;    
         -moz-border-radius: 15px;    
         -webkit-border-radius: 15px;
@@ -23,21 +23,26 @@
     }
     
     
-    body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");
+    body { background-color: #39b1c6;
 }
-    table { background-color : #fff; color : #453}
-    thead {  background-image:url("http://simplywallpaper.net/pictures/2010/12/08/aqua-texture-wallpaper.jpg") ; color :#fff; padding:4px; line-height:30px;}
+    table { background-color : #25242c; color : #453}
+    thead {  background-color: #32313b; color :#fff; padding:4px; line-height:30px;}
     </style>
 
 
 </head>
 
 <body>
+<div class="contextual">
+      <%= link_to(new_healthrecord_path, class: "btn btn-success") do %>
+        New Healthrecord <i class="icon-plus icon-white"></i>
+      <% end %>
+    </div>
     <div class="form_caja">
   <p > <%= current_member.first_name %> 's HEALTHRECORDS</p>
   <table width="100%" >
   
-<% @healthrecord.each do |healthrecord| %>
+<% @health_records.each do |healthrecord| %>
   <thead><tr> 
   
       <td>Name: <%= healthrecord.name %></td> 
@@ -48,7 +53,6 @@
   <% end %>
   </table>
 </div>
-<%= link_to "<button>New Healthrecord</button>".html_safe, new_healthrecord_path %>
 
 </body>
 

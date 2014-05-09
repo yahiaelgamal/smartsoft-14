@@ -1,3 +1,8 @@
+ 
+<style>
+   body { background-color: #39b1c6;
+}    </style>
+<body>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -30,7 +35,7 @@
   <%= @healthrecord.program %>
 </p>
 
-<p>
+<!-- <p>
   <b>Fat per day:</b>
   <%= @healthrecord.fat_per_day %>
 </p>
@@ -48,7 +53,27 @@
 <p>
   <b>Protein per day:</b>
   <%= @healthrecord.protein_per_day %>
+</p> -->
+<p>
+  <b>Gender:</b>
+  <%= @healthrecord.gender %>
 </p>
+<p>
+  <b>Race:</b>
+  <%= @healthrecord.race %>
+</p>
+<tr> 
+    <th colspan="7">Disease:</th>
+    <td>
+      <% @healthrecord.diseases.each do |c| %>
+            <td><%= link_to c.name, c %></td>
+</label>
+        </br>
+      <% end %>
+    </td>
+  </tr>
+  </br>
+</br>
 
 <!-- <p>
   <b>Protein till now:</b>
@@ -71,5 +96,17 @@
 </p>
  -->
 
-<%= link_to 'Edit', edit_healthrecord_path(@healthrecord) %> |
-<%= link_to 'Back', indexhealthrecord_path(current_member) %>
+<div class="contextual">
+      <%= link_to(indexhealthrecord_path(current_member) , class: "btn btn-success") do %>
+        Back <i class="icon-plus icon-white"></i>
+      <% end %>
+    </div>
+    <br/>
+        <br/>
+
+    <div class="contextual">
+      <%= link_to( edit_healthrecord_path(@healthrecord), class: "btn btn-success") do %>
+        Edit <i class="icon-plus icon-white"></i>
+      <% end %>
+    </div>
+    <body/>
