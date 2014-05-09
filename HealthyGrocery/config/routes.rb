@@ -8,7 +8,7 @@ HealthyGrocery::Application.routes.draw do
  get 'members/hub'
  
 resources :health_records
-  
+
  resources :items do
    collection do
   get "members_items_index"

@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   # (GUI TEAM) This line is made so that the /items does not follow bootstrap
-  layout false
   # GET /items
   # GET /items.json
   # shows all the items in the table item
@@ -255,7 +254,14 @@ def viewusers
       if (params[:name] == '' || params[:name].nil?) && (params[:category] == '' || params[:category].nil?) && (params[:price] == '' || params[:price].nil?) && (params[:rating] == '' || params[:rating].nil?) 
         @items = Item.all 
       end 
-    end   
+    end  
+    user = current_member
+    healthrecord =  user.records.first
+    @protein_bar = (healthrecord.protein_till_now/healthrecord.acceptable_protein_per_week)*100
+    @carbohydrate_bar = (healthrecord.carbohydrate_till_now/healthrecord.acceptable_carbohydrate_per_week)*100
+    @calcium_bar = (healthrecord.calcium_till_now/healthrecord.acceptable_calcium_per_week)*100
+    @fats_bar = (healthrecord.fat_till_now/healthrecord.acceptable_fat_per_week)*100
+
   end
    
     #AUTHOR: Mahmoud Eldesouky
@@ -287,6 +293,7 @@ def viewusers
     @flag = true
     @message = "This request with its quantity exceeds the acceptable range of the following: "
     v_counter=1
+    @appw = healthrecord.acceptable_protein_per_week
 
   if  healthrecord.acceptable_protein_per_week < ( (item.protein * amount )+  healthrecord.protein_till_now)
     @message = @message+v_counter.to_s+".proteins "
@@ -319,6 +326,8 @@ def viewusers
     carbohydrate =  healthrecord.carbohydrate_till_now +  (item.carbohydrate * amount)
     calcium  =   healthrecord.calcium_till_now +  (item.calcium * amount)
     fat  =   healthrecord.fat_till_now +  (item.fat * amount) 
+
+    @p=(protein/healthrecord.protein_till_now) * 100
 
     Member.where(id: user.id).first.records.update(protein_till_now: protein)
     Member.where(id: user.id).first.records.update(carbohydrate_till_now: carbohydrate)

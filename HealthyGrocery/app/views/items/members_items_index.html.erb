@@ -2,12 +2,18 @@
 <!-- Team: 3-->
 <!-- This page is the view of the items from the members' point of view-->
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
+
+<div class="progress progress-striped active">
+  <div class="bar"  style="width: 30%;">
+  </div>
+</div>
+
 <style>
 
 
 /*    <!-- Author: mina sedra -->
 <!-- Team: 2 -->*/
-    body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");}
+  /* body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");} */
   
 
 
@@ -136,6 +142,7 @@ left-margin:50px;
     <td>Carbohydrates: <%= item.carbohydrate %></td></br>
     <td>Calcium: <%= item.calcium %></td></br>
     <td>Fats: <%= item.fat %></td></br>
+
 <!--AUTHOR: Mahmoud Eldesouky
     Team :5
     takes the quantiy from the user -->
@@ -161,6 +168,33 @@ left-margin:50px;
                    <li><%= link_to "<button>My Healthrecords</button>".html_safe,indexhealthrecord_path(current_member)%></li>
 
 <% end %>
+  <div class="sidebar">
+    <%= yield :sidebar %>
+</div>
+  <navigationbar>
+  <h5>REACHED </h5>
+<%= form_tag '/items/members_items_index', :method => 'get' do%>
+  <p>
+    <opt>
+      <p>Total Proteins Gain </p>
+     <%= progress_bar(@protein_bar, :color => 'blue', :rounded => true) %> 
+     </opt></br></br>
+    <opt>
+      <p>Total Carbohydrates Gain </p>
+     <%= progress_bar(@carbohydrate_bar, :color => 'orange', :rounded => true) %> 
+    </opt></br></br>
+    <opt>
+      <p>Total Calcium Gain </p>
+    <%= progress_bar(@calcium_bar, :color => 'red', :rounded => true) %> 
+    </opt></br></br>
+    <opt>
+      <p>Total Fats Gain </p>
+     <%= progress_bar(@fats_bar, :color => 'grey', :rounded => true) %> 
+    </opt></br></br>
+  
+  </p>
+<% end %>
+</navigationbar>   
 
 </body>
 <!--AUTHOR: Mahmoud Eldesouky
@@ -172,3 +206,4 @@ if (!gon.flag&&gon.message!=null){
 alert(gon.message)
 }
 </script>
+

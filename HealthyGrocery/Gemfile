@@ -17,7 +17,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise'
 
-
+gem 'css3-progress-bar-rails'
 
 
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
