@@ -83,7 +83,7 @@
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
       <% if current_member.email == 'admin@gmail.com' %>
-                  <li><%= link_to "Diseases", '/members'+'/hub' %></li>
+                  <li><%= link_to "Diseases", diseases_path %></li>
                 <li><%= link_to "Items", items_path %></li>
       <% end %>
           
