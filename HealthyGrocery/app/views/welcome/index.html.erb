@@ -1,42 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <style type="text/css">
+  body {
+  font-size: 14px;
+}
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: helvetica, arial, sans-serif;
+}
+.btn {
+  border-radius: 3em;
+}
+.container {
+  max-width: 900px;
+}
+.container-alternate {
+  background: #f0f0f0;
+}
+.jumbotron {
+  background: #f0f0f0;
+  color: #333;
+  padding: 4.5em 0 3.5em;
+  text-align: center;
+  margin-bottom: 0;
+}
+.jumbotron h1 {
+  font-family: georgia, serif;
+  font-size: 2.5em;
+}
+.jumbotron h2 {
+  font-size: 1.2em;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 1.4em;
+  margin-bottom: 1.4em;
+}
+.jumbotron .btn {
+  font-size: 1.2em;
+  padding: 0.3em 2.5em 0.5em;
+}
+.jumbotron .btn .glyphicon {
+  margin-left: 0.2em;
+  position: relative;
+  top: 3px;
+}
+
+.benefit {
+  margin: 1em 0;
+  text-align: center;
+}
+.benefit .benefit-ball {
+  background: #f0f0f0;
+  border-radius: 50%;
+  color: #333;
+  display: inline-block;
+  line-height: 1em;
+  padding: 3em;
+}
+.benefit .benefit-ball .glyphicon {
+  font-size: 3em;
+  position: relative;
+  top: -3px;
+  right: 1px;
+}
+.benefit h3 {
+  font-size: 1.5em;
+}
+}
+</style>
     <meta charset="utf-8">
     <title>Healthy Grocery</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <%= stylesheet_link_tag "boot", :media => "all" %>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <%= stylesheet_link_tag "welcome", :media => "all" %>
+   
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          </button>
-        </div>
-        <!-- /.navbar-header -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav navbar-right">
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container -->
-    </nav>
+
     <!-- /.navbar -->
-    <div id="top" class="jumbotron">
+    <div id="top" class="jumbotron" style="padding-bottom:50px;">
       <div class="container">
-        <h1>Healthy Grocery</h1>
-        <h2>"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear." Buddha</h2>
-        <p><a class="btn btn-primary btn-lg" href="/members/index">Sign In Now
+        <h1 style="font-size:80px;position:relative;top:-60px;">Healthy Grocery</h1>
+        <h2 style="font-size:25px;position:relative;top:-30px;">"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear." Buddha</h2>
+        <p><a class="btn btn-primary btn-lg" href="/members/index" 
+        style="position:relative;top:0px;">Sign In Now
             <span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
       </div>
       <!-- /.container -->
     </div>
     <!-- /.jumbotron -->
-    <div class="container">
+    <div class="container" style="position:relative;top:35px;">
       <div class="row benefits">
         <div class="col-md-4 col-sm-6 benefit">
           <div class="benefit-ball">
