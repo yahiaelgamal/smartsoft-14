@@ -35,8 +35,8 @@ class Item
   # checks if image is present
   validates :image, :attachment_presence => true
 
-#  validates :protein , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
- # validates :carbohydrate , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  #validates :protein , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  #validates :carbohydrate , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   #validates :calcium , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   #validates :fat , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
 
