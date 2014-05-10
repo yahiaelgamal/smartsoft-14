@@ -24,7 +24,9 @@ end
  #   @member = Member.find(params[:id])
   #if current_member.email == 'admin@gmail.com'
   #end
-
+  def edit
+    @member = Member.find(params[:id])
+  end
      
 
   def show
