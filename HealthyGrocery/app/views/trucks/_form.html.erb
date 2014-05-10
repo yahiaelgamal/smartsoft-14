@@ -11,11 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :driver %><br />
-    <%= f.text_field :driver %>
-  </div>
-  <div class="field">
+  <div class="dropdown">
+  <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
+   Driver's List
+    <span class="caret"></span>
+  </button>
+  <% @drivers =  Driver.all %>
+
+
+
+
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+  <% @drivers.each do |driver| %>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=driver.name%></a></li>
+
+<%end %>
+   
+  </ul>
+
+
+</div>
+  <div class="field" style="padding-top:20px">
     <%= f.label :capacity %><br />
     <%= f.text_field :capacity %>
   </div>
