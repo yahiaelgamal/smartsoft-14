@@ -1,5 +1,27 @@
 <!-- This the Users/Admins Hub Page which is the Home page that shows New/Recommended Items -->
 
+<% if current_member.email != 'admin@gmail.com'%>
+
+<h1>Statistics:</h1>
+
+<% @allOrders = Order.all %>
+<% @itemsTodayCount=0 %>
+<% @allOrders.each do |y| %>
+<% @itemsTodayCount += y.items.size %>
+<%end%>
+<p>- <%=@itemsTodayCount%> items have been purchased today</p>
+ 
+<!-- getting items that are purchased today-->
+
+<!--	#Author: Omar Tarek
+	 	#Team: 5
+	 	#Method name:
+		#Function: show admin some statistical info about the website.
+	 	#Example:  -->
+
+<%else%>
+
+
 <h1 style="
 padding-top:30px;
 right:5px"> New Arrivals </h1>
@@ -74,5 +96,5 @@ margin:10px;
 <!-- This part of the code cannot be coded until the story 2.8 is finished because the calculations of the recommendations is not my user story.  
 2.8: As a user, I should see a recommendation section in the hub according to the information the user provided in the sign-up-->
 
-
+<%end%>
 
