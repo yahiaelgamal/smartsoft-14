@@ -1,37 +1,27 @@
 <%= form_for(@truck) do |f| %>
   <% if @truck.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@truck.errors.count, "error") %> prohibited this truck from being saved:</h2>
-
+      <h2><%= pluralize(@truck.errors.count, "error") %>
+        prohibited this truck from being saved:</h2>
       <ul>
-      <% @truck.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @truck.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
   <div class="dropdown">
-  <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
-   Driver's List
-    <span class="caret"></span>
-  </button>
-  <% @drivers =  Driver.all %>
-
-
-
-
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-
-  <% @drivers.each do |driver| %>
-  <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=driver.name%></a></li>
-
-<%end %>
-   
-  </ul>
-
-
-</div>
+    <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      Driver's List
+      <span class="caret"></span>
+    </button>
+    <% @drivers =  Driver.all %>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <% @drivers.each do |driver| %>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=driver.name%></a></li>
+      <%end %>
+    </ul>
+  </div>
   <div class="field" style="padding-top:20px">
     <%= f.label :capacity %><br />
     <%= f.text_field :capacity %>
