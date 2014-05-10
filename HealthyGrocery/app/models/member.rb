@@ -9,7 +9,7 @@ class Member
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable 
 
   # Setup accessible (or protected) attributes for your model
  field :first_name, type: String
@@ -18,7 +18,14 @@ class Member
  field :phone_num, type: Integer
  field :birth_date, type: Date 
  
-   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :phone_num , :birth_date
+
+#   field :confirmation_token,   type: String
+ #  field :confirmed_at,         type: Time
+  # field :confirmation_sent_at, type: Time
+   #field :unconfirmed_email,    type: String # Only if using reconfirmable
+
+  
+  attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :phone_num , :birth_date
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -86,13 +93,7 @@ validates :phone_num,
 
 
 
-
-
-  ## Confirmable
-  # field :confirmation_token,   type: String
-  # field :confirmed_at,         type: Time
-  # field :confirmation_sent_at, type: Time
-  # field :unconfirmed_email,    type: String # Only if using reconfirmable
+ 
 
   ## Lockable
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
