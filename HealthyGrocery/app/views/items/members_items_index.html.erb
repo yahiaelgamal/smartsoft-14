@@ -40,17 +40,22 @@
 <%= @warning %>
 
 </br></br>
-You've got <%= @items.count %> result(s).
-<% if Item.all.count == 0 %>
-The retailer hasn't inserted any items yet.
+<% if @items.count == 1 %>
+You've got 1 result.
+<% else %>
+You've got <%= @items.count %> results.
 <% end %>
+<%= @showing_pages %>
+</br></br>
 
+
+<% if Item.all.count > 0 %>
 <navigationbar>
   <h5>Filter for products </h5>
   <%# Author : Antoine Foti
       Team : 2
       Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated %>
-      <%= @type_warning %>
+    <%= @type_warning %>
     </br>
    
 <%= form_tag '/items/members_items_index', :method => 'get' do %>
@@ -60,7 +65,7 @@ The retailer hasn't inserted any items yet.
     </br></br>
         
 
-<a href="#" onclick="toggle_visibility('foo');">Advanced search</a>
+    <a href="#" onclick="toggle_visibility('foo');">Advanced search</a>
     <div id="foo" style="display:none">
     <span class="label">Category :</span>
     <select name="category">
@@ -82,13 +87,13 @@ The retailer hasn't inserted any items yet.
     <span class="label">Rating between:</span>
     <%= text_field_tag :rating_from, params[:filter] %>
     </br>
-    
     <span class="label">And:</span>
     <%= text_field_tag :rating_to, params[:filter] %>
     </br></br>
-    <%= radio_button_tag 'status', "available" %> <span class="badge">Available Only</span> 
+
+    <%= radio_button_tag 'status', "all", :checked => true %> <span class="badge">All Products</span>
     </br>
-    <%= radio_button_tag 'status', "all", :checked => true %> <span class="badge">All Products</span> 
+     <%= radio_button_tag 'status', "available" %> <span class="badge">Available Only</span>
     </br></br>
     </div>
     
@@ -100,14 +105,25 @@ The retailer hasn't inserted any items yet.
       <% end %>
     </select>
     </br></br>
-    <%= submit_tag "Filter" %>
+
+    <span class="label">Items per page :</span>
+    <select name="items_per_page">
+      <%= @pages = ["5","10","15","20","25"] %>
+      <%= @pages.each do |page| %>
+        <option value= <%= page %> ><%= page %> </option>
+      <% end %>
+    </select>
+    </br></br>
+
+<%= submit_tag "Search" %>
   </p>
 <% end %>
 </navigationbar>
-
+<% else %>
+  The retailer hasn't inserted any items yet.
+<% end %>
 
 <%= paginate @items %>
-
 
 <% @items.each do |item| %>
   <icon>

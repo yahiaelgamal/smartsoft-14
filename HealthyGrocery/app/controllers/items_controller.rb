@@ -156,8 +156,8 @@ end
 #parameter : flag, message
 #sends the message that is set by def Add to the members_item_index view
   def members_items_index    
-   gon.flag =  flash[:flag]
-   gon.message =  flash[:message]
+    gon.flag =  flash[:flag]
+    gon.message =  flash[:message]
 #Author: Antoine Foti
 #Team: 2
 #Function: After adding the filter search, it retreives all the required items in the instance variable @items after
@@ -171,109 +171,111 @@ end
     @warning = ""
     @type_warning = "" 
     if Item.all.count > 0
-    if (params[:status] == 'available' && @items.count > 0)
-      @items = @items.where :status => true
-      if !(Item.all.where :status => true).exists?
+      if (params[:status] == 'available' && @items.count > 0)
+        @items = @items.where :status => true
+        if !(Item.all.where :status => true).exists?
           @warning += "Sorry..There is nothing available | "
         else
           @notification += "Showing available products only | "
         end
       else
         @notification += "Showing available & not available products | " 
-    end
-    if (params[:name] != '' && !params[:name].nil? && @items.count > 0)
-      if !is_a_number?(params[:name])
-        @items = @items.where :name => Regexp.new(params[:name])
-      if !(Item.all.where :name => Regexp.new(params[:name])).exists?
-          @warning += "Sorry..There is no such name " + params[:name] + " | "
-          @notification = ""
-        else 
-          @notification += "Showing results for " + params[:name] + " | "
+      end
+      if (params[:name] != '' && !params[:name].nil? && @items.count > 0)
+        if !is_a_number?(params[:name])
+          @items = @items.where name: /^#{params[:name]}/i
+          if !(Item.all.where name: /^#{params[:name]}/i).exists?
+            @warning += "Sorry..There is no such name " + params[:name] + " | "
+            @notification = ""
+          else 
+            @notification += "Showing results for " + params[:name] + " | "
+          end
+        else
+          @type_warning += "Please choose correct characters for searching the name | " 
         end
-      else
-      @type_warning += "Please choose correct characters for searching the name | " 
-    end
-    end
-    if (params[:category] != '<None>' && !params[:category].nil? && @items.count > 0)
-      @items = @items.where :category => params[:category]
-      if !(Item.all.where :category => params[:category]).exists?
+      end
+      if (params[:category] != '<None>' && !params[:category].nil? && @items.count > 0)
+        @items = @items.where category: params[:category]
+        if !(Item.all.where category: params[:category]).exists?
           @warning += "Sorry..There is no items in this category | "
           @notification = ""
         else
           @notification += "Items in " + params[:category] + "'s category | "
         end
       end
-    if (params[:price_from] != '' && !params[:price_from].nil? && @items.count > 0)
-      if is_a_number?(params[:price_from])
-        @items = @items.where :price.gte => params[:price_from]
-      if !(Item.all.where :price.gte => params[:price_from]).exists?
-          @warning += "Sorry..There is no items starting from " + params[:price_from] + "$ | "
-          @notification = ""
+      if (params[:price_from] != '' && !params[:price_from].nil? && @items.count > 0)
+        if is_a_number?(params[:price_from])
+          @items = @items.where :price.gte => params[:price_from]
+          if !(Item.all.where :price.gte => params[:price_from]).exists?
+            @warning += "Sorry..There is no items starting from " + params[:price_from] + "$ | "
+            @notification = ""
+          else
+            @notification += "Starting from " + params[:price_from] + "$ | "
+          end
         else
-          @notification += "Starting from " + params[:price_from] + "$ | "
+          @type_warning += "Please choose a number for the starting price | "
         end
-    else
-      @type_warning += "Please choose a number for the starting price | "
-    end
-    end
-    if (params[:price_to] != '' && !params[:price_to].nil? && @items.count > 0)
-      if is_a_number?(params[:price_to])
-        @items = @items.where :price.lte => params[:price_to]
-      if !(Item.all.where :price.lte => params[:price_to]).exists?
-          @warning += "Sorry..There is no items below " + params[:price_to] + "$ | "
-          @notification = ""
+      end
+      if (params[:price_to] != '' && !params[:price_to].nil? && @items.count > 0)
+        if is_a_number?(params[:price_to])
+          @items = @items.where :price.lte => params[:price_to]
+          if !(Item.all.where :price.lte => params[:price_to]).exists?
+            @warning += "Sorry..There is no items below " + params[:price_to] + "$ | "
+            @notification = ""
+          else
+            @notification += "Going to " + params[:price_to] + "$ | "
+          end
         else
-          @notification += "Going to " + params[:price_to] + "$ | "
+          @type_warning += "Please choose a number for the ending price | " 
         end
-    else
-      @type_warning += "Please choose a number for the ending price | " 
-    end
-    end
-    if (params[:rating_from] != '' && !params[:rating_from].nil? && @items.count > 0)
-      if is_a_number?(params[:rating_from])
-        @items = @items.where :rating.gte => params[:rating_from]
-      if !(Item.all.where :rating.gte => params[:rating_from]).exists?
-          @warning += "Sorry..There is no rating starting from " + params[:rating_from] + " rate(s) | "
-          @notification = ""
+      end
+      if (params[:rating_from] != '' && !params[:rating_from].nil? && @items.count > 0)
+        if is_a_number?(params[:rating_from])
+          @items = @items.where :rating.gte => params[:rating_from]
+          if !(Item.all.where :rating.gte => params[:rating_from]).exists?
+            @warning += "Sorry..There is no rating starting from " + params[:rating_from] + " rate(s) | "
+            @notification = ""
+          else
+            @notification += "Starting from " + params[:rating_from] + "rate(s) | "
+          end
         else
-          @notification += "Starting from " + params[:rating_from] + "rate(s) | "
+          @type_warning += "Please choose a number for the starting rating | "
         end
-    else
-      @type_warning += "Please choose a number for the starting rating | "
-    end
-    end
-    if (params[:rating_to] != '' && !params[:rating_to].nil? && @items.count > 0)
-      if is_a_number?(params[:rating_to])
-        @items = @items.where :rating.lte => params[:rating_to]
-      if !(Item.all.where :rating.lte => params[:rating_to]).exists?
-          @warning += "Sorry..There is no items below " + params[:rating_to] + " rate(s) | "
-          @notification = ""
+      end
+      if (params[:rating_to] != '' && !params[:rating_to].nil? && @items.count > 0)
+        if is_a_number?(params[:rating_to])
+          @items = @items.where :rating.lte => params[:rating_to]
+          if !(Item.all.where :rating.lte => params[:rating_to]).exists?
+            @warning += "Sorry..There is no items below " + params[:rating_to] + " rate(s) | "
+            @notification = ""
+          else
+            @notification += "Going to " + params[:rating_to] + "rate(s) | "
+          end
         else
-          @notification += "Going to " + params[:rating_to] + "rate(s) | "
+          @type_warning += "Please choose a number for the ending rating | "
         end
-    else
-      @type_warning += "Please choose a number for the ending rating | "
-    end
-    end
-    if(params[:sort_by] == "Name" || params[:sort_by].nil? && @items.count > 0)
-      @items = @items.order_by(:name.asc)
-    end
-    if(params[:sort_by] == "Price")
-      @items = @items.order_by(:price.asc)
-    end
-    if(params[:sort_by] == "Category")
-      @items = @items.order_by(:category.asc)
-    end
+      end
+      if(params[:sort_by] == "Name" || params[:sort_by].nil?)
+        @items = @items.order_by(:name.asc)
+      end
+      if(params[:sort_by] == "Price")
+        @items = @items.order_by(:price.asc)
+      end
+      if(params[:sort_by] == "Category")
+        @items = @items.order_by(:category.asc)
+      end
 
-    @notification = @notification.chop.chop
-    @warning = @warning.chop.chop
-    @type_warning = @type_warning.chop.chop
-    @items = @items.page(params[:page]).per(5)
-
-  end
-    
-    
-    
+      @notification = @notification.chop.chop
+      @warning = @warning.chop.chop
+      @type_warning = @type_warning.chop.chop
+      if(params[:items_per_page].nil?)
+        @items = @items.page(params[:page]).per(5)
+        @showing_pages = "Showing 5 items per page"
+      else
+        @items = @items.page(params[:page]).per(params[:items_per_page])
+        @showing_pages = "Showing " + params[:items_per_page] + " items per page"
+      end
+    end
   end
    
     #AUTHOR: Mahmoud Eldesouky
