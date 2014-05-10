@@ -44,6 +44,7 @@ Author: Abdelrahman Sakr
     %>
   <center>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=futura">
     <div class="container">
       <div class="row">
         <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
@@ -58,19 +59,19 @@ Author: Abdelrahman Sakr
               </div>
               <br>
               <br>
-              <font face="helvetica" color="green" size="7"><strong><%= @member.first_name%>'s Profile</font></strong>
+              <font face="futura" color="green" size="7"><strong><%= @member.first_name%>'s Profile</font></strong>
               <br>
               <br>
               <br>
-              <p><font size="3">Name:
-                </font><font size="5"><strong><%= @member.first_name%>
+              <p><font face="futura" size="3">Name:
+                </font><font face="futura" size="5"><strong><%= @member.first_name%>
                     <%= @member.last_name%></strong></p>
-                <p><font size="3">Birth date:
-                  </font><font size="5"><strong><%= @member.birth_date%></p></strong>
-                  <p><font size="3">Phone number:
-                    </font><font size="5"><strong><%= @member.phone_num%></p></strong>
-                    <p><font size="3">Gender:
-                      </font><font size="5"><strong><%- if @member.gender %>
+                <p><font face="futura" size="3">Birth date:
+                  </font><font face="futura" size="5"><strong><%= @member.birth_date%></p></strong>
+                  <p><font face="futura" size="3">Phone number:
+                    </font><font face="futura" size="5"><strong><%= @member.phone_num%></p></strong>
+                    <p><font face="futura" size="3">Gender:
+                      </font><font face="futura" size="5"><strong><%- if @member.gender %>
                             Male
                           <%else%>
                             Female
