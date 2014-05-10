@@ -1,4 +1,5 @@
 <!--to check the adminstration level-->
+<%= csrf_meta_tag %>
 <% if @admin == false%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
 <%= link_to_function "Back", "history.back()" %>
@@ -60,21 +61,10 @@ left-margin:10px;
 </head>
 <body>
 <!-- Title for the page -->
-<h1>My Warehouse</h1>
+<h1 style="padding-bottom:30px;">My Warehouse</h1>
 
 
-<navigationbar>
-</br>
-Navigate Here </br></br>
-<!-- link to the shipment page -->
-   <opt><%= link_to 'Shipments',{:controller  => 'shipments', :action => 'index'} , :class => "opt"%></opt></br></br>
-<!-- link to the trucks page -->
-<opt><%= link_to 'Trucks',{:controller  => 'trucks', :action => 'index'} , :class => "opt"%></opt></br></br>
-<!-- link to the orders page -->
-   <opt><%= link_to 'Orders',{:controller  => 'orders', :action => 'index'} , :class => "opt"%></opt></br></br>
-<!-- link to the users page -->
-   <opt><%= link_to 'Members',members_path, :class => "opt"%></opt></br></br>
-</navigationbar>
+
 <!-- end of navigation bar -->
 
 <!-- printing the rows of the table -->
@@ -118,7 +108,7 @@ Navigate Here </br></br>
 
     
     
-
+<%= paginate @items %>
 
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
     <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
@@ -133,3 +123,4 @@ Navigate Here </br></br>
 <%= link_to 'Insert New Item', new_item_path %>
 </body>
 <%end%>
+

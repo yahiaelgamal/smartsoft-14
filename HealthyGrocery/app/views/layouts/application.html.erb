@@ -61,18 +61,14 @@
               <!--Function: Any links here are showed to Users Only-->
       <% if current_member.email!='admin@gmail.com' %>
 
-      <!--Author: mina sedra -->
-              <!--Team: 2 -->
-            <!-- TO BE SURE THAT HE/SHE HAS AT LEAST ONE HEALTHRECORED -->
+      
            
 
 
                 <li><%= link_to 'Go Shopping',{:controller => 'items', :action =>
 
                 'members_items_index'}, :class => "opt"%></li>
-              
-              <!--Author: mina sedra -->
-              <!--Team: 2 -->
+            
               
                    <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
       <% end %>
@@ -83,8 +79,15 @@
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
       <% if current_member.email == 'admin@gmail.com' %>
-                  <li><%= link_to "Diseases", '/members'+'/hub' %></li>
+                  <li><%= link_to "Diseases", diseases_path %></li>
                 <li><%= link_to "Items", items_path %></li>
+
+   <li><%= link_to 'Shipments',{:controller  => 'shipments', :action => 'index'} , :class => "opt"%></li>
+<li><%= link_to 'Trucks',{:controller  => 'trucks', :action => 'index'} , :class => "opt"%></li>
+<!-- link to the orders page -->
+   <li><%= link_to 'Orders',{:controller  => 'orders', :action => 'index'} , :class => "opt"%></li>
+<!-- link to the users page -->
+   <li><%= link_to 'Members',members_path, :class => "opt"%></li>
       <% end %>
           
            <!--Author: Andrew Khouzam -->
@@ -93,7 +96,7 @@
           <li style="padding-left: 30px;padding-top: 4px; "><input type="text" class="form-control" placeholder="Search"></li>
         
             
-            <li style="padding-left: 300px; "><%= link_to 'Logout',
+            <li style="padding-left: 175px; "><%= link_to 'Logout',
             destroy_member_session_path, :method=> 'delete' %></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -121,3 +124,4 @@
 
   </body>
 </html>
+

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # (GUI TEAM) This line is made so that the /items does not follow bootstrap
-  layout false
+  # layout false
   # GET /items
   # GET /items.json
   # shows all the items in the table item
@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 else 
       @admin = false
 end    
-    @items = Item.all
+    @items = @items.page(params[:page]).per(5) 
 respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
