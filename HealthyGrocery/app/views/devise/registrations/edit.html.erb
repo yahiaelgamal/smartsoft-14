@@ -45,7 +45,7 @@
                       <i>(leave blank if you don't want to change it)</i><br />
                       <%= f.password_field :password, autocomplete: "off" %></div>
                     <br>
-                    <div><%= f.label :new_password_confirmation %>
+                    <div><%= f.label :confirm_new_password %>
                       <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
                     <hr>
                     <br>
@@ -76,8 +76,8 @@
                     <br>
                     <%-# for the current password to confrim the changes-%>
                     <center>
-                    <div><%= f.label :current_password %>
-                      <%= f.password_field :current_password, autocomplete: "off" %></div>
+                      <div><%= f.label :current_password %>
+                        <%= f.password_field :current_password, autocomplete: "off" %></div>
                     </center>
                     <!-- <div><%= f.submit "Save" %></div> -->
                     <br>
@@ -100,7 +100,7 @@
                   <button type="button" class="btn btn-danger"><%= link_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete %>
                   </button>
                   <%= button_tag(type: 'link_to', class: "btn btn-danger") do %>
-                    <i class="icon-ok icon-white"></i>
+                    <i class="icon-remove icon-white"></i>
                     Delete
                   <% end %>
                   <br>

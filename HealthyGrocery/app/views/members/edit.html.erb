@@ -24,7 +24,7 @@
                   <hr>
                   <br>
                   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                    <%= devise_error_messages! %>
+                    <center><%= devise_error_messages! %></center>
                     <font face="futura" color="green" size="5"><strong>Edit Email</font></strong>
                     <br>
                     <br>
@@ -45,7 +45,7 @@
                       <i>(leave blank if you don't want to change it)</i><br />
                       <%= f.password_field :password, autocomplete: "off" %></div>
                     <br>
-                    <div><%= f.label :new_password_confirmation %>
+                    <div><%= f.label :confirm_new_password %>
                       <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
                     <hr>
                     <br>
@@ -75,8 +75,10 @@
                     <br>
                     <br>
                     <%-# for the current password to confrim the changes-%>
-                    <div><%= f.label :current_password %>
-                      <%= f.password_field :current_password, autocomplete: "off" %></div>
+                    <center>
+                      <div><%= f.label :current_password %>
+                        <%= f.password_field :current_password, autocomplete: "off" %></div>
+                    </center>
                     <!-- <div><%= f.submit "Save" %></div> -->
                     <br>
                     <button type="button" class="btn btn-default"><%= link_to 'Cancel', member_path(@member) %>
@@ -98,7 +100,7 @@
                   <button type="button" class="btn btn-danger"><%= link_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete %>
                   </button>
                   <%= button_tag(type: 'link_to', class: "btn btn-danger") do %>
-                    <i class="icon-ok icon-white"></i>
+                    <i class="icon-remove icon-white"></i>
                     Delete
                   <% end %>
                   <br>
