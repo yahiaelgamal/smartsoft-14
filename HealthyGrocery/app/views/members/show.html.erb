@@ -81,9 +81,10 @@ Author: Abdelrahman Sakr
                   </div>
                   <br>
                   <br>
-                  <button type="button" class="btn btn-success"><span class="fa fa-gear">
-                    </span><%= link_to '  Edit Profile', edit_member_path(@member) %>
-                  </button>
+                  <%= link_to(edit_member_path(@member), :class => 'btn btn-success') do %>
+                    <i class="icon-cog icon-white"></i><font face="futura" color="white">
+                      Edit Profile</font>
+                  <% end %>
                 </div>
               </div>
             </div>
