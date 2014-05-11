@@ -1,7 +1,7 @@
 <!-- Author: Mahmoud Walid
- Team: 3
- Function: a form for choosing the billing and shipping addresses through a drop down list that
- passes the ids of the addresses chosen-->
+     Team: 3
+     Function: a form for choosing the billing and shipping addresses through a drop down list that
+     passes the ids of the addresses chosen-->
 <%= form_for(@order, url: submit_path(@order)) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
