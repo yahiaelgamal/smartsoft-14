@@ -77,7 +77,15 @@
                     <%-# for the current password to confrim the changes-%>
                     <div><%= f.label :current_password %>
                       <%= f.password_field :current_password, autocomplete: "off" %></div>
-                    <div><%= f.submit "Save" %></div>
+                    <!-- <div><%= f.submit "Save" %></div> -->
+                    <%= button_tag(type: 'button', class: "btn btn-default") do %>
+                      <i class="icon-ok icon-white"></i>
+                      Back
+                    <% end %>
+                    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+                      <i class="icon-ok icon-white"></i>
+                      Save
+                    <% end %>
                   <% end %>
                   <button type="button" class="btn btn-default"><%= link_to 'Cancel', member_path(@member) %>
                   </button>
@@ -94,6 +102,10 @@
                   <br>
                   <button type="button" class="btn btn-danger"><%= link_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete %>
                   </button>
+                  <%= button_tag(type: 'link_to', class: "btn btn-danger") do %>
+                    <i class="icon-ok icon-white"></i>
+                    Delete
+                  <% end %>
                   <br>
                   <br>
                   <br>
