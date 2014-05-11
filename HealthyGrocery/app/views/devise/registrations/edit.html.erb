@@ -81,11 +81,12 @@
                     </center>
                     <!-- <div><%= f.submit "Save" %></div> -->
                     <br>
-                    <button type="button" class="btn btn-default"><%= link_to 'Cancel', member_path(@member) %>
-                    </button>
+                    <%= link_to(member_path(@member), :class => 'btn btn-default') do %>
+                      <font face="futura">Cancel</font>
+                    <% end %>
                     <%= button_tag(type: 'submit', class: "btn btn-success") do %>
                       <i class="icon-ok icon-white"></i>
-                      Save
+                      <font face="futura">Save</font>
                     <% end %>
                   <% end %>
                   <hr>
@@ -97,11 +98,9 @@
                   Unhappy?
                   <br>
                   <br>
-                  <button type="button" class="btn btn-danger"><%= link_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete %>
-                  </button>
-                  <%= button_tag(type: 'link_to', class: "btn btn-danger") do %>
-                    <i class="icon-remove icon-white"></i>
-                    Delete
+                  <%= link_to(registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete, :class => 'btn btn-danger') do %>
+                    <i class="icon-remove icon-white"></i><font face="futura" color="white">
+                      Delete</font>
                   <% end %>
                   <br>
                   <br>
