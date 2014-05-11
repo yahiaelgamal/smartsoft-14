@@ -23,8 +23,6 @@ class Member
 
  attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender ,:phone_num , :birth_date
 
- 
-
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -80,9 +78,6 @@ validates :last_name,
 
 validates :birth_date,
 :presence => true
-
-
-
 
 
 validates :phone_num,
