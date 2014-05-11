@@ -1,3 +1,31 @@
+<!-- to edit user profile -->
+  <%#
+    #Author: Mohamed Saeed
+    #Team: 1
+    #Function: View member profile and basic personal info
+    %>
+<center>
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=futura">
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+       <div class="well profile">
+            <div class="col-sm-12">
+                <div class="col-xs-12 col-sm-8">
+                  <div class="col-xs-12 col-sm-4 text-center">
+
+
+
+
+
+
+
+
+<!-- 
+
+
 <button type="button" class="btn btn-danger">Edit Profile</button>
 <button type="button" class="btn btn-danger">test</button>
 <%= link_to "Back", :back %>  
@@ -11,7 +39,13 @@
 </div>
 
 
-<h2>Edit Profile</h2>  
+ -->
+<br>
+<font face="futura" color="green" size="7"><strong>Edit Profile</font></strong>
+<br>
+<br>
+<br>
+<br>
  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>  
  <%= devise_error_messages! %>  
    <div><%= f.label :email %><br />  
@@ -19,13 +53,13 @@
    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>  
    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>  
  <% end %>  
-  <!-- <hr>  
+  <hr>  
   <h3>Edit Security settings</h3>  
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />  
+  <div><%= f.label :new_Password %> <i>(leave blank if you don't want to change it)</i><br />  
    <%= f.password_field :password, autocomplete: "off" %></div>  
-  <div><%= f.label :password_confirmation %><br />  
+  <div><%= f.label :new_password_confirmation %><br />  
    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>  
-  <hr> -->  
+  <hr> 
   <%-# for First name-%>  
     <div><%= f.label :first_name %> <i>(leave it if you don't want to change it)</i><br />  
     <%= f.text_field :first_name, autocomplete: "off" , :value=> @member.first_name %></div>  
@@ -66,3 +100,20 @@
  #  
  #  
  -%>  
+
+
+
+
+
+
+   </div>                 
+  </div>                 
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</center>
