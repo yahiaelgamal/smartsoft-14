@@ -92,8 +92,7 @@
                   Unhappy?
                   <br>
                   <br>
-                  <%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete %>
-                  <button type="button" class="btn btn-danger"><%= link_to 'Delete', edit_member_path(@member) %>
+                  <button type="button" class="btn btn-danger"><%= link_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete %>
                   </button>
                   <br>
                   <br>
