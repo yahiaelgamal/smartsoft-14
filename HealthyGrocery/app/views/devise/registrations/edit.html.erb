@@ -24,7 +24,7 @@
                   <hr>
                   <br>
                   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-                    <%= devise_error_messages! %>
+                    <center><%= devise_error_messages! %></center>
                     <font face="futura" color="green" size="5"><strong>Edit Email</font></strong>
                     <br>
                     <br>
@@ -75,8 +75,10 @@
                     <br>
                     <br>
                     <%-# for the current password to confrim the changes-%>
+                    <center>
                     <div><%= f.label :current_password %>
                       <%= f.password_field :current_password, autocomplete: "off" %></div>
+                    </center>
                     <!-- <div><%= f.submit "Save" %></div> -->
                     <br>
                     <button type="button" class="btn btn-default"><%= link_to 'Cancel', member_path(@member) %>
