@@ -1,22 +1,100 @@
 <!-- This the Users/Admins Hub Page which is the Home page that shows New/Recommended Items -->
 
-<% if current_member.email == 'admin@gmail.com'%>
+<% if current_member.email != 'admin@gmail.com'%>
+
+
+
+
+<%@allMembers = Member.all%>
+<%@membersCount=-1%>
+<% @allMembers.each do |m| %>
+<% @membersCount += 1%>
+<%end%>
+
+<!-- showing the number of users the website has reached -->
+
+<%@allItems = Item.all%>
+<%@itemsCount=0%>
+<% @allItems.each do |i| %>
+<% @itemsCount += 1%>
+<%end%>
+
+<!-- showing the number of items the website has-->
+
+
+<%@allTrucks = Truck.all%>
+<%@allDrivers = Driver.all%>
+<%@trucksCount=0%>
+<%@driversCount=0%>
+<% @allTrucks.each do |t| %>
+<% @trucksCount += 1%>
+<%end%>
+<% @allDrivers.each do |d| %>
+<% @driversCount += 1%>
+<%end%>
+
+<!--showing the number of drivers and the number of trucks these drivers are using-->
+
+
 
 <h1>Statistics:</h1>
+<h3 style="margin:0px 25px 0px"><font size="2">- The website has:</h3>
+<li style="margin:0px 45px 0px"><%=@membersCount%> members.</li>
+<li style="margin:0px 45px 0px"><%=@itemsCount%> items in its warehouse.</li>
+<li style="margin:0px 45px 0px"><%=@driversCount%> drivers, using <%=@trucksCount%> trucks.</li>
+
 
 <% @allOrders = Order.all %>
 <% @itemsTodayCount=0 %>
-<% @allOrders.each do |y| %>
-<% @itemsTodayCount += y.items.size %>
+<% @allOrders.each do |o| %>
+<%@date = y.date%>
+<%@today=Date.today%>
+
+<%if @date == @today%>
+ <% @itemsTodayCount += y.items.size %>  
 <%end%>
-<p>- <%=@itemsTodayCount%> items have been purchased today</p>
+
+<%end%>
+<h3 style="margin:0px 25px 0px">
+<font size="2">- <%=@itemsTodayCount%> items have been purchased today.</h3>
+
  
-<!-- getting items that are purchased today-->
+<!-- showing the number of items that are purchased today-->
+
+
+<% @ordersCount=0 %>
+<% @allOrders.each do |o| %>
+<% @allOrders += 1%>
+<%end%>
+<%if @ordersCount == 1%>
+<p style= "margin:0px 25px 0px";><b>- <%=@ordersCount%> order has been placed on the website so far.</h3>
+<%else%>
+<p style= "margin:0px 25px 0px";><b>- <%=@ordersCount%> orders have been placed on the website so far.</p>
+<%end%>
+
+<!-- showing the number of orders that that have been placed on the website so far-->
+
+<!-- showing items that are out of stock-->
+
+
 
 <!--	#Author: Omar Tarek
 	 	#Team: 5
 	 	#Method name:
 		#Function: show admin some statistical info about the website.
+	 	#Example:  -->
+
+
+<h1>Action Summary:</h1>
+
+
+
+
+
+<!--	#Author: Omar Tarek
+	 	#Team: 5
+	 	#Method name:
+		#Function: show admin a summary of the latest actions on the website.
 	 	#Example:  -->
 
 <%else%>
