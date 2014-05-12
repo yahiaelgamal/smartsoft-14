@@ -1,14 +1,36 @@
 HealthyGrocery::Application.routes.draw do
-  
-  resources :healthrecords
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR MEMBER
+#----------------------------------------------------------------------------------------------------#
+  #for user profile page
+  get 'members/hub'
+  get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
+  root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+  devise_for :members, :controllers => {:registrations => "registrations", }
+  match 'user_root' => redirect("/member/show")
+   resources :members do
+   get 'edit'
+   #Author: Ahmed Helali
+   #Team 2
+   # I added this path for the show_restricted_items
+   #controller and view
+   get :show_restricted_items, :on => :collection
+   get :show_ideal_calories, :on => :collection
+   get :calculated_ideal, :on => :collection
+   #Author:FatmaEmran
+   #T2
+   #Link to the health records of the people whom the user chose to order for
+    member do 
+    post :order_checkboxes
+    end 
+ end
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
+    # get "get_records"
 
- get 'members/hub'
- 
-resources :health_records
-  
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ITEMS
+#----------------------------------------------------------------------------------------------------#
+ post "items/members_items_index/add" => "items#add"
  resources :items do
    collection do
   get "members_items_index"
@@ -22,109 +44,70 @@ resources :health_records
   # Component: 5
   # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
   # it's invoked on a single item (member)
-
-
- 
-
-  resources :wishlines
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR HEALTHRECORDS
+#----------------------------------------------------------------------------------------------------#
+  resources :healthrecords
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR WISHLINES
+#----------------------------------------------------------------------------------------------------#
+ resources :wishlines
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DRIVERS
+#----------------------------------------------------------------------------------------------------#
   resources :drivers
   # Author: Hazem Amin 
   # Component: 5
   # Drivers page
-
-   resources :wishlists
-
-get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
-
- root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
-
- devise_for :members, :controllers => {:registrations => "registrations", }
-
-
-  
- resources :lineitems
-
-
-
- resources :carts
-
-
- root :to => "members#index"
- devise_for :members, :controllers => {:registrations => "registrations", }
-
-   #for user profile page
-   resources :members do
-   get 'edit'
-   
-   #Author: Ahmed Helali
-   #Team 2
-   # I added this path for the show_restricted_items
-   #controller and view
-   
-   get :show_restricted_items, :on => :collection
-   get :show_ideal_calories, :on => :collection
-   get :calculated_ideal, :on => :collection
-   
- end
-
-
- 
- # get "get_records"
-
-  match 'user_root' => redirect("/member/show")
-
-  
-
-
- 
-
-  
-
-#Author:FatmaEmran
-#T2
-#Link to the health records of the people whom the user chose to order for
-   
- #get "get_records"
-  resources :members do
-   member do 
-    post :order_checkboxes
-    end 
-  end
-  match 'user_root' => redirect("/member/show")
- 
-  
-  
-
-  match '/items' => 'items#index'
-
-  resources :routes
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR WISHLISTS
+#----------------------------------------------------------------------------------------------------#
+ resources :wishlists
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR LINEITEMS
+#----------------------------------------------------------------------------------------------------#
+  resources :lineitems
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR CARTS
+#----------------------------------------------------------------------------------------------------#
+  resources :carts
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ROUTES
+#----------------------------------------------------------------------------------------------------#
+ resources :routes
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR SHIPMENTS
+#----------------------------------------------------------------------------------------------------#
   resources :shipments
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR TRUCKS
+#----------------------------------------------------------------------------------------------------#
   resources :trucks
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ORDERS
+#----------------------------------------------------------------------------------------------------#
   resources :orders
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR USERS
+#----------------------------------------------------------------------------------------------------#
   resources :users
-
-
-    
-  
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DISEASES
+#----------------------------------------------------------------------------------------------------#
+ resources :diseases
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR GENERATEROUTES
+#----------------------------------------------------------------------------------------------------#
   match '/generateroutes' => 'generateroutes#index'
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
-
-
-  resources :diseases
-
-  post "items/members_items_index/add" => "items#add"
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR HEALTH_RECORDS
+#----------------------------------------------------------------------------------------------------#
+  resources :health_records
+#----------------------------------------------------------------------------------------------------#
+      #NOTHING GOES BELOW THIS
+#----------------------------------------------------------------------------------------------------#
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
