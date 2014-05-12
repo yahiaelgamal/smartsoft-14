@@ -28,7 +28,7 @@ class TrucksController < ApplicationController
   # GET /trucks/new.json
   def new
     @truck = Truck.new
-
+    @truckless_dirvers = Driver.where(truck: nil)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @truck }

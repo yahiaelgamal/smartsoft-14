@@ -10,18 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="dropdown">
-    <button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown">
-      Driver's List
-      <span class="caret"></span>
-    </button>
-    <% @drivers =  Driver.all %>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-      <% @drivers.each do |driver| %>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=driver.name%></a></li>
-      <%end %>
-    </ul>
-  </div>
+     <%= f.collection_select(:driver_id,@truckless_dirvers,:id,:name, prompt: true)%>
   <div class="field" style="padding-top:20px">
     <%= f.label :capacity %><br />
     <%= f.text_field :capacity %>
@@ -29,6 +18,7 @@
   <div class="field">
     <%= f.label :status %><br />
     <%= f.check_box :status %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
