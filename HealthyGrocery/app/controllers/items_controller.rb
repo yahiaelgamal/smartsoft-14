@@ -150,7 +150,7 @@ def viewusers
 #Team :5
 #parameter : flag, message
 #sends the message that is set by def Add to the members_item_index view
-def members_items_index    
+def members_items_index
  gon.flag =  flash[:flag]
  gon.message =  flash[:message]
 #Author: Antoine Foti
@@ -258,10 +258,9 @@ def members_items_index
 #AUTHOR: Mahmoud Eldesouky
 #Team :5
 #takes the updated value of each nutriant after adding an item to the shopping card, to reflect and show the
-#new progress of each nutriant on each progress bar    
+#new progress of each nutriant on each progress bar
   user = current_member
   healthrecord = user.records.first
-  
   @over_all_bar = ((healthrecord.protein_till_now + healthrecord.carbohydrate_till_now + healthrecord.calcium_till_now 
   + healthrecord.fat_till_now + healthrecord.vitamin_a_till_now + healthrecord.vitamin_b_till_now 
   + healthrecord.vitamin_c_till_now + healthrecord.vitamin_d_till_now + healthrecord.vitamin_e_till_now 
@@ -270,7 +269,6 @@ def members_items_index
   + healthrecord.acceptable_vitamin_a_per_week + healthrecord.acceptable_vitamin_b_per_week 
   + healthrecord.acceptable_vitamin_c_per_week + healthrecord.acceptable_vitamin_d_per_week 
   + healthrecord.acceptable_vitamin_e_per_week + healthrecord.acceptable_vitamin_k_per_week)) * 100
-
   @protein_bar = (healthrecord.protein_till_now / healthrecord.acceptable_protein_per_week) * 100
   @carbohydrate_bar = (healthrecord.carbohydrate_till_now / healthrecord.acceptable_carbohydrate_per_week) * 100
   @calcium_bar = (healthrecord.calcium_till_now / healthrecord.acceptable_calcium_per_week) * 100
@@ -281,7 +279,6 @@ def members_items_index
   @vitamin_d_bar = (healthrecord.vitamin_d_till_now / healthrecord.acceptable_vitamin_d_per_week) * 100
   @vitamin_e_bar = (healthrecord.vitamin_e_till_now / healthrecord.acceptable_vitamin_e_per_week) * 100
   @vitamin_k_bar = (healthrecord.vitamin_k_till_now / healthrecord.acceptable_vitamin_k_per_week) * 100
-
 end
    
 #AUTHOR : Mahmoud Eldesouky
@@ -406,7 +403,6 @@ def add
  else
   @message = "Sorry! This item is not available in stock"
  end
- 
  flash[:message] = @message 
  flash[:flag] = @flag
  redirect_to :action => :members_items_index

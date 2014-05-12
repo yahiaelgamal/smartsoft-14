@@ -34,6 +34,17 @@ gem "gon" , '5.0.4'
 #handles the showen progress bar 
 gem 'css3-progress-bar-rails'
 
+group :development, :test do 
+gem 'rspec-rails' 
+gem 'factory_girl_rails'
+end
+
+ group :test do 
+ gem 'faker' 
+ gem 'capybara' 
+ gem 'guard-rspec' 
+ gem 'launchy' 
+ end
 
        
 
