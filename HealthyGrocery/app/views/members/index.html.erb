@@ -10,25 +10,45 @@
 <%elsif @admin == true %>
 
 
+<%= form_tag members_path, :method => 'get' do %>
+<p>
+ <%= text_field_tag :search, params[:search] %>
+ <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
 
-<!--(GUI Team) This is the page where admin sees All Members in the System -->
-
+   
+<!--  
+ # Author: Mostafa Adel Mohamed   
+ # Component: C3  
+ # User Story: 3.13 - "as a retailer i can all the members"       
+ # describtion: As a hyperlinks for every member redirecting
+ # to his/her profile w/ pagination"  
+  -->
 <h3>Users</h3>
+<ul class="pagination">
+<%= paginate @members %>
+</ul>
 
 <ul class="members">
+
   <% @members.each do |member| %>
-    <li>
-      <%= link_to member.email, member %> 
-    </li>
+
+		
+	  <%if member.email != "admin@gmail.com"%>
+      <li>
+	  <%= link_to member.email, member %>
+	  </li>
+	  <%end %> 
+    
   <% end %>
 
    </ul>
 
 
+
+
+
   <%end%>
-
-
-</ul>
-
 
 
