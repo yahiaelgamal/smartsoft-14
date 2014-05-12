@@ -79,18 +79,22 @@ class DiseasesController < ApplicationController
   def create
     @disease = Disease.new(params[:disease])
     both = false
+    not_nummber = false
     fats_up = params[:fat_up].to_i
     fats_down = params[:fat_down].to_i
-    if (fats_up != 0 && fats_down != 0)
-      both = true
-    elsif fats_up != 0
-        @disease.fat =  fats_up
-        @disease.save
-     else   
-        @disease.fat = 0 - fats_down
-        @disease.save
+    if ((fats_up == 0 && params[:fat_up] != '0') || (fats_down == 0 && params[:fat_down] != '0'))
+      not_number = true  
+    else
+      if (fats_up != 0 && fats_down != 0)
+        both = true
+      elsif fats_up != 0
+          @disease.fat =  fats_up
+          @disease.save
+       else   
+          @disease.fat = 0 - fats_down
+          @disease.save
+      end
     end
-
     @reco = params[:ii]
     @rest = params[:r]
     @flag = true
@@ -124,7 +128,11 @@ class DiseasesController < ApplicationController
     end     
     
     respond_to do |format|
-      if both
+      if not_number
+      @disease.errors.add(:vaules, "must be in a numeric form! ")
+        format.html { render action: "new" }
+        format.json { render json: @disease.errors, status: :unprocessable_entit}
+      elsif both
         @disease.errors.add(:vaules, "should be either raised up or dropped down, not both! ")
         format.html { render action: "new" }
         format.json { render json: @disease.errors, status: :unprocessable_entit}
@@ -162,24 +170,28 @@ class DiseasesController < ApplicationController
   def update
     @disease = Disease.find(params[:id])
     @disease.fat = 0
-    both = false
     fats_up = params[:fat_up].to_i
     fats_down = params[:fat_down].to_i
-    if (fats_up != 0 && fats_down != 0)
-      both = true
-    elsif fats_up != 0
-        @disease.fat =  fats_up
-        @disease.save
-    else   
-        @disease.fat = 0 - fats_down
-        @disease.save
-    end
-    @reco = params[:ii]
-    @rest = params[:r]
-    @flag = true
-    @disease.recommended_items = []
-    @disease.restricted_items = []
-
+    not_nummber = false
+    if ((fats_up == 0 && params[:fat_up] != '0') || (fats_down == 0 && params[:fat_down] != '0'))
+      not_number = true  
+    else
+      both = false
+      if (fats_up != 0 && fats_down != 0)
+        both = true
+      elsif fats_up != 0
+          @disease.fat =  fats_up
+          @disease.save
+      else   
+          @disease.fat = 0 - fats_down
+          @disease.save
+      end
+      @reco = params[:ii]
+      @rest = params[:r]
+      @flag = true
+      @disease.recommended_items = []
+      @disease.restricted_items = []
+    end   
     if @reco != nil
         @reco.each do |s| 
           if (@rest != nil && @rest.include?(s))
@@ -209,7 +221,11 @@ class DiseasesController < ApplicationController
     end     
     
     respond_to do |format|
-      if both
+      if not_number
+      @disease.errors.add(:vaules, "must be in a numeric form! ")
+        format.html { render action: "edit" }
+        format.json { render json: @disease.errors, status: :unprocessable_entit}
+      elsif both
         @disease.errors.add(:vaules, "should be either raised up or dropped down, not both! ")
         format.html { render action: "edit" }
         format.json { render json: @disease.errors, status: :unprocessable_entit}
