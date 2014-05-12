@@ -17,53 +17,13 @@ class Item
   # Author: Hazem
   #Component: 5
   # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
-  field :fiber , type: Float
   field :vitamin_a , type: Float
   field :vitamin_b , type: Float
   field :vitamin_c , type: Float
   field :vitamin_d , type: Float
   field :vitamin_e , type: Float
   field :vitamin_k , type: Float
-  field :folate, type: Float
-  field :thiamin, type: Float
-  field :riboflavin, type: Float
-  field :pantothenic_acid, type: Float
-  field :choline, type: Float
-  field :niacin, type: Float
-  field :betaine, type: Float
-  field :calcium, type: Float
-  field :copper, type: Float
-  field :fluoride, type: Float
-  field :iron, type: Float
-  field :magnesium, type: Float
-  field :manganese, type: Float
-  field :phosphorus, type: Float
-  field :selenium, type: Float
-  field :zinc, type: Float
-  field :potassium, type: Float
-  field :sodium, type: Float
-  field :starch, type: Float
-  field :sugar, type: Float
-  field :fatty_acids, type: Float
-  field :trans_fat, type: Float
-  field :saturated_fat, type: Float
-  field :monounsaturated, type: Float
-  field :polyunsaturated, type: Float
-  field :trans_monoenoic, type: Float
-  field :trans_polyenoic, type: Float
-  field :omega_3, type: Float
-  field :cartenoids, type: Float
-  field :tocopherol, type: Float
-  field :retinol, type: Float
-  field :beta_carotene, type: Float
-  field :alpha_carotene, type: Float
-  field :sucrose, type: Float
-  field :glucose, type: Float
-  field :fructose, type: Float
-  field :maltose, type: Float
-  field :calories, type: Float
-  field :minerals, type: Float
-  #Author: Hazem Amin
+ #Author: Hazem Amin
   #Component: 5
   #Adding additional attributes for the various items
 
@@ -84,10 +44,10 @@ class Item
   # checks if image is present
   validates :image, :attachment_presence => true
 
-  #validates :protein , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
-  #validates :carbohydrate , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
-  #validates :calcium , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
-  #validates :fat , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :protein , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :carbohydrate , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :calcium , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :fat , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
 
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
