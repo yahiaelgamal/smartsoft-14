@@ -188,7 +188,6 @@ DEPENDENCIES
   devise
   formtastic
   formtastic-bootstrap
-  gon (= 5.0.4)
   handles_sortable_columns
   jquery-rails
   less-rails
