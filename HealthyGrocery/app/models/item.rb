@@ -1,7 +1,6 @@
 class Item
   include Mongoid::Document
   include Mongoid::Paperclip
-
   field :price , type: Float 
   field :amount , type: Integer
  	field :name , type: String  

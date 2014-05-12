@@ -7,6 +7,7 @@ class Disease
  field :level ,type: String
  field :information , type: String
  field :fat , type: Integer , default: 0
+ validates_numericality_of :fat, :message=> "Must enter fats value in numerical form only!"
  field :protein , type: Integer , default: 0
  
  has_many :restricted_items , class_name: 'Item' , inverse_of: :bad_for_diseases
