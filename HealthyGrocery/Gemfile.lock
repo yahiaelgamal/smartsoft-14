@@ -36,6 +36,7 @@ GEM
       uuidtools (~> 2.1)
     bcrypt (3.1.7)
     bcrypt (3.1.7-x86-mingw32)
+    bootstrap_form (2.1.1)
     bson (1.9.2)
     bson_ext (1.9.2)
       bson (~> 1.9.2)
@@ -52,6 +53,8 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     commonjs (0.2.7)
+    css3-progress-bar-rails (0.5.0)
+      rails (>= 3.1)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -64,6 +67,9 @@ GEM
       actionpack (>= 3.0)
     formtastic-bootstrap (3.0.0)
       formtastic (>= 2.2)
+    gon (5.0.4)
+      actionpack (>= 2.3.0)
+      json
     handles_sortable_columns (0.1.4)
     hike (1.2.3)
     i18n (0.6.9)
@@ -180,11 +186,14 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  bootstrap_form
   bson_ext
   coffee-rails (~> 3.2.1)
+  css3-progress-bar-rails
   devise
   formtastic
   formtastic-bootstrap
+  gon (= 5.0.4)
   handles_sortable_columns
   jquery-rails
   less-rails
