@@ -1,7 +1,8 @@
- 
-<style>
-   body { background-color: #39b1c6;
-}    </style>
+ <!-- Author: mina sedra -->
+<!-- Team: 2-->
+<!-- This page is the view to show the healthrecord  -->
+<%= stylesheet_link_tag "healthrecords" , :media => "all" %>
+
 <body>
 <p id="notice"><%= notice %></p>
 
@@ -35,25 +36,6 @@
   <%= @healthrecord.program %>
 </p>
 
-<!-- <p>
-  <b>Fat per day:</b>
-  <%= @healthrecord.fat_per_day %>
-</p>
-
-<p>
-  <b>Calcium per day:</b>
-  <%= @healthrecord.calcium_per_day %>
-</p>
-
-<p>
-  <b>Carbohydrate per day:</b>
-  <%= @healthrecord.carbohydrate_per_day %>
-</p>
-
-<p>
-  <b>Protein per day:</b>
-  <%= @healthrecord.protein_per_day %>
-</p> -->
 <p>
   <b>Gender:</b>
   <%= @healthrecord.gender %>
@@ -64,6 +46,7 @@
 </p>
 <tr> 
     <th colspan="7">Disease:</th>
+     </br>
     <td>
       <% @healthrecord.diseases.each do |c| %>
             <td><%= link_to c.name, c %></td>
@@ -75,38 +58,21 @@
   </br>
 </br>
 
-<!-- <p>
-  <b>Protein till now:</b>
-  <%= @healthrecord.protein_till_now %>
-</p>
-
-<p>
-  <b>Carbohydrate till now:</b>
-  <%= @healthrecord.carbohydrate_till_now %>
-</p>
-
-<p>
-  <b>Calcium till now:</b>
-  <%= @healthrecord.calcium_till_now %>
-</p>
-
-<p>
-  <b>Fat till now:</b>
-  <%= @healthrecord.fat_till_now %>
-</p>
- -->
-
+ <!-- author : mina
+     link to  the healthrecords -->
 <div class="contextual">
       <%= link_to(indexhealthrecord_path(current_member) , class: "btn btn-success") do %>
-        Back <i class="icon-plus icon-white"></i>
+        Back 
       <% end %>
     </div>
     <br/>
         <br/>
+         <!-- author : mina
+     link to  update  the healthrecords -->
 
     <div class="contextual">
       <%= link_to( edit_healthrecord_path(@healthrecord), class: "btn btn-success") do %>
-        Edit <i class="icon-plus icon-white"></i>
+        Edit
       <% end %>
     </div>
     <body/>

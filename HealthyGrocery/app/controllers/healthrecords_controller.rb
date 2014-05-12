@@ -58,6 +58,7 @@ class HealthrecordsController < ApplicationController
 #render the form to edit that healthrecord
   def edit
     @healthrecord = Healthrecord.find(params[:id])
+       
   end
 
   # POST /healthrecords
@@ -101,7 +102,16 @@ class HealthrecordsController < ApplicationController
 #update healthrecord
   def update
     @healthrecord = Healthrecord.find(params[:id])
-
+    
+  @reco = params[:ii]
+        if @reco != nil
+          @healthrecord.diseases << Disease.find(@reco.first)
+          @healthrecord.save
+          @reco.each do |p|
+            @healthrecord.diseases << Disease.find(p)
+            @healthrecord.save
+          end 
+      end
     respond_to do |format|
       if @healthrecord.update_attributes(params[:healthrecord])
         format.html { redirect_to @healthrecord, notice: 'Healthrecord was successfully updated.' }
