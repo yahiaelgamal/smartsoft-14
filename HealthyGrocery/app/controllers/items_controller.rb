@@ -258,7 +258,7 @@ def members_items_index
 #AUTHOR: Mahmoud Eldesouky
 #Team :5
 #takes the updated value of each nutriant after adding an item to the shopping card, to reflect and show the
-#new progress of each nutriant on each progress bar
+#new progress of each nutriant on each progress bar and calcultes the overal all progress percentage
   user = current_member
   healthrecord = user.records.first
   @over_all_bar = ((healthrecord.protein_till_now + healthrecord.carbohydrate_till_now + healthrecord.calcium_till_now 
@@ -287,7 +287,7 @@ end
 #checks that the choosen item with its nutrition does not exceed the acceptable limit of 
 #this user nutrients that we keep track of through his healthrecord. Each time an item within the 
 #nutrition limits is choosen his till_now attribute in the healthrecord is updated else if a violation happens
-#the message attribute is set with the approprite message to the user describing his violations
+#the message attribute is set with the approprite message and flashed to the user describing his violations
 def add
 
  item_id = params[:item]
