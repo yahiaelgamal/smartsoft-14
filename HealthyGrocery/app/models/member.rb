@@ -4,12 +4,12 @@ class Member
 #team : 1
 #model of the member
 #contains all the needed attributes and relations for the member  
-
+#after_create :send_mail
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable 
+         :recoverable, :rememberable, :trackable, :validatable , :confirmable
 
   # Setup accessible (or protected) attributes for your model
  field :first_name, type: String
@@ -19,10 +19,10 @@ class Member
  field :birth_date, type: Date 
  
 
-#   field :confirmation_token,   type: String
- #  field :confirmed_at,         type: Time
-  # field :confirmation_sent_at, type: Time
-   #field :unconfirmed_email,    type: String # Only if using reconfirmable
+   field :confirmation_token,   type: String
+   field :confirmed_at,         type: Time
+   field :confirmation_sent_at, type: Time
+   field :unconfirmed_email,    type: String # Only if using reconfirmable
 
   
   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :phone_num , :birth_date
@@ -89,7 +89,6 @@ validates :phone_num,
 
  validates_numericality_of :phone_num
 #validates_date :birth_date
-
 
 
 

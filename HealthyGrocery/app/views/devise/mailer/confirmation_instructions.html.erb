@@ -1,6 +1,5 @@
-<p>Welcome <%= current_member.email %>!</p>
+<p>Welcome <%= @member.email %>!</p>
 
 <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account',
-    member_confirm_url(:confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

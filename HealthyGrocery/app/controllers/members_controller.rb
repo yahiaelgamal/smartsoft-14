@@ -9,7 +9,7 @@ class MembersController < ApplicationController
 def index
     @members = Member.all
 
-  if current_member.email == 'admin@gmail.com'
+  if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
   else 
       @admin = false
@@ -27,20 +27,13 @@ end
 
      
 
-  def show
-@member = Member.find(params[:id])
-
-
-
-
-  	if current_member.email == 'admin@gmail.com'
-
-  		@admin = true
+def show
+  @member = Member.find(params[:id])
+  if current_member.email == 'healthygrocery@gmail.com'
+      @admin = true
   else 
 	    @admin = false
   end
-   
-
   if current_member.wishlist.nil?
       @wishexist = false
   else 
@@ -80,7 +73,7 @@ end
     
     @member = current_member
     
-    if current_member.email == 'admin@gmail.com'
+    if current_member.email == 'healthygrocery@gmail.com'
         @admin = true
     else 
       @admin = false
@@ -102,7 +95,7 @@ end
     
     @member = current_member
     
-    if current_member.email == 'admin@gmail.com'
+    if current_member.email == 'healthygrocery@gmail.com'
         @admin = true
     else 
       @admin = false
@@ -123,7 +116,7 @@ end
     @weight = ""
     @duration = ""
     
-    if current_member.email == 'admin@gmail.com'
+    if current_member.email == 'healthygrocery@gmail.com'
         @admin = true
     else 
       @admin = false
