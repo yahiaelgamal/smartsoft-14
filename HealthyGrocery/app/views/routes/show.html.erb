@@ -1,10 +1,96 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Draggable directions</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
 
-<p>
-  <b>Arrofpoints:</b>
-  <%= @route.arrOfPoints %>
-</p>
+var rendererOptions = {
+  draggable:false
+};
+var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);;
+var directionsService = new google.maps.DirectionsService();
+var map;
 
+var australia = new google.maps.LatLng(-25.274398, 133.775136);
+
+function initialize() {
+
+  var mapOptions = {
+    zoom: 7,
+    center: australia
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  directionsDisplay.setMap(map);
+  directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+
+  google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+    computeTotalDistance(directionsDisplay.getDirections());
+  });
+
+  calcRoute();
+}
+
+function calcRoute() {
+
+  var request = {
+    origin: "Halifax, NS",
+    destination: "Boston, MA",
+    waypoints:[{location: "toronto, ont"}, {location:"spokane, wa"} ,{location: 'fargo, nd'}],
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+
+function computeTotalDistance(result) {
+  var total = 0;
+  var myroute = result.routes[0];
+  for (var i = 0; i < myroute.legs.length; i++) {
+    total += myroute.legs[i].distance.value;
+  }
+  total = total / 1000.0;
+  document.getElementById('total').innerHTML = total + ' km';
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+      <div id="routeInfo" style='float:left;margin-left:20px; '><h1>Route</h1>
+      	  <p id="notice"><%= notice %></p>
+          <p>
+            <b>Arrofpoints:</b>
+            <%= @route.arrOfPoints %>
+          </p>
+          <h4>route info</h4>
+          <h4>route info</h4>
+          <h4>route info</h4>
+          <h4>route info</h4>
+          <h4>route info</h4>
+          <h4>route info</h4>
+          <h4>route info</h4>
+          <h4>route info</h4>
+       </div>
+      <div id="map-canvas" style='width:800px;height:400px;'></div>
+    <div id="directionsPanel" style="float:right;width:800;height 400">
+    <p>Total Distance: <span id="total"></span></p>
+    </div>
+  </body>
+</html>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
