@@ -14,10 +14,19 @@ class Item
   field :calcium , type: Integer 
   field :fat , type: Integer 
   field :paused , type: Boolean
+  # Author : Mahmoud Eldesouky
+  # Team : 5
+  # added attributes for more item information
+  field :vitamin_a, type: Integer 
+  field :vitamin_b, type: Integer 
+  field :vitamin_c, type: Integer 
+  field :vitamin_d, type: Integer 
+  field :vitamin_e, type: Integer 
+  field :vitamin_k, type: Integer 
+  
   # Author: Hazem
   #Component: 5
   # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
-
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # checks if name is present 
@@ -34,11 +43,6 @@ class Item
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # checks if image is present
   validates :image, :attachment_presence => true
-
-  validates :protein , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
-  validates :carbohydrate , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
-  validates :calcium , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
-  validates :fat , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
 
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items

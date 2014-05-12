@@ -82,7 +82,7 @@ left-margin:50px;
 
 <!-- Title for the page -->
  <% if current_member.records.count > 0 %>
-<h1>Items as shown to members</h1>
+<!-- <h1>Items as shown to members</h1> -->
 
 <navigationbar>
   <h5>Filter for products </h5>
@@ -128,21 +128,16 @@ left-margin:50px;
     <td>Available: <%= item.status %></td><br/>
     <td>Description: <%= item.description %></td></br>
     <td>Rating: <%= item.rating %></td></br>
-
-
-    <textarea rows="1" cols="4"></textarea> KG  <button>Add to shopping cart</button></br>
-    <%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1-->
-
-    <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart', lineitems_path(item_id: item) %>
-    </br>
-   
-
-
     <td>Proteins: <%= item.protein %></td></br>
     <td>Carbohydrates: <%= item.carbohydrate %></td></br>
     <td>Calcium: <%= item.calcium %></td></br>
     <td>Fats: <%= item.fat %></td></br>
 
+    <%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1-->
+
+    <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart', lineitems_path(item_id: item) %>
+    </br>
+ 
 <!--AUTHOR: Mahmoud Eldesouky
     Team :5
     takes the quantiy from the user -->
@@ -171,39 +166,69 @@ left-margin:50px;
   <div class="sidebar">
     <%= yield :sidebar %>
 </div>
-  <navigationbar>
-  <h5>REACHED </h5>
-<%= form_tag '/items/members_items_index', :method => 'get' do%>
-  <p>
-    <opt>
-      <p>Total Proteins Gain </p>
-     <%= progress_bar(@protein_bar, :color => 'blue', :rounded => true) %> 
-     </opt></br></br>
-    <opt>
-      <p>Total Carbohydrates Gain </p>
-     <%= progress_bar(@carbohydrate_bar, :color => 'orange', :rounded => true) %> 
-    </opt></br></br>
-    <opt>
-      <p>Total Calcium Gain </p>
-    <%= progress_bar(@calcium_bar, :color => 'red', :rounded => true) %> 
-    </opt></br></br>
-    <opt>
-      <p>Total Fats Gain </p>
-     <%= progress_bar(@fats_bar, :color => 'grey', :rounded => true) %> 
-    </opt></br></br>
-  
-  </p>
-<% end %>
+<!--AUTHOR : Mahmoud Eldesouky
+    Team : 5
+    parameter : takes the updated value of the till_now for each nutriant
+    It views the updated value of the over all progress on the progress bar 
+    and detailed progress bar for each nutrient when clicking show progress button -->
+<div>
+<navigationbar>
+ <h5>REACHED </h5>
+ <%= form_tag '/items/members_items_index', :method => 'get' do%>
+ <p>
+  <p>Total Over all Gain </p>
+  <%= progress_bar(@over_all_bar, :color => 'grey', :rounded => true) %> 
+  </opt></br></br>
+  <input type="button" onclick="show_detail()" value="Show Progress">
+  <input type="button" onclick="hide_detail()" value="Hide Progress">
+ 
+  <div id='1' style="visibility:hidden;">
+  <p align="center">Total Protein Gain </p>
+  <%= progress_bar(@protein_bar, :color => 'grey', :rounded => true) %> 
+  <p align="center">Total Carbohydrates Gain </p>
+  <%= progress_bar(@carbohydrate_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Calcium Gain </p>
+  <%= progress_bar(@calcium_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Fats Gain </p>
+  <%= progress_bar(@fats_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin A Gain </p>
+  <%= progress_bar(@vitamin_a_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin B Gain </p>
+  <%= progress_bar(@vitamin_b_bar, :color => 'grey', :rounded => true) %>
+  <p align="left">Total Vitamin C Gain </p>
+  <%= progress_bar(@vitamin_c_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin D Gain </p>
+  <%= progress_bar(@vitamin_d_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin E Gain </p>
+  <%= progress_bar(@vitamin_e_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin K Gain </p>
+  <%= progress_bar(@vitamin_k_bar, :color => 'grey', :rounded => true) %> 
+  </div>
+ </p>
+ <% end %>
 </navigationbar>   
-
+</div>   
 </body>
-<!--AUTHOR: Mahmoud Eldesouky
-    Team :5
-    parameter : message
-    recieving the violation message as a parameter from items_controller and poping it to the user -->
+
 <script type="text/javascript">
-if (!gon.flag&&gon.message!=null){
-alert(gon.message)
-}
+ //AUTHOR : Mahmoud Eldesouky
+ //Team : 5
+ //parameter : message
+ //recieving the violation message as a parameter from items_controller and poping it to the user 
+ if (!gon.flag&&gon.message!=null){
+  alert(gon.message)
+ }
+ //AUTHOR : Mahmoud Eldesouky
+ //Team : 5
+ //This function hide the detailed progress bars that are in the right hand side navigation bar
+ function hide_detail(){
+  document.getElementById('1').style.visibility = 'hidden';
+ }
+ //AUTHOR : Mahmoud Eldesouky
+ //Team : 5
+ //This function shows the detailed progress bars that are in the right hand side navigation bar
+ function show_detail(){
+  document.getElementById('1').style.visibility = 'visible';
+ }
 </script>
 
