@@ -1,8 +1,8 @@
 /* Author: Karim El-Bawab
- Team: 4
- Stylesheet name: address_position
- Function: This style used on the the map div in the view of 
- position's action of address's controller   
+   Team: 4
+   Stylesheet name: address_position
+   Function: This style used on the the map div in the view of 
+   position's action of address's controller   
 */
 html,body,#map-canvas {
     height: 100%;
@@ -11,8 +11,8 @@ html,body,#map-canvas {
 }
 
 /* Author: Karim El-Bawab
- Team: 4
- Function: This style used to fix the map with the twitter bootstrap   
+   Team: 4
+   Function: This style used to fix the map with the twitter bootstrap   
 */
 img,object,embed {
     max-width: none;
