@@ -6,9 +6,18 @@ class Disease
  validates_uniqueness_of :name, :message=> "must be unique"
  field :level ,type: String
  field :information , type: String
- field :fat , type: Integer , default: 0
- validates_numericality_of :fat, :message=> "Must enter fats value in numerical form only!"
- field :protein , type: Integer , default: 0
+
+ field :protein , type: Float , default: 0
+ field :carbohydrate , type: Float , default: 0
+ field :calcium , type: Float , default: 0
+ field :fat , type: Float , default: 0
+ field :vitamin_a , type: Float , default: 0
+ field :vitamin_b , type: Float , default: 0
+ field :vitamin_c , type: Float , default: 0
+ field :vitamin_d , type: Float , default: 0
+ field :vitamin_e , type: Float , default: 0
+ field :vitamin_k , type: Float , default: 0
+ 
  
  has_many :restricted_items , class_name: 'Item' , inverse_of: :bad_for_diseases
  has_many :recommended_items , class_name: 'Item' , inverse_of: :good_for_diseases

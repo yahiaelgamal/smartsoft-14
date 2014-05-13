@@ -52,11 +52,119 @@
         <td><%= text_field_tag 'fat_up', @up, :class => "span1" %></td>
         <td><%= text_field_tag 'fat_down', @down, :class => "span1" %></td>
       </tr>
-      <tr>
+     <tr>
         <td>protein</td>
-        <td><%= text_field_tag 'protein_up', '0',:class => "span1" %></td>
-        <td><%= text_field_tag 'protein_down', '0', :class => "span1" %></td>
+        <% if @disease.protein > 0 %>
+        <% @up = @disease.protein %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.protein%>
+        <%end%>
+        <td><%= text_field_tag 'protein_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'protein_down', @down, :class => "span1" %></td>
       </tr>
+      <tr>
+        <td>calcium</td>
+        <% if @disease.calcium > 0 %>
+        <% @up = @disease.calcium %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.calcium%>
+        <%end%>
+        <td><%= text_field_tag 'calcium_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'calcium_down', @down, :class => "span1" %></td>
+      </tr>
+      <tr>
+        <td>carbohydrate</td>
+        <% if @disease.carbohydrate > 0 %>
+        <% @up = @disease.carbohydrate %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.carbohydrate%>
+        <%end%>
+        <td><%= text_field_tag 'carbohydrate_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'carbohydrate_down', @down, :class => "span1" %></td>
+      </tr>
+      <tr>
+        <td>vitamin_A</td>
+        <% if @disease.vitamin_a > 0 %>
+        <% @up = @disease.vitamin_a %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_a%>
+        <%end%>
+        <td><%= text_field_tag 'vitamin_a_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'vitamin_a_down', @down, :class => "span1" %></td>
+      </tr>
+      <tr>
+        <td>vitamin_B</td>
+        <% if @disease.vitamin_b > 0 %>
+        <% @up = @disease.vitamin_b %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_b%>
+        <%end%>
+        <td><%= text_field_tag 'vitamin_b_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'vitamin_b_down', @down, :class => "span1" %></td>
+      </tr>
+      <tr>
+        <td>vitamin_C</td>
+        <% if @disease.vitamin_c > 0 %>
+        <% @up = @disease.vitamin_c %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_c%>
+        <%end%>
+        <td><%= text_field_tag 'vitamin_c_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'vitamin_c_down', @down, :class => "span1" %></td>
+      </tr>
+      <tr>
+        <td>vitamin_D</td>
+        <% if @disease.vitamin_d > 0 %>
+        <% @up = @disease.vitamin_d %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_d%>
+        <%end%>
+        <td><%= text_field_tag 'vitamin_d_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'vitamin_d_down', @down, :class => "span1" %></td>
+      </tr>
+      <tr>
+        <td>vitamin_K</td>
+        <% if @disease.vitamin_e > 0 %>
+        <% @up = @disease.vitamin_e %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_e%>
+        <%end%>
+        <td><%= text_field_tag 'vitamin_e_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'vitamin_e_down', @down, :class => "span1" %></td>
+      </tr>
+      <tr>
+        <td>vitamin_K</td>
+        <% if @disease.vitamin_k > 0 %>
+        <% @up = @disease.vitamin_k %>
+        <% @down = 0 %>
+        <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_k%>
+        <%end%>
+        <td><%= text_field_tag 'vitamin_k_up', @up, :class => "span1" %></td>
+        <td><%= text_field_tag 'vitamin_k_down', @down, :class => "span1" %></td>
+      </tr>
+
+      
+
+
+
     </body>
   </table>
   
