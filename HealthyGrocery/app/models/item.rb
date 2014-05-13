@@ -91,7 +91,10 @@ class Item
 
   def get_alter (item,healthrecord)
     Item.all.each do |canidate|
-      
+      if(canidate.vitamin_a.between(item.vitamin_a-) )
     end
+  end
+  def percent_of(n)
+    self.to_f / n.to_f * 100.0
   end
 end
