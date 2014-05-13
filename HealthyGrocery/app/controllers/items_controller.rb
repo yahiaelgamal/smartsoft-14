@@ -283,11 +283,8 @@ end
    
 #AUTHOR : Mahmoud Eldesouky
 #Team : 5
-#parameter : item, amount
-#checks that the choosen item with its nutrition does not exceed the acceptable limit of 
-#this user nutrients that we keep track of through his healthrecord. Each time an item within the 
-#nutrition limits is choosen his till_now attribute in the healthrecord is updated else if a violation happens
-#the message attribute is set with the approprite message and flashed to the user describing his violations
+# This method calls the add method which is in the Item model and send to the methods its needed paramters. It then
+# takes the array returned from the method (which contains the flag and the message to be flushed) and the flushes the message.
 def add 
  x = Array.new
  x = Item.add(current_member,params[:item],params[:amount])

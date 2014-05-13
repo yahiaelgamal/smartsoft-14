@@ -40,9 +40,9 @@ class Item
   # declares an attached file as an attribute
   has_mongoid_attached_file :image 
   # checks the attachment type is image
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  #validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # checks if image is present
-  validates :image, :attachment_presence => true
+  #validates :image, :attachment_presence => true
 
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
@@ -67,9 +67,10 @@ class Item
 #Team : 5
 #parameter : current_member,item_id,amount
 #checks that the choosen item with its nutrition does not exceed the acceptable limit of 
-#this user nutrients that we keep track of through his healthrecord. Each time an item within the 
-#nutrition limits is choosen his till_now attribute in the healthrecord is updated else if a violation happens
-#the message attribute is set with the approprite message and flashed to the user describing his violations
+#this user nutrients that we keep track of through his healthrecord, We access his healthrecord through current_member.
+#Each time an item within the nutrition limits is choosen his till_now attribute in the healthrecord is 
+#updated else if a violation happens the message attribute is set with the approprite message and flashed 
+#to the user describing his violations. It returns an array that contains in the flag in index 0 and the message in index 1
 def self.add(current_member,item_id,amount) 
  result = Array.new
  amount = amount.to_i 
