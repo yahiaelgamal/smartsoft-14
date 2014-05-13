@@ -39,7 +39,9 @@ class Healthrecord
   validates_numericality_of :weight
   validates_numericality_of :age
   # validates_numericality_of :fats
-  
+  validates :age, length: { maximum: 2 }
+  validates :height, length: { maximum: 3 }
+  validates :weight, length: { maximum: 3 }
   
   belongs_to :member , class_name: 'Member' , inverse_of: :records 
   has_many :diseases , class_name: 'Disease' , inverse_of: :healthrecords 
