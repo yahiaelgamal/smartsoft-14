@@ -9,24 +9,27 @@ class Item
 	field :rating , type: Float 
 	field :status , type: Boolean
 	field :category , type: String
+  # Author: Hazem Amin
+  # Team: 5
+  # Function: Added new needed attributes for the items-class
   field :protein , type: Float 
   field :carbohydrate , type: Float 
   field :calcium , type: Float 
   field :fat , type: Float 
-  field :paused , type: Boolean
   # Author: Hazem
-  #Component: 5
-  # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
+  # Component: 5
+  # Attribute: paused, to keep track whether each and every item is 
+  # paused or not (boolean)
+  field :paused , type: Boolean
+  # Author: Hazem Amin
+  # Team: 5
+  # Function: Added other needed attributes for the items-class
   field :vitamin_a , type: Float
   field :vitamin_b , type: Float
   field :vitamin_c , type: Float
   field :vitamin_d , type: Float
   field :vitamin_e , type: Float
   field :vitamin_k , type: Float
- #Author: Hazem Amin
-  #Component: 5
-  #Adding additional attributes for the various items
-
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # checks if name is present 
