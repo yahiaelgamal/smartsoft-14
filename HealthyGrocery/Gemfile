@@ -19,6 +19,7 @@ gem 'devise'
 
 
 
+
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
 
@@ -29,14 +30,9 @@ gem 'twitter-bootstrap-rails'
 gem 'formtastic'
 gem 'formtastic-bootstrap' 
 
-
-
-
-
-
-
-       
-
+gem 'geocoder', '~> 1.2.0' #This gem used to translate an address String to real coordinates of this place or vice versa
+gem 'gmaps4rails', '~> 2.1.2'#This gem used to help in intialising a map 
+gem 'gon', '~> 5.0.4' #This gem used to pass values from rails controler to javascript
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -64,10 +60,3 @@ end
 
 # To use debugger
 # gem 'debugger'
-#-----------------------------------------------------------------------------------------------------------
-#Author: Karim El-Bawab
-#Team: 4
-gem 'geocoder', '~> 1.2.0' #This gem used to translate an address String to real coordinates of this place or vice versa
-gem 'gmaps4rails', '~> 2.1.2'#This gem used to help in intialising a map 
-gem 'gon', '~> 5.0.4' #This gem used to pass values from rails controler to javascript
-#-----------------------------------------------------------------------------------------------------------

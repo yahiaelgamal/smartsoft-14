@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @healthrecord.name %>
+</p>
+
+<p>
+  <b>Bmi:</b>
+  <%= @healthrecord.bmi %>
+</p>
+
+<p>
+  <b>Fats:</b>
+  <%= @healthrecord.fats %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @healthrecord.height %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%= @healthrecord.weight %>
+</p>
+
+<p>
+  <b>Program:</b>
+  <%= @healthrecord.program %>
+</p>
+
+<p>
+  <b>Fat per day:</b>
+  <%= @healthrecord.fat_per_day %>
+</p>
+
+<p>
+  <b>Calcium per day:</b>
+  <%= @healthrecord.calcium_per_day %>
+</p>
+
+<p>
+  <b>Carbohydrate per day:</b>
+  <%= @healthrecord.carbohydrate_per_day %>
+</p>
+
+<p>
+  <b>Protein per day:</b>
+  <%= @healthrecord.protein_per_day %>
+</p>
+
+<!-- <p>
+  <b>Protein till now:</b>
+  <%= @healthrecord.protein_till_now %>
+</p>
+
+<p>
+  <b>Carbohydrate till now:</b>
+  <%= @healthrecord.carbohydrate_till_now %>
+</p>
+
+<p>
+  <b>Calcium till now:</b>
+  <%= @healthrecord.calcium_till_now %>
+</p>
+
+<p>
+  <b>Fat till now:</b>
+  <%= @healthrecord.fat_till_now %>
+</p>
+ -->
+
+<%= link_to 'Edit', edit_healthrecord_path(@healthrecord) %> |
+<%= link_to 'Back', indexhealthrecord_path(current_member) %>

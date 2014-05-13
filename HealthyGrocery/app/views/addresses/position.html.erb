@@ -1,9 +1,9 @@
 <!--# Author : Karim El-Bawab
-# Team: 4
-# View name: position 
-# Function: this is the view that show the user the map 
-# that containes the animated marker in order to move it
-# to his address and verify its location on the map  
+    # Team: 4
+    # View name: position 
+    # Function: this is the view that show the user the map 
+    # that containes the animated marker in order to move it
+    # to his address and verify its location on the map  
 -->
 <%= include_gon %>
 <!DOCTYPE html>
@@ -22,6 +22,8 @@
       <p>1) move the marker to your address exactly</p>
       <p>2) click on the marker</p>
       <p>3) press the verification button</p>
+      <br>
+      <br>
       <div style='width: 800px;'>
          <div id="map-canvas" style='width: 800px; height: 400px;'></div>
       </div>
@@ -31,4 +33,5 @@
 <% if params[:lat] != nil || params[:lng] !=nil%>
 <% @address.update_attribute(:coordinates , [params[:lng],params[:lat]]) %>  
 <%end%>
+<br>
 <%= button_to 'Verify address', showaddresses_path, :method => :get  %>

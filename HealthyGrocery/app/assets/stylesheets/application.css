@@ -13,14 +13,14 @@
  */
 
 /* Author: Karim El-Bawab
- Team: 4
- Function: This style used to fix the map with the twitter bootstrap   
+   Team: 4
+   Function: This style used to fix the map with the twitter bootstrap   
 */
-#map img { 
-  max-width: none;
-}
-#map label { 
-  width: auto; display:inline; 
+#map img {
+    max-width: none;
 }
 
-
+#map label {
+    width: auto;
+    display: inline;
+}

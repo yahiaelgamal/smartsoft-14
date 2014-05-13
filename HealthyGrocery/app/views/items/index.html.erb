@@ -1,4 +1,6 @@
 <!--to check the adminstration level-->
+<%= csrf_meta_tag %>
+
 <% if @admin == false%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
 <%= link_to_function "Back", "history.back()" %>
@@ -115,8 +117,14 @@ Navigate Here </br></br>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    
+    
+
+
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
-    <td><%= button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
+    <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
+
 </tr>
 <% end %>
 </table></br>

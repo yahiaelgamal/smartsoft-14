@@ -31,8 +31,7 @@ end
 @member = Member.find(params[:id])
 
 
-#(GUI Team) This session is used to be able to navigate from the navigation bar to user's profile
-#session["user_id"]= params[:id]
+
 
   	if current_member.email == 'admin@gmail.com'
 
@@ -41,7 +40,7 @@ end
 	    @admin = false
   end
    
-    
+
 
   if current_member.wishlist.nil?
       @wishexist = false
@@ -50,13 +49,88 @@ end
   end
 end
 
-   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
+#(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
 #session["isAdmin"]= @admin
 
+#author: Fatma EmranS
+#Team 2
+#Funtion: Checkboxes for the people with health records of the user who wants to order.
+def order_checkboxes
+  @healthrecords = current_member.records
+  @records_ids = params[:all]
+  current_member.active_records = @records
+  current_member.save
+end
+  
+#Author : mina sedra
+#team : 2
+#method: get healthrecord
+#params : none
+#it shows the page of the member's healthrecord 
+ def get_records
+    @member = Member.find(params[:id])
+    @healthrecord = @member.records
+  respond_to do |format|
+      format.html# show.html.erb
+      format.json { render json: @healthrecord }
+  end
+  end
 
-   end
+ 
+  def show_restricted_items
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+
+  # def show_ideal_calories
+    
+  #   @member = current_member
+    
+  #   if current_member.email == 'admin@gmail.com'
+  #       @admin = true
+  #   else 
+  #     @admin = false
+  #   end
+  # end
+
+  def calculated_ideal
+    
+    @member = current_member
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
 
 
-   
+  
+  #Atuhor: ahmed helali
+  #team 2
+  #method: show_ideal_calories
+  #parameters: none
+  #function: reponsible for the view of the same name
 
+  def show_ideal_calories
+    
+    @member = current_member
+    @weight = ""
+    @duration = ""
+    
+    if current_member.email == 'admin@gmail.com'
+        @admin = true
+    else 
+      @admin = false
+    end
+  end
+
+
+end  
 

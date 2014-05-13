@@ -15,6 +15,7 @@ class Order
 	field :date  ,type: Date
 
 	field :coordinates ,type: Array
+	field :coordinates_billing ,type: Array
 #Author : Ahmed AbdElsattar
 #Team: 4
 #attr :   isfinished , delivered
@@ -22,12 +23,18 @@ class Order
 	field :isfinished,type: Boolean
 	field :delivered ,type: Boolean
 	field :pass , type: String
+	field :pass_billing , type: String
+
 
 	belongs_to :member ,class_name: 'Member' , inverse_of: :orders
 	belongs_to :route , class_name: 'Route' , inverse_of: :orders
 	has_many :packages , class_name: 'Package' , inverse_of: :order
 	has_and_belongs_to_many :address , class_name: 'Address',inverse_of: :order
 	has_many :items , class_name: 'Item' , inverse_of: :order
+	#Author: FatmaEmran
+	#T2
+	#Function: lines of order items.
+	has_many :lines , class_name: 'Lineitem', inverse_of: :order
 
 #This method is responsible of getting the 
 #exact order that user searched for using the order number
