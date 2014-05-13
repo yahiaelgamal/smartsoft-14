@@ -4,11 +4,11 @@ class Item
 
   field :price , type: Float 
   field :amount , type: Float
- 	field :name , type: String  
- 	field :description , type: String  
-	field :rating , type: Float 
-	field :status , type: Boolean
-	field :category , type: String
+  field :name , type: String  
+  field :description , type: String  
+  field :rating , type: Float 
+  field :status , type: Boolean
+  field :category , type: String
   # Author: Hazem Amin
   # Team: 5
   # Function: Added new needed attributes for the items-class
@@ -51,6 +51,19 @@ class Item
   validates :carbohydrate , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   validates :calcium , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   validates :fat , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  # Author: Hazem Amin
+  # Team: 5
+  # Function: Added validations to make sure the submitted float-values of the
+  # nutritions are positive values and that no text-fields are being
+  # submitted with no values (empty)
+  validates :vitamin_a, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_a, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_b, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_c, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_d, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_e, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_k, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+
 
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
