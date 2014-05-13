@@ -85,6 +85,9 @@ validates :phone_num,
 
 
 
+#Author:halawa
+#team:2
+field :district, type: String
 
 
 

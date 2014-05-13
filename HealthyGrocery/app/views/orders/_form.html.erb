@@ -23,6 +23,50 @@
     <%= f.label :weight %><br />
     <%= f.text_field :weight %>
   </div>
+
+<!--author:halawa
+team:2
+function : add district to ur order -->
+  <div class="field">
+    <%= f.label :district %><br />
+  <select name="member[district]">
+    <option value="  " disabled selected>(please select a district)</option>
+    <optgroup label="cairo">
+    <option>Abdeen</option>
+    <option>Ain Shams</option>
+    <option>Al-Matariyyah</option>
+    <option>Azbakeya</option>
+    <option>Bab al-Louq</option>
+    <option>Bulaq</option>
+    <option>Downtown Cairo</option>
+    <option>El-Manial</option>
+    <option>El-Marg</option>
+    <option>El-Quba</option>
+    <option>El-Tagamu El Khames</option>
+    <option>Garden City</option>
+    <option>Heliopolis</option>
+    <option>Maadi</option>
+    <option>Mokattam</option>
+    <option>Old Cairo</option>
+    <option>Zamalek</option>
+    <option>Zeitoun</option>
+    </optgroup>
+    <optgroup label="Giza">
+    <option>Dokki</option>
+    <option>Agouza</option>
+    <option>Imbabah</option>
+    <option>Haram</option>
+    <option>Monib</option>
+    </optgroup>
+    <optgroup label="Alexandria">
+    <option>al-Montaza</option>
+    <option>al-Amriya</option>
+    <option>Agamy</option>
+    <option>Borg Al-Arab</option>
+    <option>al-Gomrok</option>
+    </optgroup>
+  </select>
+</div>
   <div class="field">
     <%= f.label :volume %><br />
     <%= f.text_field :volume %>
@@ -39,3 +83,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+
