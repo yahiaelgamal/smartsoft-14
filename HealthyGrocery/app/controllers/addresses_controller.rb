@@ -1,15 +1,5 @@
 class AddressesController < ApplicationController
-  # GET /addresses
-  # GET /addresses.json
-  def index
-    @addresses = Address.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @addresses }
-    end
-  end
-
+ 
   # GET /addresses/1
   # GET /addresses/1.json
   def show
