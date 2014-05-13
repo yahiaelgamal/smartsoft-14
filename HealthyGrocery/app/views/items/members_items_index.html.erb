@@ -2,8 +2,13 @@
 <!-- Team: 3-->
 <!-- This page is the view of the items from the members' point of view-->
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
-<style>
 
+<div class="progress progress-striped active">
+  <div class="bar"  style="width: 30%;">
+  </div>
+</div>
+
+<style>
 
 icon{
 font-size: 20px;
@@ -70,7 +75,6 @@ left-margin:50px;
 <!-- Title for the page -->
  <% if current_member.records.count > 0 %>
 <h1 style="padding-bottom: 30px;">Items as shown to members</h1>
-
 <navigationbar>
   <h5>Filter for products </h5>
   <%# Author : Antoine Foti
@@ -107,28 +111,31 @@ left-margin:50px;
 
 <% @items.each do |item| %>
   <icon>
-    <img src= "<%= item.image%>" height=150 width=150 ></img></br>
-    <td>Name: <%= item.name %></td> </br>
-    <td>Price: <%= item.price %></td></br>
-    <td>Category: <%= item.category %></td></br>
-    <td>Stock: <%= item.amount %></td></br>
-    <td>Available: <%= item.status %></td><br/>
-    <td>Description: <%= item.description %></td></br>
-    <td>Rating: <%= item.rating %></td></br>
+  <img src= "<%= item.image%>" height=150 width=150 ></img></br>
+  <td>Name: <%= item.name %></td> </br>
+  <td>Price: <%= item.price %></td></br>
+  <td>Category: <%= item.category %></td></br>
+  <td>Stock: <%= item.amount %></td></br>
+  <td>Available: <%= item.status %></td><br/>
+  <td>Description: <%= item.description %></td></br>
+  <td>Rating: <%= item.rating %></td></br>
+  <td>Proteins: <%= item.protein %></td></br>
+  <td>Carbohydrates: <%= item.carbohydrate %></td></br>
+  <td>Calcium: <%= item.calcium %></td></br>
+  <td>Fats: <%= item.fat %></td></br>
+  <td>Vitamin A: <%= item.vitamin_a %></td></br>
+  <td>Vitamin B: <%= item.vitamin_b %></td></br>
+  <td>Vitamin C: <%= item.vitamin_c %></td></br>
+  <td>Vitamin D: <%= item.vitamin_d %></td></br>
+  <td>Vitamin E: <%= item.vitamin_e %></td></br>
+  <td>Vitamin K: <%= item.vitamin_k %></td></br>
 
 
-    <textarea rows="1" cols="4"></textarea> KG  <button>Add to shopping cart</button></br>
     <%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1-->
 
     <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart', lineitems_path(item_id: item) %>
     </br>
-   
-
-
-    <td>Proteins: <%= item.protein %></td></br>
-    <td>Carbohydrates: <%= item.carbohydrate %></td></br>
-    <td>Calcium: <%= item.calcium %></td></br>
-    <td>Fats: <%= item.fat %></td></br>
+ 
 <!--AUTHOR: Mahmoud Eldesouky
     Team :5
     takes the quantiy from the user -->
@@ -154,14 +161,76 @@ left-margin:50px;
                    <li><%= link_to "<button>My Healthrecords</button>".html_safe,indexhealthrecord_path(current_member)%></li>
 
 <% end %>
-
-</body>
+  <div class="sidebar">
+    <%= yield :sidebar %>
+</div>
 <!--AUTHOR: Mahmoud Eldesouky
-    Team :5
-    parameter : message
-    recieving the violation message as a parameter from items_controller and poping it to the user -->
+    Team: 5
+    Parameter: takes the updated values of the till_now for each nutriant
+    Function: It views the updated value of the over all progress on the progress bar 
+    and detailed progress bar for each nutrient when clicking show progress button 
+    and hides them when clicking hide progress button -->
+<div>
+<navigationbar>
+ <h5>REACHED </h5>
+ <%= form_tag '/items/members_items_index', :method => 'get' do%>
+ <p>
+  <p>Total Over all Gain </p>
+  <%= progress_bar(@over_all_bar, :color => 'grey', :rounded => true) %> 
+  </opt></br></br>
+  
+  <input type="button" onclick="show_detail()" value="Show Progress">
+  <input type="button" onclick="hide_detail()" value="Hide Progress">
+ 
+  <div id='1' style="visibility:hidden;">
+  <p align="center">Total Protein Gain </p>
+  <%= progress_bar(@protein_bar, :color => 'grey', :rounded => true) %> 
+  <p align="center">Total Carbohydrates Gain </p>
+  <%= progress_bar(@carbohydrate_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Calcium Gain </p>
+  <%= progress_bar(@calcium_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Fats Gain </p>
+  <%= progress_bar(@fats_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin A Gain </p>
+  <%= progress_bar(@vitamin_a_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin B Gain </p>
+  <%= progress_bar(@vitamin_b_bar, :color => 'grey', :rounded => true) %>
+  <p align="left">Total Vitamin C Gain </p>
+  <%= progress_bar(@vitamin_c_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin D Gain </p>
+  <%= progress_bar(@vitamin_d_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin E Gain </p>
+  <%= progress_bar(@vitamin_e_bar, :color => 'grey', :rounded => true) %> 
+  <p align="left">Total Vitamin K Gain </p>
+  <%= progress_bar(@vitamin_k_bar, :color => 'grey', :rounded => true) %> 
+  </div>
+ </p>
+ <% end %>
+</navigationbar>   
+</div>   
+</body>
+
 <script type="text/javascript">
-if (!gon.flag&&gon.message!=null){
-alert(gon.message)
-}
+ //AUTHOR: Mahmoud Eldesouky
+ //Team: 5
+ //Function: messagerecieving the violation message as a parameter from items_controller and showing it in a pop up message to the user 
+ //Parameter: message
+ if (!gon.flag&&gon.message!=null){
+  alert(gon.message)
+ }
+ //AUTHOR: Mahmoud Eldesouky
+ //Team: 5
+ //Method name: hide_detail
+ //Function: This function hide the detailed progress bars that are in the right-hand-side navigation bar
+ function hide_detail(){
+  document.getElementById('1').style.visibility = 'hidden';
+ }
+ //AUTHOR: Mahmoud Eldesouky
+ //Team: 5
+ //Method name: show_detail
+ //Function: This function shows the detailed progress bars that are in the right-hand-side navigation bar
+ function show_detail(){
+  document.getElementById('1').style.visibility = 'visible';
+ }
 </script>
+
