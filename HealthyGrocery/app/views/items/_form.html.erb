@@ -88,6 +88,11 @@
     <%= f.label :calcium %><br>
     <%= f.text_field :calcium %>
   </div>
+
+  <!--Author: Hazem Amin-->
+  <!--Team: 5-->
+  <!--Function: Here is where the drop down menus are made-->
+  <!--Parameters: The attribute name that will be set, the value that will be visible in the drop down menu and the value that will be assigned to the attribute after either High/Low/Medium has been selected-->
       <div>
     <%= f.label "Protein Level" %><br>
     <%= f.select :protein_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.protein_type) %>
