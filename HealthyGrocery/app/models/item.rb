@@ -30,6 +30,18 @@ class Item
   field :vitamin_d , type: Float
   field :vitamin_e , type: Float
   field :vitamin_k , type: Float
+  ######
+  field :vit_a_type, type: String
+  field :vit_b_type, type: String
+  field :vit_c_type, type: String
+  field :vit_d_type, type: String
+  field :vit_e_type, type: String
+  field :vit_k_type, type: String
+  field :protein_type, type: String
+  field :carbohydrate_type, type: String
+  field :calcium_type, type: String
+  field :fat_type, type: String
+
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # checks if name is present 
@@ -63,8 +75,6 @@ class Item
   validates :vitamin_d, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
   validates :vitamin_e, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
   validates :vitamin_k, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
-
-
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
