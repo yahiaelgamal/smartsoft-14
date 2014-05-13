@@ -13,16 +13,23 @@ class Order
 	field :volume ,type: Integer
 	field :status , type: String
 	field :date  ,type: Date
+
 	field :coordinates ,type: Array
+	field :coordinates_billing ,type: Array
 #Author : Ahmed AbdElsattar
 #Team: 4
 #attr :   isfinished , delivered
 #function: indicating the status of the orde 
 	field :isfinished,type: Boolean
 	field :delivered ,type: Boolean
-	belongs_to :member ,class_name: 'Member'
+	field :pass , type: String
+	field :pass_billing , type: String
+
+
+	belongs_to :member ,class_name: 'Member' , inverse_of: :orders
 	belongs_to :route , class_name: 'Route' , inverse_of: :orders
 	has_many :packages , class_name: 'Package' , inverse_of: :order
+	has_and_belongs_to_many :address , class_name: 'Address',inverse_of: :order
 	has_many :items , class_name: 'Item' , inverse_of: :order
 	#Author: FatmaEmran
 	#T2
