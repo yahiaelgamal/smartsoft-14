@@ -67,7 +67,30 @@ margin:10px;
 		<% end %>
 </table>
 
+<!--#Author: Mennatallah  Adel
+	 #Team: 4
+	 #Method name: 
+	 #Function: Searching for a specific truck,order,shipment or member by choosing first the model desired and then inserting its corresponding search attribute -->
 
+
+<%= form_tag '/members/hub', :method => 'get' do %>
+  <p>
+    <opt>
+    <span class="label">Please specify the desired attribute :D  :</span>
+    <%= text_field_tag :name, params[:filter] %>
+    <br> </br>
+    <%= radio_button_tag 'status', "truck", :checked => false %> <span class="badge">Trucks</span> 
+    </opt></br></br>
+    <opt>
+    <%= radio_button_tag 'status', "order", :checked => false %> <span class="badge">Orders</span> 
+    </opt></br></br>
+    <opt>
+    <%= radio_button_tag 'status', "shipment", :checked => false %> <span class="badge">Shipments</span> 
+    </opt></br></br>
+    <opt>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
 
 
 <h1> Recommended Items </h1>
