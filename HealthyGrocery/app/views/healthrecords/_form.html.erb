@@ -1,16 +1,17 @@
 <%= form_for(@healthrecord) do |f| %>
   <% if @healthrecord.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@healthrecord.errors.count, "error") %> prohibited this healthrecord from being saved:</h2>
-
+      <h2><%= pluralize(@healthrecord.errors.count, "error") %>
+        prohibited this healthrecord from being saved:</h2>
       <ul>
-      <% @healthrecord.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @healthrecord.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-  <span  style="color:red">✼ REQUIERD</span> <br/><br/><br/>
+  <span  style="color:red">✼ REQUIERD</span>
+  <br/><br/><br/>
   <div class="field">
     <%= f.label :name %><br /><span  style="color:red">✼</span>
     <%= f.text_field :name %>
@@ -29,34 +30,36 @@
   </div>
   <div class="field">
     <%= f.label :program %><br /><span  style="color:red">✼</span>
-
     <%=  f.select :program, [['Gain Weight','Gain Weight'],['Lose Weight','Lose Weight'],[' Maintain weight ',' Maintain weight ']]%>
-  <div class="scrollbox">
-  </div>
-   <div class="field">
-    <%= f.label :age %><br /><span  style="color:red">✼</span>
-    <%= f.text_field :age %>
-  </div>
-  <div class="field">
-  <p> Gender :<span  style="color:red">✼</span> </p>
-  <%= f.radio_button :gender, "Male", :checked => "Male" %> 
-  <%= label :status, 'Male' %>
-  <%= f.radio_button :gender, "Female", :checked => "Female" %>
-  <%= label :status, 'Female' %>
-</div>
-   <div class="field">
-    <%= f.label :race %><br /><span  style="color:red">✼</span>
-    <%=  f.select :race, [['Caucasion','Caucasion'],['Mongoloid','Mongoloid'],['Negroid','Negroid']]%>
-  <div class="scrollbox">
-    <%  Disease.each do |d| %>
-
-      <div class="checkbox">
-         <%= check_box_tag "ii[]",d.id, false %> <label>        <td><%= link_to d.name, d %></td>
-</label>
+    <div class="scrollbox">
+    </div>
+    <div class="field">
+      <%= f.label :age %><br /><span  style="color:red">✼</span>
+      <%= f.text_field :age %>
+    </div>
+    <div class="field">
+      <p>
+        Gender :<span  style="color:red">✼</span>
+      </p>
+      <%= f.radio_button :gender, "Male", :checked => "Male" %>
+      <%= label :status, 'Male' %>
+      <%= f.radio_button :gender, "Female", :checked => "Female" %>
+      <%= label :status, 'Female' %>
+    </div>
+    <div class="field">
+      <%= f.label :race %><br /><span  style="color:red">✼</span>
+      <%=  f.select :race, [['Caucasion','Caucasion'],['Mongoloid','Mongoloid'],['Negroid','Negroid']]%>
+      <div class="scrollbox">
+        <%  Disease.each do |d| %>
+          <div class="checkbox">
+            <%= check_box_tag "ii[]",d.id, false %>
+            <label>
+              <td><%= link_to d.name, d %></td>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
       </div>
     <% end %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
