@@ -24,14 +24,14 @@ image "#{Rails.root}/app/assets/images/truck1.jpg", :scale => 7.0/10.0, :positio
   
   def draw_truck(route)
  stroke_axis
-    revOrders = route.orders.reverse
+    revOrders = route.arrOfPoints.reverse
 
     stroke do 
       divisions = @route.arrOfPoints.count
       #draw_text "#{route.orders[0].coordinates}", :at => [180,330], :rotate => 90
       divisions.times do |i|
         x = 215+(i+1)*(210/(divisions+1))
-          draw_text "#{revOrders[i].coordinates}", :at => [x,460], :rotate => 90
+          draw_text "#{revOrders[i]}", :at => [x,460], :rotate => 90
      
 end
       #stroke_rounded_rectangle [50,400], 100, 100, 20
