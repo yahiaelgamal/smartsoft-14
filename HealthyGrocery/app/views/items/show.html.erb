@@ -8,12 +8,10 @@
   <b>Name:</b>
   <%= @item.name %>
 </p>
-
 <p>
   <b>Price:</b>
   <%= @item.price %>
 </p>
-
 <p>
   <b>Category:</b>
   <%= @item.category %>
@@ -26,19 +24,17 @@
   <b>Status:</b>
   <%= @item.status %>
 </p>
-
 <p>
   <b>Description:</b>
   <%= @item.description %>
 </p>
-
 <p>
   <b>Rating:</b>
   <%= @item.rating %>
 </p>
-  <!--Author: Hazem Amin-->
-  <!--Team: 5-->
-  <!--Function: Showing the name of the attribute and 
+<!--Author: Hazem Amin-->
+<!--Team: 5-->
+<!--Function: Showing the name of the attribute and 
   its value for each and every item in its show-view-->
 <p>
   <b>Protein:</b>
@@ -80,8 +76,3 @@
   <b>Calcium:</b>
   <%= @item.calcium %>
 </p>
-
-<%-# a link redirecting to the edit page-%>
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%-# a link redirecting back to the item page-%>
-<%= link_to 'Back', items_path %>
