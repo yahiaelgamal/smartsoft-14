@@ -5,6 +5,6 @@
   <%= @route.arrOfPoints %>
 </p>
 
-
+<%= link_to 'PrintPreview Route (PDF)', route_path(@route, :format => "pdf") %>
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
