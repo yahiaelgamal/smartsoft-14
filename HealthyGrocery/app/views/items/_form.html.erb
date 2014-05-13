@@ -88,13 +88,48 @@
     <%= f.label :calcium %><br>
     <%= f.text_field :calcium %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
   <div>
-
-
-
-
+    <%= f.label "Vitamin A" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_a_type) %>
+  </div>
+    <div>
+    <%= f.label "Vitamin B" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_b_type) %>
+  </div>
+    <div>
+    <%= f.label "Vitamin C" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_c_type) %>
+  </div>
+    <div>
+    <%= f.label "Vitamin D" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_d_type) %>
+  </div>
+    <div>
+    <%= f.label "Vitamin E" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_e_type) %>
+  </div>
+    <div>
+    <%= f.label "Vitamin K" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_k_type) %>
+  </div>
+    <div>
+    <%= f.label "Protein" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.protein_type) %>
+  </div>
+    <div>
+    <%= f.label "Carbohydrate" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.carbohydrate_type) %>
+  </div>
+    <div>
+    <%= f.label "Calcium" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.calcium_type) %>
+  </div>
+    <div>
+    <%= f.label "Fat" %><br>
+    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.fat_type) %>
+  </div>
+  <br>
+    <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>
