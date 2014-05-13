@@ -95,14 +95,14 @@ Navigate Here </br></br>
     <th></th>
     <th></th>
     <th></th>
+    <th>Protein</th>
+    <th>Carbohydrate</th>
     <th>Vitamin a</th>
     <th>Vitamin b</th>
     <th>Vitamin c</th>
     <th>Vitamin d</th>
     <th>Vitamin e</th>
     <th>Vitamin k</th>
-    <th>Protein</th>
-    <th>Carbohydrate</th>
     <th>Fat</th>
   </tr>
 <!-- looping on the items in the items model in the DB-->
@@ -127,13 +127,14 @@ Navigate Here </br></br>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= item.protein %></td>
+    <td><%= item.carbohydrate %></td>
     <td><%= item.vitamin_a %></td>
     <td><%= item.vitamin_b %></td>
     <td><%= item.vitamin_c %></td>
     <td><%= item.vitamin_d %></td>
     <td><%= item.vitamin_e %></td>
     <td><%= item.vitamin_k %></td>
-    <td><%= item.protein %></td>
     <td><%= item.carbohydrate %></td>
     <td><%= item.fat %></td>
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
