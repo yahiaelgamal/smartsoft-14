@@ -30,7 +30,10 @@ class Item
   field :vitamin_d , type: Float
   field :vitamin_e , type: Float
   field :vitamin_k , type: Float
-  ######
+  # Author: Hazem Amin
+  # Team: 5
+  # Function: Added other needed attributes in order to classify
+  # the items
   field :vit_a_type, type: String
   field :vit_b_type, type: String
   field :vit_c_type, type: String
