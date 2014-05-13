@@ -95,52 +95,15 @@ Navigate Here </br></br>
     <th></th>
     <th></th>
     <th></th>
-    <th>Fiber</th>
     <th>Vitamin a</th>
     <th>Vitamin b</th>
     <th>Vitamin c</th>
     <th>Vitamin d</th>
     <th>Vitamin e</th>
     <th>Vitamin k</th>
-    <th>Folate</th>
-    <th>Thiamin</th>
-    <th>Riboflavin</th>
-    <th>Pantothenic acid</th>
-    <th>Choline</th>
-    <th>Niacin</th>
-    <th>Betaine</th>
-    <th>Calcium</th>
-    <th>Copper</th>
-    <th>Fluoride</th>
-    <th>Iron</th>
-    <th>Magnesium</th>
-    <th>Manganese</th>
-    <th>Phosphorus</th>
-    <th>Selenium</th>
-    <th>Zinc</th>
-    <th>Potassium</th>
-    <th>Sodium</th>
-    <th>Starch</th>
-    <th>Sugar</th>
-    <th>Fatty acids</th>
-    <th>Trans fat</th>
-    <th>Saturated_fat</th>
-    <th>Monounsaturated</th>
-    <th>Polyunsaturated</th>
-    <th>Trans_monoenoic</th>
-    <th>Trans_polyenoic</th>
-    <th>Omega_3</th>
-    <th>Cartenoids</th>
-    <th>Tocopherol</th>
-    <th>Retinol</th>
-    <th>Beta_carotene</th>
-    <th>Alpha_carotene</th>
-    <th>Sucrose</th>
-    <th>Glucose</th>
-    <th>Fructose</th>
-    <th>Maltose</th>
-    <th>Calories</th>
-    <th>Minerals</th>
+    <th>Protein</th>
+    <th>Carbohydrate</th>
+    <th>Fat</th>
   </tr>
 <!-- looping on the items in the items model in the DB-->
 <%= javascript_include_tag "application" %>
@@ -170,6 +133,9 @@ Navigate Here </br></br>
     <td><%= item.vitamin_d %></td>
     <td><%= item.vitamin_e %></td>
     <td><%= item.vitamin_k %></td>
+    <td><%= item.protein %></td>
+    <td><%= item.carbohydrate %></td>
+    <td><%= item.fat %></td>
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
     <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
 
