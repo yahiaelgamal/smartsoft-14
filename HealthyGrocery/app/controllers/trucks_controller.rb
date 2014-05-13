@@ -68,6 +68,9 @@ class TrucksController < ApplicationController
 
     respond_to do |format|
       if @truck.update_attributes(params[:truck])
+    # Author: Andrew Khouzam
+    # Component: 1
+    # Functions: This route is used to redirect to the verify page that verify the arrived orders.
         format.html { redirect_to verifyOrder_path(@truck), notice: 'Please Verify the Orders' }
         format.json { head :no_content }
       else
