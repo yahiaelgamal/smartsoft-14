@@ -71,8 +71,14 @@ class TrucksController < ApplicationController
     # Author: Andrew Khouzam
     # Component: 1
     # Functions: This route is used to redirect to the verify page that verify the arrived orders.
+    if @truck.status == false
         format.html { redirect_to verifyOrder_path(@truck), notice: 'Please Verify the Orders' }
         format.json { head :no_content }
+      else
+         format.html { redirect_to @truck, notice: 'Your Truck Has Been Updated' }
+        format.json { head :no_content }
+      end
+
       else
         format.html { render action: "edit" }
         format.json { render json: @truck.errors, status: :unprocessable_entity }
