@@ -80,10 +80,6 @@ HealthyGrocery::Application.routes.draw do
       #ROUTES FOR TRUCKS
 #----------------------------------------------------------------------------------------------------#
   resources :trucks
-    # Author: Andrew Khouzam
-    # Component: 1
-    # Functions: This route is used to redirect to the verify page that verify the arrived orders.
-    get   '/trucks/:id/verify', to:'trucks#verify' , as: 'verifyOrder'
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR ORDERS
 #----------------------------------------------------------------------------------------------------#

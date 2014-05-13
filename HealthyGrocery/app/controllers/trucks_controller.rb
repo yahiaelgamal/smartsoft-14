@@ -41,10 +41,6 @@ class TrucksController < ApplicationController
     
   end
 
-  def verify
-        @truck = Truck.find(params[:id])
-  end
-
   # POST /trucks
   # POST /trucks.json
   def create
@@ -68,7 +64,7 @@ class TrucksController < ApplicationController
 
     respond_to do |format|
       if @truck.update_attributes(params[:truck])
-        format.html { redirect_to verifyOrder_path(@truck), notice: 'Please Verify the Orders' }
+        format.html { redirect_to @truck, notice: 'Truck was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
