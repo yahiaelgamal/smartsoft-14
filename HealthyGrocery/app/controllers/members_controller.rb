@@ -41,6 +41,7 @@ end
   end
    
 
+
   if current_member.wishlist.nil?
       @wishexist = false
   else 
@@ -48,8 +49,9 @@ end
   end
 end
 
-   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
+#(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
 #session["isAdmin"]= @admin
+
 #author: Fatma EmranS
 #Team 2
 #Funtion: Checkboxes for the people with health records of the user who wants to order.
@@ -59,7 +61,6 @@ def order_checkboxes
   current_member.active_records = @records
   current_member.save
 end
-
   
 #Author : mina sedra
 #team : 2
@@ -132,6 +133,4 @@ end
 
 
 end  
-
-
 
