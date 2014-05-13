@@ -90,11 +90,35 @@ class Item
   has_many :lineitems, class_name: "Lineitem"
 
   def get_alter (item,healthrecord)
+    matching_items = Array.new
     Item.all.each do |canidate|
-      if(canidate.vitamin_a.between(item.vitamin_a-) )
+      allowed = true
+      if(canidate.vitamin_a.between(item.vitamin_a-item.vitamin_a*0.05,
+                                    item.vitamin_a+item.vitamin_a*0.05) &&
+         canidate.vitamin_b.between(item.vitamin_b-item.vitamin_b*0.05,
+                                    item.vitamin_b+item.vitamin_b*0.05) &&
+         canidate.vitamin_c.between(item.vitamin_c -item.vitamin_c *0.05,
+                                    item.vitamin_c +item.vitamin_c *0.05) &&
+         canidate.vitamin_d.between(item.vitamin_d -item.vitamin_d *0.05,
+                                    item.vitamin_d +item.vitamin_d *0.05) &&
+         canidate.vitamin_e.between(item.vitamin_e -item.vitamin_e *0.05,
+                                    item.vitamin_e +item.vitamin_e *0.05) &&
+         canidate.vitamin_k.between(item.vitamin_k -item.vitamin_k *0.05,
+                                    item.vitamin_k +item.vitamin_k *0.05)&&
+         canidate.protein.between(item.protein -item.protein *0.05,
+                                  item.protein +item.protein *0.05) &&
+         canidate.carbohydrate.between(item.carbohydrate -item.carbohydrate *0.05,
+                                       item.carbohydrate +item.carbohydrate *0.05)&&
+         canidate.fat.between(item.fat -item.fat *0.05,
+                              item.fat +item.fat *0.05) &&
+         canidate.calcium.between(item.calcium -item.calcium *0.05,
+                                  item.calcium +item.calcium *0.05) &&)
+          healthrecord.diseases.each do |dis|
+              allowed&&= !dis.restricted_items.include?(canidate)
+          end
+          if(allowed)
+              matching_items.push(canidate)
+          end
+      end
     end
   end
-  def percent_of(n)
-    self.to_f / n.to_f * 100.0
-  end
-end
