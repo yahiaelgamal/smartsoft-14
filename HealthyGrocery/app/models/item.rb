@@ -56,13 +56,13 @@ class Item
   # Function: Added validations to make sure the submitted float-values of the
   # nutritions are positive values and that no text-fields are being
   # submitted with no values (empty)
-  validates :vitamin_a, :presence => true, numericality => {:greater_than_or_equal_to => 0}
-  validates :vitamin_a, :presence => true, numericality => {:greater_than_or_equal_to => 0}
-  validates :vitamin_b, :presence => true, numericality => {:greater_than_or_equal_to => 0}
-  validates :vitamin_c, :presence => true, numericality => {:greater_than_or_equal_to => 0}
-  validates :vitamin_d, :presence => true, numericality => {:greater_than_or_equal_to => 0}
-  validates :vitamin_e, :presence => true, numericality => {:greater_than_or_equal_to => 0}
-  validates :vitamin_k, :presence => true, numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_a, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_a, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_b, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_c, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_d, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_e, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
+  validates :vitamin_k, :presence => true, :numericality => {:greater_than_or_equal_to => 0}
 
 
   # declares a relationship between packages and items
