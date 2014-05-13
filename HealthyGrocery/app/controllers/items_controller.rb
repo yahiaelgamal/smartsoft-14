@@ -146,9 +146,10 @@
   #the member point of view
 
   #AUTHOR: Mahmoud Eldesouky
-  #Team :5
-  #parameter : flag, message
-  #sends the message that is set by def Add to the members_item_index view
+  #Team: 5
+  #Method name: members_items_index
+  #Function: sends the message that is set by def Add to the members_item_index view
+  #Parameter : flag, message
   def members_items_index
     gon.flag =  flash[:flag]
     gon.message =  flash[:message]
@@ -255,8 +256,9 @@
       end
     end
     #AUTHOR: Mahmoud Eldesouky
-    #Team :5
-    #takes the updated value of each nutriant after adding an item to the shopping card, to reflect and show the
+    #Team: 5
+    #Method name: members_items_index
+    #Function: takes the updated value of each nutriant after adding an item to the shopping card, to reflect and show the
     #new progress of each nutriant on each progress bar and calcultes the overal all progress percentage
     user = current_member
     healthrecord = user.records.first
@@ -280,9 +282,10 @@
     @vitamin_k_bar = (healthrecord.vitamin_k_till_now / healthrecord.acceptable_vitamin_k_per_week) * 100
   end
 
-  #AUTHOR : Mahmoud Eldesouky
-  #Team : 5
-  # This method calls the add method which is in the Item model and send to the methods its needed paramters. It then
+  #AUTHOR: Mahmoud Eldesouky
+  #Team: 5
+  #Method name: members_items_index
+  #Function: This method calls the add method which is in the Item model and send to the methods its needed paramters. It then
   # takes the array returned from the method (which contains the flag and the message to be flushed) and the flushes the message.
   def add
     x = Array.new

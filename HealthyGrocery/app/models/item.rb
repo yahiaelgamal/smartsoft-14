@@ -65,14 +65,16 @@ class Item
   #Declaring a relationship between the two classes Item, and Lineitem.
   has_many :lineitems, class_name: "Lineitem"
 
-  #AUTHOR : Mahmoud Eldesouky
-  #Team : 5
-  #parameter : current_member,item_id,amount
-  #checks that the choosen item with its nutrition does not exceed the acceptable limit of
+  #AUTHOR: Mahmoud Eldesouky
+  #Team: 5
+  #Method name: add
+  #Function: checks that the choosen item with its nutrition does not exceed the acceptable limit of
   #this user nutrients that we keep track of through his healthrecord, We access his healthrecord through current_member.
   #Each time an item within the nutrition limits is choosen his till_now attribute in the healthrecord is
   #updated else if a violation happens the message attribute is set with the approprite message and flashed
   #to the user describing his violations. It returns an array that contains in the flag in index 0 and the message in index 1
+  #Parameter: current_member,item_id,amount
+  #Return: an array that contains the flag in index 0 and the message in index 1
   def self.add(current_member,item_id,amount)
     result = Array.new
     amount = amount.to_i

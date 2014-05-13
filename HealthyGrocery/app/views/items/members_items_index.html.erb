@@ -173,10 +173,10 @@ left-margin:50px;
   <div class="sidebar">
     <%= yield :sidebar %>
 </div>
-<!--AUTHOR : Mahmoud Eldesouky
-    Team : 5
-    parameter : takes the updated values of the till_now for each nutriant
-    It views the updated value of the over all progress on the progress bar 
+<!--AUTHOR: Mahmoud Eldesouky
+    Team: 5
+    Parameter: takes the updated values of the till_now for each nutriant
+    Function: It views the updated value of the over all progress on the progress bar 
     and detailed progress bar for each nutrient when clicking show progress button 
     and hides them when clicking hide progress button -->
 <div>
@@ -220,22 +220,24 @@ left-margin:50px;
 </body>
 
 <script type="text/javascript">
- //AUTHOR : Mahmoud Eldesouky
- //Team : 5
- //parameter : message
- //recieving the violation message as a parameter from items_controller and showing it in a pop up message to the user 
+ //AUTHOR: Mahmoud Eldesouky
+ //Team: 5
+ //Function: messagerecieving the violation message as a parameter from items_controller and showing it in a pop up message to the user 
+ //Parameter: message
  if (!gon.flag&&gon.message!=null){
   alert(gon.message)
  }
- //AUTHOR : Mahmoud Eldesouky
- //Team : 5
- //This function hide the detailed progress bars that are in the right-hand-side navigation bar
+ //AUTHOR: Mahmoud Eldesouky
+ //Team: 5
+ //Method name: hide_detail
+ //Function: This function hide the detailed progress bars that are in the right-hand-side navigation bar
  function hide_detail(){
   document.getElementById('1').style.visibility = 'hidden';
  }
- //AUTHOR : Mahmoud Eldesouky
- //Team : 5
- //This function shows the detailed progress bars that are in the right-hand-side navigation bar
+ //AUTHOR: Mahmoud Eldesouky
+ //Team: 5
+ //Method name: show_detail
+ //Function: This function shows the detailed progress bars that are in the right-hand-side navigation bar
  function show_detail(){
   document.getElementById('1').style.visibility = 'visible';
  }
