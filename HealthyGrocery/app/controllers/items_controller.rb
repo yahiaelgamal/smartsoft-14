@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 else 
       @admin = false
 end    
-    @items = @items.page(params[:page]).per(5) 
+    @items = @items.page(params[:page]).per(2) 
 respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }

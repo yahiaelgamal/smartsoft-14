@@ -33,7 +33,7 @@ gem 'formtastic-bootstrap'
 
 gem "gon" , '5.0.4'
 
-gem 'kaminari'
+gem 'kaminari' , '0.15.1'
 
 
 
