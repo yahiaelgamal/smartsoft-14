@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-     <%= f.collection_select(:driver_id,@truckless_dirvers,:id,:name, prompt: true)%>
+     <%= f.collection_select(:driver_id,@truckless_drivers,:id,:name, prompt: true)%>
   <div class="field" style="padding-top:20px">
     <%= f.label :capacity %><br />
     <%= f.text_field :capacity %>

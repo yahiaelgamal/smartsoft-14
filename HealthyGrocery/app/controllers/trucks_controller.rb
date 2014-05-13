@@ -28,7 +28,7 @@ class TrucksController < ApplicationController
   # GET /trucks/new.json
   def new
     @truck = Truck.new
-    @truckless_dirvers = Driver.where(truck: nil)
+    @truckless_drivers = Driver.where(truck: nil)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @truck }
@@ -38,6 +38,7 @@ class TrucksController < ApplicationController
   # GET /trucks/1/edit
   def edit
     @truck = Truck.find(params[:id])
+    
   end
 
   # POST /trucks
