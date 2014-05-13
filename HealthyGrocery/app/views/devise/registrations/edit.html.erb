@@ -30,8 +30,8 @@
                     <br>
                     <br>
                     <br>
-                    <div><%= f.label :email %>
-                      <%= f.email_field :email, autofocus: true , :value=> @member.email%></div>
+                    <center><div><%= f.label :email %>
+                      <%= f.email_field :email, autofocus: true , :value=> @member.email%></div></center>
                     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                       <div>Currently waiting confirmation for:
                         <%= resource.unconfirmed_email %></div>
@@ -42,12 +42,12 @@
                     <br>
                     <br>
                     <br>
-                    <div><%= f.label :new_Password %>
+                    <center><div><%= f.label :new_Password %>
                       <i>(leave blank if you don't want to change it)</i><br />
-                      <%= f.password_field :password, autocomplete: "off" %></div>
+                      <%= f.password_field :password, autocomplete: "off" %></div></center>
                     <br>
-                    <div><%= f.label :confirm_new_password %>
-                      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+                    <center><div><%= f.label :confirm_new_password %>
+                      <%= f.password_field :password_confirmation, autocomplete: "off" %></div></center>
                     <hr>
                     <br>
                     <font face="futura" color="green" size="5"><strong>Edit Personal Info</font></strong>
@@ -55,20 +55,20 @@
                     <br>
                     <br>
                     <%-# for First name-%>
-                    <div><%= f.label :first_name %>
-                      <%= f.text_field :first_name, autocomplete: "off" , :value=> @member.first_name %></div>
+                    <center><div><%= f.label :first_name %>
+                      <%= f.text_field :first_name, autocomplete: "off" , :value=> @member.first_name %></div></center>
                     <br>
                     <%-# for last name-%>
-                    <div><%= f.label :last_name %>
-                      <%= f.text_field :last_name, autocomplete: "off" , :value=> @member.last_name %></div>
+                    <center><div><%= f.label :last_name %>
+                      <%= f.text_field :last_name, autocomplete: "off" , :value=> @member.last_name %></div></center>
                     <br>
                     <%-# for phone num-%>
-                    <div><%= f.label :phone_number %>
-                      <%= f.text_field :phone_number, autocomplete: "off" , :value=> @member.phone_num %></div>
+                    <center><div><%= f.label :phone_number %>
+                      <%= f.text_field :phone_number, autocomplete: "off" , :value=> @member.phone_num %></div></center>
                     <br>
                     <%-# for birth date-%>
-                    <div><%= f.label :birth_date %>
-                      <%= f.text_field :birth_date, autocomplete: "off", :value=> @member.birth_date %></div>
+                    <center><div><%= f.label :birth_date %>
+                      <%= f.text_field :birth_date, autocomplete: "off", :value=> @member.birth_date %></div></center>
                     <hr>
                     <br>
                     <font face="futura" color="green" size="5"><strong>Confirm Changes</font></strong>
@@ -76,10 +76,8 @@
                     <br>
                     <br>
                     <%-# for the current password to confrim the changes-%>
-                    <center>
-                      <div><%= f.label :current_password %>
-                        <%= f.password_field :current_password, autocomplete: "off" %></div>
-                    </center>
+                    <center><div><%= f.label :current_password %>
+                        <%= f.password_field :current_password, autocomplete: "off" %></div></center>
                     <!-- <div><%= f.submit "Save" %></div> -->
                     <br>
                     <%= link_to(member_path(@member), :class => 'btn btn-default') do %>
