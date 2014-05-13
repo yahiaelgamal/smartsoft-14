@@ -1,7 +1,7 @@
 class Truck
   include Mongoid::Document
   field :driver, type: String
-  field :capacity, type: Integer
+  field :capacity, type: Integer 
   field :status, type: Boolean
 
 #Author: Mennatallah Adel
