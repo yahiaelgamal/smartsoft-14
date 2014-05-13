@@ -5,51 +5,41 @@
   <b>Name:</b>
   <%= @address.name %>
 </p>
-
 <p>
   <b>First:</b>
   <%= @address.firstname %>
 </p>
-
 <p>
   <b>Last:</b>
   <%= @address.lastname %>
 </p>
-
 <p>
   <b>Country:</b>
   <%= @address.country %>
 </p>
-
 <p>
   <b>City:</b>
   <%= @address.city %>
 </p>
-
 <p>
   <b>Postal:</b>
   <%= @address.postal %>
 </p>
-
 <p>
   <b>Street:</b>
   <%= @address.street %>
 </p>
-
 <p>
   <b>Longitude:</b>
   <%= @address.coordinates[0] %>
 </p>
-
 <p>
   <b>Latitude:</b>
   <%= @address.coordinates[1] %>
 </p>
-
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-
 <!--# Author : Karim El-Bawab
     # Team: 4
     # Script name: position 
@@ -57,16 +47,14 @@
     # with the marker located on his address on the map  
 -->
 <script type="text/javascript">
-
-
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  handler.getMap().setZoom(12);
-});
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
+  });
 </script>
-
-<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Edit', edit_address_path(@address) %>
+|
 <%= link_to 'Back', showaddresses_path %>

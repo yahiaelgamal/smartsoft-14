@@ -14,18 +14,18 @@ class AddressesController < ApplicationController
   # GET /addresses/1.json
   def show
     @address = Address.find(params[:id])
-      
-      # Author: Karim El-Bawab
-      # Team: 4
-      # Function: this block of code below is used in order to show
-      # a map with a marker set on the user address 
 
-      @hash = Gmaps4rails.build_markers(@address) do |address, marker|
-      
-        marker.lat address.coordinates[1]
-        marker.lng address.coordinates[0]
-      
-    end  
+    # Author: Karim El-Bawab
+    # Team: 4
+    # Function: this block of code below is used in order to show
+    # a map with a marker set on the user address
+
+    @hash = Gmaps4rails.build_markers(@address) do |address, marker|
+
+      marker.lat address.coordinates[1]
+      marker.lng address.coordinates[0]
+
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @address }
@@ -55,9 +55,9 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-      # Author: Mahmoud Walid
-      # Team: 3
-      # Function: adding the created address to the list of addresses of the signed in user
+        # Author: Mahmoud Walid
+        # Team: 3
+        # Function: adding the created address to the list of addresses of the signed in user
         current_member.addresses.push(@address)
         format.html { redirect_to addressesposition_path(@address.id) }
         format.json { render json: @address, status: :created, location: @address }
@@ -99,16 +99,16 @@ class AddressesController < ApplicationController
   # Team: 4
   # Method: position
   # Parameters: There are 3 parameters that passed to its view : the
-  # current member id , the latiude and longitude (both latiude and 
+  # current member id , the latiude and longitude (both latiude and
   # longitude passed using gon gem to be able to use them into javascript
   # code)
   # Function: this action is used to give the user the ability to set
-  # his address in the map using the marker 
+  # his address in the map using the marker
   def position
     @address = Address.find(params[:id])
-  
+
     gon.lat = @address.coordinates[1]
-    gon.lng = @address.coordinates[0]  
-   
+    gon.lng = @address.coordinates[0]
+
   end
 end

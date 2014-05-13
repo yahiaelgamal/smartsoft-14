@@ -8,30 +8,29 @@
 <%= include_gon %>
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <title>Marker Animations</title>
-      <%= stylesheet_link_tag "address_position" %>
-      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-      <%= javascript_include_tag("address_position") %>
-   </head>
-   <body>
-      <br>
-      <p>To ensure high-quality service please make sure that your address was put on the map correctly.<p/>
-      <p>if you want to specify your address on the map accurately:</p>
-      <p>1) move the marker to your address exactly</p>
-      <p>2) click on the marker</p>
-      <p>3) press the verification button</p>
-      <br>
-      <br>
-      <div style='width: 800px;'>
-         <div id="map-canvas" style='width: 800px; height: 400px;'></div>
-      </div>
-   </body>
+  <head>
+    <meta charset="utf-8">
+    <title>Marker Animations</title>
+    <%= stylesheet_link_tag "address_position" %>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <%= javascript_include_tag("address_position") %>
+  </head>
+  <body>
+    <br>
+    <p>To ensure high-quality service please make sure that your address was put on the map correctly.<p/>
+    <p>if you want to specify your address on the map accurately:</p>
+    <p>1) move the marker to your address exactly</p>
+    <p>2) click on the marker</p>
+    <p>3) press the verification button</p>
+    <br>
+    <br>
+    <div style='width: 800px;'>
+      <div id="map-canvas" style='width: 800px; height: 400px;'></div>
+    </div>
+  </body>
 </html>
-
 <% if params[:lat] != nil || params[:lng] !=nil%>
-<% @address.update_attribute(:coordinates , [params[:lng],params[:lat]]) %>  
+  <% @address.update_attribute(:coordinates , [params[:lng],params[:lat]]) %>
 <%end%>
 <br>
 <%= button_to 'Verify address', showaddresses_path, :method => :get  %>

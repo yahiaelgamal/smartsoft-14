@@ -113,11 +113,11 @@ HealthyGrocery::Application.routes.draw do
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR ADDRESSES
 #----------------------------------------------------------------------------------------------------#
-    resources :addresses
-    # Author: Mahmoud Walid
-    # Team: 3
-    # Function: adding routes for showing orders and addresses of the member
-    get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
+  resources :addresses
+  # Author: Mahmoud Walid
+  # Team: 3
+  # Function: adding routes for showing orders and addresses of the member
+  get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
   get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
 #----------------------------------------------------------------------------------------------------#
       #NOTHING GOES BELOW THIS
