@@ -15,11 +15,10 @@ class Member
  field :first_name, type: String
  field :last_name, type: String
  field :gender, type: String
- field :address, type: String
  field :phone_num, type: Integer
  field :birth_date, type: Date 
  
-   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
+   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :phone_num , :birth_date
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -75,9 +74,6 @@ validates :last_name,
 validates :birth_date,
 :presence => true
 
-
-validates :address,
-:presence => true
 
 
 
