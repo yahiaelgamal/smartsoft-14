@@ -11,7 +11,7 @@ devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:email, :password,
   end
 
   def create
- 	super
+ 	  super
   end
 
   def update
