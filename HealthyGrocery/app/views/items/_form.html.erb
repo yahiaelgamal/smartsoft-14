@@ -1,32 +1,34 @@
- <%-# makes the form asking the retailer for attributes about the item -%>
-  <%= form_for @item do |f| %>  
-<% if @item.errors.any? %>
+<%-# makes the form asking the retailer for attributes about the item -%>
+<%= form_for @item do |f| %>
+  <% if @item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
+      <h2><%= pluralize(@item.errors.count, "error") %>
+        prohibited this item from being saved:</h2>
       <ul>
-      <% @item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-<%-# label and file_field for uploading an image-%>
- <%-f.label :image -%> 
-<%= f.file_field :image%>
-    <div class="field">
+  <%-# label and file_field for uploading an image-%>
+  <%-f.label :image -%>
+  <%= f.file_field :image%>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <%-# radio button for status-%>
   <div class="field">
-  <p> Status : </p>
-  <%= f.radio_button :status, true, :checked => true %> 
-  <%= label :status, 'True' %>
-  <%= f.radio_button :status, false, :checked => false %>
-  <%= label :status, 'False' %>
-</div>
- <div class="field">
+    <p>
+      Status :
+    </p>
+    <%= f.radio_button :status, true, :checked => true %>
+    <%= label :status, 'True' %>
+    <%= f.radio_button :status, false, :checked => false %>
+    <%= label :status, 'False' %>
+  </div>
+  <div class="field">
     <%= f.label :stock %><br />
     <%= f.text_field :amount %>
   </div>
@@ -38,7 +40,6 @@
     <%= f.label :category %><br />
     <%= f.text_field :category %>
   </div>
-  
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
@@ -48,7 +49,7 @@
   <!--Function: Creating labels and text fields required for recently
   added attributes-->
   <!--Additional information: Attributes added starting from protein until calcium-->
-    <div class="field">
+  <div class="field">
     <%= f.label :protein %><br>
     <%= f.text_field :protein %>
   </div>
@@ -84,57 +85,56 @@
     <%= f.label :vitamin_k %><br>
     <%= f.text_field :vitamin_k %>
   </div>
-    <div class="field">
+  <div class="field">
     <%= f.label :calcium %><br>
     <%= f.text_field :calcium %>
   </div>
-
   <!--Author: Hazem Amin-->
   <!--Team: 5-->
   <!--Function: Here is where the drop down menus are made-->
   <!--Parameters: The attribute name that will be set, the value that will be visible in the drop down menu and the value that will be assigned to the attribute after either High/Low/Medium has been selected-->
-      <div>
+  <div>
     <%= f.label "Protein Level" %><br>
     <%= f.select :protein_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.protein_type) %>
   </div>
-      <div>
+  <div>
     <%= f.label "Carbohydrate Level" %><br>
     <%= f.select :carbohydrate_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.carbohydrate_type) %>
   </div>
-      <%= f.label "Fat Level" %><br>
-    <%= f.select :fat_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.fat_type) %>
-  </div>
-  <div>
-    <%= f.label "Vitamin A Level" %><br>
-    <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_a_type) %>
-  </div>
-    <div>
-    <%= f.label "Vitamin B Level" %><br>
-    <%= f.select :vit_b_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_b_type) %>
-  </div>
-    <div>
-    <%= f.label "Vitamin C Level" %><br>
-    <%= f.select :vit_c_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_c_type) %>
-  </div>
-    <div>
-    <%= f.label "Vitamin D Level" %><br>
-    <%= f.select :vit_d_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_d_type) %>
-  </div>
-    <div>
-    <%= f.label "Vitamin E" %><br>
-    <%= f.select :vit_e_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_e_type) %>
-  </div>
-    <div>
-    <%= f.label "Vitamin K Level" %><br>
-    <%= f.select :vit_k_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_k_type) %>
-  </div>
-    <div>
-    <%= f.label "Calcium Level" %><br>
-    <%= f.select :calcium_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.calcium_type) %>
-  </div>
-    <div>
+  <%= f.label "Fat Level" %><br>
+  <%= f.select :fat_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.fat_type) %>
+</div>
+<div>
+  <%= f.label "Vitamin A Level" %><br>
+  <%= f.select :vit_a_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_a_type) %>
+</div>
+<div>
+  <%= f.label "Vitamin B Level" %><br>
+  <%= f.select :vit_b_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_b_type) %>
+</div>
+<div>
+  <%= f.label "Vitamin C Level" %><br>
+  <%= f.select :vit_c_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_c_type) %>
+</div>
+<div>
+  <%= f.label "Vitamin D Level" %><br>
+  <%= f.select :vit_d_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_d_type) %>
+</div>
+<div>
+  <%= f.label "Vitamin E" %><br>
+  <%= f.select :vit_e_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_e_type) %>
+</div>
+<div>
+  <%= f.label "Vitamin K Level" %><br>
+  <%= f.select :vit_k_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.vit_k_type) %>
+</div>
+<div>
+  <%= f.label "Calcium Level" %><br>
+  <%= f.select :calcium_type, options_for_select([["High", "high"], ["Medium", "medium"], ["Low", "low"]], @item.calcium_type) %>
+</div>
+<div>
   <br>
-    <div class="actions">
+  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
