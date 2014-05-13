@@ -27,7 +27,6 @@ class Healthrecord
 
    validates_presence_of :name
    validates_presence_of :age
-   validates_presence_of :fats
    validates_presence_of :height
    validates_presence_of :weight
    validates_presence_of :race
@@ -38,9 +37,8 @@ class Healthrecord
   validates_numericality_of :height
   validates_numericality_of :weight
   validates_numericality_of :age
-  validates_numericality_of :fats
   validates_numericality_of :height  
-  
+
   belongs_to :member , class_name: 'Member' , inverse_of: :records 
   has_many :diseases , class_name: 'Disease' , inverse_of: :healthrecords 
   belongs_to :use , class_name: 'Use' , :inverse_of => :healthrecord 
