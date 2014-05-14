@@ -73,12 +73,14 @@ respond_to do |format|
  def create
   @item = Item.new(params[:item])
 
+  if @item.amount
     # initial value of paused
   if @item.amount <= 0
    @item.paused = false
   else 
    @item.paused = true
   end
+end
   respond_to do |format|
    if @item.save
     format.html { redirect_to @item, notice: 'Item was successfully created.' }
