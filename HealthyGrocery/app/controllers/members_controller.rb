@@ -5,6 +5,7 @@ class MembersController < ApplicationController
   #team : 1
   #method:index
   #params : none
+
   #it lists all the users on the database it has a boolean check for a variable called admin to controll   visibilty of all the members for only the admin
   
   
@@ -19,6 +20,7 @@ class MembersController < ApplicationController
     if (!params[:search].nil?)
       @members= Member.where(:first_name => params[:search]).page(params[:page]).per(5)
     end
+
     if current_member.email == 'admin@gmail.com'
       @admin = true
     else
@@ -51,6 +53,7 @@ class MembersController < ApplicationController
     end
 
 
+
     if current_member.wishlist.nil?
       @wishexist = false
     else
@@ -77,6 +80,7 @@ class MembersController < ApplicationController
   #params : none
   #it shows the page of the member's healthrecord
   def get_records
+
     @member = Member.find(params[:id])
     @healthrecord = @member.records
     respond_to do |format|
@@ -140,8 +144,13 @@ class MembersController < ApplicationController
     end
   end
 
-
+  #Atuhor: ahmed abdelsattar
+  #team 2
+  #method: generate_routes
+  #parameters: none
+  #function: calling the generate_routes method from Shipment model
+  def generate_routes
+    Shipment.generate_routes
+    redirect_to "/members/hub"
+  end
 end
-
-
-
