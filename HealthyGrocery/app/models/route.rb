@@ -22,9 +22,9 @@ class Route
   belongs_to :truck , class_name: 'Truck' ,  :inverse_of => :route
   
   def self.show(id)
-    @route = Route.find(id)
+    route = Route.find(id)
     arr = []
-    @route.arrOfPoints.each do |points|
+    route.arrOfPoints.each do |points|
       arr1 = [points[1],points[0]]
       arr.push(arr1)
   end  

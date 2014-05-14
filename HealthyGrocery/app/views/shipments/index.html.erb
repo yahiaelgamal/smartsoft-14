@@ -7,7 +7,6 @@
   <thead>
     <tr>
       <th colspan="1">Shipment ID</th>
-      <th colspan="1">Cut off time</th>
       <th colspan="1">Created at</th>
       <th colspan="1"></th>
       <th colspan="1"></th>
@@ -20,7 +19,6 @@
       <% @shipments.each do |shipment| %>
         <tr>
           <td><%= shipment.id %></td>
-          <td><%= shipment.cut_off_time %></td>
           <td><%= shipment.created_at %></td> 
           <td>
              <%= link_to(shipment, class: "btn btn-small") do %>
