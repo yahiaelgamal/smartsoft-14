@@ -3,10 +3,10 @@ class MembersController < ApplicationController
 
    
 #Author: Mohamed Lotfy
-#team: 1
+#Team: 1
 #method: index
-#params: none
-#it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin 
+#Function: it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin 
+#parameters: none
 def index
     @members = Member.all
   if current_member.email == 'healthygrocery@gmail.com'
@@ -15,17 +15,13 @@ def index
       @admin = false
     end
   end
-  #Author : mohamed lotfy
-  #team : 1
-  #method: show
-  #params : none
-  #it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
+  
   
 #Author: Mohamed Lotfy
-#team: 1
-#method: show
-#params: none
-#it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
+#Team: 1
+#Method: show
+#Function: it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
+#parameters: none
 
 def show
   @member = Member.find(params[:id])

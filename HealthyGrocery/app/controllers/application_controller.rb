@@ -20,8 +20,8 @@ end
 #Authour: Mohamed Lotfy
 #Team: 1
 #Method: after_sign_in_path_for
-#Paramters: resource or the member on which the process is done!
-#it redirects to the page of the member signed in by writing the path inside the body of the method
+#Function: it redirects to the page of the member signed in by writing the path inside the body of the method
+#Parameters: resource_or_scope
 def after_sign_in_path_for(resource_or_scope)
     @member
 end
