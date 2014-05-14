@@ -1,7 +1,6 @@
 class Item
   include Mongoid::Document
   include Mongoid::Paperclip
-#a
   field :price , type: Float
   field :amount , type: Integer
   field :name , type: String
@@ -17,7 +16,7 @@ class Item
   field :calcium , type: Float
   field :fat , type: Float
   # Author: Hazem
-  # Component: 5
+  # Team: 5
   # Attribute: paused, to keep track whether each and every item is
   # paused or not (boolean)
   field :paused , type: Boolean
@@ -57,7 +56,7 @@ class Item
   validates :carbohydrate, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   validates :calcium, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   validates :fat, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
-  # Author : Mahmoud Eldesouky
+  # Author: Mahmoud Eldesouky
   # Team : 5
   # added attributes for more item information
   # checks if price is a number greater than 0
@@ -75,9 +74,9 @@ class Item
   # checks the attachment type is image
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # checks if image is present
-  #validates :image, :attachment_presence => true
+  validates :image, :attachment_presence => true
   validates_uniqueness_of :name
-  # Author : Hazem Amin
+  # Author: Hazem Amin
   # Team : 5
   # makes sure the names of items are unique
   # declares a relationship between packages and items
