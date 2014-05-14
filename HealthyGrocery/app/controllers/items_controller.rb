@@ -1,5 +1,4 @@
   class ItemsController < ApplicationController
-  # (GUI TEAM) This line is made so that the /items does not follow bootstrap
   # GET /items
   # GET /items.json
   # shows all the items in the table item
