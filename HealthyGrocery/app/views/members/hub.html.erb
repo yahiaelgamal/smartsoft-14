@@ -158,7 +158,7 @@
 	<% if @diseaseDate == @sixDaysAgo || @diseaseDate == @fiveDaysAgo ||
 	@diseaseDate == @fourDaysAgo || @diseaseDate == @threeDaysAgo || 
 	@diseaseDate == @twoDaysAgo || @diseaseDate == @yesterday || @diseaseDate == @today %>
-		<% @diseaseAddedThisWeek = i %>
+		<% @diseaseAddedThisWeek = d %>
 		<% @diseasesAddedThisWeek << @diseaseAddedThisWeek %>
 		<% @diseasesAddedThisWeekCount += 1 %>
 	<%end%>
