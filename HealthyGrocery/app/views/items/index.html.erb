@@ -66,6 +66,7 @@ left-margin:10px;
 
 <h1 style="padding-bottom:30px;">My Warehouse</h1>
 
+<%= paginate @items %>
 
 
 <!-- end of navigation bar -->
@@ -111,7 +112,6 @@ left-margin:10px;
 
     
     
-<%= paginate @items %>
 
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
     <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  

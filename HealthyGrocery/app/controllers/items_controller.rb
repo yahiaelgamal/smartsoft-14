@@ -5,12 +5,14 @@ class ItemsController < ApplicationController
   # GET /items.json
   # shows all the items in the table item
   def index
+    
+   @items = Item.all.page(params[:page]).per(1)
    if current_member.email == 'admin@gmail.com'
       @admin = true
 else 
       @admin = false
 end    
-    @items = @items.page(params[:page]).per(2) 
+     
 respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
