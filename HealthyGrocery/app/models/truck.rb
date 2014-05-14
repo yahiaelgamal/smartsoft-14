@@ -3,6 +3,7 @@ class Truck
   field :driver, type: String
   field :capacity, type: Integer
   field :status, type: Boolean
+  field :date ,type: Date
 #Author : Ahmed AbdElsattar
 #Team: 4
 #attr :      has_many :routes , class_name: 'Route'  , :inverse_of => :truck

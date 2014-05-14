@@ -14,6 +14,7 @@ class Item
   field :calcium , type: Integer 
   field :fat , type: Integer 
   field :paused , type: Boolean
+  field :date ,type: Date
   # Author: Hazem
   #Component: 5
   # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
