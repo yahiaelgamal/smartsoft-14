@@ -41,7 +41,12 @@ class MembersController < ApplicationController
     end
 
 
+<<<<<<< HEAD
     if current_member.wishlist.nil?
+=======
+
+  if current_member.wishlist.nil?
+>>>>>>> 7f7b2a4b9d7b3dfff2dbad36674b369a50923bfc
       @wishexist = false
     else
       @wishexist = true
@@ -59,6 +64,7 @@ class MembersController < ApplicationController
     current_member.active_records = @records
     current_member.save
   end
+<<<<<<< HEAD
 
 
   #Author : mina sedra
@@ -67,6 +73,29 @@ class MembersController < ApplicationController
   #params : none
   #it shows the page of the member's healthrecord
   def get_records
+=======
+end
+
+#(GUI Team) This session is used to be able to diffirentiate from normal User/Admin 
+#session["isAdmin"]= @admin
+
+#author: Fatma EmranS
+#Team 2
+#Funtion: Checkboxes for the people with health records of the user who wants to order.
+def order_checkboxes
+  @healthrecords = current_member.records
+  @records_ids = params[:all]
+  current_member.active_records = @records
+  current_member.save
+end
+  
+#Author : mina sedra
+#team : 2
+#method: get healthrecord
+#params : none
+#it shows the page of the member's healthrecord 
+ def get_records
+>>>>>>> 7f7b2a4b9d7b3dfff2dbad36674b369a50923bfc
     @member = Member.find(params[:id])
     @healthrecord = @member.records
     respond_to do |format|
@@ -139,3 +168,4 @@ class MembersController < ApplicationController
     redirect_to "/members/hub"
   end
 end
+

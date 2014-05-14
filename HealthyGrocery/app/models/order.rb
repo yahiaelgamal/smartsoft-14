@@ -5,6 +5,7 @@ class Order
   #attr :     include Mongoid::Timestamps::Created
   #function:  indicating the time of creating the order
   include Mongoid::Timestamps::Created
+<<<<<<< HEAD
   field :orderNo ,type: Integer
   field :price   ,type: Integer
   #has_many :items ,class 'Item'
