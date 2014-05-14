@@ -5,12 +5,15 @@ class Order
   #attr :     include Mongoid::Timestamps::Created
   #function:  indicating the time of creating the order
   include Mongoid::Timestamps::Created
+<<<<<<< HEAD
   include Geocoder::Model::Mongoid
 
   reverse_geocoded_by :coordinates
   after_validation :reverse_geocode 
 
     field :address ,type: String
+=======
+>>>>>>> master
   field :orderNo ,type: Integer
   field :price   ,type: Integer
   #has_many :items ,class 'Item'
@@ -71,6 +74,7 @@ class Order
   #Team: 4
   #attr :   array of orders and wanted time 
   #function:  this is just a temp and the full one will be done by omar  
+<<<<<<< HEAD
   def get_optimised_orders(orders,timelimit)
 addresses = Array.new
 
@@ -117,3 +121,9 @@ end
 
 
 
+=======
+  def self.get_optimized_orders(orders,time)
+    return orders
+  end
+end
+>>>>>>> master

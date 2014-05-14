@@ -17,7 +17,11 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise'
 
-
+# rspec testing gems 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
@@ -28,15 +32,22 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'formtastic'
 gem 'formtastic-bootstrap' 
+#This gem used to translate an address String to real coordinates of this place or vice versa
+gem 'geocoder', '~> 1.2.0' 
+#This gem used to help in intialising a map
+gem 'gmaps4rails', '~> 2.1.2' 
+#This gem used to pass values from rails controler to javascript
+#handles the pop up message in the member_item_index_page "go shopping"
+gem "gon" , '5.0.4'
+#handles the showen progress bar 
+gem 'css3-progress-bar-rails'
 
-
-
-
-
-
+group :development, :test do 
+gem 'rspec-rails' 
+gem 'factory_girl_rails'
+end
 
        
-
 
 # Gems used only for assets and not required
 # in production environments by default.

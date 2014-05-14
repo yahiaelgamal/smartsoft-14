@@ -1,9 +1,11 @@
 class Member
   include Mongoid::Document
+
 #Author: mohamed lotfy 
 #team : 1
 #model of the member
 #contains all the needed attributes and relations for the member  
+
 
 
   # Include default devise modules. Others available are:
@@ -11,15 +13,16 @@ class Member
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
   # Setup accessible (or protected) attributes for your model
  field :first_name, type: String
  field :last_name, type: String
  field :gender, type: String
- field :address, type: String
  field :phone_num, type: Integer
  field :birth_date, type: Date 
- 
-   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :address , :phone_num , :birth_date
+
+ attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender ,:phone_num , :birth_date
+
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -43,11 +46,20 @@ class Member
 #relations  related to the member
   has_one :wishlist ,class_name: 'Wishlist'
 has_many :historyItems ,class_name: 'Item'
-has_many :orders , class_name: 'Order'
+has_many :orders , class_name: 'Order' , inverse_of: :member
 #has_many :recommendation, class 'Recommendation'
 has_many :records ,class_name: 'Healthrecord' , inverse_of: :user
+has_many :active_records ,class_name: 'Healthrecord' , inverse_of: :ordered_user
+has_many :records ,class_name: 'Healthrecord' , inverse_of: :member
 has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
 has_many :diseases , class_name: 'Disease' , inverse_of: :customers
+has_many :addresses , class_name: "Address" , inverse_of: :member
+
+#Author: Abdelrahman Sakr
+#Team : 1
+#Declaring a new relationship between the User and the Cart.
+has_one :cart , class_name: 'Cart'
+
 
 validates :first_name,
 :presence => true,
@@ -66,11 +78,6 @@ validates :last_name,
 
 validates :birth_date,
 :presence => true
-
-
-validates :address,
-:presence => true
-
 
 
 validates :phone_num,
