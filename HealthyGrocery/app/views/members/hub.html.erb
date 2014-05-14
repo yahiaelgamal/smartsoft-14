@@ -117,8 +117,7 @@
 	<% if @itemDate == @sixDaysAgo || @itemDate == @fiveDaysAgo ||
 	@itemDate == @fourDaysAgo  || @itemDate == @threeDaysAgo || 
 	@itemDate == @twoDaysAgo || @itemDate == @yesterday || @itemDate == @today %>
-		<% @itemAddedThisWeek = i %>
-		<% @itemsAddedThisWeek << @itemAddedThisWeek %>
+		<% @itemsAddedThisWeek << i %>
 		<% @itemsAddedThisWeekCount += 1 %>
 	<%end%>
 <%end%>
@@ -138,8 +137,7 @@
 	<% if @truckDate == @sixDaysAgo || @truckDate == @fiveDaysAgo || 
 	@truckDate == @fourDaysAgo  || @truckDate == @threeDaysAgo || 
 	@truckDate == @twoDaysAgo || @truckDate == @yesterday || @truckDate == @today %>
-		<% @truckAddedThisWeek = i %>
-		<% @trucksAddedThisWeek << @truckAddedThisWeek %>
+		<% @trucksAddedThisWeek << t %>
 		<% @trucksAddedThisWeekCount += 1 %>
 	<%end%>
 <%end%>
@@ -158,8 +156,7 @@
 	<% if @diseaseDate == @sixDaysAgo || @diseaseDate == @fiveDaysAgo ||
 	@diseaseDate == @fourDaysAgo || @diseaseDate == @threeDaysAgo || 
 	@diseaseDate == @twoDaysAgo || @diseaseDate == @yesterday || @diseaseDate == @today %>
-		<% @diseaseAddedThisWeek = d %>
-		<% @diseasesAddedThisWeek << @diseaseAddedThisWeek %>
+		<% @diseasesAddedThisWeek << d %>
 		<% @diseasesAddedThisWeekCount += 1 %>
 	<%end%>
 <%end%>
@@ -179,8 +176,7 @@
 	<% if @driverDate == @sixDaysAgo || @driverDate == @fiveDaysAgo || 
 	@driverDate == @fourDaysAgo|| @driverDate == @threeDaysAgo ||
 	@driverDate == @twoDaysAgo || @driverDate == @yesterday || @driverDate == @today %>
-		<% @driverAddedThisWeek = i %>
-		<% @driversAddedThisWeek << @driverAddedThisWeek %>
+		<% @driversAddedThisWeek << d %>
 		<% @driversAddedThisWeekCount += 1 %>
 	<%end%>
 <%end%>
