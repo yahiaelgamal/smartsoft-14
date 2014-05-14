@@ -24,6 +24,7 @@ def after_sign_in_path_for(resource_or_scope)
     @member
 end
 
+
 #Authour: Mohamed Saeed
 #Team : 1
 #Method : current_wish_new
