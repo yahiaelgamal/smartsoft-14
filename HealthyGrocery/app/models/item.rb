@@ -234,5 +234,17 @@ class Item
     result.push(@message)
     return result
   end
+   def self.toggle_pause(item_id) 
+    @item = Item.find(item_id)
 
+    if @item.amount <= 0 && @item.paused == false
+       x = "Can't resume because stock equals #{@item.amount}"
+    else
+      @item.paused = !@item.paused
+      @item.save
+      x = "Item toggled successfully"
+    end
+    return x
+   end 
+   
 end

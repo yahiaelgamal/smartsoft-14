@@ -48,16 +48,7 @@
 
 
   def toggle_pause
-    @item = Item.find(params[:id])
-
-    if @item.amount <= 0 && @item.paused == false
-      flash[:notice] = "Can't resume because stock equals #{@item.amount}"
-    else
-      @item.paused = !@item.paused
-      @item.save
-      flash[:notice] = "Item toggled successfully"
-    end
-
+    flash[:notice] = Item.toggle_pause(params[:id])
     redirect_to items_url
   end
   #Author: Hazem Amin
@@ -72,12 +63,14 @@
   def create
     @item = Item.new(params[:item])
 
+    if @item.amount
     # initial value of paused
     if @item.amount <= 0
       @item.paused = false
     else
       @item.paused = true
     end
+  end
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }

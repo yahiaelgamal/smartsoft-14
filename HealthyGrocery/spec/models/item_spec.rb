@@ -67,5 +67,11 @@ describe Item do
   h.vitamin_e_till_now.should == 0
   h.vitamin_k_till_now.should == 0
  end
-  
+ it "pause an item" do 
+   Item.all.destroy
+   item = FactoryGirl.create(:item)
+   Item.toggle_pause(item.id)
+   item = Item.first
+   item.paused.should == true
+ end 
 end

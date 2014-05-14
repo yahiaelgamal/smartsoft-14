@@ -18,5 +18,6 @@ FactoryGirl.define do
     f.vitamin_d 20
     f.vitamin_e 20
     f.vitamin_k 20
+    f.paused false 
   end
 end
