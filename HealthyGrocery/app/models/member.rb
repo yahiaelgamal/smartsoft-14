@@ -1,7 +1,8 @@
 class Member
   include Mongoid::Document
 #Author: Mohamed Lotfy 
-#team : 1
+#team: 1
+#params: none
 #model of the member
 #contains all the needed attributes and relations for the member  
 
