@@ -46,20 +46,26 @@
     @item = Item.find(params[:id])
   end
 
-
+  #Author: Hazem Amin
+  #Method_Name: toggle_pause
+  #What does it do? It simply finds that specific item that needs to be paused and pauses
+  # it if the conditions applies that the item is not out of stock.
   def toggle_pause
     flash[:notice] = Item.toggle_pause(params[:id])
     redirect_to items_url
   end
-  #Author: Hazem Amin
-  #Method_Name: toggle_pause
-  #What does it do? It simply finds that specific item that needs to be paused and pauses
-  # it if the conditions applies that the item is not out of stock.
-  #Author: Hazem Amin
-  #Method_Name: toggle_pause
-  #What does it do? It simply finds that specific item that needs to be paused and pauses
-  # it if the conditions applies that the item is not out of stock.
 
+  #Author: Hazem Amin
+  #Component: 5
+  #Method_Name: create
+  #Funtion: It simply CEATES an item, as being one of the 4 fundumentals of CRUD.
+  #What about the part commented below? I decide the initial values of paused when it is
+  #created, whether it should be initially paused or resumed.
+  #if @item.amount <= 0
+  #@item.paused = true
+  #else
+  #@item.paused = false
+  #end
   def create
     @item = Item.new(params[:item])
 
@@ -81,17 +87,6 @@
       end
     end
   end
-  #Author: Hazem Amin
-  #Component: 5
-  #Method_Name: create
-  #What does it do? It simply CEATES an item, as being one of the 4 fundumentals of CRUD.
-  #What about the part commented below? I decide the initial values of paused when it is
-  # created, whether it should be initially paused or resumed.
-  #    if @item.amount <= 0
-  #    @item.paused = true
-  #  else
-  #    @item.paused = false
-  #  end
 
   #views the users without the create button
   def viewusers

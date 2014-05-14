@@ -234,6 +234,9 @@ class Item
     result.push(@message)
     return result
   end
+  #Author: Hazem Amin
+  #Team: 5
+  #Function: Testing the toggle_pause action
    def self.toggle_pause(item_id) 
     @item = Item.find(item_id)
 
