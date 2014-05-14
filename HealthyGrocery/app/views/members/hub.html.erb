@@ -1,14 +1,10 @@
 <!-- This the Users/Admins Hub Page which is the Home page that shows New/Recommended Items -->
 
-<% if current_member.email != 'admin@gmail.com'%>
-
-
-
-
+<% if current_member.email == 'admin@gmail.com'%>
 <%@allMembers = Member.all%>
 <%@membersCount=-1%>
 <% @allMembers.each do |m| %>
-<% @membersCount += 1%>
+	<% @membersCount += 1%>
 <%end%>
 
 <!-- showing the number of users the website has reached -->
@@ -16,7 +12,7 @@
 <%@allItems = Item.all%>
 <%@itemsCount=0%>
 <% @allItems.each do |i| %>
-<% @itemsCount += 1%>
+  <% @itemsCount += 1%>
 <%end%>
 
 <!-- showing the number of items the website has-->
@@ -27,19 +23,19 @@
 <%@trucksCount=0%>
 <%@driversCount=0%>
 <% @allTrucks.each do |t| %>
-<% @trucksCount += 1%>
+	<% @trucksCount += 1%>
 <%end%>
 <% @allDrivers.each do |d| %>
-<% @driversCount += 1%>
+	<% @driversCount += 1%>
 <%end%>
 
 <!--showing the number of drivers and the number of trucks these drivers are using-->
 
 
 
-<h1>Statistics:</h1>
-<h3 style="margin:0px 25px 0px"><font size="2">- The website has:</h3>
-<li style="margin:0px 45px 0px"><%=@membersCount%> members.</li>
+<h1 style="margin: 10px 0px 10px">Statistics:</h1>
+<h3 style="margin:-10px 25px 5px"><font size="2">- The website has:</h3>
+<li style="margin:-12px 45px 0px"><%=@membersCount%> members.</li>
 <li style="margin:0px 45px 0px"><%=@itemsCount%> items in its warehouse.</li>
 <li style="margin:0px 45px 0px"><%=@driversCount%> drivers, using <%=@trucksCount%> trucks.</li>
 
@@ -47,16 +43,17 @@
 <% @allOrders = Order.all %>
 <% @itemsTodayCount=0 %>
 <% @allOrders.each do |o| %>
-<%@date = y.date%>
-<%@today=Date.today%>
-
-<%if @date == @today%>
- <% @itemsTodayCount += y.items.size %>  
+	<%@orderDate = o.date%>
+	<%@today=Date.today%>
+	<%if @orderDate == @today%>
+ 		<% @orderItems = y.items %>
+ 		<% @orderItems.each do |i| %>
+ 			<% @itemsTodayCount += 1 %>  
+		<%end%>
+	<%end%>
 <%end%>
 
-<%end%>
-<h3 style="margin:0px 25px 0px">
-<font size="2">- <%=@itemsTodayCount%> items have been purchased today.</h3>
+<p style="margin:5px 25px 0px"><font size="2"><b>- <%=@itemsTodayCount%> items have been purchased today.</p>
 
  
 <!-- showing the number of items that are purchased today-->
@@ -64,15 +61,32 @@
 
 <% @ordersCount=0 %>
 <% @allOrders.each do |o| %>
-<% @allOrders += 1%>
+	<% @allOrders += 1%>
 <%end%>
 <%if @ordersCount == 1%>
-<p style= "margin:0px 25px 0px";><b>- <%=@ordersCount%> order has been placed on the website so far.</h3>
+	<p style= "margin:0px 25px 0px"><b>- <%=@ordersCount%> order has been placed on the website so far.</p>
 <%else%>
-<p style= "margin:0px 25px 0px";><b>- <%=@ordersCount%> orders have been placed on the website so far.</p>
+	<p style= "margin:0px 25px 0px"><b>- <%=@ordersCount%> orders have been placed on the website so far.</p>
 <%end%>
 
 <!-- showing the number of orders that that have been placed on the website so far-->
+
+<% @itemsOutOfStockCount = 0%>
+<% @itemsOutOfStock = Array.new %>
+<% @allItems.each do |i| %>
+	<% if i.amount <= 0 %>
+		<% @itemOutOfStock = i%>
+		<% @itemsOutOfStock << itemOutOfStock%>
+		<% @itemsOutOfStockCount += 1%>
+	<%end%>
+<%end%>
+<%if @itemsOutOfStockCount == 1%>
+	<p style= "margin:0px 25px 0px"><b>- <%=@itemsOutOfStockCount%> item is out of stock.</p>
+<%else%>
+	<p style= "margin:0px 25px 0px"><b>- <%=@itemsOutOfStockCount%> items are out of stock.</p>
+<%end%>
+
+
 
 <!-- showing items that are out of stock-->
 
@@ -85,9 +99,98 @@
 	 	#Example:  -->
 
 
-<h1>Action Summary:</h1>
+<h1 style="margin: 17px 0px 15px">Action Summary:</h1>
+
+<%@today = Date.today%>
+<%@sixDaysAgo = @today - 6.day%>
+<%@fiveDaysAgo = @today - 5.day%>
+<%@fourDaysAgo = @today - 4.day%>
+<%@threeDaysAgo = @today - 3.day%>
+<%@twoDaysAgo = @today - 2.day%>
+<%@yesterday = @today - 1.day%>
 
 
+<% @itemsAddedThisWeek = Array.new %>
+<% @itemsAddedThisWeekCount = 0%>
+<% @allItems.each do |i| %>
+	<%@itemDate = i.date%>
+	<% if @itemDate == @sixDaysAgo || @itemDate == @fiveDaysAgo ||
+	@itemDate == @fourDaysAgo  || @itemDate == @threeDaysAgo || 
+	@itemDate == @twoDaysAgo || @itemDate == @yesterday || @itemDate == @today %>
+		<% @itemAddedThisWeek = i %>
+		<% @itemsAddedThisWeek << @itemAddedThisWeek %>
+		<% @itemsAddedThisWeekCount += 1 %>
+	<%end%>
+<%end%>
+<%if @itemsAddedThisWeekCount == 1%>
+	<p style= "margin:0px 25px 0px"><b>- You have added <%=@itemsAddedThisWeekCount%> item this week.</p>
+<%else%>
+	<p style= "margin:0px 25px 0px"><b>- You have added <%=@itemsAddedThisWeekCount%> items this week.</p>
+<%end%>
+
+
+<!-- showing items that the admin added in the past week-->
+
+<% @trucksAddedThisWeek = Array.new %>
+<% @trucksAddedThisWeekCount = 0%>
+<% @allTrucks.each do |t| %>
+	<%@truckDate = t.date%>
+	<% if @truckDate == @sixDaysAgo || @truckDate == @fiveDaysAgo || 
+	@truckDate == @fourDaysAgo  || @truckDate == @threeDaysAgo || 
+	@truckDate == @twoDaysAgo || @truckDate == @yesterday || @truckDate == @today %>
+		<% @truckAddedThisWeek = i %>
+		<% @trucksAddedThisWeek << @truckAddedThisWeek %>
+		<% @trucksAddedThisWeekCount += 1 %>
+	<%end%>
+<%end%>
+<%if @trucksAddedThisWeekCount == 1%>
+	<p style= "margin:0px 25px 0px"><b>- You have added <%=@trucksAddedThisWeekCount%> truck this week.</p>
+<%else%>
+	<p style= "margin:0px 25px 0px"><b>- You have added <%=@trucksAddedThisWeekCount%> trucks this week.</p>
+<%end%>
+
+<!-- showing trucks that the admin added in the past week-->
+<% @allDiseases = Disease.all %>
+<% @diseasesAddedThisWeek = Array.new %>
+<% @diseasesAddedThisWeekCount = 0%>
+<% @allDiseases.each do |d| %>
+	<%@diseaseDate = d.date%>
+	<% if @diseaseDate == @sixDaysAgo || @diseaseDate == @fiveDaysAgo ||
+	@diseaseDate == @fourDaysAgo || @diseaseDate == @threeDaysAgo || 
+	@diseaseDate == @twoDaysAgo || @diseaseDate == @yesterday || @diseaseDate == @today %>
+		<% @diseaseAddedThisWeek = i %>
+		<% @diseasesAddedThisWeek << @diseaseAddedThisWeek %>
+		<% @diseasesAddedThisWeekCount += 1 %>
+	<%end%>
+<%end%>
+<%if @trucksAddedThisWeekCount == 1%>
+	<p style= "margin:0px 25px 0px"><b>- You have added <%=@diseasesAddedThisWeekCount%> disease this week.</p>
+<%else%>
+	<p style= "margin:0px 25px 0px"><b>- You have added <%=@diseasesAddedThisWeekCount%> diseases this week.</p>
+<%end%>
+
+
+<!-- showing diseases that the admin added in the past week-->
+
+<% @driversAddedThisWeek = Array.new %>
+<% @driversAddedThisWeekCount = 0%>
+<% @allDrivers.each do |d| %>
+	<%@driverDate = t.date%>
+	<% if @driverDate == @sixDaysAgo || @driverDate == @fiveDaysAgo || 
+	@driverDate == @fourDaysAgo|| @driverDate == @threeDaysAgo ||
+	@driverDate == @twoDaysAgo || @driverDate == @yesterday || @driverDate == @today %>
+		<% @driverAddedThisWeek = i %>
+		<% @driversAddedThisWeek << @driverAddedThisWeek %>
+		<% @driversAddedThisWeekCount += 1 %>
+	<%end%>
+<%end%>
+<%if @driversAddedThisWeekCount == 1%>
+	<p style= "margin:0px 25px 0px"><b>- You have added <%=@driversAddedThisWeekCount%> driver this week.</p>
+<%else%>
+	<p style= "margin:0px 25px 12px"><b>- You have added <%=@driversAddedThisWeekCount%> drivers this week.</p>
+<%end%>
+
+<!-- showing drivers that the admin added in the past week-->
 
 
 
