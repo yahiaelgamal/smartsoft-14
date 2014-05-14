@@ -4,6 +4,8 @@ HealthyGrocery::Application.routes.draw do
 #----------------------------------------------------------------------------------------------------#
   #for user profile page
   get 'members/hub'
+  get 'members/generate_routes'
+
   get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
   root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
   devise_for :members, :controllers => {:registrations => "registrations", }
@@ -107,9 +109,7 @@ HealthyGrocery::Application.routes.draw do
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR GENERATEROUTES
 #----------------------------------------------------------------------------------------------------#
-  match '/generateroutes' => 'generateroutes#index'
-  post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
-  post "generateroutes/gen" => "generateroutes#gen" 
+
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR HEALTH_RECORDS
 #----------------------------------------------------------------------------------------------------#
