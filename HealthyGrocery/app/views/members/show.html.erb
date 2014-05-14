@@ -1,6 +1,6 @@
-<!--to check the adminstration level
-author : mohamed lotfy
-team : 1-->
+<!-- to check the adminstration level  
+     author : mohamed lotfy  
+     team : 1-->
 <!-- This is the Users/Admins Profile -->
 <% if @admin == true%>
   <h1>hello admin</h1>
@@ -86,6 +86,29 @@ Author: Abdelrahman Sakr
                     <i class="icon-cog icon-white"></i><font face="futura" color="white">
                       Edit Profile</font>
                   <% end %>
+                  <hr>
+                  <!-- Author: Mahmoud Walid
+       Team: 3
+       Function: show alerts if there is any order without an address-->
+                  <%if @member%>
+                    <% @count = true%>
+                    <% @member.orders.each do |ord|%>
+                      <%if not ord.coordinates%>
+                        <% if @count%>
+                          <hr>
+                          <br>
+                          <br>
+                          <%flash[:alert] = "You have an order that needs shipping and billing addresses, please #{link_to "click here",chooseOrder_path(ord)} to choose now".html_safe%>
+                          <%@count=false%>
+                        <% else %>
+                          <%flash[:alert] = "You have more than one order that needs shipping and billing addresses, please #{link_to "click here",showOrders_path} to show your orders".html_safe%>
+                          <br>
+                          <br>
+                          <br>
+                        <%end%>
+                      <%end%>
+                    <%end%>
+                  <%end%>
                 </div>
               </div>
             </div>
