@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+  class ItemsController < ApplicationController
   # (GUI TEAM) This line is made so that the /items does not follow bootstrap
   #layout false
   # GET /items
