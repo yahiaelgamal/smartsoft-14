@@ -1,10 +1,10 @@
 class MembersController < ApplicationController
   before_filter :authenticate_member!
    
-#Author : Mohamed Lotfy
-#team : 1
+#Author: Mohamed Lotfy
+#team: 1
 #method: index
-#params : none
+#params: none
 #it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin 
 def index
     @members = Member.all
