@@ -37,6 +37,7 @@ gem 'gmaps4rails', '~> 2.1.2'
 gem "gon" , '5.0.4'
 #handles the showen progress bar 
 gem 'css3-progress-bar-rails'
+gem 'kaminari'
 
 group :development, :test do 
 gem 'rspec-rails' 

@@ -20,4 +20,14 @@ class Route
 #function : changing the relation from on one to one to many to one  
   has_many :orders , class_name: 'Order' ,  :inverse_of => :route
   belongs_to :truck , class_name: 'Truck' ,  :inverse_of => :route
+  
+  def self.show(id)
+    @route = Route.find(id)
+    arr = []
+    @route.arrOfPoints.each do |points|
+      arr1 = [points[1],points[0]]
+      arr.push(arr1)
+  end  
+    return arr
+  end 
 end

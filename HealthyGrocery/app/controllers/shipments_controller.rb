@@ -2,7 +2,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments
   # GET /shipments.json
   def index
-    @shipments = Shipment.all
+    @shipments = Shipment.all.page(params[:page]).per(1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class ShipmentsController < ApplicationController
   # GET /shipments/1.json
   def show
     @shipment = Shipment.find(params[:id])
-
+    @routes = @shipment.routes.page(params[:page]).per(1)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @shipment }

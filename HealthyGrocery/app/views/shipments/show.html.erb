@@ -16,7 +16,8 @@
   </thead>
   <tbody>
     <% unless @shipment.routes.empty? %>
-      <% @shipment.routes.each do |route| %>
+      <%= paginate @routes%>
+      <% @routes.each do |route| %>
         <tr>
           <td><%= route.id %></td>
           <% arr = [] %>

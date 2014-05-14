@@ -16,12 +16,7 @@ class RoutesController < ApplicationController
 #shows information about a specific route
   def show
     @route = Route.find(params[:id])
-    arr = []
-    @route.arrOfPoints.each do |points|
-      arr1 = [points[1],points[0]]
-      arr.push(arr1)
-    end  
-    gon.arrOfPoints = arr
+    gon.arrOfPoints = Route.show(params[:id])
     gon.retailerLat = Member.find_by(email:"admin@gmail.com").addresses[0].coordinates[1]
     gon.retailerLng = Member.find_by(email:"admin@gmail.com").addresses[0].coordinates[0]
 

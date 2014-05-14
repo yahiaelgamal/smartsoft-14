@@ -1,7 +1,7 @@
 // this script is responsible for viewing the map of the route  for testing the code just go to http:// 
 // localhost:3000/ship_orders/gen
 
-    var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
 
 function calcRoute() {

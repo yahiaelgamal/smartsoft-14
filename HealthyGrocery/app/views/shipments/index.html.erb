@@ -16,6 +16,7 @@
   </thead>
   <tbody>
     <% unless @shipments.empty? %>
+    <%= paginate @shipments %>
       <% @shipments.each do |shipment| %>
         <tr>
           <td><%= shipment.id %></td>
