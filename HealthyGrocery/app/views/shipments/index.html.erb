@@ -8,9 +8,7 @@
     <tr>
       <th colspan="1">Shipment ID</th>
       <th colspan="1">Created at</th>
-      <th colspan="1"></th>
-      <th colspan="1"></th>
-      <th colspan="1"></th>  
+      <th colspan="1"></th> 
     </tr>
   </thead>
   <tbody>
@@ -24,16 +22,6 @@
              <%= link_to(shipment, class: "btn btn-small") do %>
                 Show <i class="icon-show icon-white"></i>
              <% end %>
-          </td>
-          <td>
-            <%= link_to(edit_shipment_path(shipment), class: "btn btn-small") do %>
-              Edit <i class="icon-edit icon-white"></i>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to(shipment, class: "btn btn-small" , method: :delete, data: { confirm: 'Are you sure?' }) do %>
-              Delete <i class="icon-delete icon-white"></i>
-            <% end %>
           </td>
         </tr>
       <% end %>
