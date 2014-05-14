@@ -1,12 +1,11 @@
 <div class="page-header">
   <h1>Diseases</h1>
-    <div class="contextual">
-      <%= link_to(new_disease_path, class: "btn btn-success") do %>
-        New Disease <i class="icon-plus icon-white"></i>
-      <% end %>
-    </div>
+  <div class="contextual">
+    <%= link_to(new_disease_path, class: "btn btn-success") do %>
+      New Disease <i class="icon-plus icon-white"></i>
+    <% end %>
+  </div>
 </div>
-
 <table class="table table-striped table-bordered table-condensed">
   <thead>
     <tr>
@@ -18,7 +17,6 @@
       <th colspan="1">Actions</th>
     </tr>
   </thead>
-
   <tbody
     <% unless @diseases.empty? %>
       <% @diseases.each do |disease| %>
@@ -26,21 +24,18 @@
         <td></td>
         <td><%= link_to disease.name, disease %></td>
         <td><%= disease.information %></td>
-     
         <td>
           <% disease.recommended_items.each do |f| %>
             <%= f.name %>
             </br>
           <% end %>
         </td>
-
         <td>
           <% disease.restricted_items.each do |c| %>
             <%= c.name %>
             </br>
           <% end %>
         </td>
-
         <td> 
           <%= link_to(edit_disease_path(disease), class: "btn btn-small") do %>
             Edit <i class="icon-edit icon-white"></i>
@@ -56,7 +51,4 @@
     <% end %>
   </tbody>                                        
 </table>
-
-
-
 
