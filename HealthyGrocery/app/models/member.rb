@@ -1,11 +1,12 @@
 class Member
   include Mongoid::Document
 
-#Author: mohamed lotfy 
-#team : 1
+#Author: Mohamed Lotfy 
+#team: 1
+#params: none
 #model of the member
 #contains all the needed attributes and relations for the member  
-#after_create :send_mail
+
 
 
   # Include default devise modules. Others available are:
