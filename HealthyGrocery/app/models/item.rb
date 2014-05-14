@@ -76,10 +76,10 @@ class Item
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # checks if image is present
   #validates :image, :attachment_presence => true
-
   validates_uniqueness_of :name
-
-
+  # Author : Hazem Amin
+  # Team : 5
+  # makes sure the names of items are unique
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
