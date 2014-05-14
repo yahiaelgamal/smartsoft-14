@@ -58,9 +58,9 @@
         <%= @type_warning %>
       </div>
       <% end %>
-      <%#Author : Antoine Foti
-        Team : 2
-        Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated. Also all the messages formed according to the filter search are displayed at the right moment. %>
+<%#Author: Antoine Foti
+Team: 2
+Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated. Also all the messages formed according to the filter search are displayed at the right moment. %>
       <%= form_tag '/items/members_items_index', :method => 'get' do %>
       <p>
         <span class="label label-important">Name :</span>
@@ -93,16 +93,16 @@
           <% end %>
         </select>
         </br></br>
-        <span class="label label-info">Price between:</span>
+        <span class="label label-info">Price starting from:</span>
         <%= text_field_tag :price_from, params[:filter] %>
         </br>
-        <span class="label label-info">And:</span>
+        <span class="label label-info">Price ending to:</span>
         <%= text_field_tag :price_to, params[:filter] %>
         </br></br>
-        <span class="label label-info">Rating between:</span>
+        <span class="label label-info">Rating starting from:</span>
         <%= text_field_tag :rating_from, params[:filter] %>
         </br>
-        <span class="label label-info">And:</span>
+        <span class="label label-info">Rating ending to:</span>
         <%= text_field_tag :rating_to, params[:filter] %>
         </br></br>
         <% @items_extra_fields = ["Vitamin_A","Vitamin_B","Vitamin_C", "Vitamin_D", "Vitamin_E", "Vitamin_K", "Proteins", "Carbohydrate", "Calcium", "Fats"] %>
