@@ -13,12 +13,9 @@
  <%= stylesheet_link_tag "items", :media => "all" %>
  <%= javascript_include_tag "items" %>
 
-
 <head>
 
-
 <%= include_gon %>
-
 
 </head>
 
@@ -34,96 +31,104 @@
 <!-- Title for the page -->
 
 </br>
-
-<%= @notification %>
-</br>
-<%= @warning %>
-
-</br></br>
-<% if @items.count == 1 %>
-You've got 1 result.
-<% else %>
-You've got <%= @items.count %> results.
-<% end %>
-<%= @showing_pages %>
-</br></br>
-
-
-<% if Item.all.count > 0 %>
-<navigationbar>
-  <h5>Filter for products </h5>
-  <%# Author : Antoine Foti
-      Team : 2
-      Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated %>
-    <%= @type_warning %>
-    </br>
-   
-<%= form_tag '/items/members_items_index', :method => 'get' do %>
-  <p>
-    <span class="label">Name :</span>
-    <%= text_field_tag :name, params[:filter] %>
-    </br></br>
-        
-
-    <a href="#" onclick="toggle_visibility('foo');">Advanced search</a>
-    <div id="foo" style="display:none">
-    <span class="label">Category :</span>
-    <select name="category">
-      <%= @categories = ["<None>"] %>
-      <%= @categories += Item.distinct(:category) %>
-      <%= @categories.each do |category| %>
-        <option value= <%= category %> ><%= category %> </option>
-      <% end %>
-    </select>
-    </br></br>
-
-    <span class="label">Price between:</span>
-    <%= text_field_tag :price_from, params[:filter] %>
-    </br>
-    <span class="label">And:</span>
-    <%= text_field_tag :price_to, params[:filter] %>
-    </br></br>
-  
-    <span class="label">Rating between:</span>
-    <%= text_field_tag :rating_from, params[:filter] %>
-    </br>
-    <span class="label">And:</span>
-    <%= text_field_tag :rating_to, params[:filter] %>
-    </br></br>
-
-    <%= radio_button_tag 'status', "all", :checked => true %> <span class="badge">All Products</span>
-    </br>
-     <%= radio_button_tag 'status', "available" %> <span class="badge">Available Only</span>
-    </br></br>
+    <% if @warning.length > 0 %>
+    <div class="alert alert-block">
+      <%= @warning %>
     </div>
-    
-    <span class="label">Sort by :</span>
-    <select name="sort_by">
-      <%= @attributes = ["Name","Price","Category"] %>
-      <%= @attributes.each do |attribute| %>
-        <option value= <%= attribute %> ><%= attribute %> </option>
+    <% end %>
+    <div class="alert alert-info">
+      <% if @items.count == 1 %>
+      You've got 1 item.
+      <% else %>
+      You've got <%= @items.count %> items.
       <% end %>
-    </select>
-    </br></br>
-
-    <span class="label">Items per page :</span>
-    <select name="items_per_page">
-      <%= @pages = ["5","10","15","20","25"] %>
-      <%= @pages.each do |page| %>
-        <option value= <%= page %> ><%= page %> </option>
+      <%= @showing_pages %>
+    </div>
+    </br>
+    <% if Item.all.count > 0 %>
+    <navigationbar>
+      <h5>Filter for products </h5>
+      <% if @type_warning.length > 0 %>
+      <div class="alert alert-error">
+        <%= @type_warning %>
+      </div>
       <% end %>
-    </select>
-    </br></br>
-
-<%= submit_tag "Search" %>
-  </p>
-<% end %>
-</navigationbar>
-<% else %>
-  The retailer hasn't inserted any items yet.
-<% end %>
-
-<%= paginate @items %>
+      <%#Author : Antoine Foti
+        Team : 2
+        Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated. Also all the messages formed according to the filter search are displayed at the right moment. %>
+      <%= form_tag '/items/members_items_index', :method => 'get' do %>
+      <p>
+        <span class="label label-important">Name :</span>
+        <%= text_field_tag :name, params[:filter] %>
+        </br></br>
+        <span class="label label-important">Sort by :</span>
+        <select name="sort_by">
+          <%= @attributes = ["Name","Price","Category","Rating","Vitamin_A","Vitamin_B","Vitamin_C", "Vitamin_D", "Vitamin_E", "Vitamin_K", "Proteins", "Carbohydrate", "Calcium", "Fats"] %>
+          <%= @attributes.each do |attribute| %>
+          <option value= <%= attribute %> ><%= attribute %> </option>
+          <% end %>
+        </select>
+        </br></br>
+        <span class="label label-important">Items per page :</span>
+        <select name="items_per_page">
+          <%= @pages = ["5","10","15","20","25"] %>
+          <%= @pages.each do |page| %>
+          <option value= <%= page %> ><%= page %> </option>
+          <% end %>
+        </select>
+        </br></br>
+        <a href="#" onclick="toggle_visibility('foo');">Advanced search</a>
+      <div id="foo" style="display:none">
+        <span class="label label-info">Category :</span>
+        <select name="category">
+          <%= @categories = ["<None>"] %>
+          <%= @categories += Item.distinct(:category) %>
+          <%= @categories.each do |category| %>
+          <option value= <%= category %> ><%= category %> </option>
+          <% end %>
+        </select>
+        </br></br>
+        <span class="label label-info">Price between:</span>
+        <%= text_field_tag :price_from, params[:filter] %>
+        </br>
+        <span class="label label-info">And:</span>
+        <%= text_field_tag :price_to, params[:filter] %>
+        </br></br>
+        <span class="label label-info">Rating between:</span>
+        <%= text_field_tag :rating_from, params[:filter] %>
+        </br>
+        <span class="label label-info">And:</span>
+        <%= text_field_tag :rating_to, params[:filter] %>
+        </br></br>
+        <% @items_extra_fields = ["Vitamin_A","Vitamin_B","Vitamin_C", "Vitamin_D", "Vitamin_E", "Vitamin_K", "Proteins", "Carbohydrate", "Calcium", "Fats"] %>
+        <% @items_extra_fields.each do |extra_field| %>
+        <span class="badge badge-info">Amount of <%= extra_field %>:</span>
+        </br>
+        <%= radio_button_tag extra_field, "High" %> <span class="">High</span>
+        <%= radio_button_tag extra_field, "Medium" %> <span class="">Medium</span>
+        <%= radio_button_tag extra_field, "Low" %> <span class="">Low</span>
+        </br></br>
+        <% end %>
+        <%= radio_button_tag 'status', "all", :checked => true %> <span class="">All Products</span>
+        </br>
+        <%= radio_button_tag 'status', "available" %> <span class="">Available Only</span>
+        </br></br>
+      </div>
+      <%= submit_tag "Search" %>
+      </p>
+      <% end %>
+    </navigationbar>
+    <% else %>
+    <div class="alert alert-error">
+      The retailer hasn't inserted any items yet.
+    </div>
+    <% end %>
+    <% if @notification.length > 0 %>
+    <div class="alert alert-success">
+      <%= @notification %>
+    </div>
+    <% end %>
+    <%= paginate @items %>
 
 <% @items.each do |item| %>
   <icon>
