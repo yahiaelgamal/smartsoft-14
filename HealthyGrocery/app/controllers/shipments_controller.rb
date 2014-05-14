@@ -21,36 +21,9 @@ class ShipmentsController < ApplicationController
     end
   end
 
-  # GET /shipments/new
-  # GET /shipments/new.json
-  def new
-    @shipment = Shipment.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @shipment }
-    end
-  end
-
   # GET /shipments/1/edit
   def edit
     @shipment = Shipment.find(params[:id])
-  end
-
-  # POST /shipments
-  # POST /shipments.json
-  def create
-    @shipment = Shipment.new(params[:shipment])
-
-    respond_to do |format|
-      if @shipment.save
-        format.html { redirect_to @shipment, notice: 'Shipment was successfully created.' }
-        format.json { render json: @shipment, status: :created, location: @shipment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @shipment.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PUT /shipments/1
