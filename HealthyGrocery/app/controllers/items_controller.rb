@@ -5,8 +5,12 @@ class ItemsController < ApplicationController
   # GET /items.json
   # shows all the items in the table item
   def index
+    #Author: Amr Nabil 
+    #Team: 3
+    #paginating items in the warehouse to be displayed  
+                  
     
-   @items = Item.all.page(params[:page]).per(1)
+   @items = Item.all.page(params[:page]).per(10)
    if current_member.email == 'admin@gmail.com'
       @admin = true
 else 
