@@ -137,7 +137,7 @@ class Item
 
   "
 
-
+end
 
         v_counter = v_counter + 1
         @flag = false
@@ -275,5 +275,5 @@ class Item
     end
     return x
   end
-
 end
+

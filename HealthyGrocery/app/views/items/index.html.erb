@@ -93,8 +93,9 @@ Navigate Here </br></br>
     <th>Category</th>
     <th>Stock</th>
     <th>Status</th>
-    <% # Author: Hazem Amin %>
-    <% # Printing the column name "paused" in the table %>
+    <!--Author: Hazem Amin -->
+    <!--Team: 5-->
+    <!--Function: Printing the column name "paused" in the table -->
     <th>Description</th>
     <th>Rating</th>
     <th></th>
@@ -125,9 +126,9 @@ Navigate Here </br></br>
     <td><%= item.category %></td>
     <td><%= item.amount %></td>
     <td><%= item.paused %></td>
-    <% # Author: Hazem Amin %>
-    <% #Component: 5 %>
-    <% # Printing the value of paused (true or false) for each and every item, depending on that record %>
+    <!--Author: Hazem Amin-->
+    <!--Team: 5-->
+    <!--Function: Printing the value of paused (true or false) for each and every item, depending on that record-->
     <td><%= item.description %></td>
     <td><%= item.rating %></td>
     <td><%= button_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %></td>
