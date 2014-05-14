@@ -1,3 +1,4 @@
+<%= include_gon %>
 
 <!DOCTYPE html>
 <html>
@@ -7,9 +8,11 @@
 
 <script type="text/javascript" >
 var satisfied=false;
-var way_points=gon.wps;
+// var way_points=gon.wps;
+
 var timelimit=gon.tmlmt;
-var directionsService = new google.maps.DirectionsService();
+console.log(timelimit);
+/*var directionsService = new google.maps.DirectionsService();
 
 
 function calcRoute() {
@@ -33,7 +36,7 @@ while(!satisfied){
     waypoints: waypoints,
     travelMode: google.maps.TravelMode.DRIVING,
     optimizeWaypoints: true
-    provideRouteAlternatives: true
+    // provideRouteAlternatives: true
 
   };
   directionsService.route(request, function(result, status) {
@@ -86,7 +89,7 @@ return min;
 }
 
 
-
+*/
 </script>
 
 

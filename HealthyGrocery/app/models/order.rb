@@ -6,6 +6,13 @@ class Order
 #function:  indicating the time of creating the order 
   include Mongoid::Timestamps::Created
 
+
+  include Geocoder::Model::Mongoid
+
+  reverse_geocoded_by :coordinates
+  after_validation :reverse_geocode 
+
+    field :address ,type: String
 	field :orderNo ,type: Integer
 	field :price   ,type: Integer
 	#has_many :items ,class 'Item'
@@ -35,5 +42,50 @@ class Order
       scoped
     end
 end
+
+
+def get_optimised_points(orders,timelimit)
+addresses = Array.new
+
+orders.each do |order|
+addresses << order.address
 end
+
+permutations=addresses.permutation.to_a
+mindistance=1000000000000
+chosen=permutations[0]
+
+permutations.each do |permutation|
+
+time=0
+distance=0
+
+
+for i in 0...permutation.length-1
+directions = GoogleDirections.new(addresses[i],addresses[i+1])
+
+time += directions.drive_time_in_minutes
+
+distance += directions.distance_in_miles
+
+break if time>timelimit
+break if distance>mindistance
+end
+chosen = permutation << time if distance < mindistance && time<timelimit
+mindistance = distance if distance < mindistance && time<timelimit
+
+
+end
+
+
+
+return chosen
+   
+
+
+
+end 
+
+
+
 

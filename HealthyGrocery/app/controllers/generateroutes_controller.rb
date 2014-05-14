@@ -88,21 +88,5 @@ end
 
 
 
-def get_optimised_points(orders,timelimit)
-   
-if(orders.length<=8)
 
-   orders.each do |order|
-way_points << order.coordinates[0]
-way_points << order.coordinates[1]
-   end
-gon.wps=way_points
-gon.tmlmt=timelimit
-   
-
-  end
-
-end
- 
-end 
 
