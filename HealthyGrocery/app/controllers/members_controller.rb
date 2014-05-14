@@ -15,10 +15,10 @@ def index
       @admin = false
   end    
 end
-#Author : Mohamed Lotfy
-#team : 1
+#Author: Mohamed Lotfy
+#team: 1
 #method: show
-#params : none
+#params: none
 #it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
 def show
   @member = Member.find(params[:id])
