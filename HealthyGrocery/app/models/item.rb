@@ -1,7 +1,7 @@
 class Item
   include Mongoid::Document
   include Mongoid::Paperclip
-
+#a
   field :price , type: Float
   field :amount , type: Integer
   field :name , type: String
@@ -53,6 +53,10 @@ class Item
   validates :vitamin_d, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   validates :vitamin_e, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   validates :vitamin_k, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :protein, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :carbohydrate, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :calcium, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :fat, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # Author : Mahmoud Eldesouky
   # Team : 5
   # added attributes for more item information
