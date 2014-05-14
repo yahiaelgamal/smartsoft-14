@@ -6,38 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title ><%= content_for?(:title) ? yield(:title) : "HealthyGrocery" %></title>
     <%= csrf_meta_tags %>
-
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
-<![endif]-->
-
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
     <%= stylesheet_link_tag "application", :media => "all" %>
-
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-
     <!-- For iPhone with high-resolution Retina display: -->
     <!-- Size should be 114 x 114 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-
     <!-- For first- and second-generation iPad: -->
     <!-- Size should be 72 x 72 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <!-- Size should be 57 x 57 pixels -->
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-
     <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
@@ -55,56 +46,49 @@
               <% @tmp = current_member %>
               <li><%= link_to "Hub", '/members'+'/hub' %></li>
               <li><%= link_to "Profile", @tmp %></li>
-            
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Users Only-->
       <% if current_member.email!='admin@gmail.com' %>
+
                 <li><%= link_to 'Go Shopping',{:controller => 'items', :action =>
                 'members_items_index'}, :class => "opt"%></li>
                    <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
                    <li><%= link_to 'My Wishlist' , 'http://localhost:3000/wishlists/show'%></li>
                   <li><%= link_to "My Shopping Cart", 'http://localhost:3000/carts/show' %></li>
       <% end %>
+
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
-      <% if current_member.email == 'admin@gmail.com' %>
-                  <li><%= link_to "Diseases", diseases_path %></li>
+              <% if current_member.email == 'admin@gmail.com' %>
+                <li><%= link_to "Diseases", diseases_path %></li>
                 <li><%= link_to "Items", items_path %></li>
-      <% end %>
-          
-           <!--Author: Andrew Khouzam -->
+                <li><%= link_to "Generate Routes", { :controller => 'members', :action => 'generate_routes'}%></li>
+              <% end %>
+              <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: This is the search bar in the top navbar-->
-          <li style="padding-left: 30px;padding-top: 4px; "><input type="text" class="form-control" placeholder="Search"></li>
-        
+              <li style="padding-left: 30px;padding-top: 4px; "><input type="text" class="form-control" placeholder="Search"></li>
+              <li style="padding-left: 150px; "><%= link_to 'Logout', destroy_member_session_path, :method=> 'delete' %></li>
+
             
-            <li style="padding-left: 150px; "><%= link_to 'Logout',
-            destroy_member_session_path, :method=> 'delete' %></li>
             </ul>
           </div><!--/.nav-collapse -->
-
-
-
         </div>
       </div>
     </div>
-
     <div class="container">
-        <div class="row">
-          <div class="span9">
-            <%= bootstrap_flash %>
-            <%= yield %>
-          </div>
-
-        </div><!--/row-->
-
+      <div class="row">
+        <div class="span9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
       <footer>
         <p>&copy; SmartSoft 2014</p>
       </footer>
-
-    </div> <!-- /container -->
-
+    </div>
+    <!-- /container -->
   </body>
 </html>
