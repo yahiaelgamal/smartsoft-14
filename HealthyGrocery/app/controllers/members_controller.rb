@@ -127,4 +127,3 @@ def show
     redirect_to "/members/hub"
   end
 end
-
