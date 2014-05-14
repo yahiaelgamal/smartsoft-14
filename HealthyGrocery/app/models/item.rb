@@ -44,7 +44,15 @@ class Item
   field :carbohydrate_type, type: String
   field :calcium_type, type: String
   field :fat_type, type: String
-
+  # Author: Hazem Amin
+  # Team: 5
+  #Function: Added validations to the different food supplements
+  validates :vitamin_a, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_b, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_c, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_d, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_e, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_k, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # Author : Mahmoud Eldesouky
   # Team : 5
   # added attributes for more item information
@@ -119,7 +127,12 @@ class Item
 
 
 
+
+
+
+
   "
+
 
 
         v_counter = v_counter + 1
@@ -130,12 +143,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_calcium_per_week < ((item.calcium * amount) + healthrecord.calcium_till_now)
         @message = @message + v_counter.to_s + ".calcium
   "
+
 
 
         v_counter = v_counter + 1
@@ -146,12 +161,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_a_per_week < ((item.vitamin_a * amount) + healthrecord.vitamin_a_till_now)
         @message = @message + v_counter.to_s + ".vitamin A
   "
+
 
 
         v_counter = v_counter + 1
@@ -162,12 +179,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_c_per_week < ((item.vitamin_c * amount) + healthrecord.vitamin_c_till_now)
         @message = @message + v_counter.to_s + ".vitamin C
   "
+
 
 
         v_counter = v_counter + 1
@@ -178,6 +197,7 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
@@ -186,12 +206,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_k_per_week < ((item.vitamin_k * amount) + healthrecord.vitamin_k_till_now)
         @message = @message + v_counter.to_s + ".vitamin K
   "
+
 
 
         v_counter = v_counter + 1
@@ -237,17 +259,17 @@ class Item
   #Author: Hazem Amin
   #Team: 5
   #Function: Testing the toggle_pause action
-   def self.toggle_pause(item_id) 
+  def self.toggle_pause(item_id)
     @item = Item.find(item_id)
 
     if @item.amount <= 0 && @item.paused == false
-       x = "Can't resume because stock equals #{@item.amount}"
+      x = "Can't resume because stock equals #{@item.amount}"
     else
       @item.paused = !@item.paused
       @item.save
       x = "Item toggled successfully"
     end
     return x
-   end 
-   
+  end
+
 end
