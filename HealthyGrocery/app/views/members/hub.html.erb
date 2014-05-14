@@ -61,7 +61,7 @@
 
 <% @ordersCount=0 %>
 <% @allOrders.each do |o| %>
-	<% @allOrders += 1%>
+	<% @ordersCount += 1%>
 <%end%>
 <%if @ordersCount == 1%>
 	<p style= "margin:0px 25px 0px"><b>- <%=@ordersCount%> order has been placed on the website so far.</p>
@@ -71,12 +71,12 @@
 
 <!-- showing the number of orders that that have been placed on the website so far-->
 
+
 <% @itemsOutOfStockCount = 0%>
 <% @itemsOutOfStock = Array.new %>
 <% @allItems.each do |i| %>
 	<% if i.amount <= 0 %>
-		<% @itemOutOfStock = i%>
-		<% @itemsOutOfStock << itemOutOfStock%>
+		<% @itemsOutOfStock << i%>
 		<% @itemsOutOfStockCount += 1%>
 	<%end%>
 <%end%>
