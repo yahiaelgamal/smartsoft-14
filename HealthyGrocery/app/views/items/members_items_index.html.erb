@@ -49,8 +49,17 @@
       <% end %>
       <%= @showing_pages %>
     </div>
-    </br>
-    <% if Item.all.count > 0 %>
+    <% if Item.all.count == 0 %>
+    <div class="alert alert-error">
+      The retailer hasn't inserted any items yet.
+    </div>
+    <% end %>
+    <% if @notification.length > 0 %>
+    <div class="alert alert-success">
+      <%= @notification %>
+    </div>
+    <% end %>
+    <%= paginate @items %>
     <navigationbar>
       <h5>Filter for products </h5>
       <% if @type_warning.length > 0 %>
@@ -123,17 +132,7 @@ Here is the filter search form where the user can fill any desired field and sub
       </p>
       <% end %>
     </navigationbar>
-    <% else %>
-    <div class="alert alert-error">
-      The retailer hasn't inserted any items yet.
-    </div>
-    <% end %>
-    <% if @notification.length > 0 %>
-    <div class="alert alert-success">
-      <%= @notification %>
-    </div>
-    <% end %>
-    <%= paginate @items %>
+    
 
 <% @items.each do |item| %>
   <icon>
@@ -196,8 +195,7 @@ Here is the filter search form where the user can fill any desired field and sub
     Function: It views the updated value of the over all progress on the progress bar 
     and detailed progress bar for each nutrient when clicking show progress button 
     and hides them when clicking hide progress button -->
-<div>
-<navigationbar>
+<div class="column col-sm-10 col-xs-11" id="main">
  <h5>REACHED </h5>
  <%= form_tag '/items/members_items_index', :method => 'get' do%>
  <p>
@@ -231,8 +229,7 @@ Here is the filter search form where the user can fill any desired field and sub
   <%= progress_bar(@vitamin_k_bar, :color => 'grey', :rounded => true) %> 
   </div>
  </p>
- <% end %>
-</navigationbar>   
+ <% end %>  
 </div>   
 </body>
 

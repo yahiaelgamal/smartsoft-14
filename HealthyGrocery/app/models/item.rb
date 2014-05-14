@@ -40,9 +40,9 @@ class Item
   # declares an attached file as an attribute
   has_mongoid_attached_file :image
   # checks the attachment type is image
-  #validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # checks if image is present
-  #validates :image, :attachment_presence => true
+  validates :image, :attachment_presence => true
 
 
 
