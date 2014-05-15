@@ -7,18 +7,19 @@ class MembersController < ApplicationController
   #params : none
 
   #it lists all the users on the database it has a boolean check for a variable called admin to controll   visibilty of all the members for only the admin
-  
-  
+
+
   # Author : Mostafa Adel
   # Team   : 3
   # Method : Index
-  # Description : Retailer can see all members  with  pagination and search for them. 
+  # Description : Retailer can see all members  with  pagination and search for them.
   def index
 
-    @members = Member.all.page(params[:page]).per(5)
+    @members = Member.all.page(params[:page]).per(20)
 
     if (!params[:search].nil?)
-      @members= Member.where(:first_name => params[:search]).page(params[:page]).per(5)
+       @members= Member.where(:first_name => /^#{params[:search]}/i).page(params[:page]).per(20)
+
     end
 
     if current_member.email == 'admin@gmail.com'

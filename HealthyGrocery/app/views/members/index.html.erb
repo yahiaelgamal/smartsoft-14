@@ -2,7 +2,11 @@
 <%if @admin == false%>
   <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE !</h1>
   <%= link_to_function "Back", "history.back()" %>
-  <!--to check the adminstration level-->
+  <!--  
+ # Author: Mostafa Adel Mohamed   
+ # Component: C3  
+ # User Story: 3.14 - "as a retailer i can search for the members by their firstname"       
+  -->
 <%elsif @admin == true %>
   <%= form_tag members_path, :method => 'get' do %>
     <p>
@@ -13,21 +17,38 @@
   <!--  
  # Author: Mostafa Adel Mohamed   
  # Component: C3  
- # User Story: 3.13 - "as a retailer i can all the members"       
- # describtion: As a hyperlinks for every member redirecting
- # to his/her profile w/ pagination"  
+ # User Story: 3.13 - "as a retailer i can see all the members"       
+ # describtion: As a hyperlinks for every member in a table and redirecting
+ # to his/her profile with pagination"  
   -->
-  <h3>Users</h3>
+  <h3>Members</h3>
   <ul class="pagination">
     <%= paginate @members %>
   </ul>
-  <ul class="members">
-    <% @members.each do |member| %>
-      <%if member.email != "admin@gmail.com"%>
-        <li>
-          <%= link_to member.email, member %>
-        </li>
-      <%end %>
-    <% end %>
-  </ul>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th colspan="1">No</th>
+        <th colspan="1">Members</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% unless @members.empty? %>
+        <% i = 1%>
+        <% @members.each do |member| %>
+          <%if member.email != "admin@gmail.com"%>
+            <tr>
+              <td><%= i %></td>
+              <td><%= link_to member.email, member %></td>
+            </tr>
+            <% i = i+1 %>
+          <%end %>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="0">There is no members yet</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <%end%>
