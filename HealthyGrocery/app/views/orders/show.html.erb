@@ -33,12 +33,8 @@
       <td><%= @order.date%></td>
     </tr>
      <tr>
-      <td><b>Coordinates:</b></td>
-      <td><%= @order.coordinates%></td>
-    </tr>
-     <tr>
       <td><b>Owner:</b></td>
-      <td><%= @order.member%></td>
+      <td><%= @order.member.first_name%></td>
     </tr>
      <tr>
       <td><b>Route:</b></td>
@@ -51,6 +47,45 @@
      <tr>
       <td><b>Delivered:</b></td>
       <td><%= @order.delivered%></td>
+    </tr>
+    <tr>
+      <td><b>Date:</b></td>
+      <td><%= @order.date %></td>
+    </tr>
+     <tr>
+      <!--  Author: Mahmoud Walid
+            Team: 3
+            Function: showing a button if there is no address chosen-->
+      <td><b>Shipping address:</b></td>
+      <td>
+        <% if @order.address[@order.address.length-2]%>
+            <%= @order.address[@order.address.length-2].name %> 
+            <%= link_to 'show', @order.address[@order.address.length-2] %>
+        <% else %>
+          <%if @order.coordinates%>
+            some coordinates are used for this order , however , the address crossponding to these coordinates is deleted from you address book
+          <%else%> 
+            no address is choosen yet
+            <%= link_to 'Choose now', chooseOrder_path(@order) %>
+          <%end%>
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td><b>Billing address:</b></td>
+      <td>
+        <% if @order.address.last%>
+          <%= @order.address.last.name %> 
+          <%= link_to 'show', @order.address.last %>
+        <% else %>
+          <%if @order.coordinates%>
+            some coordinates are used for this order , however , the address crossponding to these coordinates is deleted from you address book
+          <%else%>
+            no address is choosen yet
+            <%= link_to 'Choose now', chooseOrder_path(@order) %>
+          <%end%>
+        <%end%>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -70,7 +105,6 @@
 <td><%= link_to 'item',{:controller  => 'items', :action => 'show',id: item}%></td>
 <% end %>
 </tbody>
-
 </table>
 
 <table class="table">
@@ -87,6 +121,5 @@
 </tbody>
 
 </table>
-
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', showOrders_path %>
