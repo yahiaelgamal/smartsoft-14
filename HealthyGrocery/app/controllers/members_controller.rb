@@ -33,7 +33,6 @@ def hub
   @diseasesAddedThisWeek = Array.new
   @driversAddedThisWeek = Array.new 
   
-
 end  
 
 
