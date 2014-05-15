@@ -1,3 +1,16 @@
-# spec/models/contact.rb require 'spec_helper' describe Contact do it "has a valid factory" it "is invalid without a firstname" it "is invalid without a lastname" it "returns a contact's full name as a string" end - See more at: http://everydayrails.com/2012/03/19/testing-series-rspec-models-factory-girl.html#sthash.W1wKWlqx.dpuf
+# spec/models/disease.rb
+require 'spec_helper'
 
-describe Contact do it "has a valid factory" it "is invalid without a firstname" it "is invalid without a lastname" it "returns a contact's full name as a string - See more at: http://everydayrails.com/2012/03/19/testing-series-rspec-models-factory-girl.html#sthash.W1wKWlqx.dpuf
+describe Disease do
+  it "has a valid factory"
+    Factory.create(:disease).should be_valid 
+  end
+  it "is invalid without a name"
+  it "is invalid without a unique name"
+end
+
+
+
+
+
+	
