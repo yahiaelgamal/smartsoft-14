@@ -55,6 +55,11 @@ has_one :warehouse , class_name: 'Warehouse' , inverse_of: :retailer
 has_many :diseases , class_name: 'Disease' , inverse_of: :customers
 has_many :addresses , class_name: "Address" , inverse_of: :member
 
+#Author: Magd Elshebokshy
+#Team: 3
+#linking items to member
+has_many :allowed_items , class_name: 'Item' , invers_of: :each_member
+
 #Author: Abdelrahman Sakr
 #Team : 1
 #Declaring a new relationship between the User and the Cart.

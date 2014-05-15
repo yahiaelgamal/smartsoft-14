@@ -138,4 +138,27 @@ class MembersController < ApplicationController
     Shipment.generate_routes
     redirect_to "/members/hub"
   end
+  #Atuhor: Magd Elshebokshy
+  #team: 3
+  #method: allowed items
+  #parameters: none
+  #function: generate the list of items that the user is allowed to eat
+  def allowed_items
+    @member = Member.find(params[:id])
+    @allowed_items = Item.all
+
+    if !@member.diseases.empty?
+      @member.diseases.each do |disease|
+        if !@disease.restricted_items.empty?
+          @disease.restricted_items.each do |item|
+            if @disease.restricted_items.include? (item)
+              @allowed_items.delete(item)
+            end
+          end
+        end
+      end
+    end
+    @member.allowed_items = allowed_items
+    @member.save
+  end
 end

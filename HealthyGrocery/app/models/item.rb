@@ -59,6 +59,10 @@ class Item
   belongs_to :good_for_diseases , class_name: 'Disease' , inverse_of: :recommended_items
   belongs_to :bad_for_diseases , class_name: 'Disease' , inverse_of: :restricted_items
 
+  #Author: Magd Elshebokshy
+  #Team: 3
+  #linking items to member
+  belongs_to :each_member , class_name: 'member' , inverse_of: :allowed_items
 
   #Author: Abdelrahman Sakr
   #Team : 1
