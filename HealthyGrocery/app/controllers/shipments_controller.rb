@@ -1,6 +1,8 @@
 class ShipmentsController < ApplicationController
-  # GET /shipments
-  # GET /shipments.json
+  # Author: Karim El-Bawab
+  # Team: 4
+  # Function: this method is used to show all 
+  # shipments on the system
   def index
     @shipments = Shipment.all.page(params[:page]).per(20)
 
@@ -10,8 +12,10 @@ class ShipmentsController < ApplicationController
     end
   end
 
-  # GET /shipments/1
-  # GET /shipments/1.json
+  # Author: Karim El-Bawab
+  # Team: 4
+  # Function: this method is used to show the information
+  # of a specific shipment with all its routes
   def show
     @shipment = Shipment.find(params[:id])
     @routes = @shipment.routes.page(params[:page]).per(20)
