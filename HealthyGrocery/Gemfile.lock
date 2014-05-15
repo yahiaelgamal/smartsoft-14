@@ -72,6 +72,8 @@ GEM
       actionpack (>= 3.0)
     formtastic-bootstrap (3.0.0)
       formtastic (>= 2.2)
+    geocoder (1.2.1)
+    gmaps4rails (2.1.2)
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
@@ -210,6 +212,8 @@ DEPENDENCIES
   factory_girl_rails
   formtastic
   formtastic-bootstrap
+  geocoder (~> 1.2.0)
+  gmaps4rails (~> 2.1.2)
   gon (= 5.0.4)
   handles_sortable_columns
   jquery-rails
