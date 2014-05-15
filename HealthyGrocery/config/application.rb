@@ -10,6 +10,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+
 module HealthyGrocery
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -36,17 +37,16 @@ module HealthyGrocery
 
     # Configure the default encoding used in templates for Ruby 1.9.
 
-
-config.generators do |g|
-  g.test_framework :rspec,
-    :fixtures => true,
-    :view_specs => false,
-    :helper_specs => false,
-    :routing_specs => false,
-    :controller_specs => true,
-    :request_specs => true
-  g.fixture_replacement :factory_girl, :dir => "spec/factories"
-end
+    config.generators do |g|
+      g.test_framework :rspec,
+        :fixtures => true,
+        :view_specs => false,
+        :helper_specs => false,
+        :routing_specs => false,
+        :controller_specs => true,
+        :request_specs => true
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end
 
 
     config.encoding = "utf-8"
