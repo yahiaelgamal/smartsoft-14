@@ -189,7 +189,7 @@
 
   <% @driversAddedThisWeekCount = 0%>
   <% @allDrivers.each do |d| %>
-    <%@driverDate = t.date%>
+    <%@driverDate = d.date%>
     <% if @driverDate == @sixDaysAgo || @driverDate == @fiveDaysAgo || 
     @driverDate == @fourDaysAgo|| @driverDate == @threeDaysAgo ||
     @driverDate == @twoDaysAgo || @driverDate == @yesterday || 
