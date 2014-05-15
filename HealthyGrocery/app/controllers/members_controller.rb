@@ -15,6 +15,31 @@ def index
       @admin = false
   end    
 end
+
+
+#Author: omar tarek
+#team:5
+#method:hub
+#params:none
+#it creates arrays of recently added items, trucks, drivers, diseases, 
+#as well as items out of stock and items purchased today to be used in the hub.html.erb file 
+
+def hub
+
+  @itemsToday = Array.new 
+  @itemsOutOfStock = Array.new 
+  @itemsAddedThisWeek = Array.new
+  @trucksAddedThisWeek = Array.new  
+  @diseasesAddedThisWeek = Array.new
+  @driversAddedThisWeek = Array.new 
+  
+
+end  
+
+
+
+
+
 #Author : mohamed lotfy
 #team : 1
 #method: show
@@ -25,7 +50,6 @@ end
   #if current_member.email == 'admin@gmail.com'
   #end
 
-     
 
   def show
 @member = Member.find(params[:id])
