@@ -11,9 +11,11 @@ class RoutesController < ApplicationController
     end
   end
 
-  # GET /routes/1
-  # GET /routes/1.json
-#shows information about a specific route
+  # Author: Karim El-Bawab
+  # Team: 4
+  # Function: this method is used to show specific route 
+  # and it passes to the view the warehouse location (lat, lng)
+  # and the array of points of the orders locations 
   def show
     @route = Route.find(params[:id])
     gon.arrOfPoints = Route.show(params[:id])

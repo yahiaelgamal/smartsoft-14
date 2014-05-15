@@ -64,7 +64,11 @@
               <% if current_member.email == 'admin@gmail.com' %>
                 <li><%= link_to "Diseases", diseases_path %></li>
                 <li><%= link_to "Items", items_path %></li>
-                <li><%= link_to "Generate Routes", { :controller => 'members', :action => 'generate_routes'}%></li>
+                <% if Member.find_by(email:"admin@gmail.com").addresses.first %>
+                  <li><%= link_to "Generate Routes", { :controller => 'members', :action => 'generate_routes'}%></li>
+                <% else %>
+                  <li><%= link_to 'Generate Routes', new_address_path, :method => :get, data: { confirm: 'You cannot generate routes because you did not add your warehouse Location yet. Would you like to add it now ?'} %></li>
+                <% end %>
               <% end %>
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->

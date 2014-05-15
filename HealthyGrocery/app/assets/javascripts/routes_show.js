@@ -1,5 +1,8 @@
-// this script is responsible for viewing the map of the route  for testing the code just go to http:// 
-// localhost:3000/ship_orders/gen
+// Author : Karim El-Bawab
+// Team: 4
+// Script name: google_maps_routes0
+// Function: This script is responsible for viewing 
+// the map of the route   
 
 var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();

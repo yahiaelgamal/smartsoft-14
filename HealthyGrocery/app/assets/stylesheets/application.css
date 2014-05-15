@@ -12,8 +12,9 @@
  *= require_tree .
  */
 /* Author: Karim El-Bawab
- Team: 4
- Function: This style used to fix the map with the twitter bootstrap   
+   Team: 4
+   Function: This style used to fix the maps and the 
+   directions panel with the twitter bootstrap   
 */
 #map img {
     max-width: none;

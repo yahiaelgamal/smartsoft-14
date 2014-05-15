@@ -20,7 +20,13 @@ class Route
 #function : changing the relation from on one to one to many to one  
   has_many :orders , class_name: 'Order' ,  :inverse_of => :route
   belongs_to :truck , class_name: 'Truck' ,  :inverse_of => :route
-  
+ 
+  # Author : Karim El-Bawab
+  # Team: 4
+  # Parameters: id 
+  # Function : This function is used to to swap the latiude and the
+  # longitude in order to be able to use them to get the real location
+  # on the map  
   def self.show(id)
     route = Route.find(id)
     arr = []

@@ -1,4 +1,8 @@
-
+// Author : Karim El-Bawab
+// Team: 4
+// Script name: google_maps_routes0
+// Function: This script is used to load google map 
+// on the website pages  
 
 window.google = window.google || {};
 google.maps = google.maps || {};
