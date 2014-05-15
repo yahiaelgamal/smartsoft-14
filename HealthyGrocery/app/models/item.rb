@@ -202,4 +202,42 @@ class Item
     return result
   end
 
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: Adding new attributes for the item model, where:
+  #Boolean discount is whether a discount is applied on this item or not
+  #Float discount percentage is the amount of discount applied on the item
+  #Float price_before_discount is the price of the item before applying the discount
+  field :discount , type: Boolean 
+  field :discount_percentage , type: Float, default: 1
+  field :price_before_discount , type: Float, default: 0
+
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Method name: self.make_discount
+  #Parameters: item_id,discount_amount
+  #Function: This method applies the discount on a specific item
+  def self.make_discount(item_id,discount_amount)
+      @discount_item = Item.find(item_id)
+      @discount_amount = (discount_amount.to_f)
+      @discount_item.update_attributes(:discount => true)
+      @newprice = @discount_item.price - (@discount_item.price*@discount_amount)
+      @discount_item.update_attributes(:price_before_discount => @discount_item.price)
+      @discount_item.update_attributes(:price => @newprice)
+      @discount_item.save
+      return @discount_item
+  end
+
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Method name: self.remove_discount
+  #Parameters: item_id
+  #Function: This method removes the previously applied discount from a specific item
+  def self.remove_discount(item_id)
+      @discount_item = Item.find(item_id)
+      @discount_item.update_attributes(:discount => false)
+      @discount_item.update_attributes(:price => @discount_item.price_before_discount)
+      @discount_item.save
+      return @discount_item
+  end
 end

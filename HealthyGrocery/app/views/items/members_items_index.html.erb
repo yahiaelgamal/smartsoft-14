@@ -119,10 +119,22 @@ left-margin:50px;
 </navigationbar>
 
 <% @items.each do |item| %>
+  <%#Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: The following if condition checks if the item is on sale 
+  then it shows the old and new prices %>
   <icon>
   <img src= "<%= item.image%>" height=150 width=150 ></img></br>
+  <% if item.discount %>
+  <td><h3><font color = "red"><b>This item is on sale</b></font></h3></td>
+  <% end %>
   <td>Name: <%= item.name %></td> </br>
+  <% if item.discount == false %>
   <td>Price: <%= item.price %></td></br>
+  <% elsif item.discount %>
+  <td>Old Price: <%= item.price_before_discount %></td></br>
+  <td><font color = "red"><b>NEW PRICE: <%= item.price %></b></font></td></br>
+  <% end %>
   <td>Category: <%= item.category %></td></br>
   <td>Stock: <%= item.amount %></td></br>
   <td>Available: <%= item.status %></td><br/>

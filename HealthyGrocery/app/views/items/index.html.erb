@@ -72,7 +72,20 @@ Navigate Here </br></br>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+    
+    <%#Author: Abdelrahman Sakr
+    #Team: 1
+    #Function: Adding text field to specify the discount amount, and two buttons "Make Discount" and "Remove Discount" to make discount or remove the discount%>
+    <% @discount_item_id = item.id %>
+    <td><%= form_tag(makediscount_path) do %>
+    <p>
+    <%= hidden_field_tag(:discount_item_id, @discount_item_id ) %>
+    <%= text_field_tag (:discount_amount)%>
+    <%= submit_tag "Make Discount"%>
+    </p>
+    <% end %>
+    </td>
+    <td><%= link_to 'Remove Discount', removediscount_path(item) %></td>
     
     
 
