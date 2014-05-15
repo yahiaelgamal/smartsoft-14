@@ -10,34 +10,34 @@ class Healthrecord
   field :height, type: Integer
   field :weight, type: Integer
   field :program, type: String
-  field :acceptable_fat_per_week, type: Float
-  field :acceptable_calcium_per_week, type: Float
-  field :acceptable_carbohydrate_per_week, type: Float
-  field :acceptable_protein_per_week, type: Float
-  field :protein_till_now, type: Float
-  field :carbohydrate_till_now, type: Float
-  field :calcium_till_now, type: Float
-  field :fat_till_now, type: Float
-  field :fat_per_day, type: Float
-  field :calcium_per_day, type: Float
-  field :carbohydrate_per_day, type: Float
-  field :protein_per_day, type: Float
+  field :acceptable_fat_per_week, type: Float , default: 100
+  field :acceptable_calcium_per_week, type: Float , default: 100
+  field :acceptable_carbohydrate_per_week, type: Float, default: 100
+  field :acceptable_protein_per_week, type: Float, default: 100
+  field :protein_till_now, type: Float, default: 0
+  field :carbohydrate_till_now, type: Float , default: 0
+  field :calcium_till_now, type: Float, default: 0
+  field :fat_till_now, type: Float, default: 0
+  field :fat_per_day, type: Float, default: 100
+  field :calcium_per_day, type: Float, default: 100
+  field :carbohydrate_per_day, type: Float, default: 100
+  field :protein_per_day, type: Float, default: 100
   #Author:Mahmoud Eldesouky
   #team : 5
   #model of the healthrecord
   #needed attributes for the nutrition violations
-  field :acceptable_vitamin_a_per_week, type: Float
-  field :acceptable_vitamin_b_per_week, type: Float
-  field :acceptable_vitamin_c_per_week, type: Float
-  field :acceptable_vitamin_d_per_week, type: Float
-  field :acceptable_vitamin_e_per_week, type: Float
-  field :acceptable_vitamin_k_per_week, type: Float
-  field :vitamin_a_till_now, type: Float
-  field :vitamin_b_till_now, type: Float
-  field :vitamin_c_till_now, type: Float
-  field :vitamin_d_till_now, type: Float
-  field :vitamin_e_till_now, type: Float
-  field :vitamin_k_till_now, type: Float
+  field :acceptable_vitamin_a_per_week, type: Float, default: 100
+  field :acceptable_vitamin_b_per_week, type: Float, default: 100
+  field :acceptable_vitamin_c_per_week, type: Float, default: 100
+  field :acceptable_vitamin_d_per_week, type: Float, default: 100
+  field :acceptable_vitamin_e_per_week, type: Float, default: 100
+  field :acceptable_vitamin_k_per_week, type: Float, default: 100
+  field :vitamin_a_till_now, type: Float, default: 0
+  field :vitamin_b_till_now, type: Float, default: 0
+  field :vitamin_c_till_now, type: Float, default: 0
+  field :vitamin_d_till_now, type: Float, default: 0
+  field :vitamin_e_till_now, type: Float, default: 0
+  field :vitamin_k_till_now, type: Float, default: 0
 
   validates_presence_of :name
   validates_presence_of :bmi

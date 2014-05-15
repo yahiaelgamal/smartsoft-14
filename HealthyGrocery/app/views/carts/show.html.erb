@@ -23,8 +23,11 @@ Author: Mohamed Saeed
 <% end %>
 
 <td>Total Cost of All Items = <%= @cart.totalcost %> </td>
-
 <hr/>
+<%@matching.each do |it|%>
+<%=it.name%>
+<%end%>
+<br>
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
 <!--link for the user in order to checkout the shopping cart to make the order:Author:mohamed lotfy Team:1-->

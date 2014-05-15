@@ -21,7 +21,7 @@ class CartsController < ApplicationController
 #This method gets the user's cart by calling the method current_cart_new to be able to show it.
   def show
     @cart = current_cart_new
-  
+    @matching = Item.get_alter(@cart.lineitems.first.item,current_member.records.first)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cart }
