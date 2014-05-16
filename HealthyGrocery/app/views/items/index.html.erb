@@ -1,135 +1,16 @@
 <!--to check the adminstration level-->
 <%= csrf_meta_tag %>
-<<<<<<< HEAD
-<% if @admin == false%>
-  <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
-  <%= link_to_function "Back", "history.back()" %>
-<%elsif @admin == true%>
-  <head>
-    <script type="text/javascript">
-    </script>
-  </head>
-  <body>
-    <!-- Title for the page -->
-    <h1>My Warehouse</h1>
-    <navigationbar>
-      <br>
-      Navigate Here<br><br>
-      <!-- link to the shipment page -->
-      <opt><%= link_to 'Shipments',{:controller  => 'shipments', :action => 'index'} , :class => "opt"%></opt><br><br>
-      <!-- link to the trucks page -->
-      <opt><%= link_to 'Trucks',{:controller  => 'trucks', :action => 'index'} , :class => "opt"%></opt><br><br>
-      <!-- link to the orders page -->
-      <opt><%= link_to 'Orders',{:controller  => 'orders', :action => 'index'} , :class => "opt"%></opt><br><br>
-      <!-- link to the users page -->
-      <opt><%= link_to 'Members',members_path, :class => "opt"%></opt><br><br>
-    </navigationbar>
-    <!-- end of navigation bar -->
-    <!-- printing the rows of the table -->
-    <!--Author: Hazem Amin-->
-    <!--Team: 5-->
-    <!--Function: Creates a horizontal scroll bar, because I put several additional attributes, i.e. columns in the table, thus the table got too wide to be displayed in its proper place-->
-    <!-- Extra Information: Width is set to 83%, because if 
-    width> 83% it would be misplaced, because of the navigation bar-->
-    <div style="width:72%; overflow-x:auto;">
-      <table class="table table-striped table-bordered table-condensed">
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Category</th>
-          <th>Stock</th>
-          <th>Status</th>
-          <!--Author: Hazem Amin -->
-          <!--Team: 5-->
-          <!--Function: Printing the column name "paused" in the table -->
-          <th>Description</th>
-          <th>Rating</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <!--Author: Hazem Amin-->
-          <!--Team: 5-->
-          <!--Function: Showing the columns of the new created attributes in
-          the table of the warehouse -->
-          <th>Protein</th>
-          <th>Carbohydrate</th>
-          <th>Fat</th>
-          <th>Vitamin-a</th>
-          <th>Vitamin-b</th>
-          <th>Vitamin-c</th>
-          <th>Vitamin-d</th>
-          <th>Vitamin-e</th>
-          <th>Vitamin-k</th>
-          <th>Calcium</th>
-        </tr>
-        <!-- looping on the items in the items model in the DB-->
-        <%= javascript_include_tag "application" %>
-        <% @items.each do |item| %>
-          <tr>
-            <td><%= item.name %></td>
-            <td><%= item.price %></td>
-            <td><%= item.category %></td>
-            <td><%= item.amount %></td>
-            <td><%= item.paused %></td>
-            <!--Author: Hazem Amin-->
-            <!--Team: 5-->
-            <!--Function: Printing the value of paused (true or false) for each and every item, depending on that record-->
-            <td><%= item.description %></td>
-            <td><%= item.rating %></td>
-            <td><%= button_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %></td>
-            <!--Author: Hazem Amin-->
-            <!--Team: 5-->
-            <!--Function: A paused button which name is Paused/Resume based on the status of paused for each specific item, it then goes to the toggle pause as dedined in routes-->
-            <td><%= link_to 'Show', item %></td>
-            <td><%= link_to 'Edit', edit_item_path(item) %></td>
-            <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <!--Author: Hazem Amin-->
-            <!--Team: 5-->
-            <!--Function: Looping through the items printing the values of the attributes of the items, i.e. the individual rows -->
-            <td><%= item.protein %></td>
-            <td><%= item.carbohydrate %></td>
-            <td><%= item.fat %></td>
-            <td><%= item.vitamin_a %></td>
-            <td><%= item.vitamin_b %></td>
-            <td><%= item.vitamin_c %></td>
-            <td><%= item.vitamin_d %></td>
-            <td><%= item.vitamin_e %></td>
-            <td><%= item.vitamin_k %></td>
-            <td><%= item.calcium %></td>
-            <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
-            <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-    <br>
-    <br>
-    <br>
-    <!-- link to insert new item page -->
-    <%= link_to 'Insert New Item', new_item_path %>
-  </body>
-=======
-
 <% if current_member.email!='healthygrocery@gmail.com'%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
 <%= link_to_function "Back", "history.back()" %>
 <%else%>
-
 <head>
-
-
 <script type="text/javascript">
-
 </script>
-
-
 </head>
 <body>
 <!-- Title for the page -->
 <h1>My Warehouse</h1>
-
-
 <navigationbar>
 </br>
 Navigate Here </br></br>
@@ -212,5 +93,4 @@ Navigate Here </br></br>
 </br>
 <%= link_to 'Insert New Item', new_item_path %>
 </body>
->>>>>>> master
 <%end%>
