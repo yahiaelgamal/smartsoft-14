@@ -46,7 +46,8 @@
   end
 
   #Author: Hazem Amin
-  #Method_Name: toggle_pause
+  #Team: 5
+  #Method name: toggle_pause
   #Function: It simply finds that specific item that needs to be paused and pauses
   #it if the conditions applies that the item is not out of stock.
   def toggle_pause
@@ -56,7 +57,7 @@
 
   #Author: Hazem Amin
   #Team: 5
-  #Method_Name: create
+  #Method name: create
   #Funtion: It simply CEATES an item, as being one of the 4 fundumentals of CRUD.
   #The first if-condition I make sure that we're not trying to access an item that hasn't an
   #amount field specified, the second condition decides the initial values of paused when it is
