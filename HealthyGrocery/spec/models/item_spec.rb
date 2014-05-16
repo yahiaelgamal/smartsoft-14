@@ -66,6 +66,11 @@ describe Item do
   h.vitamin_d_till_now.should == 0
   h.vitamin_e_till_now.should == 0
   h.vitamin_k_till_now.should == 0
+
+#Author: Hazem Amin
+#Team: 5
+#Method name: toggle_pause
+#Function: Testing the toggle_pause action
  end
  it "pause an item" do 
    Item.all.destroy
@@ -74,4 +79,13 @@ describe Item do
    item = Item.first
    item.paused.should == true
  end 
+
+ end  
+    it "should have its price changed" do
+        Item.all.destroy
+        item = FactoryGirl.create(:item)
+        Item.make_discount(x.id,0.5)
+        item = Item.first
+        item.price.should == 50 
+    end  
 end

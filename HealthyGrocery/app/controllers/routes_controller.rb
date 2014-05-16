@@ -14,14 +14,25 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
 #shows information about a specific route
+#Author: Sameh Metias
+#Team: 3
+#Function: Added the links to the print routes and the print instructions pages 
+
   def show
     @route = Route.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @route }
+      format.pdf do
+        pdf=RoutePdf.new(@route)
+        pdf.print
+        send_data pdf.render, filename: "route_#{@route.id}.pdf", type: "application/pdf", 
+                              disposition: "inline"
+      end  
     end
   end
+
 
   # GET /routes/new
   # GET /routes/new.json

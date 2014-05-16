@@ -3,126 +3,155 @@
 <!-- This page is the view of the items from the members' point of view-->
 <!-- The page does not correspond to the bootstrap we have settled on. It is jus an intermediate step for other developers to start working -->
 
+<!-- Author: mina sedra -->
+<!-- Team: 2 -->
+   <%# body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");} %>
+
+
 <div class="progress progress-striped active">
   <div class="bar"  style="width: 30%;">
   </div>
 </div>
-
-<style>
-
-
-/*    <!-- Author: mina sedra -->
-<!-- Team: 2 -->*/
-  /* body { background-image:url("http://freedesignfile.com/upload/2013/03/Fruits-and-vegetables-1.jpg");} */
   
+<html>
+ 
+ <%= stylesheet_link_tag "items", :media => "all" %>
+ <%= javascript_include_tag "items" %>
 
+<head>
 
-
-icon{
-font-size: 20px;
-float:left;
-border-width: thick;
-border-style: dotted;
-border-color: black;
-}
-
-navigationbar{
-height:800px;
-width:235px;
-background:#FF9933;
-font-size: 15px;
-  float:left;
-}
-
-h1{
-
-height:10px;
-font-size: 40px;
-width:100%;
-position:relative;
-  text-align:center;
-  float:left;
-}
-
-table{
-  margin:5px;
-  padding: 5px;
-  border:1px solid #0000ff;
-  height:auto;
-  width:auto;
-  float:left;
-  text-align:center;
-background:orange;
-}
-s
-opt
-{
-
-position:absolute;
-width:130px;
-height:50px;
--webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
-transition:width 0.4s;
-padding:50px;
-left-margin:50px;
-  text-align:center;
-}
-
-</style>
-
-    <%= include_gon %>
-<script type="text/javascript">
-
-</script>
+<%= include_gon %>
 
 </head>
 
+<% if current_member.records.count > 0 %>
+<h1>Items as shown to members</h1>
+</br>
+</br>
+<%#= (Item.all.where :status => true).count %>
+<%#= Item.all.count %>
 
 <body>
-
+ 
 <!-- Title for the page -->
- <% if current_member.records.count > 0 %>
-<!-- <h1>Items as shown to members</h1> -->
 
-<navigationbar>
-  <h5>Filter for products </h5>
-  <%# Author : Antoine Foti
-      Team : 2
-      Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated %>
-<%= form_tag '/items/members_items_index', :method => 'get' do %>
-  <p>
-    <opt>
-    <span class="label">Name :</span>
-    <%= text_field_tag :name, params[:filter] %>
-    </opt></br></br>
-    <opt>
-    <span class="label">Category :</span>
-    <%= text_field_tag :category, params[:filter] %>
-    </opt></br></br>
-    <opt>
-    <span class="label">Price :</span>
-    <%= text_field_tag :price, params[:filter] %>
-    </opt></br></br>
-    <opt>
-    <span class="label">Rating :</span>
-    <%= text_field_tag :rating, params[:filter] %>
-    </opt></br></br>
-    <opt>
-    <%= radio_button_tag 'status', "available" %> <span class="badge">Available Only</span> 
-    </opt></br>
-    <opt>
-    <%= radio_button_tag 'status', "all", :checked => true %> <span class="badge">All Products</span> 
-    </opt></br></br>
-    <%= submit_tag "Filter" %>
-  </p>
-<% end %>
-</navigationbar>
+</br>
+    <% if @warning.length > 0 %>
+    <div class="alert alert-block">
+      <%= @warning %>
+    </div>
+    <% end %>
+    <div class="alert alert-info">
+      <% if @items.count == 1 %>
+      You've got 1 item.
+      <% else %>
+      You've got <%= @items.count %> items.
+      <% end %>
+      <%= @showing_pages %>
+    </div>
+    <% if Item.all.count == 0 %>
+    <div class="alert alert-error">
+      The retailer hasn't inserted any items yet.
+    </div>
+    <% end %>
+    <% if @notification.length > 0 %>
+    <div class="alert alert-success">
+      <%= @notification %>
+    </div>
+    <% end %>
+    <%= paginate @items %>
+    <navigationbar>
+      <h5>Filter for products </h5>
+      <% if @type_warning.length > 0 %>
+      <div class="alert alert-error">
+        <%= @type_warning %>
+      </div>
+      <% end %>
+      
+<%#Author: Antoine Foti
+Team: 2
+Here is the filter search form where the user can fill any desired field and submit so that according to it the filter will be calculated. Also all the messages formed according to the filter search are displayed at the right moment. %>
+      <%= form_tag '/items/members_items_index', :method => 'get' do %>
+      <p>
+        <span class="label label-important">Name :</span>
+        <%= text_field_tag :name, params[:filter] %>
+        </br></br>
+        <span class="label label-important">Sort by :</span>
+        <select name="sort_by">
+          <%= @attributes = ["Name","Price","Category","Rating","Vitamin_A","Vitamin_B","Vitamin_C", "Vitamin_D", "Vitamin_E", "Vitamin_K", "Proteins", "Carbohydrate", "Calcium", "Fats"] %>
+          <%= @attributes.each do |attribute| %>
+          <option value= <%= attribute %> ><%= attribute %> </option>
+          <% end %>
+        </select>
+        </br></br>
+        <span class="label label-important">Items per page :</span>
+        <select name="items_per_page">
+          <%= @pages = ["5","10","15","20","25"] %>
+          <%= @pages.each do |page| %>
+          <option value= <%= page %> ><%= page %> </option>
+          <% end %>
+        </select>
+        </br></br>
+        <a href="#" onclick="toggle_visibility('foo');">Advanced search</a>
+      <div id="foo" style="display:none">
+        <span class="label label-info">Category :</span>
+        <select name="category">
+          <%= @categories = ["<None>"] %>
+          <%= @categories += Item.distinct(:category) %>
+          <%= @categories.each do |category| %>
+          <option value= <%= category %> ><%= category %> </option>
+          <% end %>
+        </select>
+        </br></br>
+        <span class="label label-info">Price starting from:</span>
+        <%= text_field_tag :price_from, params[:filter] %>
+        </br>
+        <span class="label label-info">Price ending to:</span>
+        <%= text_field_tag :price_to, params[:filter] %>
+        </br></br>
+        <span class="label label-info">Rating starting from:</span>
+        <%= text_field_tag :rating_from, params[:filter] %>
+        </br>
+        <span class="label label-info">Rating ending to:</span>
+        <%= text_field_tag :rating_to, params[:filter] %>
+        </br></br>
+        <% @items_extra_fields = ["Vitamin_A","Vitamin_B","Vitamin_C", "Vitamin_D", "Vitamin_E", "Vitamin_K", "Proteins", "Carbohydrate", "Calcium", "Fats"] %>
+        <% @items_extra_fields.each do |extra_field| %>
+        <span class="badge badge-info">Amount of <%= extra_field %>:</span>
+        </br>
+        <%= radio_button_tag extra_field, "High" %> <span class="">High</span>
+        <%= radio_button_tag extra_field, "Medium" %> <span class="">Medium</span>
+        <%= radio_button_tag extra_field, "Low" %> <span class="">Low</span>
+        </br></br>
+        <% end %>
+        <%= radio_button_tag 'status', "all", :checked => true %> <span class="">All Products</span>
+        </br>
+        <%= radio_button_tag 'status', "available" %> <span class="">Available Only</span>
+        </br></br>
+      </div>
+      <%= submit_tag "Search" %>
+      </p>
+      <% end %>
+    </navigationbar>
+
 
 <% @items.each do |item| %>
+  <%#Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: The following if condition checks if the item is on sale 
+  then it shows the old and new prices %>
   <icon>
   <img src= "<%= item.image%>" height=150 width=150 ></img></br>
+  <% if item.discount %>
+  <td><h3><font color = "red"><b>This item is on sale</b></font></h3></td>
+  <% end %>
   <td>Name: <%= item.name %></td> </br>
+  <% if item.discount == false %>
   <td>Price: <%= item.price %></td></br>
+  <% elsif item.discount %>
+  <td>Old Price: <%= item.price_before_discount %></td></br>
+  <td><font color = "red"><b>NEW PRICE: <%= item.price %></b></font></td></br>
+  <% end %>
   <td>Category: <%= item.category %></td></br>
   <td>Stock: <%= item.amount %></td></br>
   <td>Available: <%= item.status %></td><br/>
@@ -179,8 +208,7 @@ left-margin:50px;
     Function: It views the updated value of the over all progress on the progress bar 
     and detailed progress bar for each nutrient when clicking show progress button 
     and hides them when clicking hide progress button -->
-<div>
-<navigationbar>
+<div class="column col-sm-10 col-xs-11" id="main">
  <h5>REACHED </h5>
  <%= form_tag '/items/members_items_index', :method => 'get' do%>
  <p>
@@ -214,8 +242,7 @@ left-margin:50px;
   <%= progress_bar(@vitamin_k_bar, :color => 'grey', :rounded => true) %> 
   </div>
  </p>
- <% end %>
-</navigationbar>   
+ <% end %>  
 </div>   
 </body>
 
@@ -242,4 +269,6 @@ left-margin:50px;
   document.getElementById('1').style.visibility = 'visible';
  }
 </script>
+
+</html>
 
