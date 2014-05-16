@@ -15,18 +15,25 @@ class MembersController < ApplicationController
       @admin = false
     end
   end
+  #Author : mohamed lotfy
+  #team : 1
+  #method: show
+  #params : none
+  #it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
+  #def show
+  #   @member = Member.find(params[:id])
+  #if current_member.email == 'admin@gmail.com'
+  #end
 
-  #Author: Mohamed Lotfy
-  #Team: 1
-  #Method: show
-  #Function: it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
-  #Parameters: none
-  
+  def edit
+    @member = Member.find(params[:id])
+  end
+     
   def show
     @member = Member.find(params[:id])
     if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
-    else
+  else 
       @admin = false
     end
     if current_member.wishlist.nil?
