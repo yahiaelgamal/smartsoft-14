@@ -5,10 +5,9 @@
     # address.  
 -->
 <h1>Editing address</h1>
-
 <%= render 'form' %>
-
-<%= link_to 'Show', @address %> |
+<%= link_to 'Show', @address %>
+|
 <% if current_member.email == 'admin@gmail.com' %>
   <%= link_to 'Back', current_member %>
 <% else %>

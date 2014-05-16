@@ -1,3 +1,8 @@
+# Author: Karim El-Bawab
+# Team: 4
+# Factory name: addresses
+# Function: This file used in order to create 
+# virtual address to use it in testing 
 FactoryGirl.define do
   factory :address do |f| 
     f.name "house"

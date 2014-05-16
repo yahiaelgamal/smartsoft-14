@@ -1,8 +1,8 @@
 # Author: Karim El-Bawab
 # Team: 4
 # Test name: addresses_spec
-# Function: This test is used to test both the actions
-# index and show of addresse controller
+# Function: This test is used to test the action
+# show of addresse controller
 require 'spec_helper' 
 describe AddressesController do 
   before do

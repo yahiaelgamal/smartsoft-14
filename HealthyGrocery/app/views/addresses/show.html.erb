@@ -61,9 +61,10 @@
     handler.getMap().setZoom(12);
   });
 </script>
-<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Edit', edit_address_path(@address) %>
+|
 <% if current_member.email == 'admin@gmail.com' %>
   <%= link_to 'Back', current_member %>
-<% else %>  
+<% else %>
   <%= link_to 'Back', showaddresses_path %>
 <% end %>
