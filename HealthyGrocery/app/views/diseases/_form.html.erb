@@ -166,12 +166,12 @@
   <% Item.asc(:name).each do |i| %>
     <div class="checkbox">
       <% if @disease.recommended_items != nil && @disease.recommended_items.include?(i) %>
-        <%= check_box_tag "ii[]",i.id, true %>
+        <%= check_box_tag "checked_recommended[]",i.id, true %>
         <label>
           <%= i.name %>
         </label>
       <%else%>
-        <%= check_box_tag "ii[]",i.id %>
+        <%= check_box_tag "checked_recommended[]",i.id %>
         <label>
           <%= i.name %>
         </label>
@@ -185,12 +185,12 @@
   <% Item.asc(:name).each do |i| %>
     <div class="checkbox">
       <% if @disease.restricted_items != nil && @disease.restricted_items.include?(i) %>
-        <%= check_box_tag "r[]",i.id, true %>
+        <%= check_box_tag "checked_restricted[]",i.id, true %>
         <label>
           <%= i.name %>
         </label>
       <%else%>
-        <%= check_box_tag "r[]",i.id %>
+        <%= check_box_tag "checked_restricted[]",i.id %>
         <label>
           <%= i.name %>
         </label>

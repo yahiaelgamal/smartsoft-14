@@ -4,10 +4,10 @@ class DiseasesController < ApplicationController
 
 #Author: Jihan Adel
 #Team: 5
-#method name: index
-#function: represent all the diseases in the database with their attributes and the options to
-#  show, edit or destroy one of them
-#paramters: none
+#Method name: index
+#Function: represent all the diseases in the database with their attributes and the options to
+#show, edit or destroy one of them
+#Paramters: none
 def index
   @diseases = Disease.all
 
@@ -22,9 +22,9 @@ end
 
 #Author: Jihan Adel
 #Team: 5
-#method name: show
-#function: represent the chosen diseases with its attributes and the options to edit or destroy it
-#paramters: the id of the specific disease
+#Method name: show
+#Function: represent the chosen diseases with its attributes and the options to edit or destroy it
+#Paramters: the id of the specific disease
 def show
   @disease = Disease.find(params[:id])
 
@@ -38,9 +38,9 @@ end
 # GET /diseases/new.json
 #Author: Jihan Adel
 #Team: 5
-#method name: new
-#function: creates a new disease
-#paramters: none
+#Method name: new
+#Function: creates a new disease
+#Paramters: none
   def new
     @disease = Disease.new
 
@@ -63,19 +63,17 @@ end
 
   #Author: Jihan Adel
   #Team: 5
-  #method name: create
-  #function: creates a new disease with its name, information, new nutrition values for the patients,
+  #Method name: create
+  #Function: creates a new disease with its name, information, new nutrition values for the patients,
   #  recommended and restricted items with consderation to the following cases:
   # 1- name of the disease must be entered and must be unique "to prevent duplictes"
-  # 2- the admin can`t choose the same item in both recommended and restricted items
-  # 3- the admin can skip choosing the recommended and restricted items at creation,he can add them later
-  # 4- the admin can`t raise and drop the value of specific nutritional element at the same tme
-  # 5- the nutritional values must be in a numeric form
-  #paramters:
+  # 2- the admin can`t raise and drop the value of specific nutritional element at the same tme
+  # 3- the nutritional values must be in a numeric form
+  #Paramters:
   #  name of the new disease "from the textfield"
   #  information about the new disease "from the textfield"
-  #  array ii - contains the ids of the recommended items "from the checkboxes"
-  #  array  r - contains the ids of the restricted items "from the checkboxes"
+  #  array checked_recommended - contains the ids of the recommended items "from the checkboxes"
+  #  array  checked_restricted - contains the ids of the restricted items "from the checkboxes"
   #  the added/subtracted value from the average nutritional elements "from the textfields"
   def create
     @disease = Disease.new(params[:disease])
@@ -231,38 +229,9 @@ end
         @disease.save
       end
     end
-    @reco = params[:ii]
-    @rest = params[:r]
-    @flag = true
-    if(!not_number)
-      if @reco != nil
-        @reco.each do |s|
-          if (@rest != nil && @rest.include?(s))
-            @flag = false
-          end
-        end
-      end
-
-      if @flag
-        if @reco != nil
-          @disease.recommended_items << Item.find(@reco.first)
-          @disease.save
-          @reco.each do |p|
-            @disease.recommended_items << Item.find(p)
-            @disease.save
-          end
-        end
-
-        if @rest != nil
-          @disease.restricted_items << Item.find(@rest.first)
-          @disease.save
-          @rest.each do |f|
-            @disease.restricted_items << Item.find(f)
-            @disease.save
-          end
-        end
-      end
-    end
+    @recommended = params[:checked_recommended]
+    @restricted = params[:checked_restricted]
+    @flag = Disease.check_items(@disease.id,@recommended,@restricted)
 
     respond_to do |format|
       if not_number
@@ -295,15 +264,15 @@ end
 
   #Author: Jihan Adel
   #Team: 5
-  #method name: update
-  #function: updates a disease with consderation to the same conditions in creation in addition to
+  #Method name: update
+  #Function: updates a disease with consderation to the same conditions in creation in addition to
   #  automatically check the previously choosen recommended and restricted items and display the exisiting
   #  values which raised/dropped from the average nutritional elements
-  #paramters:
+  #Paramters:
   #  the new name of the disease "from the textfield"
   #  the new information about the disease "from the textfield"
-  #  array ii - contains the ids of the new recommended items "from the checkboxes"
-  #  array  r - contains the ids of the new restricted items "from the checkboxes"
+  #  array checked_recommended - contains the ids of the new recommended items "from the checkboxes"
+  #  array  checked_restricted - contains the ids of the new restricted items "from the checkboxes"
   #  the added/subtracted value from the average nutritional elements "from the textfields"
   def update
     @disease = Disease.find(params[:id])
@@ -469,38 +438,12 @@ end
         @disease.save
       end
     end
-    @reco = params[:ii]
-    @rest = params[:r]
-    @flag = true
-    if(!not_number)
-      if @reco != nil
-        @reco.each do |s|
-          if (@rest != nil && @rest.include?(s))
-            @flag = false
-          end
-        end
-      end
+    @disease.recommended_items = []
+    @disease.restricted_items = []
 
-      if @flag
-        if @reco != nil
-          @disease.recommended_items << Item.find(@reco.first)
-          @disease.save
-          @reco.each do |p|
-            @disease.recommended_items << Item.find(p)
-            @disease.save
-          end
-        end
-
-        if @rest != nil
-          @disease.restricted_items << Item.find(@rest.first)
-          @disease.save
-          @rest.each do |f|
-            @disease.restricted_items << Item.find(f)
-            @disease.save
-          end
-        end
-      end
-    end
+    @recommended = params[:checked_recommended]
+    @restricted = params[:checked_restricted]
+    @flag = Disease.check_items(@disease.id,@recommended,@restricted)
 
     respond_to do |format|
       if not_number
@@ -528,9 +471,9 @@ end
   # DELETE /diseases/1.json
   #Author: Jihan Adel
   #Team: 5
-  #method name: destroy
-  #function: deletes a specific disease from the database
-  #paramters: the id of the specific disease
+  #Method name: destroy
+  #Function: deletes a specific disease from the database
+  #Paramters: the id of the specific disease
   def destroy
     @disease = Disease.find(params[:id])
     @disease.destroy
