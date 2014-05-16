@@ -73,6 +73,13 @@ margin:10px;
 	 #Function: Searching for a specific truck,order,shipment or member by choosing first the model desired and then inserting its corresponding search attribute -->
 
 
+<!--#Author: Mennatallah  Adel
+	 #Team: 4
+	 #Method name: 
+	 #Function: Searching for a specific truck,order,shipment or member by choosing first the model desired and then 	inserting its corresponding search attribute -->
+
+<navigationbar>
+
 <%= form_tag '/members/hub', :method => 'get' do %>
   <p>
     <opt>
@@ -91,6 +98,46 @@ margin:10px;
     <%= submit_tag "Search" %>
   </p>
 <% end %>
+</navigationbar>
+
+
+<% @orders.each do |order| %>
+  <tr>
+    <td><%= order.orderNo %></td>
+    <td><%= order.price %></td>
+    <td><%= order.weight %></td>
+    <td><%= order.volume %></td>
+    <td><%= order.status %></td>
+    <td><%= order.date %></td>
+  </tr>
+<% end %>
+
+<% @trucks.each do |truck| %>
+  <tr>
+    <td><%= truck.driver %></td>
+    <td><%= truck.capacity %></td>
+    <td><%= truck.status %></td>
+    <td><%= truck.tripTime %></td>
+  </tr>
+<% end %>
+
+<% @shipments.each do |shipment| %>
+  <tr>
+    <td><%= shipment.cut_off_time %></td>
+  </tr>
+<% end %>
+
+<% @members.each do |member| %>
+  <tr>
+    <td><%= member.first_name %></td>
+    <td><%= member.last_name %></td>
+    <td><%= member.gender %></td>
+    <td><%= member.phone_num %></td>
+    <td><%= member.birth_date %></td>
+    <td><%= member.date %></td>
+  </tr>
+<% end %>
+
 
 
 <h1> Recommended Items </h1>

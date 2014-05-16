@@ -131,6 +131,36 @@ end
   end
 
 
+#Author: Mennatallah Adel
+  #team 4
+  #method: hub
+  #parameters: none
+  #function: reponsible for the view of the same name.it shows the desired attribute according to the selectedModel
+  def hub
+
+    @trucks = Truck.where driver: ""
+    @orders = Order.where orderNo: ""
+    @shipments = Shipment.where cut_off_time: ""
+    @members = Member.where first_name: ""
+
+    if (params[:status] == 'truck') 
+      @trucks = Truck.where :driver => params[:name] 
+    end
+
+  if (params[:status] == 'order')
+      @orders = Order.where :orderNo => params[:name] 
+    end
+
+    if (params[:status] == 'shipment') 
+     @shipments = Shipment.where :cut_off_time => params[:name] 
+   end
+
+   if (params[:status] == 'member') 
+      @members = Member.where :first_name => params[:name] 
+      
+    end
+  end
+
 end  
 
 
