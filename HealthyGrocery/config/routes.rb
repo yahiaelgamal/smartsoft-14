@@ -96,12 +96,23 @@ HealthyGrocery::Application.routes.draw do
   get '/orders/:id/change' , to: 'orders#change' , as: 'change'
   match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
   get "addresses/position"
+  #Author: FatmaEmran
+   #Team:2
+   #order creation in database
+   resources :orders
+    order do
+    get :forbidden
+    end  
   resources :orders
   match '/orders/new' => 'orders#new'
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR USERS
 #----------------------------------------------------------------------------------------------------#
   resources :users
+   match '/generateroutes' => 'generateroutes#index'
+   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
+   post "generateroutes/gen" => "generateroutes#gen" 
+   post "items/members_items_index/add" => "items#add"
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR DISEASES
 #----------------------------------------------------------------------------------------------------#
@@ -133,7 +144,7 @@ HealthyGrocery::Application.routes.draw do
   get "/items/:discount_item_id/remove_discount" , :to =>"items#remove_discount" , as: "removediscount"
 #----------------------------------------------------------------------------------------------------#
       #NOTHING GOES BELOW THIS
-#----------------------------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------------------------
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
