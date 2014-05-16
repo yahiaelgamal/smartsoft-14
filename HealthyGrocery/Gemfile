@@ -22,6 +22,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
+#adding gem capyayara to test devise with Rspec!
+gem 'capybara', :group => :test
 
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
@@ -49,6 +51,9 @@ group :test do
   gem 'guard-rspec' 
   gem 'launchy' 
 end
+
+gem 'ruby-beautify', '~> 0.92.2'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
