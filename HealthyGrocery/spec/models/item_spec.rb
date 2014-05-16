@@ -67,5 +67,4 @@ describe Item do
   h.vitamin_e_till_now.should == 0
   h.vitamin_k_till_now.should == 0
  end
-  
 end
