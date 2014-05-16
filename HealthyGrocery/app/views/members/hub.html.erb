@@ -75,4 +75,55 @@ margin:10px;
 2.8: As a user, I should see a recommendation section in the hub according to the information the user provided in the sign-up-->
 
 
+<!--author:halawa
+team:2
+function : add district to ur order -->
+<select name="mySelect" id="mySelect" onchange="getSelectedValue();">
+    <option value="  " disabled selected>(please select a district)</option>
+    <optgroup label="cairo">
+      <option>Abdeen</option>
+      <option>Ain Shams</option>
+      <option>Al-Matariyyah</option>
+      <option>Azbakeya</option>
+      <option>Bab al-Louq</option>
+      <option>Bulaq</option>
+      <option>Downtown Cairo</option>
+      <option>El-Manial</option>
+      <option>El-Marg</option>
+      <option>El-Quba</option>
+      <option>El-Tagamu El Khames</option>
+      <option>Garden City</option>
+      <option>Heliopolis</option>
+      <option>Maadi</option>
+      <option>Mokattam</option>
+      <option>Old Cairo</option>
+      <option>Zamalek</option>
+      <option>Zeitoun</option>
+    </optgroup>
+    <optgroup label="Giza">
+      <option>Dokki</option>
+      <option>Agouza</option>
+      <option>Imbabah</option>
+      <option>Haram</option>
+      <option>Monib</option>
+    </optgroup>
+    <optgroup label="Alexandria">
+      <option>al-Montaza</option>
+      <option>al-Amriya</option>
+      <option>Agamy</option>
+      <option>Borg Al-Arab</option>
+      <option>al-Gomrok</option>
+    </optgroup>
+</select>
+<script type="text/javascript">  
+function getSelectedValue() {  
+    var index = document.getElementById('mySelect').selectedIndex;  
+    //alert("value="+document.getElementById('mySelect').value);  
+    alert("you choose "+document.getElementById('mySelect').options[index].text);
+}  
+</script>
+<% $district = current_member.district%>
+<%= link_to 'submit', orders_path %>
+
+
 

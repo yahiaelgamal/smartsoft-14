@@ -88,6 +88,12 @@ validates :phone_num,
 
 
 
+#Author:halawa
+#team:2
+field :district, type: String, default: ""
+attr_accessor :district
+attr_reader :district
+attr_writer :district
 
 
 
