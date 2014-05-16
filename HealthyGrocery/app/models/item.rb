@@ -214,7 +214,7 @@ class Item
 
   #Author: Abdelrahman Sakr
   #Team: 1
-  #Method name: self.make_discount
+  #Method: self.make_discount
   #Parameters: item_id,discount_amount
   #Function: This method applies the discount on a specific item
   def self.make_discount(item_id,discount_amount)
@@ -230,7 +230,7 @@ class Item
 
   #Author: Abdelrahman Sakr
   #Team: 1
-  #Method name: self.remove_discount
+  #Method: self.remove_discount
   #Parameters: item_id
   #Function: This method removes the previously applied discount from a specific item
   def self.remove_discount(item_id)
