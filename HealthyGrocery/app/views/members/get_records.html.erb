@@ -4,36 +4,50 @@
 <!DOCTYPE html>
 <br/>
 <br/>
+
 <head>
-  <%= stylesheet_link_tag "member" , :media => "all" %>
-  <head/>
-  <body>
-    <div class="contextual">
-      <%= link_to(new_healthrecord_path, class: "btn btn-success") do %>
-        New Healthrecord
-        <i class="icon-plus icon-white"></i>
-      <% end %>
-    </div>
+
+<style>
+.form_caja {
+        width: 524px;
+        padding-top: 8px;
+        padding-bottom: 15px;
+        margin: 0 auto 20px auto;
+        background-color: #446bb3;    
+         border-radius: 15px;    
+        -moz-border-radius: 15px;    
+        -webkit-border-radius: 15px;
+        color: #446bb3;
+        padding:10px;
+         /*opacity:0.8;*/
+    }
+    
+    
+}
+    table { background-color : #fff; color : #453}
+    thead {  background-image:url("http://simplywallpaper.net/pictures/2010/12/08/aqua-texture-wallpaper.jpg") ; color :#fff; padding:4px; line-height:30px;}
+    </style>
+
+
+</head>
+
+<body>
     <div class="form_caja">
-      <p >
-        <%= current_member.first_name %>
-        's HEALTHRECORDS</p>
-      <table width="100%" >
-        <% @health_records.each do |healthrecord| %>
-          <thead><tr>
-              <td>Name:
-                <%= healthrecord.name %></td>
-              <!-- author : mina
-     link to the healthrecord -->
-              <td><%= link_to  "<button>Show</button>".html_safe, healthrecord %></td>
-              <!-- author : mina
- link to update the healthrecord -->
-              <td><%= link_to  "<button>Edit</button>".html_safe, edit_healthrecord_path(healthrecord) %></td>
-              <!-- author : mina
-     link to remove  healthrecord -->
-              <td><%= link_to  "<button>Remove</button>".html_safe, healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr></thead>
-        <% end %>
-      </table>
-    </div>
-  </body>
+  <p > <%= current_member.first_name %> 's HEALTHRECORDS</p>
+  <table width="100%" >
+  
+<% @healthrecord.each do |healthrecord| %>
+  <thead><tr> 
+  
+      <td>Name: <%= healthrecord.name %></td> 
+<td><%= link_to  "<button>Show</button>".html_safe, healthrecord %></td>
+    <td><%= link_to  "<button>Edit</button>".html_safe, edit_healthrecord_path(healthrecord) %></td>
+    <td><%= link_to  "<button>Remove</button>".html_safe, healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr></thead>
+  <% end %>
+  </table>
+</div>
+<%= link_to "<button>New Healthrecord</button>".html_safe, new_healthrecord_path %>
+
+</body>
+
