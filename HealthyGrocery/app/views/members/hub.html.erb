@@ -95,6 +95,9 @@ margin:10px;
     <%= radio_button_tag 'status', "shipment", :checked => false %> <span class="badge">Shipments</span> 
     </opt></br></br>
     <opt>
+    <%= radio_button_tag 'status', "driver", :checked => false %> <span class="badge">Drivers</span> 
+    </opt></br></br>
+    <opt>
     <%= submit_tag "Search" %>
   </p>
 <% end %>
@@ -127,16 +130,13 @@ margin:10px;
   </tr>
 <% end %>
 
-<% @members.each do |member| %>
-  <tr>
-    <td><%= member.first_name %></td>
-    <td><%= member.last_name %></td>
-    <td><%= member.gender %></td>
-    <td><%= member.phone_num %></td>
-    <td><%= member.birth_date %></td>
-    <td><%= member.date %></td>
-  </tr>
-<% end %>
+<% @drivers.each do |driver| %>
+      <tr>
+        <td><%= driver.name %></td>
+        <td><%= driver.phone %></td>
+        <td><%= driver.address %></td>
+      </tr>
+    <% end %>
 
 
 

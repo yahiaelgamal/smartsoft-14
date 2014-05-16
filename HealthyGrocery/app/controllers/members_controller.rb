@@ -141,7 +141,7 @@ end
     @trucks = Truck.where driver: ""
     @orders = Order.where orderNo: ""
     @shipments = Shipment.where cut_off_time: ""
-    @members = Member.where first_name: ""
+    @drivers = Driver.where name: ""
 
     if (params[:status] == 'truck') 
       @trucks = Truck.where :driver => params[:name] 
@@ -155,8 +155,8 @@ end
      @shipments = Shipment.where :cut_off_time => params[:name] 
    end
 
-   if (params[:status] == 'member') 
-      @members = Member.where :first_name => params[:name] 
+   if (params[:status] == 'driver') 
+      @drivers = Driver.where :name => params[:name] 
       
     end
   end
