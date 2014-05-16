@@ -248,7 +248,6 @@ class Item
     end
     return x
   end
-
   #Author: Abdelrahman Sakr
   #Team: 1
   #Function: Adding new attributes for the item model, where:
@@ -286,6 +285,5 @@ class Item
       @discount_item.update_attributes(:price => @discount_item.price_before_discount)
       @discount_item.save
       return @discount_item
-
   end
 end

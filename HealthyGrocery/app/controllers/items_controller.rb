@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   # shows all the items in the table item
   def index
-    if current_member.email == 'admin@gmail.com'
+    if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
     else
       @admin = false
