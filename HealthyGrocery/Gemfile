@@ -72,11 +72,7 @@ gem 'webmock'
 
 gem 'pdf-reader', :require => 'pdf/reader'
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 16b80fac5770ba70c64fc31547adaab31e0996b3
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
