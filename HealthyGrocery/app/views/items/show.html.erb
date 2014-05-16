@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
- <%-# desplaying the image of the item floating next to the text-%>
+<p id="notice"><%= notice %>
+  <%-# desplaying the image of the item floating next to the text-%>
   <div style="float:left; text-align:center;">
-        <%= image_tag @item.image.url %>
-        <br/>
-    </div>
+    <%= image_tag @item.image.url %>
+    <br/>
+  </div>
   <br>
   <b>Name:</b>
   <%= @item.name %>
