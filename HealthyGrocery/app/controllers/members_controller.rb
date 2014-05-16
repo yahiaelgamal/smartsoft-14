@@ -5,9 +5,22 @@ class MembersController < ApplicationController
   #team : 1
   #method:index
   #params : none
-  #it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin
+
+  #it lists all the users on the database it has a boolean check for a variable called admin to controll   visibilty of all the members for only the admin
+
+
+  # Author : Mostafa Adel
+  # Team   : 3
+  # Method : Index
+  # Description : Retailer can see all members  with  pagination and search for them.
   def index
-    @members = Member.all
+
+    @members = Member.all.page(params[:page]).per(20)
+
+    if (!params[:search].nil?)
+       @members= Member.where(:first_name => /^#{params[:search]}/i).page(params[:page]).per(20)
+
+    end
 
     if current_member.email == 'admin@gmail.com'
       @admin = true
@@ -42,7 +55,7 @@ class MembersController < ApplicationController
 
 
 
-  if current_member.wishlist.nil?
+    if current_member.wishlist.nil?
       @wishexist = false
     else
       @wishexist = true
@@ -61,12 +74,14 @@ class MembersController < ApplicationController
     current_member.save
   end
 
-#Author : mina sedra
-#team : 2
-#method: get healthrecord
-#params : none
-#it shows the page of the member's healthrecord 
- def get_records
+
+  #Author : mina sedra
+  #team : 2
+  #method: get healthrecord
+  #params : none
+  #it shows the page of the member's healthrecord
+  def get_records
+
     @member = Member.find(params[:id])
     @health_records = @member.records 
 
@@ -130,6 +145,7 @@ class MembersController < ApplicationController
       @admin = false
     end
   end
+
   #Atuhor: ahmed abdelsattar
   #team 2
   #method: generate_routes
