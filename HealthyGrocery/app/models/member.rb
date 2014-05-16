@@ -101,4 +101,15 @@ validates :phone_num,
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+  def self.get_count(item,member)
+    count=0
+    member.orders.each do |ord|
+      ord.lines.each do |li|
+        if li.item==item
+          count+=1
+        end
+      end
+    end
+    return count
+  end
 end

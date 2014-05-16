@@ -21,8 +21,9 @@ class CartsController < ApplicationController
 #This method gets the user's cart by calling the method current_cart_new to be able to show it.
   def show
     @cart = current_cart_new
-    @matching = Item.get_alter(@cart.lineitems.first.item,current_member.records.first)
-    p @matching.count
+    if(@cart.lineitems.last && Member.get_count(@cart.lineitems.last.item,current_member) > 0)
+    @matching = Item.get_alter(@cart.lineitems.last.item,current_member.records.first,current_member)
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cart }

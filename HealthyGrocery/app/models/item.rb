@@ -212,7 +212,7 @@ class Item
     result.push(@message)
     return result
   end
-  def self.get_alter (item,healthrecord)
+  def self.get_alter (item,healthrecord,member)
     matching_items = Array.new
     Item.all.each do |canidate|
       allowed = true  
@@ -229,7 +229,7 @@ class Item
         healthrecord.diseases.each do |dis|
           allowed&&= !dis.restricted_items.include?(canidate)
         end
-        if(allowed )
+        if(allowed && canidate!=item && Member.get_count(canidate,member) < Member.get_count(item,member))
           matching_items.push(canidate)
         end
       end

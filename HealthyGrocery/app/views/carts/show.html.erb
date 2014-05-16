@@ -116,6 +116,7 @@
   </div>
 </div>
 <hr/>
+<%if(@matching)%>
 <div class="container-fluid">
   <h2>Recommended tems</h2>
   <div class="row-fluid">
@@ -163,7 +164,7 @@
             <%@matching[start..ending].each do |match|%>
             <li class="span3">
             <div class="thumbnail">
-              <% image_tag  match.image.url%>
+              <%= image_tag  match.image.url%>
               <div class="caption">
                 <h3><%=match.name%></h3>
                 <p>
@@ -199,5 +200,6 @@
     </div>
   </div>
 </div>
+<%end%>
 <br>
 <!--link for the user in order to checkout the shopping cart to make the order:Author:mohamed lotfy Team:1-->
