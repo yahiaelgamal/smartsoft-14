@@ -1,38 +1,117 @@
- <!DOCTYPE html>
-<html>
-
-<%= stylesheet_link_tag "application", :media => "all" %>
-<style type="text/css">
-  body{
-    text-align: center;
-    padding-top: 60px; 
-  }
-</style>
-  
-<head>
-  <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#"> <font color = "#EE872A">Sign in@HealthyGrocery</font></a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-             
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <style type="text/css">
+      body {
+      font-size: 14px;
+      }
+      body, h1, h2, h3, h4, h5, h6 {
+      font-family: helvetica, arial, sans-serif;
+      }
+      .btn {
+      border-radius: 3em;
+      }
+      .container {
+      max-width: 900px;
+      }
+      .container-alternate {
+      background: #f0f0f0;
+      }
+      .jumbotron {
+      background: #f0f0f0;
+      color: #333;
+      padding: 4.5em 0 3.5em;
+      text-align: center;
+      margin-bottom: 0;
+      }
+      .jumbotron h1 {
+      font-family: georgia, serif;
+      font-size: 2.5em;
+      }
+      .jumbotron h2 {
+      font-size: 1.2em;
+      font-style: italic;
+      font-weight: normal;
+      line-height: 1.4em;
+      margin-bottom: 1.4em;
+      }
+      .jumbotron .btn {
+      font-size: 1.2em;
+      padding: 0.3em 2.5em 0.5em;
+      }
+      .jumbotron .btn .glyphicon {
+      margin-left: 0.2em;
+      position: relative;
+      top: 3px;
+      }
+      
+      .benefit {
+      margin: 1em 0;
+      text-align: center;
+      }
+      .benefit .benefit-ball {
+      background: #f0f0f0;
+      border-radius: 50%;
+      color: #333;
+      display: inline-block;
+      line-height: 1em;
+      padding: 3em;
+      }
+      .benefit .benefit-ball .glyphicon {
+      font-size: 3em;
+      position: relative;
+      top: -3px;
+      right: 1px;
+      }
+      .benefit h3 {
+      font-size: 1.5em;
+      }
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>Healthy Grocery</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+  </head>
+  <body>
+  <!-- The Gray part  -->
+    <div id="top" class="jumbotron" style="padding-bottom:330px;">
+      <div class="container">
+      <%=yield%>
       </div>
+      <!-- /.container -->
     </div>
-</head>
-<body>
-<%= yield %>
-            
-            
-</div>
-            
-</body>
+    <!-- /.jumbotron -->
+    <div class="container" style="position:relative;top:35px;">
+      <div class="row benefits">
+        <div class="col-md-4 col-sm-6 benefit">
+          <div class="benefit-ball">
+            <span class="glyphicon glyphicon-home"></span>
+          </div>
+          <h3>Better Attitude</h3>
+          <p>A healthy attitude is contagious but don't wait to catch it from others. Be a carrier</p>
+        </div>
+        <!-- /.benefit -->
+        <div class="col-md-4 col-sm-6 benefit">
+          <div class="benefit-ball">
+            <span class="glyphicon glyphicon-cloud"></span>
+          </div>
+          <h3>Think Better</h3>
+          <p>The way you think, the way you behave, the way you eat, can influence your life by 30 to 50 years</p>
+        </div>
+        <!-- /.benefit -->
+        <div class="col-md-4 col-sm-6 benefit">
+          <div class="benefit-ball">
+            <span class="glyphicon glyphicon-bell"></span>
+          </div>
+          <h3>Live Better</h3>
+          <p>A healthy outside starts from the inside</p>
+        </div>
+        <!-- /.benefit -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+  </body>
 </html>

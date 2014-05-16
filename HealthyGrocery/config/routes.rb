@@ -3,9 +3,12 @@ HealthyGrocery::Application.routes.draw do
       #ROUTES FOR MEMBER
 #----------------------------------------------------------------------------------------------------#
   #for user profile page
+  get 'welcome/index'
   get 'members/hub'
+  get 'members/generate_routes'
+
   get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
-  root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
+  root :to => 'welcome#index' # so as to not for the member to root to the page containnng site members!!
   devise_for :members, :controllers => {:registrations => "registrations", }
   match 'user_root' => redirect("/member/show")
    resources :members do
@@ -24,8 +27,6 @@ HealthyGrocery::Application.routes.draw do
     post :order_checkboxes
     end 
  end
-  # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
-    # get "get_records"
 
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR ITEMS
@@ -40,14 +41,11 @@ HealthyGrocery::Application.routes.draw do
    post 'toggle_pause'
   end
  end
-  # Author: Hazem Amin
-  # Component: 5
-  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
-  # it's invoked on a single item (member)
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR HEALTHRECORDS
 #----------------------------------------------------------------------------------------------------#
   resources :healthrecords
+  resources :health_records
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR WISHLINES
 #----------------------------------------------------------------------------------------------------#
@@ -86,6 +84,15 @@ HealthyGrocery::Application.routes.draw do
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR ORDERS
 #----------------------------------------------------------------------------------------------------#
+ # Author: Mahmoud Walid
+ # Team: 3
+ # Function: adding routes for chaning pass and pass_billing attributes for updating shipping
+ # and billing addresses
+  get   '/orders/:id/choose', to:'orders#choose' , as: 'chooseOrder'
+  put '/orders/:id/submit' , to: 'orders#submit' , as: 'submit'
+  get '/orders/:id/change' , to: 'orders#change' , as: 'change'
+  match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
+  get "addresses/position"
   resources :orders
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR USERS
@@ -98,13 +105,20 @@ HealthyGrocery::Application.routes.draw do
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR GENERATEROUTES
 #----------------------------------------------------------------------------------------------------#
-  match '/generateroutes' => 'generateroutes#index'
-  post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
-  post "generateroutes/gen" => "generateroutes#gen" 
+
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR HEALTH_RECORDS
 #----------------------------------------------------------------------------------------------------#
   resources :health_records
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ADDRESSES
+#----------------------------------------------------------------------------------------------------#
+  resources :addresses
+  # Author: Mahmoud Walid
+  # Team: 3
+  # Function: adding routes for showing orders and addresses of the member
+  get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
+  get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
 #----------------------------------------------------------------------------------------------------#
       #NOTHING GOES BELOW THIS
 #----------------------------------------------------------------------------------------------------#
