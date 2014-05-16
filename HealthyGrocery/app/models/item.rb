@@ -79,6 +79,7 @@ class Item
   # Author: Hazem Amin
   # Team : 5
   # makes sure the names of items are unique
+
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
   # declares a relationship between orders and items
@@ -135,7 +136,16 @@ class Item
 
 
 
+
+
+
+
+
+
+
+
   "
+
 
 
 
@@ -148,12 +158,14 @@ class Item
 
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_calcium_per_week < ((item.calcium * amount) + healthrecord.calcium_till_now)
         @message = @message + v_counter.to_s + ".calcium
   "
+
 
 
 
@@ -166,12 +178,14 @@ class Item
 
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_a_per_week < ((item.vitamin_a * amount) + healthrecord.vitamin_a_till_now)
         @message = @message + v_counter.to_s + ".vitamin A
   "
+
 
 
 
@@ -184,12 +198,14 @@ class Item
 
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_c_per_week < ((item.vitamin_c * amount) + healthrecord.vitamin_c_till_now)
         @message = @message + v_counter.to_s + ".vitamin C
   "
+
 
 
 
@@ -202,6 +218,7 @@ class Item
 
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
@@ -211,12 +228,14 @@ class Item
 
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_k_per_week < ((item.vitamin_k * amount) + healthrecord.vitamin_k_till_now)
         @message = @message + v_counter.to_s + ".vitamin K
   "
+
 
 
 
@@ -276,4 +295,3 @@ class Item
     return x
   end
 end
-

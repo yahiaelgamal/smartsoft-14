@@ -139,4 +139,3 @@ class MembersController < ApplicationController
     redirect_to "/members/hub"
   end
 end
-
