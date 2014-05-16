@@ -1,4 +1,4 @@
-<!-- # makes the form asking the retailer for attributes about the item -->
+<%-# makes the form asking the retailer for attributes about the item -%>
 <%= form_for @item do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
@@ -11,88 +11,235 @@
       </ul>
     </div>
   <% end %>
-  <%-# label and file_field for uploading an image-%>
-  <%-f.label :image -%>
-  <%= f.file_field :image%>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <%-# radio button for status-%>
-  <div class="field">
-    <p>
-      Status :
-    </p>
-    <%= f.radio_button :status, true, :checked => true %>
-    <%= label :status, 'True' %>
-    <%= f.radio_button :status, false, :checked => false %>
-    <%= label :status, 'False' %>
-  </div>
-  <div class="field">
-    <%= f.label :stock %><br />
-    <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <!--Author: Hazem Amin-->
-  <!--Team: 5-->
-  <!--Function: Creating labels and text fields required for recently
-  added attributes-->
-  <!--Additional information: Attributes added starting from protein until calcium-->
-  <div class="field">
-    <%= f.label :protein %><br>
-    <%= f.text_field :protein %>
-  </div>
-  <div class="field">
-    <%= f.label :carbohydrate %><br>
-    <%= f.text_field :carbohydrate %>
-  </div>
-  <div class="field">
-    <%= f.label :fat %><br>
-    <%= f.text_field :fat %>
-  </div>
-  <div class="field">
-    <%= f.label :vitamin_a %><br>
-    <%= f.text_field :vitamin_a %>
-  </div>
-  <div class="field">
-    <%= f.label :vitamin_b %>
-    <br>
-    <%= f.text_field :vitamin_b %>
-  </div>
-  <div class="field">
-    <%= f.label :vitamin_c %><br>
-    <%= f.text_field :vitamin_c %>
-  </div>
-  <div class="field">
-    <%= f.label :vitamin_d %><br>
-    <%= f.text_field :vitamin_d %>
-  </div>
-  <div class="field">
-    <%= f.label :vitamin_e %><br>
-    <%= f.text_field :vitamin_e %>
-  </div>
-  <div class="field">
-    <%= f.label :vitamin_k %><br>
-    <%= f.text_field :vitamin_k %>
-  </div>
-  <div class="field">
-    <%= f.label :calcium %><br>
-    <%= f.text_field :calcium %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <div>
-  </div>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/item.css" media="screen" type="text/css" />
+  </head>
+  <body>
+    <section class="performance-facts">
+      <header class="performance-facts__header">
+        <h1 class="performance-facts__title">Item</h1>
+        <p>Choose an image:</p>
+        <%= f.file_field :image%>
+      </header>
+      <table class="performance-facts__table">
+        <thead>
+          <tr>
+            <th colspan="3" class="small-info">
+              <b>Name:</b>
+              <%= f.text_field :name %>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th colspan="2">
+              <b>Live</b>
+              <%= f.radio_button :paused, true, :checked => true %>
+            </th>
+            <td>
+              <b>Paused</b>
+              <%= f.radio_button :paused, false, :checked => false %>
+            </td>
+          </tr>
+          <tr class="thick-row">
+            <td colspan="3" class="small-info">
+              <b>% Daily Value*</b>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <b>Warehouse info:
+              </b>
+            </th>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <td class="blank-cell">
+            </td>
+            <th>
+              <b>Price:
+              </b>
+              <%= f.text_field :price %>
+            </th>
+            <td>
+              <b>LE</b>
+            </td>
+          </tr>
+          <tr>
+            <td class="blank-cell">
+            </td>
+            <th>
+              <b>Stock:
+              </b>
+              <%= f.text_field :amount %>
+            </th>
+            <td>
+              <b>Unit</b>
+            </td>
+          </tr>
+          <tr>
+            <td class="blank-cell">
+            </td>
+            <th>
+              <b>Category:
+              </b>
+              <%= f.text_field :category %>
+            </th>
+            <td>
+            </td>
+          </tr>
+          <tr class="thick-end">
+            <th colspan="2">
+            </th>
+            <td>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <b>Carbohydrate:
+              </b>
+              <%= f.text_field :carbohydrate %>
+            </th>
+            <td>
+              <b>g</b>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <b>Fat:
+              </b>
+              <%= f.text_field :fat %>
+            </th>
+            <td>
+              <b>g</b>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <b>Calcium:
+              </b>
+              <%= f.text_field :calcium %>
+            </th>
+            <td>
+              <b>g</b>
+            </td>
+          </tr>
+          <tr class="thick-end">
+            <th colspan="2">
+              <b>Protein:</b>
+              <%= f.text_field :protein %>
+            </th>
+            <td>
+              <b>g</b>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="performance-facts__table--grid">
+        <tbody>
+          <tr>
+            <td colspan="2">
+              Vitamin A
+              <%= f.text_field :vitamin_a %>
+              <b>IU</b>
+            </td>
+            <td>
+              Vitamin B
+              <%= f.text_field :vitamin_b %>
+              <b>IU</b>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              Vitamin C
+              <%= f.text_field :vitamin_c %>
+              <b>IU</b>
+            </td>
+            <td>
+              Vitamin D
+              <%= f.text_field :vitamin_d %>
+              <b>IU</b>
+            </td>
+          </tr>
+          <tr class="thin-end">
+            <td colspan="2">
+              Vitamin E
+              <%= f.text_field :vitamin_e %>
+              <b>IU</b>
+            </td>
+            <td>
+              Vitamin K
+              <%= f.text_field :vitamin_k %>
+              <b>IU</b>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <b>Description:
+      </b>
+      <%= f.text_field :description%>
+      <table class="performance-facts__table--small small-info">
+        <thead>
+          <tr>
+            <td colspan="2"></td>
+            <th>Calories:</th>
+            <th>2,000</th>
+            <th>2,500</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th colspan="2">Total Fat</th>
+            <td>Less than</td>
+            <td>65g</td>
+            <td>80g</td>
+          </tr>
+          <tr>
+            <td class="blank-cell"></td>
+            <th>Saturated Fat</th>
+            <td>Less than</td>
+            <td>20g</td>
+            <td>25g</td>
+          </tr>
+          <tr>
+            <th colspan="2">Cholesterol</th>
+            <td>Less than</td>
+            <td>300mg</td>
+            <td>300 mg</td>
+          </tr>
+          <tr>
+            <th colspan="2">Sodium</th>
+            <td>Less than</td>
+            <td>2,400mg</td>
+            <td>2,400mg</td>
+          </tr>
+          <tr>
+            <th colspan="3">Total Carbohydrate</th>
+            <td>300g</td>
+            <td>375g</td>
+          </tr>
+          <tr>
+            <td class="blank-cell"></td>
+            <th colspan="2">Dietary Fiber</th>
+            <td>25g</td>
+            <td>30g</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="small-info">
+        Calories per gram:
+      </p>
+      <p class="small-info text-center">
+        Fat 9
+    &bull;
+    Carbohydrate 4
+    &bull;
+    Protein 4
+      </p>
+    </section>
+  </body>
+  <%= f.submit :class => 'btn btn-success'%>
 <% end %>

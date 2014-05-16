@@ -127,117 +127,71 @@ class Item
       @message = "This request with its quantity exceeds the acceptable range of the following: "
       v_counter = 1
       if healthrecord.acceptable_protein_per_week < ((item.protein * amount ) + healthrecord.protein_till_now)
-        @message = @message + "
-  " + v_counter.to_s + ".proteins 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  "
-
-
-
+        @message = @message + "" + v_counter.to_s + ".proteins
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_carbohydrate_per_week < ((item.carbohydrate * amount) + healthrecord.carbohydrate_till_now)
         @message = @message + v_counter.to_s+".carbohydrates
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_calcium_per_week < ((item.calcium * amount) + healthrecord.calcium_till_now)
         @message = @message + v_counter.to_s + ".calcium
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_fat_per_week < ((item.fat * amount) + healthrecord.fat_till_now)
         @message = @message + v_counter.to_s + ".fats
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_a_per_week < ((item.vitamin_a * amount) + healthrecord.vitamin_a_till_now)
         @message = @message + v_counter.to_s + ".vitamin A
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_b_per_week < ((item.vitamin_b * amount) + healthrecord.vitamin_b_till_now)
         @message = @message + v_counter.to_s + ".vitamin B
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_c_per_week < ((item.vitamin_c * amount) + healthrecord.vitamin_c_till_now)
         @message = @message + v_counter.to_s + ".vitamin C
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_d_per_week < ((item.vitamin_d * amount) + healthrecord.vitamin_d_till_now)
         @message = @message + v_counter.to_s + ".vitamin D
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_e_per_week < ((item.vitamin_e * amount) + healthrecord.vitamin_e_till_now)
         @message = @message + v_counter.to_s + ".vitamin E
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_k_per_week < ((item.vitamin_k * amount) + healthrecord.vitamin_k_till_now)
         @message = @message + v_counter.to_s + ".vitamin K
-  "
-
-
-
+        "
 
         v_counter = v_counter + 1
         @flag = false

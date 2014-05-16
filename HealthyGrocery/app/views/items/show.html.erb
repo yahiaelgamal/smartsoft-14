@@ -76,3 +76,7 @@
   <b>Calcium:</b>
   <%= @item.calcium %>
 </p>
+<%-# a link redirecting to the edit page-%>
+<%= link_to 'Edit', edit_item_path(@item) %>
+<%-# a link redirecting back to the item page-%>
+<%= link_to 'Back', items_path %>
