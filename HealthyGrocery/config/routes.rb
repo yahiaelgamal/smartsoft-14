@@ -94,6 +94,11 @@ HealthyGrocery::Application.routes.draw do
   match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
   get "addresses/position"
   resources :orders
+  #Author: Mohamed Lotfy
+  #Team: 1 
+  #Function: none
+  #Method: to match the order route new 
+  #Paramters: none
   match '/orders/new' => 'orders#new'
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR USERS
