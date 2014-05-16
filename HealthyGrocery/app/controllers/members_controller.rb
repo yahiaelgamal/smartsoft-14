@@ -1,40 +1,39 @@
 class MembersController < ApplicationController
   before_filter :authenticate_member!
 
-   
-#Author: Mohamed Lotfy
-#Team: 1
-#method: index
-#Function: it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin 
-#parameters: none
-def index
+
+  #Author: Mohamed Lotfy
+  #Team: 1
+  #method: index
+  #Function: it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin
+  #parameters: none
+  def index
     @members = Member.all
-  if current_member.email == 'healthygrocery@gmail.com'
+    if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
     else
       @admin = false
     end
   end
-  
-  
-#Author: Mohamed Lotfy
-#Team: 1
-#Method: show
-#Function: it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
-#parameters: none
 
-def show
-  @member = Member.find(params[:id])
-  if current_member.email == 'healthygrocery@gmail.com'
+
+  #Author: Mohamed Lotfy
+  #Team: 1
+  #Method: show
+  #Function: it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
+  #parameters: none
+  def show
+    @member = Member.find(params[:id])
+    if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
-  else 
-	    @admin = false
-  end
-  if current_member.wishlist.nil?
+    else
+      @admin = false
+    end
+    if current_member.wishlist.nil?
       @wishexist = false
-  else
+    else
       @wishexist = true
-  end
+    end
   end
 
   #(GUI Team) This session is used to be able to diffirentiate from normal User/Admin
@@ -49,12 +48,12 @@ def show
     current_member.save
   end
 
-#Author : mina sedra
-#team : 2
-#method: get healthrecord
-#params : none
-#it shows the page of the member's healthrecord 
- def get_records
+  #Author : mina sedra
+  #team : 2
+  #method: get healthrecord
+  #params : none
+  #it shows the page of the member's healthrecord
+  def get_records
     @member = Member.find(params[:id])
     @healthrecord = @member.records
     respond_to do |format|
@@ -68,10 +67,10 @@ def show
 
     @member = current_member
 
-    
+
     if current_member.email == 'healthygrocery@gmail.com'
-        @admin = true
-    else 
+      @admin = true
+    else
       @admin = false
     end
   end
@@ -91,9 +90,9 @@ def show
 
     @member = current_member
     if current_member.email == 'healthygrocery@gmail.com'
-        @admin = true
-    else 
-        @admin = false
+      @admin = true
+    else
+      @admin = false
     end
   end
 
@@ -112,9 +111,9 @@ def show
     @duration = ""
 
     if current_member.email == 'healthygrocery@gmail.com'
-        @admin = true
-    else 
-        @admin = false
+      @admin = true
+    else
+      @admin = false
     end
   end
   #Atuhor: ahmed abdelsattar
