@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
   #Function: it redirects to the page of the member signed in by writing the path inside the body of the method
   #Parameters: resource_or_scope
   def after_sign_in_path_for(resource_or_scope)
-    @member
     "/members/hub"
   end
 
