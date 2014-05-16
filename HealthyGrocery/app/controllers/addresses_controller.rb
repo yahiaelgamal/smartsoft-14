@@ -1,24 +1,14 @@
 class AddressesController < ApplicationController
-  # GET /addresses
-  # GET /addresses.json
-  def index
-    @addresses = Address.all
+ 
+  # Author: Karim El-Bawab
+  # Team: 4
+  # Method name :show
+  # Function: This metho used to show a specific route and 
+  # it contains a block of code below that used in order to show
+  # a map with a marker set on the user address
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @addresses }
-    end
-  end
-
-  # GET /addresses/1
-  # GET /addresses/1.json
   def show
     @address = Address.find(params[:id])
-
-    # Author: Karim El-Bawab
-    # Team: 4
-    # Function: this block of code below is used in order to show
-    # a map with a marker set on the user address
 
     @hash = Gmaps4rails.build_markers(@address) do |address, marker|
 

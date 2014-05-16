@@ -45,9 +45,7 @@ gem "gon" , '5.0.4'
 gem 'css3-progress-bar-rails'
 gem 'ruby-beautify', '~> 0.92.2'
 
-
        
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
