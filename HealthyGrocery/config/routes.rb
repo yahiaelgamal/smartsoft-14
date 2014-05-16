@@ -99,6 +99,13 @@ get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthr
   match '/generateroutes' => 'generateroutes#index'
   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
   post "generateroutes/gen" => "generateroutes#gen" 
+  #Author: FatmaEmran
+  #Team:2
+  #order creation in database
+  resources :orders
+  order do
+    get :forbidden
+  end  
 
   resources :diseases
 
