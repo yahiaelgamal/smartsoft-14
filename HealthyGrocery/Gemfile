@@ -22,11 +22,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
-<<<<<<< HEAD
-=======
-#adding gem capyayara to test devise with Rspec!
-gem 'capybara', :group => :test
->>>>>>> aa02ff06045f379c13b1e2973edd394ad5bcad3a
 
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
@@ -46,8 +41,11 @@ gem 'gmaps4rails', '~> 2.1.2'
 gem "gon" , '5.0.4'
 #handles the showen progress bar 
 gem 'css3-progress-bar-rails'
-gem 'ruby-beautify', '~> 0.92.2'
 
+group :development, :test do 
+gem 'rspec-rails' 
+gem 'factory_girl_rails'
+end
 
        
 

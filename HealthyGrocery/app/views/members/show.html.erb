@@ -3,7 +3,6 @@
      team : 1-->
 <!-- This is the Users/Admins Profile -->
 <% if @admin == true%>
-<<<<<<< HEAD
   <!--to check the adminstration level
 author:mohamed lotfy team:1-->
   <center>
@@ -92,49 +91,11 @@ author:mohamed lotfy team:1-->
   <%elsif @admin == false%>
     <!-- to show user profile -->
     <%#
-=======
-  <h1>hello admin</h1>
-  <%= link_to 'Site Members', members_path%>
-  <%= link_to 'My WareHouse', items_path%>
-  <!--to check the adminstration level
-author:mohamed lotfy team:1-->
-  <h3>Member</h3>
-  <p>Email:
-    <%= @member.email %></p>
-  <h1>
-    hello
-    <%= @member.email%></h1>
-  <p>First Name:</p>
-  <h2>
-    <%= @member.first_name%></h2>
-  <p>Last Name:</p>
-  <h2><%= @member.birth_date%></h2>
-  <h2><%= @member.phone_num%></h2>
-  <%#
-Author: Abdelrahman Sakr
-#Team : 1
-#A link to the user's Shopping cart%>
-  <% if @member.gender %>
-    <h4>Male</h4>
-  <%else%>
-    <h4>Female</h4>
-  <%end%>
-  <!--to check the adminstration level  
- author : mohamed lotfy  
- team : 1-->
-  <!-- This is the Users/Admins Profile -->
-  <!--to check the adminstration level  
- author:mohamed lotfy team:1-->
-<%elsif @admin == false%>
-  <!-- to show user profile -->
-  <%#
->>>>>>> aa02ff06045f379c13b1e2973edd394ad5bcad3a
     #Author: Mohamed Saeed
     #Team: 1
     #Function: view basic personal info that shows in member profile (first name, last name, 
     birth date, phone number and gender).
     %>
-<<<<<<< HEAD
     <center>
       <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=futura">
@@ -202,85 +163,10 @@ Author: Abdelrahman Sakr
                       <%end%>
                     <%end%>
                   </div>
-=======
-  <center>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=futura">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
-          <div class="well profile">
-            <div class="col-sm-12">
-              <div class="col-xs-12 col-sm-8">
-                <div class="col-xs-12 col-sm-4 text-center">
-                  <figure>
-                    <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
-                  </figcaption>
-                </figure>
-              </div>
-              <br>
-              <br>
-              <font face="futura" color="green" size="7"><strong><%= @member.first_name%>'s Profile</font></strong>
-              <br>
-              <br>
-              <br>
-              <p><font face="futura" size="3">Name:
-                </font><font face="futura" size="5"><strong><%= @member.first_name%>
-                    <%= @member.last_name%></strong></p>
-                <p><font face="futura" size="3">Birth date:
-                  </font><font face="futura" size="5"><strong><%= @member.birth_date%></p></strong>
-                  <p><font face="futura" size="3">Phone number:
-                    </font><font face="futura" size="5"><strong><%= @member.phone_num%></p></strong>
-                    <p><font face="futura" size="3">Gender:
-                      </font><font face="futura" size="5"><strong><%- if @member.gender %>
-                            Male
-                          <%else%>
-                            Female
-                          <%end%>
-                        </p></strong>
-                    </font>
-                  </div>
-                  <br>
-                  <br>
-                  <%= link_to(edit_member_path(@member), :class => 'btn btn-success') do %>
-                    <i class="icon-cog icon-white"></i><font face="futura" color="white">
-                      Edit Profile</font>
-                  <% end %>
-                  <hr>
-                  <!-- Author: Mahmoud Walid
-       Team: 3
-       Function: show alerts if there is any order without an address-->
-                  <%if @member%>
-                    <% @count = true%>
-                    <% @member.orders.each do |ord|%>
-                      <%if not ord.coordinates%>
-                        <% if @count%>
-                          <hr>
-                          <br>
-                          <br>
-                          <%flash[:alert] = "You have an order that needs shipping and billing addresses, please #{link_to "click here",chooseOrder_path(ord)} to choose now".html_safe%>
-                          <%@count=false%>
-                        <% else %>
-                          <%flash[:alert] = "You have more than one order that needs shipping and billing addresses, please #{link_to "click here",showOrders_path} to show your orders".html_safe%>
-                          <br>
-                          <br>
-                          <br>
-                        <%end%>
-                      <%end%>
-                    <%end%>
-                  <%end%>
->>>>>>> aa02ff06045f379c13b1e2973edd394ad5bcad3a
                 </div>
               </div>
             </div>
           </div>
-<<<<<<< HEAD
         </font>
       </center>
     <% end %>
-=======
-        </div>
-      </font>
-    </center>
-  <% end %>
->>>>>>> aa02ff06045f379c13b1e2973edd394ad5bcad3a

@@ -37,7 +37,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/members/hub"><%= image_tag("applelogo.png", height: '32', width: '32') %>HealthyGrocery</a>
+          <a class="brand" href="/members/hub">HealthyGrocery</a>
           <div class="container nav-collapse">
             <ul class="nav">
               <!--Author: Andrew Khouzam -->
@@ -49,11 +49,7 @@
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Users Only-->
-<<<<<<< HEAD
       <% if current_member.email!='admin@gmail.com' %>
-=======
-      <% if current_member.email!='healthygrocery@gmail.com' %>
->>>>>>> aa02ff06045f379c13b1e2973edd394ad5bcad3a
 
                 <li><%= link_to 'Go Shopping',{:controller => 'items', :action =>
                 'members_items_index'}, :class => "opt"%></li>
@@ -65,11 +61,7 @@
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
-<<<<<<< HEAD
               <% if current_member.email == 'admin@gmail.com' %>
-=======
-              <% if current_member.email == 'healthygrocery@gmail.com' %>
->>>>>>> aa02ff06045f379c13b1e2973edd394ad5bcad3a
                 <li><%= link_to "Diseases", diseases_path %></li>
                 <li><%= link_to "Items", items_path %></li>
                 <li><%= link_to "Generate Routes", { :controller => 'members', :action => 'generate_routes'}%></li>
@@ -100,5 +92,3 @@
     <!-- /container -->
   </body>
 </html>
-
-

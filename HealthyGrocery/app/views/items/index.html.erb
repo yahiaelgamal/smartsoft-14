@@ -1,10 +1,10 @@
 <!--to check the adminstration level-->
 <%= csrf_meta_tag %>
 
-<% if current_member.email!='healthygrocery@gmail.com'%>
+<% if @admin == false%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
 <%= link_to_function "Back", "history.back()" %>
-<%else%>
+<%elsif @admin == true%>
 
 <head>
 

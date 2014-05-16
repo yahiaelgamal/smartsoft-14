@@ -58,7 +58,6 @@ class HealthrecordsController < ApplicationController
 #render the form to edit that healthrecord
   def edit
     @healthrecord = Healthrecord.find(params[:id])
-       
   end
 
   # POST /healthrecords
@@ -70,19 +69,9 @@ class HealthrecordsController < ApplicationController
 #create new healthrecord for a member 
   def create
     @healthrecord = Healthrecord.new(params[:healthrecord])
-        @reco = params[:ii]
-        if @reco != nil
-          @healthrecord.diseases << Disease.find(@reco.first)
-          @healthrecord.save
-          @reco.each do |p|
-            @healthrecord.diseases << Disease.find(p)
-            @healthrecord.save
-          end 
-      end
 
     respond_to do |format|
       if @healthrecord.save
-        @healthrecord.bmi = @healthrecord.weight*10000/(@healthrecord.height*@healthrecord.height)
         current_member.records.push(@healthrecord)
         format.html { redirect_to @healthrecord, notice: 'Healthrecord was successfully created.' }
         format.json { render json: @healthrecord, status: :created, location: @healthrecord }
@@ -102,16 +91,7 @@ class HealthrecordsController < ApplicationController
 #update healthrecord
   def update
     @healthrecord = Healthrecord.find(params[:id])
-    
-  @reco = params[:ii]
-        if @reco != nil
-          @healthrecord.diseases << Disease.find(@reco.first)
-          @healthrecord.save
-          @reco.each do |p|
-            @healthrecord.diseases << Disease.find(p)
-            @healthrecord.save
-          end 
-      end
+
     respond_to do |format|
       if @healthrecord.update_attributes(params[:healthrecord])
         format.html { redirect_to @healthrecord, notice: 'Healthrecord was successfully updated.' }
@@ -135,7 +115,7 @@ class HealthrecordsController < ApplicationController
     @healthrecord.destroy
 
     respond_to do |format|
-      format.html { redirect_to indexhealthrecord_path(current_member) }
+      format.html { redirect_to healthrecords_url }
       format.json { head :no_content }
     end
   end
