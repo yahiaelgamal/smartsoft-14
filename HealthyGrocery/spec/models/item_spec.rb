@@ -67,5 +67,10 @@ describe Item do
   h.vitamin_e_till_now.should == 0
   h.vitamin_k_till_now.should == 0
  end
+
+  #Author: Sameh Metias
+  #Team: 4
+  #Function: This test is for testing whether the correct array of items will be shown to the
+  #member when he attempts to buy an item that is almost out of stock
   
 end

@@ -9,8 +9,6 @@ class RoutePdf < Prawn::Document
     move_down 10    
     text "Route's serial number: #{@route.id}"
     move_down 10    
-    text "Truck number: #{@route.truck}"
-    move_down 10    
     text "Truck should be filled in the following manner:"
     move_down 10    
     image "#{Rails.root}/app/assets/images/truck1.jpg", :scale => 7.0/10.0, :position => :center
@@ -18,13 +16,13 @@ class RoutePdf < Prawn::Document
   end
   
   def draw_truck(route)
-    revOrders = route.arrOfPoints.reverse
+    revOrders = route.orders.reverse
     stroke do 
       divisions = @route.arrOfPoints.count
       #draw_text "#{route.orders[0].coordinates}", :at => [180,330], :rotate => 90
       divisions.times do |i|
         x = 215+(i+1)*(210/(divisions+1))
-        draw_text "#{revOrders[i]}", :at => [x,460], :rotate => 90
+        draw_text "#{revOrders[i].orderNo}", :at => [x,460], :rotate => 90
       end
     end
   end

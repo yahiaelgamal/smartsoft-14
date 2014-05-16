@@ -16,13 +16,13 @@ class RoutePdf < Prawn::Document
   end
   
   def draw_truck(route)
-    revOrders = route.arrOfPoints.reverse
+    revOrders = route.orders.reverse
     stroke do 
       divisions = @route.arrOfPoints.count
       #draw_text "#{route.orders[0].coordinates}", :at => [180,330], :rotate => 90
       divisions.times do |i|
         x = 215+(i+1)*(210/(divisions+1))
-        draw_text "#{revOrders[i]}", :at => [x,460], :rotate => 90
+        draw_text "Order #: #{revOrders[i].orderNo}", :at => [x,460], :rotate => 90
       end
     end
   end
