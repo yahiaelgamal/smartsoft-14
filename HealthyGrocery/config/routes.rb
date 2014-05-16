@@ -27,6 +27,9 @@ HealthyGrocery::Application.routes.draw do
   # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
     # get "get_records"
 
+ 
+
+
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR ITEMS
 #----------------------------------------------------------------------------------------------------#
@@ -48,6 +51,7 @@ HealthyGrocery::Application.routes.draw do
       #ROUTES FOR HEALTHRECORDS
 #----------------------------------------------------------------------------------------------------#
   resources :healthrecords
+  resources :health_records
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR WISHLINES
 #----------------------------------------------------------------------------------------------------#
