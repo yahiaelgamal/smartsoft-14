@@ -23,7 +23,4 @@ describe Member do
 	it "is invalid without birth date" do
 		FactoryGirl.build(:member, birth_date: nil).should_not be_valid
 	end
-	it "is invalid with non numeric birth date" do
-		FactoryGirl.build(:member, birth_date: "test").should_not be_valid
-	end
 end
