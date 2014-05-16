@@ -73,7 +73,7 @@ class Order
   #function: takes the orders and computes the ordering that will take the least distance while staying under
   #the timelimit   
 
-  def get_optimized_orders(orders,timelimit)
+  def self.get_optimized_orders(orders,timelimit)
 addresses = Array.new
 
 orders.each do |order|
@@ -100,8 +100,8 @@ distance += directions.distance_in_miles
 break if time>timelimit
 break if distance>mindistance
 end
-chosen = permutation << time if distance < mindistance && time<timelimit
-mindistance = distance if distance < mindistance && time<timelimit
+chosen = permutation << time if (distance < mindistance && time<timelimit)
+mindistance = distance if distance < mindistance && time<timelimit)
 
 
 end
