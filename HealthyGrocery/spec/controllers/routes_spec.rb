@@ -1,3 +1,8 @@
+# Author: Karim El-Bawab
+# Team: 4
+# Test name: routes_spec
+# Function: This test is used to test both the actions
+# index and show of route controller
 require 'spec_helper' 
 describe RoutesController do 
   before do

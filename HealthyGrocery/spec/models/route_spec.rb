@@ -1,3 +1,9 @@
+# Author: Karim El-Bawab
+# Team: 4
+# Test name: route_spec
+# Function: This test is used to test the method 
+# used in the route model that swap the lat with 
+# lng in each point in the route 
 require 'spec_helper'
 describe Route do
   before :each do
@@ -19,4 +25,5 @@ describe Route do
 	newArr.should_not include [30.121,31.121]
 	newArr.should_not include [30.343,31.343]
   end
-end	  
+end	
+  

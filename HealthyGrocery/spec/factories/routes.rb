@@ -1,4 +1,6 @@
-#spec/factories/routes.rb
+# Author: Karim El-Bawab
+# Team: 4
+# Function: used in the creation of routes in the test 
 FactoryGirl.define do
   factory :route do |f|
     f.arrOfPoints [30,31]

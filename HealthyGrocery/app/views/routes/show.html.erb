@@ -17,37 +17,33 @@
     <b>Route ID:</b>
     <%= @route.id %>
   </p>
-
   <p>
     <b>Orders No:</b>
     <% arr = [] %>
     <% @route.arrOfPoints.each do |points|%>
       <% arr.push(Order.find_by(coordinates: points).orderNo) %>
-    <% end %> 
+    <% end %>
     <%= arr %>
   </p>
-
   <p>
     <b>Created at:</b>
     <%= @route.created_at %>
   </p>
-
   <p>
     <b>Shipment ID:</b>
     <%= @route.shipment_id %>
   </p>
-
   <p>
     <b>Truck ID:</b>
     <%= @route.truck_id %>
   </p>
   <br>
   <br>
-   
   <div style='width: 800px;'>
     <div id="map" style='width: 800px; height: 400px;'></div>
   </div>
-  <div>   <div id="directions-panel" ></div>
+  <div>
+    <div id="directions-panel" ></div>
   </div>
   <%= javascript_include_tag("routes_show") %>
   <br>

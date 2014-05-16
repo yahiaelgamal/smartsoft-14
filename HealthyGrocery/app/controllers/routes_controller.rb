@@ -1,7 +1,8 @@
 class RoutesController < ApplicationController
-  # GET /routes
-  # GET /routes.json
-#lists all routes in the database
+  # Author: Karim El-Bawab
+  # Team: 4
+  # Function: this method is used to show all routes 
+  # with some details about each route 
   def index
     @routes = Route.all
 

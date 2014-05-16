@@ -1,3 +1,8 @@
+# Author: Karim El-Bawab
+# Team: 4
+# Test name: shipments_spec
+# Function: This test is used to test both the actions
+# index and show of shipment controller
 require 'spec_helper' 
 describe ShipmentsController do 
   before do
