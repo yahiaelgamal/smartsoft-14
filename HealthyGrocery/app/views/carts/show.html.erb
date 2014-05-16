@@ -27,5 +27,9 @@ Author: Mohamed Saeed
 <hr/>
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
-<!--link for the user in order to checkout the shopping cart to make the order:Author:mohamed lotfy Team:1-->
+<!--#Author: Mohamed Lotfy
+  #Team: 1 
+  #Function: none
+  #Method: to match the order route new 
+  #Paramters: none-->
 <%= button_to 'Checkout',{:controller  => 'orders', :action => 'new'}%>
