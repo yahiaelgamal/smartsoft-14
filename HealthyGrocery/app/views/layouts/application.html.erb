@@ -49,7 +49,7 @@
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Users Only-->
-      <% if current_member.email!='admin@gmail.com' %>
+      <% if current_member.email!='healthygrocery@gmail.com' %>
 
                 <li><%= link_to 'Go Shopping',{:controller => 'items', :action =>
                 'members_items_index'}, :class => "opt"%></li>
@@ -61,7 +61,7 @@
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
-              <% if current_member.email == 'admin@gmail.com' %>
+              <% if current_member.email == 'healthygrocery@gmail.com' %>
                 <li><%= link_to "Diseases", diseases_path %></li>
                 <li><%= link_to "Items", items_path %></li>
                 <li><%= link_to "Generate Routes", { :controller => 'members', :action => 'generate_routes'}%></li>
@@ -98,3 +98,5 @@
     <!-- /container -->
   </body>
 </html>
+
+
