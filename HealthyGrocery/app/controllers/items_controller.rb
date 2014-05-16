@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   # shows all the items in the table item
   def index
-    if current_member.email == 'admin@gmail.com'
+    if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
     else
       @admin = false
@@ -45,38 +45,34 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-
+  #Author: Hazem Amin
+  #Team: 5
+  #Method name: toggle_pause
+  #Function: It simply finds that specific item that needs to be paused and pauses
+  #it if the conditions applies that the item is not out of stock.
   def toggle_pause
-    @item = Item.find(params[:id])
-
-    if @item.amount <= 0 && @item.paused == false
-      flash[:notice] = "Can't resume because stock equals #{@item.amount}"
-    else
-      @item.paused = !@item.paused
-      @item.save
-      flash[:notice] = "Item toggled successfully"
-    end
-
+    flash[:notice] = Item.toggle_pause(params[:id])
     redirect_to items_url
   end
-  #Author: Hazem Amin
-  #Method_Name: toggle_pause
-  #What does it do? It simply finds that specific item that needs to be paused and pauses
-  # it if the conditions applies that the item is not out of stock.
-  #Author: Hazem Amin
-  #Method_Name: toggle_pause
-  #What does it do? It simply finds that specific item that needs to be paused and pauses
-  # it if the conditions applies that the item is not out of stock.
 
+  #Author: Hazem Amin
+  #Team: 5
+  #Method name: create
+  #Funtion: It simply CEATES an item, as being one of the 4 fundumentals of CRUD.
+  #The first if-condition I make sure that we're not trying to access an item that hasn't an
+  #amount field specified, the second condition decides the initial values of paused when it is
+  #created, whether it should be initially paused or resumed.
   def create
     @item = Item.new(params[:item])
 
+    if @item.amount
     # initial value of paused
     if @item.amount <= 0
       @item.paused = false
     else
       @item.paused = true
     end
+  end
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -87,17 +83,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-  #Author: Hazem Amin
-  #Component: 5
-  #Method_Name: create
-  #What does it do? It simply CEATES an item, as being one of the 4 fundumentals of CRUD.
-  #What about the part commented below? I decide the initial values of paused when it is
-  # created, whether it should be initially paused or resumed.
-  # if @item.amount <= 0
-  # @item.paused = true
-  # else
-  # @item.paused = false
-  # end
 
   #views the users without the create button
   def viewusers
