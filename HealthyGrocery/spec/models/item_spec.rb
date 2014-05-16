@@ -75,3 +75,4 @@ describe Item do
         item.price.should == 50 
     end  
 end
+

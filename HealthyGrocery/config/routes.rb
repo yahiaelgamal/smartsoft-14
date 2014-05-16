@@ -12,7 +12,6 @@ HealthyGrocery::Application.routes.draw do
   devise_for :members, :controllers => {:registrations => "registrations", }
   match 'user_root' => redirect("/member/show")
    resources :members do
-   get 'edit'
    #Author: Ahmed Helali
    #Team 2
    # I added this path for the show_restricted_items
