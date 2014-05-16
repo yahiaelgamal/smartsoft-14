@@ -5,12 +5,12 @@
        <% if @member.diseases.count == 0 %>
          <h1> There are no items to be shown </h1>
            <t1> You do not have any items that violate your health conditions/Please make sure that you completed your health profile's information before checking this page..</t1>
-           <% else %>
+       <% else %>
              <h2> Results </h2>
              <t2> Here is the list of items that you cannot order for your health conditions </t2>
              <t3> To check the information related to any other items that you can order, Please browse/search the web.</t3>
              <% @member.diseases.each do |disease_name| %>
              <% disease_name.restricted_items.each do |item_name| %>
              <t> item_name.name </t>
-             <% end %>
-              <%= link_to 'Items you cannot order', items_user_cannot_order_path%>
+       <% end %>
+
