@@ -20,6 +20,8 @@ class Item
   # Attribute: paused, to keep track whether each and every item is
   # paused or not (boolean)
   field :paused , type: Boolean
+  field :date ,type: Date
+  # Author : Mahmoud Eldesouky
   # Author: Hazem Amin
   # Team: 5
   # Function: Added other needed attributes for the items-class

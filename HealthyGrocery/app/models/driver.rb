@@ -4,6 +4,7 @@ class Driver
   field :name, type: String
   field :phone, type: Integer
   field :address, type: String
+  field :date ,type: Date
 
   validates :name, presence: true
   validates :phone, presence: true, numericality: true

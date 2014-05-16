@@ -47,7 +47,9 @@ end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @disease }
+
     end
+
 
   end
 
@@ -77,6 +79,41 @@ end
   #  the added/subtracted value from the average nutritional elements "from the textfields"
   def create
     @disease = Disease.new(params[:disease])
+
+    @reco = params[:ii]
+    @rest = params[:r]
+    @flag = true
+    @disease.date = Date.today
+
+    if @reco != nil
+        @reco.each do |s| 
+          if (@rest != nil && @rest.include?(s))
+             @flag = false
+          end
+        end
+    end
+
+    if @flag
+      if @reco != nil
+          @disease.recommended_items << Item.find(@reco.first)
+          @disease.save
+          @reco.each do |p|
+            @disease.recommended_items << Item.find(p)
+            @disease.save
+          end 
+      end
+    
+      if @rest != nil 
+          @disease.restricted_items << Item.find(@rest.first)
+          @disease.save
+          @rest.each do |f|
+            @disease.restricted_items << Item.find(f)
+            @disease.save
+          end
+      end
+    end     
+    
+
     both = false
     not_number = false
     fats_up = params[:fat_up].to_i
@@ -232,6 +269,7 @@ end
     @recommended = params[:checked_recommended]
     @restricted = params[:checked_restricted]
     @flag = Disease.check_items(@disease.id,@recommended,@restricted)
+
 
     respond_to do |format|
       if not_number

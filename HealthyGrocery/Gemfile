@@ -65,7 +65,7 @@ gem 'prawn-print'
 gem 'rspec'
 gem 'prawnto_2', :require => 'prawnto'
 #gem 'rspec-rails', '~> 2.0'
-gem 'capybara'
+
 gem 'pdf-inspector'
 gem 'webmock'
 

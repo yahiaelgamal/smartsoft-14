@@ -3,6 +3,11 @@ class Truck
   field :driver, type: String
   field :capacity, type: Integer
   field :status, type: Boolean
+  field :date ,type: Date
+#Author : Ahmed AbdElsattar
+#Team: 4
+#attr :      has_many :routes , class_name: 'Route'  , :inverse_of => :truck
+#function : changing the relation from on belongs to the routes to  has many  routes  
   field :take_off_time, type: DateTime
   field :trip_time_mins, type: Integer
   #Author : Ahmed AbdElsattar

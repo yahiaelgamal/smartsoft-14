@@ -44,6 +44,7 @@ class TrucksController < ApplicationController
   # POST /trucks.json
   def create
     @truck = Truck.new(params[:truck])
+    @truck.date = Date.today
 
     respond_to do |format|
       if @truck.save

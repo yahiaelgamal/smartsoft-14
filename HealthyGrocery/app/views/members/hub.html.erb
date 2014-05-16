@@ -1,7 +1,237 @@
 <%matching=Item.all.limit(20)%>
 
+
+<!--#Author: Omar Tarek
+	 	#Team: 5
+	 	#Method name:
+	 	#Parameters:none
+		#Function: show admin some statistical info about the website.
+	 	#Example:  -->
+
+
+<!-- showing the number of users the website has reached -->
+<% if current_member.email == 'admin@gmail.com'%>
+  <%@all_members = Member.all%>
+  <%@members_count=-1%>
+  <% @all_members.each do |m| %>
+    <% @members_count += 1%>
+  <%end%>
+
+
+<!-- showing the number of items the website has-->
+  <%@all_items = Item.all%>
+  <%@items_count=0%>
+  <% @all_items.each do |i| %>
+    <% @items_count += 1%>
+  <%end%>
+
+
+<!-- showing the number of diseases the website has-->
+  <% @all_diseases = Disease.all %>
+  <% @diseases_count=0%>
+  <% @all_diseases.each do |d| %>
+   <% @diseases_count += 1%>
+  <%end%>
+
+
+
+<!--showing the number of drivers and the number of trucks these drivers are using-->
+  <%@all_trucks = Truck.all%>
+  <%@all_drivers = Driver.all%>
+  <%@trucks_count=0%>
+  <%@drivers_count=0%>
+  <% @all_trucks.each do |t| %>
+    <% @trucks_count += 1%>
+  <%end%>
+  <% @all_drivers.each do |d| %>
+    <% @drivers_count += 1%>
+  <%end%>
+
+
+
+
+  <h1 style="margin: 10px 0px 10px">Statistics:</h1>
+  <h3 style="margin:-10px 25px 5px"><font size="2">- The website has:</h3>
+  <li style="margin:-12px 45px 0px"><%=@members_count%> members.</li>
+  <li style="margin:0px 45px 0px"><%=@items_count%> items in its warehouse.</li>
+  <li style="margin:0px 45px 0px"><%=@diseases_count%> diseases.</li>
+  <li style="margin:0px 45px 0px"><%=@drivers_count%> drivers, using 
+  <%=@trucks_count%> trucks.</li>
+
+
+<!-- showing the number of items that are purchased today-->
+  <% @order_items = Array.new %>		
+  <% @all_orders = Order.all %>
+  <% @items_today_count=0 %>
+  <% @all_orders.each do |o| %>
+    <%@order_date = o.date%>
+    <%@today=Date.today%>
+    <%if @order_date == @today%>
+      <% @order_items = y.items %>
+      <% @order_items.each do |i| %>
+        <% @items_today_count += 1 %>  
+        <% members.items_today << i%>
+      <%end%>
+    <%end%>
+  <%end%>
+
+  <p style="margin:5px 25px 0px"><font size="2"><b>- <%=@items_today_count%> items have been purchased today.</p>
+
+ 
+
+
+<!-- showing the number of orders that that have been placed on the website so far-->
+  <% @orders_count=0 %>
+  <% @all_orders.each do |o| %>
+    <% @orders_count += 1%>
+  <%end%>
+  <%if @orders_count == 1%>
+    <p style= "margin:0px 25px 0px"><b>- <%=@orders_count%> order has been placed on the website so far.</p>
+  <%else%>
+    <p style= "margin:0px 25px 0px"><b>- <%=@orders_count%> orders have been placed on the website so far.</p>
+  <%end%>
+
+
+
+
+<!-- showing items that are out of stock-->
+  <% @items_out_of_stock_count = 0%>
+  <% @all_items.each do |i| %>
+    <% if i.amount <= 0 %>
+      <% @items_out_of_stock << i%>
+      <% @items_out_of_stock_count += 1%>
+    <%end%>
+  <%end%>
+  <%if @items_out_of_stock_count == 1%>
+    <p style= "margin:0px 25px 0px"><b>- <%=@items_out_of_stock_count%> item is out of stock.</p>
+  <%else%>
+    <p style= "margin:0px 25px 0px"><b>- <%=@items_out_of_stock_count%> items are out of stock.</p>
+  <%end%>
+
+
+
+
+
+
+
+<!--#Author: Omar Tarek
+	 	#Team: 5
+	 	#Method name:
+	 	#Parameters:none
+		#Function: show admin a summary of the latest actions on the website.
+	 	#Example:  -->
+
+
+
+  <h1 style="margin: 17px 0px 15px">Action Summary:</h1>
+
+  <%@today = Date.today%>	
+  <%@six_days_ago = @today - 6.day%>
+  <%@five_days+ago = @today - 5.day%>
+  <%@four_days_ago = @today - 4.day%>
+  <%@three_days_ago = @today - 3.day%>
+  <%@two_days_ago = @today - 2.day%>
+  <%@yesterday = @today - 1.day%>
+
+
+<!-- showing items that the admin added in the past week-->
+  <% @items_added_this_week_count = 0%>
+  <% @all_items.each do |i| %>
+    <%@item_date = i.date%>
+    <% if @item_date == @six_days_ago || @item_date == @five_days_ago ||
+    @item_date == @four_days_ago  || @item_date == @three_days_ago || 
+    @item_date == @two_days_ago || @item_date == @yesterday ||
+    @item_date == @today%>
+      <% @items_added_this_week << i %>
+      <% @items_added_this_week_count += 1 %>
+    <%end%>
+  <%end%>
+  <%if @items_added_this_week_count == 1%>
+    <p style= "margin:0px 25px 0px"><b>- You have added 
+    <%=@items_added_this_week_count%> item this week.</p>
+  <%else%>
+    <p style= "margin:0px 25px 0px"><b>- You have added 
+    <%=@items_added_this_week_count%> items this week.</p>
+  <%end%>
+
+
+
+
+<!-- showing trucks that the admin added in the past week-->
+  <% @trucks_added_this_week_count = 0%>
+  <% @all_trucks.each do |t| %>
+    <%@truck_date = t.date%>
+    <% if @truck_date == @six_days_ago || @truck_date == @five_days_ago || 
+    @truck_date == @four_days_ago  || @truck_date == @three_days_ago || 
+    @truck_date == @two_days_ago || @truck_date == @yesterday || 
+    @truck_date == @today %>
+      <% @trucks_added_this_week << t %>
+      <% @trucks_added_this_week_count += 1 %>
+    <%end%>
+  <%end%>
+  <%if @trucks_added_this_week_count == 1%>
+    <p style= "margin:0px 25px 0px"><b>- You have added
+    <%=@trucks_added_this_week_count%> truck this week.</p>
+  <%else%>
+    <p style= "margin:0px 25px 0px"><b>- You have added 
+    <%=@trucks_added_this_week_count%> trucks this week.</p>
+  <%end%>
+
+
+<!-- showing diseases that the admin added in the past week-->
+  <% @diseases_added_this_week_count = 0%>
+  <% @all_diseases.each do |d| %>
+    <%@disease_date = d.date%>
+    <% if @disease_date == @six_days_ago || @disease_date == @five_days_ago ||
+    @disease_date == @four_days_ago || @disease_date == @three_days_ago || 
+    @disease_date == @two_days_ago || @disease_date == @yesterday || 
+    @disease_date == @today %>
+      <% @diseases_added_this_week << d %>
+      <% @diseases_added_this_week_count += 1 %>
+    <%end%>
+  <%end%>
+  <%if @diseases_added_thisWeekCount == 1%>
+    <p style= "margin:0px 25px 0px"><b>- You have added 
+    <%=@diseases_added_this_week_count%> disease this week.</p>
+  <%else%>
+    <p style= "margin:0px 25px 0px"><b>- You have added 
+    <%=@diseases_added_this_week_count%> diseases this week.</p>
+  <%end%>
+
+
+
+<!-- showing drivers that the admin added in the past week-->
+  <% @drivers_added_this_week_count = 0%>
+  <% @all_drivers.each do |d| %>
+    <%@driver_date = d.date%>
+    <% if @driver_date == @six_days_ago || @driver_date == @five_days_ago || 
+    @driver_date == @four_days_ago|| @driver_date == @three_days_ago ||
+    @driver_date == @two_days_ago || @driver_date == @yesterday || 
+    @driver_date == @today %>
+      <% @drivers_added_this_week << d %>
+      <% @drivers_added_this_week_count += 1 %>
+    <%end%>
+  <%end%>
+  <%if @drivers_added_this_week_count == 1%>
+    <p style= "margin:0px 25px 0px"><b>- You have added 
+    <%=@drivers_added_this_week_count%> driver this week.</p>
+  <%else%>
+    <p style= "margin:0px 25px 12px"><b>- You have added 
+    <%=@drivers_added_this_week_count%> drivers this week.</p>
+  <%end%>
+
+
+
+
+
+
+<%else%>
+
+
+
  <div class="container-fluid">
       <h2 style="style="
+
 padding-top:30px;
 right:5px"">New arrivals</h2>
       <div class="row-fluid">
@@ -86,3 +316,4 @@ right:5px"">New arrivals</h2>
       </div>
     </div>
 
+<%end%>

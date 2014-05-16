@@ -13,22 +13,46 @@ class MembersController < ApplicationController
       @admin = true
     else
       @admin = false
-    end
-  end
-  #Author : mohamed lotfy
-  #team : 1
-  #method: show
-  #params : none
-  #it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
-  #def show
-  #   @member = Member.find(params[:id])
-  #if current_member.email == 'admin@gmail.com'
-  #end
+  end    
+end
+
+
+#Author: omar tarek
+#Team:5
+#Method:hub
+#Parameters:none
+#Function: it creates arrays of recently added items, trucks, drivers, diseases, 
+#as well as items out of stock and items purchased today to be used in the hub.html.erb file 
+
+def hub
+
+  @items_Today = Array.new 
+  @items_Out_Of_Stock = Array.new 
+  @items_Added_This_Week = Array.new
+  @trucks_Added_This_Week = Array.new  
+  @diseases_Added_This_Week = Array.new
+  @drivers_Added_This_Week = Array.new 
+  
+end  
+
+
+
+
+
+
+
+  #Author: Mohamed Lotfy
+  #Team: 1
+  #Method: show
+  #Function: it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
+  #Parameters: none
+
 
   def edit
     @member = Member.find(params[:id])
   end
      
+
   def show
     @member = Member.find(params[:id])
     if current_member.email == 'healthygrocery@gmail.com'

@@ -64,6 +64,7 @@ class ItemsController < ApplicationController
   #created, whether it should be initially paused or resumed.
   def create
     @item = Item.new(params[:item])
+    @item.date = Date.today
 
     if @item.amount
     # initial value of paused
