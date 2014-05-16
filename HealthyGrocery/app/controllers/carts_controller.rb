@@ -14,14 +14,20 @@ class CartsController < ApplicationController
   # GET /carts/1.json
 
 
-#Author: Abdelrahman Sakr
-#Team : 1
-#Method : show
-#Paramters : None
-#This method gets the user's cart by calling the method current_cart_new to be able to show it.
+  #Author: Abdelrahman Sakr
+  #Team : 1
+  #Method : show
+  #Paramters : None
+  #This method gets the user's cart by calling the method current_cart_new to be able to show it.
   def show
     @cart = current_cart_new
-  
+
+    # Author: Mahmoud Walid
+    # Team : 3
+    # calculating the alternatives for the last item added in cart if it was ordered more than once
+    if(@cart.lineitems.last && Member.get_count(@cart.lineitems.last.item,current_member) > 0)
+      @matching = Item.get_alter(@cart.lineitems.last.item,current_member.records.first,current_member)
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cart }
@@ -49,7 +55,7 @@ class CartsController < ApplicationController
   def create
 
     @cart = Cart.new(params[:cart])
-    
+
 
     respond_to do |format|
       if @cart.save
