@@ -4,9 +4,9 @@ class MembersController < ApplicationController
 
   #Author: Mohamed Lotfy
   #Team: 1
-  #method: index
+  #Method: index
   #Function: it lists all the users on the database it has a boolean check for a variable called admin to controll visibilty of all the members for only the admin
-  #parameters: none
+  #Parameters: none
   def index
     @members = Member.all
     if current_member.email == 'healthygrocery@gmail.com'
@@ -21,7 +21,7 @@ class MembersController < ApplicationController
   #Team: 1
   #Method: show
   #Function: it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
-  #parameters: none
+  #Parameters: none
   def show
     @member = Member.find(params[:id])
     if current_member.email == 'healthygrocery@gmail.com'
