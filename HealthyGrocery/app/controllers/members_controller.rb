@@ -18,10 +18,10 @@ end
 
 
 #Author: omar tarek
-#team:5
-#method:hub
-#params:none
-#it creates arrays of recently added items, trucks, drivers, diseases, 
+#Team:5
+#Method:hub
+#Params:none
+#Function: it creates arrays of recently added items, trucks, drivers, diseases, 
 #as well as items out of stock and items purchased today to be used in the hub.html.erb file 
 
 def hub

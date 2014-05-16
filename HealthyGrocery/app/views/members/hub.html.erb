@@ -1,5 +1,14 @@
 <!-- This the Users/Admins Hub Page which is the Home page that shows New/Recommended Items -->
 
+<!--#Author: Omar Tarek
+	 	#Team: 5
+	 	#Method name:
+	 	#Params:none
+		#Function: show admin some statistical info about the website.
+	 	#Example:  -->
+
+
+<!-- showing the number of users the website has reached -->
 <% if current_member.email == 'admin@gmail.com'%>
   <%@allMembers = Member.all%>
   <%@membersCount=-1%>
@@ -7,25 +16,25 @@
     <% @membersCount += 1%>
   <%end%>
 
-<!-- showing the number of users the website has reached -->
 
+<!-- showing the number of items the website has-->
   <%@allItems = Item.all%>
   <%@itemsCount=0%>
   <% @allItems.each do |i| %>
     <% @itemsCount += 1%>
   <%end%>
 
-<!-- showing the number of items the website has-->
 
+<!-- showing the number of diseases the website has-->
   <% @allDiseases = Disease.all %>
   <% @diseasesCount=0%>
   <% @allDiseases.each do |d| %>
    <% @diseasesCount += 1%>
   <%end%>
 
-<!-- showing the number of diseases the website has-->
 
 
+<!--showing the number of drivers and the number of trucks these drivers are using-->
   <%@allTrucks = Truck.all%>
   <%@allDrivers = Driver.all%>
   <%@trucksCount=0%>
@@ -37,7 +46,6 @@
     <% @driversCount += 1%>
   <%end%>
 
-<!--showing the number of drivers and the number of trucks these drivers are using-->
 
 
 
@@ -49,6 +57,8 @@
   <li style="margin:0px 45px 0px"><%=@driversCount%> drivers, using 
   <%=@trucksCount%> trucks.</li>
 
+
+<!-- showing the number of items that are purchased today-->
   <% @orderItems = Array.new %>		
   <% @allOrders = Order.all %>
   <% @itemsTodayCount=0 %>
@@ -67,9 +77,9 @@
   <p style="margin:5px 25px 0px"><font size="2"><b>- <%=@itemsTodayCount%> items have been purchased today.</p>
 
  
-<!-- showing the number of items that are purchased today-->
 
 
+<!-- showing the number of orders that that have been placed on the website so far-->
   <% @ordersCount=0 %>
   <% @allOrders.each do |o| %>
     <% @ordersCount += 1%>
@@ -80,9 +90,10 @@
     <p style= "margin:0px 25px 0px"><b>- <%=@ordersCount%> orders have been placed on the website so far.</p>
   <%end%>
 
-<!-- showing the number of orders that that have been placed on the website so far-->
 
 
+
+<!-- showing items that are out of stock-->
   <% @itemsOutOfStockCount = 0%>
   <% @allItems.each do |i| %>
     <% if i.amount <= 0 %>
@@ -98,15 +109,17 @@
 
 
 
-<!-- showing items that are out of stock-->
 
 
 
-<!--	#Author: Omar Tarek
+
+<!--#Author: Omar Tarek
 	 	#Team: 5
 	 	#Method name:
-		#Function: show admin some statistical info about the website.
+	 	#Params:none
+		#Function: show admin a summary of the latest actions on the website.
 	 	#Example:  -->
+
 
 
   <h1 style="margin: 17px 0px 15px">Action Summary:</h1>
@@ -120,7 +133,7 @@
   <%@yesterday = @today - 1.day%>
 
 
-
+<!-- showing items that the admin added in the past week-->
   <% @itemsAddedThisWeekCount = 0%>
   <% @allItems.each do |i| %>
     <%@itemDate = i.date%>
@@ -141,9 +154,9 @@
   <%end%>
 
 
-<!-- showing items that the admin added in the past week-->
 
 
+<!-- showing trucks that the admin added in the past week-->
   <% @trucksAddedThisWeekCount = 0%>
   <% @allTrucks.each do |t| %>
     <%@truckDate = t.date%>
@@ -163,8 +176,8 @@
     <%=@trucksAddedThisWeekCount%> trucks this week.</p>
   <%end%>
 
-<!-- showing trucks that the admin added in the past week-->
 
+<!-- showing diseases that the admin added in the past week-->
   <% @diseasesAddedThisWeekCount = 0%>
   <% @allDiseases.each do |d| %>
     <%@diseaseDate = d.date%>
@@ -185,8 +198,8 @@
   <%end%>
 
 
-<!-- showing diseases that the admin added in the past week-->
 
+<!-- showing drivers that the admin added in the past week-->
   <% @driversAddedThisWeekCount = 0%>
   <% @allDrivers.each do |d| %>
     <%@driverDate = d.date%>
@@ -206,15 +219,10 @@
     <%=@driversAddedThisWeekCount%> drivers this week.</p>
   <%end%>
 
-<!-- showing drivers that the admin added in the past week-->
 
 
 
-<!--	#Author: Omar Tarek
-	 	#Team: 5
-	 	#Method name:
-		#Function: show admin a summary of the latest actions on the website.
-	 	#Example:  -->
+
 
 <%else%>
 
