@@ -17,12 +17,6 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise'
 
-# rspec testing gems 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-end
-
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
 
@@ -46,7 +40,7 @@ group :development, :test do
 gem 'rspec-rails' 
 gem 'factory_girl_rails'
 end
-
+gem 'bootstrap-addons-rails'
        
 
 # Gems used only for assets and not required

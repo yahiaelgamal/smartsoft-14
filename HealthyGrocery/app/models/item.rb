@@ -215,7 +215,7 @@ class Item
   def self.get_alter (item,healthrecord)
     matching_items = Array.new
     Item.all.each do |canidate|
-      allowed = true
+      allowed = true  
       if((item.vitamin_a - item.vitamin_a * 0.5..item.vitamin_a + item.vitamin_a * 0.5).include?(canidate.vitamin_a)&&
          (item.vitamin_b - item.vitamin_b * 0.5..item.vitamin_b + item.vitamin_b * 0.5).include?(canidate.vitamin_b)&&
          (item.vitamin_c - item.vitamin_c * 0.5..item.vitamin_c + item.vitamin_c * 0.5).include?(canidate.vitamin_c)&&
@@ -229,7 +229,7 @@ class Item
         healthrecord.diseases.each do |dis|
           allowed&&= !dis.restricted_items.include?(canidate)
         end
-        if(allowed && canidate!=item)
+        if(allowed )
           matching_items.push(canidate)
         end
       end

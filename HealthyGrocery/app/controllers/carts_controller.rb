@@ -22,6 +22,7 @@ class CartsController < ApplicationController
   def show
     @cart = current_cart_new
     @matching = Item.get_alter(@cart.lineitems.first.item,current_member.records.first)
+    p @matching.count
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cart }
