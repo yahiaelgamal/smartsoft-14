@@ -5,12 +5,9 @@ class Member
   #Team: 1
   #Function: model of the member#contains all the needed attributes and relations for the member
   #Parameters: none
-
-
-
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable , :confirmable
 
@@ -22,20 +19,12 @@ class Member
   field :phone_num, type: Integer
   field :birth_date, type: Date
 
-
-
   field :confirmation_token,   type: String
   field :confirmed_at,         type: Time
   field :confirmation_sent_at, type: Time
   field :unconfirmed_email,    type: String # Only if using reconfirmable
 
-
   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :phone_num , :birth_date
-
-
-
-
-
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -56,6 +45,7 @@ class Member
   field :last_sign_in_at,    type: Time
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
+  
   #relations  related to the member
   has_one :wishlist ,class_name: 'Wishlist'
   has_many :historyItems ,class_name: 'Item'
@@ -72,15 +62,13 @@ class Member
   #Team : 1
   #Declaring a new relationship between the User and the Cart.
   has_one :cart , class_name: 'Cart'
-
-
+  
   validates :first_name,
     :presence => true,
   :length => {
     :minimum=> 2,
     :allow_blank => true
   }
-
 
   validates :last_name,
     :presence => true,
@@ -92,16 +80,11 @@ class Member
   validates :birth_date,
     :presence => true
 
-
   validates :phone_num,
     :presence => true
 
   validates_numericality_of :phone_num
   #validates_date :birth_date
-
-
-
-
 
   ## Lockable
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
