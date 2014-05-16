@@ -7,50 +7,43 @@
 
 <head>
 <style>
-navigationbar{
-height:800px;
-width:230px;
-background:#003366;
-font-size: 30px;
-  float:left;
-}
 
-h1{
+  h1{
 
 
-height:10px;
-font-size: 40px;
-width:100%;
-position:relative;
-  text-align:center;
-  float:left;
+    height:10px;
+    font-size: 40px;
+    width:100%;
+    position:relative;
+    text-align:center;
+    float:left;
 
-}
+  }
 
-table{
-  margin:5px;
-  padding: 5px;
-  border:1px solid #0000ff;
-  height:auto;
-  width:auto;
-  float:left;
-  text-align:center;
-background:orange;
+  table{
+    margin:5px;
+    padding: 5px;
+    border:1px solid #0000ff;
+    height:auto;
+    width:auto;
+    float:left;
+    text-align:center;
+    background:orange;
 
-}
-s
-opt
-{
+  }
+  s
+  opt
+  {
 
-position:absolute;
-width:130px;
-height:50px;
--webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
-transition:width 0.4s;
-padding:10px;
-left-margin:10px;
-  text-align:center;
-}
+    position:absolute;
+    width:130px;
+    height:50px;
+    -webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
+    transition:width 0.4s;
+    padding:10px;
+    left-margin:10px;
+    text-align:center;
+  }
 </style>
 
 <script type="text/javascript">
@@ -62,68 +55,80 @@ left-margin:10px;
 <body>
 <!-- Title for the page -->
 
+  <!--Author: Amr Nabil -->
+  <!--Team: GUI -->
+  <!--Function: the page for items in the warehouse displaying only items in the warehouse with no other links-->
+  <img src="http://iconizer.net/files/Containers/orig/fork3.png" style="width:100px">
+  <h1 style="position:absolute;top:105px; right:300px">My Warehouse</h1>
+  <!--Author: Amr Nabil -->
+  <!--Team: 3 -->
+  <!--Function : paginates items to be displayed in the warehouse -->
+                    
+  <%= paginate @items %>
+
+  <!-- table for items attributes -->
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        
+        <th colspan="1">Name</th>
+        <th colspan="1">Price</th>
+        <th colspan="1">Category</th>
+        <th colspan="1">Stock</th>
+        <th colspan="1">Status</th>
+        <th colspan="1">Description</th>
+        <th colspan="1">Actions</th>
+      </tr>
+    </thead>
+
+    <!-- looping on the items in the items model in the DB-->
+    <%= javascript_include_tag "application" %>
+    <tbody>
+
+      <% @items.each do |item| %>
+        <tr>
+            <td><%= item.name %></td>
+            <td><%= item.price %></td>
+            <td><%= item.category %></td>
+            <td><%= item.amount %></td>
+            <td><%= item.paused %></td>
+            <% # Author: Hazem Amin %>
+            <% #Component: 5 %>
+            <% # Printing the value of paused (true or false) for each and every item, depending on that record %>
+            <td><%= item.description %></td>
+            
+            <td><%= link_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %>||
+            <% # Author: Hazem Amin%>
+            <% # Component: 5%>
+            <% # button_to %>
+            <% # A paused button which name is Paused/Resume based on the status of paused for each specific item, it then goes to the toggle pause as dedined in routes%>
+            <%= link_to 'Show', item %>||
+            <%= link_to 'Edit', edit_item_path(item) %>||
+            <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          
+          
 
 
-<h1 style="padding-bottom:30px;">My Warehouse</h1>
-<!--Author: Amr Nabil -->
-<!--Team: 3 -->
-<!--Function : paginates items to be displayed in the warehouse -->
-                  
-<%= paginate @items %>
+        </tr>
+      
+      <% end %>
+      <% else %>
+          <tr>
+          <td colspan="0">Your Warehouse is empty Sir !!</td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table></br>
 
-<!-- printing the rows of the table -->
-<table>
-  <tr>
-      <th>Name</th>
-    <th>Price</th>
-    <th>Category</th>
-    <th>Stock</th>
-    <th>Status</th>
-    <% # Author: Hazem Amin %>
-    <% # Printing the column name "paused" in the table %>
-    <th>Description</th>
-    <th>Rating</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-<!-- looping on the items in the items model in the DB-->
-<%= javascript_include_tag "application" %>
-<% @items.each do |item| %>
-  <tr>
-   <td><%= item.name %></td>
-    <td><%= item.price %></td>
-    <td><%= item.category %></td>
-    <td><%= item.amount %></td>
-    <td><%= item.paused %></td>
-    <% # Author: Hazem Amin %>
-    <% #Component: 5 %>
-    <% # Printing the value of paused (true or false) for each and every item, depending on that record %>
-    <td><%= item.description %></td>
-    <td><%= item.rating %></td>
-    <td><%= button_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %></td>
-    <% # Author: Hazem Amin%>
-    <% # Component: 5%>
-    <% # button_to %>
-    <% # A paused button which name is Paused/Resume based on the status of paused for each specific item, it then goes to the toggle pause as dedined in routes%>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <br/>
+  <!-- link to insert new item page -->
+  </br>
+  <div class="contextual">
+        <%= link_to(new_item_path, class: "btn btn-success") do %>
+          Insert new item ? <i class="icon-plus icon-white"></i>
+        <% end %>
+  </div>
 
-    
-    
-
-    <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
-    <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
-
-</tr>
-<% end %>
-</table></br>
-
-<br />
-<!-- link to insert new item page -->
-</br>
-<%= link_to 'Insert New Item', new_item_path %>
 </body>
-<%end%>
 

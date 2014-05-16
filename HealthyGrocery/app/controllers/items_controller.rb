@@ -10,8 +10,8 @@ class ItemsController < ApplicationController
     #paginating items in the warehouse to be displayed  
                   
     
-   @items = Item.all.page(params[:page]).per(10)
-   if current_member.email == 'admin@gmail.com'
+   @items = Item.all.page(params[:page]).per(5)
+   if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
 else 
       @admin = false

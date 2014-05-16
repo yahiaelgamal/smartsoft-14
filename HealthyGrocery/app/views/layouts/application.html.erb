@@ -53,7 +53,10 @@
               <!--Team: GUI -->
               <!--Function: Any links here are showed to members AND Users -->
               <% @tmp = current_member %>
-              
+              <!--Author: Amr Nabil -->
+              <!--Team: GUI -->
+              <!--Function: adding logo for the website with some modifications to the navigation bar retailer side and user side-->
+              <li><img src="http://www.clipartbest.com/cliparts/KTn/g5K/KTng5KxEc.png" style="width:30px;margin-right:10px;margin-top:3px">
               <li><a class="brand" href="/members/hub">HealthyGrocery</a></li>
               <li><%= link_to "Hub", '/members'+'/hub' %></li>
               <li><%= link_to "Profile", @tmp %></li>
@@ -61,7 +64,7 @@
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Users Only-->
-              <% if current_member.email!='admin@gmail.com' %>
+              <% if current_member.email!='healthygrocery@gmail.com' %>
 
       
            
@@ -73,14 +76,14 @@
             
               
                 <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
-              <% end %>
+                <% end %>
 
 
 
               <!--Author: Andrew Khouzam -->
               <!--Team: GUI -->
               <!--Function: Any links here are showed to Admins Only-->
-              <% if current_member.email == 'admin@gmail.com' %>
+              <% if current_member.email == 'healthygrocery@gmail.com' %>
                   <li><%= link_to "Diseases", diseases_path %></li>
                   <li><%= link_to "Items", items_path %></li>
 
