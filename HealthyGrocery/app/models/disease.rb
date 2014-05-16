@@ -42,7 +42,7 @@ class Disease
       end
     end
     if @flag
-        if (!recommended.nil && recommended.count != 0)
+        if (recommended != nil && recommended.count != 0)
           disease.recommended_items << Item.find(recommended.first)
           disease.save
           recommended.each do |item|
@@ -50,7 +50,7 @@ class Disease
             disease.save
           end
         end
-        if (!restricted.nil && restricted.count != 0)
+        if (restricted != nil && restricted.count != 0)
           disease.restricted_items << Item.find(restricted.first)
           disease.save
           restricted.each do |item2|
