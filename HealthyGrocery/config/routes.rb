@@ -23,8 +23,10 @@ HealthyGrocery::Application.routes.draw do
    #Author:FatmaEmran
    #T2
    #Link to the health records of the people whom the user chose to order for
+   #Linking The page that shows the name of items the current user cannot order
     member do 
     post :order_checkboxes
+     Get :forbidden
     end 
  end
 
