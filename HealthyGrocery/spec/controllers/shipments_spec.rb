@@ -8,7 +8,7 @@ describe ShipmentsController do
   before do
     Shipment.all.destroy
     Member.all.destroy
-    @member = FactoryGirl.create(:member)
+    @member = FactoryGirl.create(:member, email: "admin@gmail.com")
     sign_in @member
     Address.all.destroy
     address = Address.where(:name => "house" ,:first => "Ahmed", :firstname => "Hamada", 
