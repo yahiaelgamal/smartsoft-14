@@ -6,7 +6,7 @@ FactoryGirl.define do
     f.gender "Male"
     f.phone_num "01221053548" 
     f.birth_date "12/8/1993"
-    f.email "mahmoud@eldesouky.com"
+    f.email "admin@gmail.com"
     f.password "wefwefefwd"
   end
 end
