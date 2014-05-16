@@ -23,6 +23,7 @@ class Route
  
   # Author : Karim El-Bawab
   # Team: 4
+  # Method name: show
   # Parameters: id 
   # Function : This function is used to to swap the latiude and the
   # longitude in order to be able to use them to get the real location

@@ -1,6 +1,6 @@
 // Author : Karim El-Bawab
 // Team: 4
-// Script name: google_maps_routes0
+// Script name: routes_show
 // Function: This script is responsible for viewing 
 // the map of the route   
 var directionsDisplay = new google.maps.DirectionsRenderer();

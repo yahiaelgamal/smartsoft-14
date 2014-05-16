@@ -11,7 +11,9 @@ describe ShipmentsController do
     @member = FactoryGirl.create(:member)
     sign_in @member
     Address.all.destroy
-    address = Address.where(:name => "house" ,:first => "Ahmed", :firstname => "Hamada", :lastname => "Toto",:country => "Egypt", :city => "Cairo", :postal => 12345,:street => "Makram",:coordinates => [31.235726308822677,30.044366207449162]).create
+    address = Address.where(:name => "house" ,:first => "Ahmed", :firstname => "Hamada", 
+      :lastname => "Toto",:country => "Egypt", :city => "Cairo", :postal => 12345,:street => "Makram",
+      :coordinates => [31.235726308822677,30.044366207449162]).create
     @member.addresses.push(address)
   end
   describe "GET #index" do 

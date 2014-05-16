@@ -1,6 +1,7 @@
 class RoutesController < ApplicationController
   # Author: Karim El-Bawab
   # Team: 4
+  # Action name: index
   # Function: this method is used to show all routes 
   # with some details about each route 
   def index
@@ -14,6 +15,7 @@ class RoutesController < ApplicationController
 
   # Author: Karim El-Bawab
   # Team: 4
+  # Action name: show
   # Function: this method is used to show specific route 
   # and it passes to the view the warehouse location (lat, lng)
   # and the array of points of the orders locations 
