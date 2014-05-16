@@ -55,7 +55,7 @@
                 'members_items_index'}, :class => "opt"%></li>
                    <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
                    <li><%= link_to 'My Wishlist' , 'http://localhost:3000/wishlists/show'%></li>
-                  <li><%= link_to "My Shopping Cart", 'http://localhost:3000/carts/show' %></li>
+                  <li><a href="../../carts/show"><i class="icon-large icon-shopping-cart"></i></a></li>
       <% end %>
 
               <!--Author: Andrew Khouzam -->
@@ -77,7 +77,7 @@
             <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
           <% end %>
           </li>
-              <li style="padding-left: 150px; "><%= link_to 'Logout', destroy_member_session_path, :method=> 'delete' %></li>
+              <li style="padding-left: 100px; "><%= link_to 'Logout', destroy_member_session_path, :method=> 'delete' %></li>
             
             </ul>
           </div><!--/.nav-collapse -->

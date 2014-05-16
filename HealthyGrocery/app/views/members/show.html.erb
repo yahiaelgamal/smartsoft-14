@@ -35,7 +35,8 @@
                     <p><font face="futura" size="3">Phone number:
                       </font><font face="futura" size="5"><strong><%= @member.phone_num%></p></strong>
                       <p><font face="futura" size="3">Gender:
-                        </font><font face="futura" size="5"><strong><%- if @member.gender %>
+                        </font><font face="futura" size="5"><strong>
+                        <%- if @member.gender %>
                               Male
                             <%else%>
                               Female
@@ -92,7 +93,7 @@
                   <font face="futura" color="green" size="7"><strong><%= @member.first_name%>'s Profile</font></strong>
                   <br>
                   <br>
-                  <br>
+                  <hr>
                   <p><font face="futura" size="3">Name:
                     </font><font face="futura" size="5"><strong><%= @member.first_name%>
                         <%= @member.last_name%></strong></p>

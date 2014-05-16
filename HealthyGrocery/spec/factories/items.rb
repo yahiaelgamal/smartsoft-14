@@ -1,4 +1,5 @@
 #spec/factories/items.rb
+include ActionDispatch::TestProcess
 FactoryGirl.define do
   factory :item do |f|
     f.price 100 
@@ -19,5 +20,6 @@ FactoryGirl.define do
     f.vitamin_e 20
     f.vitamin_k 20
     f.paused false 
+    f.image { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.png'), 'image/png') }
   end
 end

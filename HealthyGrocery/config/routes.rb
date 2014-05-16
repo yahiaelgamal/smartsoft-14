@@ -64,6 +64,10 @@ HealthyGrocery::Application.routes.draw do
       #ROUTES FOR LINEITEMS
 #----------------------------------------------------------------------------------------------------#
   resources :lineitems
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: Passing item_id and amount as parameters for add_to_cart method
+  get "/lineitems/:itemidnew/:amountnew/add_to_cart", :to =>"lineitems#add_to_cart", as:"addtocart"
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR CARTS
 #----------------------------------------------------------------------------------------------------#
@@ -93,6 +97,7 @@ HealthyGrocery::Application.routes.draw do
   match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
   get "addresses/position"
   resources :orders
+  match '/orders/new' => 'orders#new'
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR USERS
 #----------------------------------------------------------------------------------------------------#

@@ -58,6 +58,7 @@ class Healthrecord
   field :calcium_per_day, type: Float
   field :carbohydrate_per_day, type: Float
   field :protein_per_day, type: Float
+
   #Author:Mahmoud Eldesouky
   #team : 5
   #model of the healthrecord
@@ -75,3 +76,4 @@ class Healthrecord
   field :vitamin_e_till_now, type: Float
   field :vitamin_k_till_now, type: Float
 end
+
