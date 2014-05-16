@@ -247,6 +247,7 @@ class Item
       x = "Item toggled successfully"
     end
     return x
+  end
 
   #Author: Abdelrahman Sakr
   #Team: 1
