@@ -46,6 +46,7 @@ describe Item do
     h.vitamin_k_till_now.should == 100
   end
 
+<<<<<<< HEAD
   it "tillnow attribute should not be updated when a violation happens while adding an item" do
     Item.all.destroy
     Member.all.destroy
@@ -100,3 +101,4 @@ describe Item do
     end
   end
 end
+

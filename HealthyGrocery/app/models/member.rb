@@ -1,17 +1,14 @@
 class Member
   include Mongoid::Document
-
-  #Author: mohamed lotfy
-  #team : 1
-  #model of the member
-  #contains all the needed attributes and relations for the member
-
-
-
+  #Author: Mohamed Lotfy
+  #Team: 1
+  #Function: model of the member#contains all the needed attributes and relations for the member
+  #Parameters: none
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable , :confirmable
 
 
   # Setup accessible (or protected) attributes for your model
@@ -20,9 +17,13 @@ class Member
   field :gender, type: String
   field :phone_num, type: Integer
   field :birth_date, type: Date
+  field :confirmation_token,   type: String
+  field :confirmed_at,         type: Time
+  field :confirmation_sent_at, type: Time
+  field :unconfirmed_email,    type: String # Only if using reconfirmable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender ,:phone_num , :birth_date
 
+  attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :phone_num , :birth_date
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -43,6 +44,9 @@ class Member
   field :last_sign_in_at,    type: Time
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
+
+  
+
   #relations  related to the member
   has_one :wishlist ,class_name: 'Wishlist'
   has_many :historyItems ,class_name: 'Item'
@@ -68,7 +72,6 @@ class Member
     :allow_blank => true
   }
 
-
   validates :last_name,
     :presence => true,
   :length => {
@@ -78,8 +81,6 @@ class Member
 
   validates :birth_date,
     :presence => true
-
-
   validates :phone_num,
     :presence => true
 
@@ -91,11 +92,13 @@ class Member
 
 
 
+
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
   # field :confirmation_sent_at, type: Time
   # field :unconfirmed_email,    type: String # Only if using reconfirmable
+
 
   ## Lockable
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts

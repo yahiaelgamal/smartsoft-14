@@ -1,3 +1,4 @@
+<body>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -5,6 +6,11 @@
   <%= @route.arrOfPoints %>
 </p>
 
-
-<%= link_to 'Edit', edit_route_path(@route) %> |
-<%= link_to 'Back', routes_path %>
+ <b>Route ID:</b>
+  <%= @route.id %>
+</p>
+<%= link_to 'Print Drivers instructions', route_path(@route, :format => "pdf") %><br>
+<a href="<%= @route.get_print_url() %>" target="_blank">Print Map</a><br>
+<%= link_to 'Edit', edit_route_path(@route) %> <br>
+<%= link_to 'Back', routes_path %><br>
+</body>
