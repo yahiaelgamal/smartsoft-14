@@ -69,9 +69,9 @@ describe Item do
  end  
     it "should have its price changed" do
         Item.all.destroy
-        x = FactoryGirl.create(:item)
+        item = FactoryGirl.create(:item)
         Item.make_discount(x.id,0.5)
-        x = Item.first
-        x.price.should == 50 
+        item = Item.first
+        item.price.should == 50 
     end  
 end
