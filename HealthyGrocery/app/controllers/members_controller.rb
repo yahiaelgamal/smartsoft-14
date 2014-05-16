@@ -67,10 +67,10 @@ class MembersController < ApplicationController
 #params : none
 #it shows the page of the member's healthrecord 
  def get_records
-    @member = Member.find(params[:id]
-    @health_records = @member.records
-  respond_to do |format|
+    @member = Member.find(params[:id])
+    @health_records = @member.records 
 
+  respond_to do |format|
       format.html# show.html.erb
       format.json { render json: @healthrecord }
     end
