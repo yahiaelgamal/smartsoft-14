@@ -21,8 +21,8 @@ class RoutePdf < Prawn::Document
       divisions = @route.arrOfPoints.count
       #draw_text "#{route.orders[0].coordinates}", :at => [180,330], :rotate => 90
       divisions.times do |i|
-        x = 215+(i+1)*(210/(divisions+1))
-        draw_text "Order #: #{revOrders[i].orderNo}", :at => [x,460], :rotate => 90
+        distance_between_orders = 215+(i+1)*(210/(divisions+1))
+        draw_text "Order #: #{revOrders[i].orderNo}", :at => [distance_between_orders,460], :rotate => 90
       end
     end
   end
