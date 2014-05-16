@@ -25,7 +25,6 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 #adding gem capyayara to test devise with Rspec!
-gem 'capybara', :group => :test
 
 group :test do 
   gem 'faker' 
@@ -72,11 +71,6 @@ gem 'webmock'
 
 gem 'pdf-reader', :require => 'pdf/reader'
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 16b80fac5770ba70c64fc31547adaab31e0996b3
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -46,7 +46,7 @@ describe Item do
     h.vitamin_k_till_now.should == 100
   end
 
-<<<<<<< HEAD
+
   it "tillnow attribute should not be updated when a violation happens while adding an item" do
     Item.all.destroy
     Member.all.destroy
@@ -100,5 +100,12 @@ describe Item do
         Item.get_alter(item,healthrecord,member).should eq([item2,item3])
     end
   end
+    it "should have its price changed" do
+        Item.all.destroy
+        item = FactoryGirl.create(:item)
+        Item.make_discount(x.id,0.5)
+        item = Item.first
+        item.price.should == 50 
+    end  
 end
 

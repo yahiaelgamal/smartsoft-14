@@ -35,7 +35,8 @@
                     <p><font face="futura" size="3">Phone number:
                       </font><font face="futura" size="5"><strong><%= @member.phone_num%></p></strong>
                       <p><font face="futura" size="3">Gender:
-                        </font><font face="futura" size="5"><strong><%- if @member.gender %>
+                        </font><font face="futura" size="5"><strong>
+                        <%- if @member.gender %>
                               Male
                             <%else%>
                               Female
@@ -92,30 +93,7 @@
                   <font face="futura" color="green" size="7"><strong><%= @member.first_name%>'s Profile</font></strong>
                   <br>
                   <br>
-                  <%= link_to(edit_member_path(@member), :class => 'btn btn-success') do %>
-                    <i class="icon-cog icon-white"></i><font face="futura" color="white">
-                      Edit Profile</font>
-                  <% end %>
                   <hr>
-                  <!-- Author: Mahmoud Walid
-                  Team: 3
-                  Function: show alerts if there is any order without an address-->
-                  <%if @member%>
-                    <% @count = true%>
-                    <% @member.orders.each do |ord|%>
-                      <%if not ord.coordinates%>
-                        <% if @count%>
-                          <hr>
-                          <br>
-                          <br>
-                          <%flash[:alert] = "You have an order that needs shipping and billing addresses, please #{link_to "click here",chooseOrder_path(ord)} to choose now".html_safe%>
-                          <%@count=false%>
-                        <% else %>
-                          <%flash[:alert] = "You have more than one order that needs shipping and billing addresses, please #{link_to "click here",showOrders_path} to show your orders".html_safe%>
-                          <br>
-                          <br>
-                          <br>
-                  <br>
                   <p><font face="futura" size="3">Name:
                     </font><font face="futura" size="5"><strong><%= @member.first_name%>
                         <%= @member.last_name%></strong></p>
