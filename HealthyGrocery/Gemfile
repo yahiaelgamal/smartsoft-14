@@ -43,10 +43,17 @@ gem 'gmaps4rails', '~> 2.1.2'
 gem "gon" , '5.0.4'
 #handles the showen progress bar 
 gem 'css3-progress-bar-rails'
+gem 'kaminari'
+
+group :test do 
+  gem 'faker' 
+  gem 'capybara' 
+  gem 'guard-rspec' 
+  gem 'launchy' 
+end
+
 gem 'ruby-beautify', '~> 0.92.2'
 
-
-       
 
 # Gems used only for assets and not required
 # in production environments by default.

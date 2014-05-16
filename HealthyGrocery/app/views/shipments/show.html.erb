@@ -1,9 +1,70 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Cut off time:</b>
-</p>
-
-
-<%= link_to 'Edit', edit_shipment_path(@shipment) %> |
-<%= link_to 'Back', shipments_path %>
+<!--# Author : Karim El-Bawab
+    # Team: 4
+    # View name: show
+    # Function: This is the view that show the information
+    # of a specific shipment with its routes  
+-->
+<% if current_member.email != 'admin@gmail.com' %>
+  <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
+  <%= link_to "Back", current_member %>
+<% else %>
+  <div class="page-header">
+    <h1>Shipment</h1>
+  </div>
+  <p>
+    <b>Shipment ID:</b>
+    <%= @shipment.id %>
+  </p>
+  <br>
+  <p>
+    <b>Created at:</b>
+    <%= @shipment.created_at %>
+  </p>
+  <br>
+  <div class="page-header">
+    <h4>
+      <b>Listing of Routes:</b>
+    </h4>
+  </div>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th colspan="1">Route ID</th>
+        <th colspan="1">Orders No.</th>
+        <th colspan="1">Created at</th>
+        <th colspan="1">Shipment ID</th>
+        <th colspan="1">Truck ID</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% unless @shipment.routes.empty? %>
+        <%= paginate @routes%>
+        <% @routes.each do |route| %>
+          <tr>
+            <td><%= route.id %></td>
+            <% arr = [] %>
+            <% route.arrOfPoints.each do |points|%>
+              <% arr.push(Order.find_by(coordinates: points).orderNo) %>
+            <% end %>
+            <td><%= arr %></td>
+            <td><%= route.created_at %></td>
+            <td><%= route.shipment_id %></td>
+            <td><%= route.truck_id %></td>
+            <td>
+              <%= link_to(route, class: "btn btn-small") do %>
+                Show
+                <i class="icon-show icon-white"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="0">This Shipment did not contain any routes</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Back', shipments_path %>
+<% end %>

@@ -1,0 +1,9 @@
+<!--# Author : Karim El-Bawab
+    # Team: 4
+    # View name: _first_page 
+    # Function: This file used to add bootstrap style on the button 
+    # of the first page of pagination related to kaminari gem  
+-->
+<li>
+  <%= link_to_unless current_page.first?, raw(t 'views.pagination.first'), url, :remote => remote %>
+</li>

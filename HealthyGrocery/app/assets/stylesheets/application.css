@@ -6,21 +6,29 @@
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope. 
- *= require 'css3-progress-bar'
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
  *= require_self
  *= require_tree .
  */
-
 /* Author: Karim El-Bawab
    Team: 4
-   Function: This style used to fix the map with the twitter bootstrap   
+   Function: This style used to fix the maps and the 
+   directions panel with the twitter bootstrap   
 */
 #map img {
     max-width: none;
 }
 
 #map label {
+    width: auto;
+    display: inline;
+}
+#directions-panel img {
+    max-width: none;
+}
+
+#directions-panel label {
     width: auto;
     display: inline;
 }
