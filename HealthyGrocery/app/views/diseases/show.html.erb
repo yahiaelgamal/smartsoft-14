@@ -33,7 +33,7 @@
       <% end %>
     </td>
   </tr>
-  <% if @admin == true%> 
+  <% if current_member.email == 'admin@gmail.com' %>
   <tr>
     <th colspan="7">Actions:</th>
       <td>
