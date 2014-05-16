@@ -1,0 +1,47 @@
+<!-- Author: mina sedra -->
+<!-- Team: 2-->
+<!-- This page is the view to show the healthrecord  -->
+<%= stylesheet_link_tag "healthrecords" , :media => "all" %>
+<body>
+  <p id="notice"><%= notice %></p>
+  <p>
+    <b>Name:</b>
+    <%= @healthrecord.name %>
+  </p>
+  <p>
+    <b>Bmi:</b>
+    <%= @healthrecord.bmi %>
+  </p>
+  <p>
+    <b>Age:</b>
+    <%= @healthrecord.age %>
+  </p>
+  <p>
+    <b>Height:</b>
+    <%= @healthrecord.height %>
+  </p>
+  <p>
+    <b>Weight:</b>
+    <%= @healthrecord.weight %>
+  </p>
+  <p>
+    <b>Program:</b>
+    <%= @healthrecord.program %>
+  </p>
+  <p>
+    <b>Gender:</b>
+    <%= @healthrecord.gender %>
+  </p>
+  <p>
+    <b>Race:</b>
+    <%= @healthrecord.race %>
+  </p>
+  <tr>
+    <th colspan="7">Disease:</th>
+  </br>
+  <td>
+    <% @healthrecord.diseases.each do |c| %>
+      <td><%= link_to c.name, c %></td>
+    </label>
+  </br>
+<% end %>
