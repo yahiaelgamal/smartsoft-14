@@ -486,6 +486,19 @@ class ItemsController < ApplicationController
       filter_4
       filter_5
 
+    user = current_member
+    healthrecord = user.records.first
+  if(!healthrecord.acceptable_fat_per_week.nil? &&
+    !healthrecord.acceptable_calcium_per_week.nil? &&
+    !healthrecord.acceptable_carbohydrate_per_week.nil? &&
+    !healthrecord.acceptable_protein_per_week.nil? &&
+    !healthrecord.acceptable_vitamin_a_per_week.nil? &&
+    !healthrecord.acceptable_vitamin_b_per_week.nil? &&
+    !healthrecord.acceptable_vitamin_c_per_week.nil? &&
+    !healthrecord.acceptable_vitamin_d_per_week.nil? &&
+    !healthrecord.acceptable_vitamin_e_per_week.nil? &&
+    !healthrecord.acceptable_vitamin_k_per_week.nil?)
+
     #AUTHOR: Mahmoud Eldesouky
     #Team: 5
     #Method name: members_items_index
@@ -511,6 +524,7 @@ class ItemsController < ApplicationController
     @vitamin_d_bar = (healthrecord.vitamin_d_till_now / healthrecord.acceptable_vitamin_d_per_week) * 100
     @vitamin_e_bar = (healthrecord.vitamin_e_till_now / healthrecord.acceptable_vitamin_e_per_week) * 100
     @vitamin_k_bar = (healthrecord.vitamin_k_till_now / healthrecord.acceptable_vitamin_k_per_week) * 100
+  end
   end
 
   #AUTHOR: Mahmoud Eldesouky
