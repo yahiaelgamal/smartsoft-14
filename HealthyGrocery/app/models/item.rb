@@ -56,8 +56,8 @@ class Item
   #Team: 5
   #linking items to diseases
 
-  belongs_to :good_for_diseases , class_name: 'Disease' , inverse_of: :recommended_items
-  belongs_to :bad_for_diseases , class_name: 'Disease' , inverse_of: :restricted_items
+  has_and_belongs_to_many :good_for_diseases , class_name: 'Disease' , inverse_of: :recommended_items
+  has_and_belongs_to_many :bad_for_diseases , class_name: 'Disease' , inverse_of: :restricted_items
 
 
   #Author: Abdelrahman Sakr
