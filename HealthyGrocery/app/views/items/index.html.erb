@@ -79,7 +79,6 @@
             <td><%= button_to (item.paused ? "Pause" : "Resume" ) , toggle_pause_item_path(item), {:confirm => item.paused ? "Are you Sure you want to pause the time?" : "Are you sure you want to resume the item?" }  %></td>
             <!--Author: Hazem Amin-->
             <!--Team: 5-->
-            <!--Button name: button_to-->
             <!--Function: A paused button which name is Paused/Resume based on the status of paused for each specific item, it then goes to the toggle pause as dedined in routes-->
             <td><%= link_to 'Show', item %></td>
             <td><%= link_to 'Edit', edit_item_path(item) %></td>
