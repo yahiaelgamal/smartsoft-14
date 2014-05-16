@@ -2,6 +2,8 @@ source 'https://rubygems.org/'
 #ruby '1.9.3'
 gem 'rails', '3.2.11'
 
+gem 'kaminari'
+
 
 gem 'mongoid'
 gem 'bson_ext'
@@ -25,6 +27,13 @@ end
 #adding gem capyayara to test devise with Rspec!
 gem 'capybara', :group => :test
 
+group :test do 
+  gem 'faker' 
+  gem 'capybara' 
+  gem 'guard-rspec' 
+  gem 'launchy' 
+end
+
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
 
@@ -43,9 +52,8 @@ gem 'gmaps4rails', '~> 2.1.2'
 gem "gon" , '5.0.4'
 #handles the showen progress bar 
 gem 'css3-progress-bar-rails'
+
 gem 'ruby-beautify', '~> 0.92.2'
-
-
 
 gem 'prawn'
 gem 'prawn-print'
@@ -57,9 +65,7 @@ gem 'capybara'
 gem 'pdf-inspector'
 gem 'webmock'
 
-
 gem 'pdf-reader', :require => 'pdf/reader'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
