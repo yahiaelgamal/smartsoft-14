@@ -68,6 +68,11 @@ describe Item do
   h.vitamin_k_till_now.should == 0
  end
   
+#Author: Sameh Metias
+#Team: 3
+#Function: TDD test cases for the method getting alternative items when 
+#the required item is out of stock
+
 
   describe "As a member, when I try to add an item to the shopping-cart
   that is almost out of stock"do
@@ -101,6 +106,5 @@ describe Item do
 
       current_item.get_alternative_stock.should == []
     end  
-
-end
+  end
 end
