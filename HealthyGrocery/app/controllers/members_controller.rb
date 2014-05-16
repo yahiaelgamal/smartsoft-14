@@ -76,7 +76,11 @@ class MembersController < ApplicationController
     end
   end
 
-
+ #Atuhor: ahmed helali
+  #team 2
+  #method: show_ideal_calories
+  #parameters: none
+  #function: reponsible for the view of the same name
   def show_restricted_items
 
     @member = current_member
@@ -99,6 +103,11 @@ class MembersController < ApplicationController
   #   end
   # end
 
+  #Atuhor: ahmed helali
+  #team 2
+  #method: show_ideal_calories
+  #parameters: none
+  #function: reponsible for the view of the same name
   def calculated_ideal
 
     @member = current_member
