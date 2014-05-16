@@ -21,7 +21,7 @@ class WishlistsController < ApplicationController
   # GET /wishlists/1.json
   def show
     #@wishlist = Wishlist.find(params[:id])
-    @wishlist = current_member.wishlist
+    @wishlist = current_wish_new
 
     respond_to do |format|
       format.html # show.html.erb

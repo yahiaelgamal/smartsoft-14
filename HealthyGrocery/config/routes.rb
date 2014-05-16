@@ -1,116 +1,137 @@
 HealthyGrocery::Application.routes.draw do
-  
-  resources :healthrecords
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR MEMBER
+#----------------------------------------------------------------------------------------------------#
+  #for user profile page
+  get 'welcome/index'
+  get 'members/hub'
+  get 'members/generate_routes'
 
-
-  # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
-
- get 'members/hub'
- resources :healthrecords
-resources :health_records
-  
- resources :items do
-  member do
-   post 'toggle_pause'
-  end
- end
-  # Author: Hazem Amin
-  # Component: 5
-  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
-  # it's invoked on a single item (member)
-
-  resources :wishlines
-
-  resources :drivers
-  # Author: Hazem Amin 
-  # Component: 5
-  # Drivers page
-
-   resources :wishlists
-   
-get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
-
- root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
-
- devise_for :members, :controllers => {:registrations => "registrations", }
-
-  
- resources :lineitems
-
-
-
- resources :carts
-
-
- root :to => "members#index"
- devise_for :members, :controllers => {:registrations => "registrations", }
-   #for user profile page
+  get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
+  root :to => 'welcome#index' # so as to not for the member to root to the page containnng site members!!
+  devise_for :members, :controllers => {:registrations => "registrations", }
+  match 'user_root' => redirect("/member/show")
    resources :members do
-   get 'edit'
-   
    #Author: Ahmed Helali
    #Team 2
    # I added this path for the show_restricted_items
    #controller and view
-   
    get :show_restricted_items, :on => :collection
    get :show_ideal_calories, :on => :collection
    get :calculated_ideal, :on => :collection
-   
- end
-#Author:FatmaEmran
-#T2
-#Link to the health records of the people whom the user chose to order for
-  resources :members  
- #get "get_records"
-  resources :members do
-   member do 
+   #Author:FatmaEmran
+   #T2
+   #Link to the health records of the people whom the user chose to order for
+    member do 
     post :order_checkboxes
     end 
-  end
-  match 'user_root' => redirect("/member/show")
-  resources :members
-  match 'user_root' => redirect("/member/show")
-  resources :items do
-  collection do
+ end
+
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ITEMS
+#----------------------------------------------------------------------------------------------------#
+ post "items/members_items_index/add" => "items#add"
+ resources :items do
+   collection do
   get "members_items_index"
   post "add"
   end
+  member do
+   post 'toggle_pause'
   end
-  match '/items' => 'items#index'
-
-  resources :routes
-
-
+ end
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR HEALTHRECORDS
+#----------------------------------------------------------------------------------------------------#
+  resources :healthrecords
+  resources :health_records
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR WISHLINES
+#----------------------------------------------------------------------------------------------------#
+ resources :wishlines
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DRIVERS
+#----------------------------------------------------------------------------------------------------#
+  resources :drivers
+  # Author: Hazem Amin 
+  # Component: 5
+  # Drivers page
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR WISHLISTS
+#----------------------------------------------------------------------------------------------------#
+ resources :wishlists
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR LINEITEMS
+#----------------------------------------------------------------------------------------------------#
+  resources :lineitems
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR CARTS
+#----------------------------------------------------------------------------------------------------#
+  resources :carts
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ROUTES
+#----------------------------------------------------------------------------------------------------#
+ resources :routes
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR SHIPMENTS
+#----------------------------------------------------------------------------------------------------#
   resources :shipments
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR TRUCKS
+#----------------------------------------------------------------------------------------------------#
   resources :trucks
-
-
-  resources :orders
-
-
-  resources :users
-
-
-    
-  
-  match '/generateroutes' => 'generateroutes#index'
-  post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
-  post "generateroutes/gen" => "generateroutes#gen" 
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ORDERS
+#----------------------------------------------------------------------------------------------------#
+ # Author: Mahmoud Walid
+ # Team: 3
+ # Function: adding routes for chaning pass and pass_billing attributes for updating shipping
+ # and billing addresses
+  get   '/orders/:id/choose', to:'orders#choose' , as: 'chooseOrder'
+  put '/orders/:id/submit' , to: 'orders#submit' , as: 'submit'
+  get '/orders/:id/change' , to: 'orders#change' , as: 'change'
+  match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
+  get "addresses/position"
   #Author: FatmaEmran
-  #Team:2
-  #order creation in database
-  resources :orders
-  order do
+   #Team:2
+   #order creation in database
+   resources :orders
+    order do
     get :forbidden
-  end  
+    end  
+  resources :orders
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR USERS
+#----------------------------------------------------------------------------------------------------#
+  resources :users
+   match '/generateroutes' => 'generateroutes#index'
+   post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
+   post "generateroutes/gen" => "generateroutes#gen" 
+   post "items/members_items_index/add" => "items#add"
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DISEASES
+#----------------------------------------------------------------------------------------------------#
+ resources :diseases
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR GENERATEROUTES
+#----------------------------------------------------------------------------------------------------#
 
-  resources :diseases
-
-  post "items/members_items_index/add" => "items#add"
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR HEALTH_RECORDS
+#----------------------------------------------------------------------------------------------------#
+  resources :health_records
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ADDRESSES
+#----------------------------------------------------------------------------------------------------#
+  resources :addresses
+  # Author: Mahmoud Walid
+  # Team: 3
+  # Function: adding routes for showing orders and addresses of the member
+  get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
+  get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
+#----------------------------------------------------------------------------------------------------#
+      #NOTHING GOES BELOW THIS
+#----------------------------------------------------------------------------------------------------
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

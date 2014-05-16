@@ -1,0 +1,28 @@
+<!-- Author: Mahmoud Walid
+     Team: 3
+     Function: a form for choosing the billing and shipping addresses through a drop down list that
+     passes the ids of the addresses chosen-->
+<%= form_for(@order, url: submit_path(@order)) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Shipping address" %><br />
+    <%= f.select :pass , options_from_collection_for_select(current_member.addresses, :id, :name) %>
+    <%= f.label "Billing address" %><br />  
+    <%= f.select :pass_billing , options_from_collection_for_select(current_member.addresses, :id, :name) %>
+    <%= link_to 'Add a new address', new_address_path %>
+    </div>
+  <div class="actions">
+    <%= f.submit "Confirm addresses" %>
+  </div>
+<% end %>
