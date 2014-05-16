@@ -1,7 +1,7 @@
 # spec/factories/diseases.rb
 FactoryGirl.define do
   factory :disease do |f|
-    f.name "flu"
+    f.name "cancer"
     f.information "common disease"
     f.protein 20
     f.carbohydrate 20 
