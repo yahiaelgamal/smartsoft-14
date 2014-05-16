@@ -78,7 +78,7 @@ end
   def create
     @disease = Disease.new(params[:disease])
     both = false
-    not_nummber = false
+    not_number = false
     fats_up = params[:fat_up].to_i
     fats_down = params[:fat_down].to_i
     if ((fats_up == 0 && params[:fat_up] != '0') || (fats_down == 0 && params[:fat_down] != '0'))
@@ -287,7 +287,7 @@ end
     @disease.vitamin_e = 0
     @disease.vitamin_k = 0
     both = false
-    not_nummber = false
+    not_number = false
     fats_up = params[:fat_up].to_i
     fats_down = params[:fat_down].to_i
     if ((fats_up == 0 && params[:fat_up] != '0') || (fats_down == 0 && params[:fat_down] != '0'))
