@@ -168,24 +168,18 @@ Here is the filter search form where the user can fill any desired field and sub
   <td>Vitamin E: <%= item.vitamin_e %></td></br>
   <td>Vitamin K: <%= item.vitamin_k %></td></br>
 
-
-    <%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1-->
-
-    <textarea rows="1" cols="4"></textarea> KG  <%= button_to 'Add to Cart', lineitems_path(item_id: item) %>
-    </br>
- 
 <!--AUTHOR: Mahmoud Eldesouky
     Team :5
     takes the quantiy from the user -->
-<%= form_tag("members_items_index/add", method: "post", multipart: true) do %>
-  <p>
-    <%= hidden_field_tag(:item, item.id ) %>
-    <%= text_field_tag :amount %>
-    <%= submit_tag "Add to shopping cart", :name => nil %>
-  </p>
- 
-<% end %>
-    
+    <%= form_tag("members_items_index/add", method: "post", multipart: true) do %>
+        <p>
+            <%= hidden_field_tag(:item, item.id ) %>
+            <%= text_field_tag :amount %>
+            <%= submit_tag "Add to Cart", :name => nil %>
+        </p> 
+    <% end %>
+
+    <%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1--> 
 
   </icon>
 <% end %>
