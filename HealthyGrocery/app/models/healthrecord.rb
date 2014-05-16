@@ -41,7 +41,11 @@ class Healthrecord
   validates :age, length: { maximum: 2 }
   validates :height, length: { maximum: 3 }
   validates :weight, length: { maximum: 3 }
-  
+
+  validates_numericality_of :height, :only_integer => true, :greater_than_or_equal_to => 0
+  validates_numericality_of :weight, :only_integer => true, :greater_than_or_equal_to => 0
+  validates_numericality_of :age, :only_integer => true, :greater_than_or_equal_to => 0
+  validates_numericality_of :fats, :only_integer => true, :greater_than_or_equal_to => 0
 
   belongs_to :member , class_name: 'Member' , inverse_of: :records 
   has_many :diseases , class_name: 'Disease' , inverse_of: :healthrecords 
