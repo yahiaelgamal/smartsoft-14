@@ -119,6 +119,14 @@ HealthyGrocery::Application.routes.draw do
   get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
   get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
 #----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DISCOUNT
+#----------------------------------------------------------------------------------------------------#
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: This route is used to be able to make and remove discounts on items
+  post "/items/make_discount" , :to =>"items#make_discount" , as: "makediscount"  
+  get "/items/:discount_item_id/remove_discount" , :to =>"items#remove_discount" , as: "removediscount"
+#----------------------------------------------------------------------------------------------------#
       #NOTHING GOES BELOW THIS
 #----------------------------------------------------------------------------------------------------#
   # The priority is based upon order of creation:

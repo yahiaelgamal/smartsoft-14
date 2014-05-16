@@ -66,5 +66,13 @@ describe Item do
   h.vitamin_d_till_now.should == 0
   h.vitamin_e_till_now.should == 0
   h.vitamin_k_till_now.should == 0
- end
+ end  
+    it "should have its price changed" do
+        Item.all.destroy
+        item = FactoryGirl.create(:item)
+        Item.make_discount(x.id,0.5)
+        item = Item.first
+        item.price.should == 50 
+    end  
 end
+
