@@ -14,6 +14,10 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
 #shows information about a specific route
+#Author: Sameh Metias
+#Team: 3
+#Function: Added the links to the print routes and the print instructions pages 
+
   def show
     @route = Route.find(params[:id])
 
@@ -25,9 +29,6 @@ class RoutesController < ApplicationController
         pdf.print
         send_data pdf.render, filename: "route_#{@route.id}.pdf", type: "application/pdf", 
                               disposition: "inline"
-# reader = PDF::Reader.new("route_#{@route.id}.pdf")
- #       page = reader.page(1)
-  #      p page.text
       end  
     end
   end

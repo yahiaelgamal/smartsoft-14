@@ -28,9 +28,8 @@ class Route
 #Function: This method takes an id of a route and returns a url containing all the required 
 #coordinates to print the route
   def get_print_url()
-    #route = Route.find(id)
     points = self.arrOfPoints   
-    #coordinates of the retailer hardcoded
+    #coordinates of the retailer hardcoded at [30.199,31.002]
     url = "http://maps.google.com/maps?f=d&source=s_d&saddr=30.199,31.002" 
     len = points.size
     len.times do |i|
