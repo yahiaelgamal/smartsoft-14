@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <br/>
 <br/>
-
 <head>
+<<<<<<< HEAD
 
 <style>
 .form_caja {
@@ -32,22 +32,37 @@
 </head>
 
 <body>
+=======
+  <%= stylesheet_link_tag "member" , :media => "all" %>
+  <head/>
+  <body>
+    <div class="contextual">
+      <%= link_to(new_healthrecord_path, class: "btn btn-success") do %>
+        New Healthrecord
+        <i class="icon-plus icon-white"></i>
+      <% end %>
+    </div>
+>>>>>>> aa02ff06045f379c13b1e2973edd394ad5bcad3a
     <div class="form_caja">
-  <p > <%= current_member.first_name %> 's HEALTHRECORDS</p>
-  <table width="100%" >
-  
-<% @healthrecord.each do |healthrecord| %>
-  <thead><tr> 
-  
-      <td>Name: <%= healthrecord.name %></td> 
-<td><%= link_to  "<button>Show</button>".html_safe, healthrecord %></td>
-    <td><%= link_to  "<button>Edit</button>".html_safe, edit_healthrecord_path(healthrecord) %></td>
-    <td><%= link_to  "<button>Remove</button>".html_safe, healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr></thead>
-  <% end %>
-  </table>
-</div>
-<%= link_to "<button>New Healthrecord</button>".html_safe, new_healthrecord_path %>
-
-</body>
-
+      <p >
+        <%= current_member.first_name %>
+        's HEALTHRECORDS</p>
+      <table width="100%" >
+        <% @health_records.each do |healthrecord| %>
+          <thead><tr>
+              <td>Name:
+                <%= healthrecord.name %></td>
+              <!-- author : mina
+     link to the healthrecord -->
+              <td><%= link_to  "<button>Show</button>".html_safe, healthrecord %></td>
+              <!-- author : mina
+ link to update the healthrecord -->
+              <td><%= link_to  "<button>Edit</button>".html_safe, edit_healthrecord_path(healthrecord) %></td>
+              <!-- author : mina
+     link to remove  healthrecord -->
+              <td><%= link_to  "<button>Remove</button>".html_safe, healthrecord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr></thead>
+        <% end %>
+      </table>
+    </div>
+  </body>
