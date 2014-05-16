@@ -142,15 +142,15 @@ left-margin:50px;
 <!--AUTHOR: Mahmoud Eldesouky
     Team :5
     takes the quantiy from the user -->
-<%= form_tag("members_items_index/add", method: "post", multipart: true) do %>
-  <p>
-    <%= hidden_field_tag(:item, item.id ) %>
-    <%= text_field_tag :amount %>
-    <%= submit_tag "Add to Cart", :name => nil %>
-  </p> 
-<% end %>
+    <%= form_tag("members_items_index/add", method: "post", multipart: true) do %>
+        <p>
+            <%= hidden_field_tag(:item, item.id ) %>
+            <%= text_field_tag :amount %>
+            <%= submit_tag "Add to Cart", :name => nil %>
+        </p> 
+    <% end %>
 
-<%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1--> 
+    <%= button_to 'Add to wishlist', wishlines_path(item_id: item)%><!--add to wishlist/author:mohamed lotfy team:1--> 
 
   </icon>
 <% end %>
