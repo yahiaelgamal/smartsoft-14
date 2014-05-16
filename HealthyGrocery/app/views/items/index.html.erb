@@ -1,58 +1,13 @@
 <!--to check the adminstration level-->
 <%= csrf_meta_tag %>
 
-<% if @admin == false%>
+<% if current_member.email!='healthygrocery@gmail.com'%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
 <%= link_to_function "Back", "history.back()" %>
-<%elsif @admin == true%>
+<%else%>
 
 <head>
-<style>
-navigationbar{
-height:800px;
-width:230px;
-background:#003366;
-font-size: 30px;
-  float:left;
-}
 
-h1{
-
-
-height:10px;
-font-size: 40px;
-width:100%;
-position:relative;
-  text-align:center;
-  float:left;
-
-}
-
-table{
-  margin:5px;
-  padding: 5px;
-  border:1px solid #0000ff;
-  height:auto;
-  width:auto;
-  float:left;
-  text-align:center;
-background:orange;
-
-}
-s
-opt
-{
-
-position:absolute;
-width:130px;
-height:50px;
--webkit-transition:width 0.4s; /* For Safari 3.1 to 6.0 */
-transition:width 0.4s;
-padding:10px;
-left-margin:10px;
-  text-align:center;
-}
-</style>
 
 <script type="text/javascript">
 
@@ -117,7 +72,20 @@ Navigate Here </br></br>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+    
+    <%#Author: Abdelrahman Sakr
+    #Team: 1
+    #Function: Adding text field to specify the discount amount, and two buttons "Make Discount" and "Remove Discount" to make discount or remove the discount%>
+    <% @discount_item_id = item.id %>
+    <td><%= form_tag(makediscount_path) do %>
+    <p>
+    <%= hidden_field_tag(:discount_item_id, @discount_item_id ) %>
+    <%= text_field_tag (:discount_amount)%>
+    <%= submit_tag "Make Discount"%>
+    </p>
+    <% end %>
+    </td>
+    <td><%= link_to 'Remove Discount', removediscount_path(item) %></td>
     
     
 
