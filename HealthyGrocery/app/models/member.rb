@@ -106,4 +106,24 @@ validates :phone_num,
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+  #Atuhor: Magd Elshebokshy
+  #team: 3
+  #method: allowed items
+  #parameters: none
+  #function: generate the list of items that the user is allowed to eat
+  def self.allowed_items(@member, @allowed_items)
+    if !@member.diseases.empty?
+      @member.diseases.each do |disease|
+        if !@disease.restricted_items.empty?
+          @disease.restricted_items.each do |item|
+            if @disease.restricted_items.include? (item)
+              @allowed_items.delete(item)
+            end
+          end
+        end
+      end
+    end
+    @member.allowed_items = allowed_items
+    @member.save
+  end
 end

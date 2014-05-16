@@ -142,23 +142,10 @@ class MembersController < ApplicationController
   #team: 3
   #method: allowed items
   #parameters: none
-  #function: generate the list of items that the user is allowed to eat
+  #function: calling allowed items in member controller
   def allowed_items
     @member = Member.find(params[:id])
     @allowed_items = Item.all
-
-    if !@member.diseases.empty?
-      @member.diseases.each do |disease|
-        if !@disease.restricted_items.empty?
-          @disease.restricted_items.each do |item|
-            if @disease.restricted_items.include? (item)
-              @allowed_items.delete(item)
-            end
-          end
-        end
-      end
-    end
-    @member.allowed_items = allowed_items
-    @member.save
+    Member.allowed_items(@member, @allowed_items)
   end
 end
