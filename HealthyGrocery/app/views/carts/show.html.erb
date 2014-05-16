@@ -178,14 +178,14 @@
               <p>
                 <!--
            goes with deskoy's add
-  <%= form_tag("../items/members_items_index/add", method: "post", multipart: true) do %>
-    <%= hidden_field_tag(:item, match.id ) %>
-    <%= text_field_tag :amount %>
-    <br>
-    <%= submit_tag "Buy now", :name => nil,class: "btn btn-primary"%>
-    <%end%>
-    goes with sakr's add
-           <%= button_to "Add to cart", lineitems_path(item_id: match.id), class: "btn btn-primary" %>
+          <%= form_tag("../items/members_items_index/add", method: "post", multipart: true) do %>
+          <%= hidden_field_tag(:item, match.id ) %>
+          <%= text_field_tag :amount %>
+          <br>
+          <%= submit_tag "Buy now", :name => nil,class: "btn btn-primary"%>
+          <%end%>
+          goes with sakr's add
+          <%= button_to "Add to cart", lineitems_path(item_id: match.id), class: "btn btn-primary" %>
            -->
               </p>
             </div>

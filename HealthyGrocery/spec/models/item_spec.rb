@@ -67,12 +67,36 @@ describe Item do
     h.vitamin_e_till_now.should == 0
     h.vitamin_k_till_now.should == 0
   end
-  it "item count in order history should be zero" do
-    Item.all.destroy
-    Member.all.destroy
-    item=FactoryGirl.create(:item)
-    member=FactoryGirl.create(:member)
-    count = Member.get_count(item,member) 
-    expect(count).to eq 0
+  describe "#get_alter" do
+    it "shouldn't have alternatives if it wasn't ordered before" do 
+        Item.all.destroy
+        Member.all.destroy
+        Healthrecord.all.destroy
+        item = FactoryGirl.create(:item)
+        healthrecord = FactoryGirl.create(:healthrecord)
+        member = FactoryGirl.create(:member)
+        member.records.push(healthrecord) 
+        Item.get_alter(item,member,healthrecord).should be_empty
+    end
+    it "should have alternative items if it was ordered before" do
+        Item.all.destroy
+        Member.all.destroy
+        Healthrecord.all.destroy
+        item = FactoryGirl.create(:item)
+        healthrecord = FactoryGirl.create(:healthrecord)
+        member = FactoryGirl.create(:member)
+        member.records.push(healthrecord)
+        member.cart = Cart.new
+        order_1 = FactoryGirl.create(:order)
+        lineitem = FactoryGirl.create(:lineitem)
+        lineitem.item_id = item.id            
+        lineitem.item = item
+        order_1.lines.push(lineitem)
+        member.orders.push(order_1)
+        expect(Member.get_count(item,member)).to eq 1
+        item2 = FactoryGirl.create(:item)
+        item3 = FactoryGirl.create(:item)
+        Item.get_alter(item,healthrecord,member).should eq([item2,item3])
+    end
   end
 end

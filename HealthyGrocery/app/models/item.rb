@@ -97,7 +97,12 @@ class Item
 
 
 
+
+
+
+
   "
+
 
 
         v_counter = v_counter + 1
@@ -108,12 +113,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_calcium_per_week < ((item.calcium * amount) + healthrecord.calcium_till_now)
         @message = @message + v_counter.to_s + ".calcium
   "
+
 
 
         v_counter = v_counter + 1
@@ -124,12 +131,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_a_per_week < ((item.vitamin_a * amount) + healthrecord.vitamin_a_till_now)
         @message = @message + v_counter.to_s + ".vitamin A
   "
+
 
 
         v_counter = v_counter + 1
@@ -140,12 +149,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_c_per_week < ((item.vitamin_c * amount) + healthrecord.vitamin_c_till_now)
         @message = @message + v_counter.to_s + ".vitamin C
   "
+
 
 
         v_counter = v_counter + 1
@@ -156,6 +167,7 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
@@ -164,12 +176,14 @@ class Item
   "
 
 
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_k_per_week < ((item.vitamin_k * amount) + healthrecord.vitamin_k_till_now)
         @message = @message + v_counter.to_s + ".vitamin K
   "
+
 
 
         v_counter = v_counter + 1
@@ -212,20 +226,23 @@ class Item
     result.push(@message)
     return result
   end
+  # Author: Mahmoud Walid
+  # Team : 3
+  # function takes an item a healthrecord and a member returns an array of alterenatives items for it
   def self.get_alter (item,healthrecord,member)
     matching_items = Array.new
     Item.all.each do |canidate|
-      allowed = true  
-      if((item.vitamin_a - item.vitamin_a * 0.5..item.vitamin_a + item.vitamin_a * 0.5).include?(canidate.vitamin_a)&&
-         (item.vitamin_b - item.vitamin_b * 0.5..item.vitamin_b + item.vitamin_b * 0.5).include?(canidate.vitamin_b)&&
-         (item.vitamin_c - item.vitamin_c * 0.5..item.vitamin_c + item.vitamin_c * 0.5).include?(canidate.vitamin_c)&&
-         (item.vitamin_d - item.vitamin_d * 0.5..item.vitamin_d + item.vitamin_d * 0.5).include?(canidate.vitamin_d)&&
-         (item.vitamin_e - item.vitamin_e * 0.5..item.vitamin_e + item.vitamin_e * 0.5).include?(canidate.vitamin_e)&&
-         (item.vitamin_k - item.vitamin_k * 0.5..item.vitamin_k + item.vitamin_k * 0.5).include?(canidate.vitamin_k)&&
-         (item.protein - item.protein * 0.5..item.protein + item.protein * 0.5).include?(canidate.protein)&&
-         (item.carbohydrate - item.carbohydrate * 0.5..item.carbohydrate + item.carbohydrate * 0.5).include?(canidate.carbohydrate)&&
-         (item.fat - item.fat * 0.5..item.fat + item.fat * 0.5).include?(canidate.fat)&&
-         (item.calcium - item.calcium * 0.5..item.calcium + item.calcium * 0.5).include?(canidate.calcium))
+      allowed = true
+      if((item.vitamin_a - item.vitamin_a * 0.15..item.vitamin_a + item.vitamin_a * 0.15).include?(canidate.vitamin_a)&&
+         (item.vitamin_b - item.vitamin_b * 0.15..item.vitamin_b + item.vitamin_b * 0.15).include?(canidate.vitamin_b)&&
+         (item.vitamin_c - item.vitamin_c * 0.15..item.vitamin_c + item.vitamin_c * 0.15).include?(canidate.vitamin_c)&&
+         (item.vitamin_d - item.vitamin_d * 0.15..item.vitamin_d + item.vitamin_d * 0.15).include?(canidate.vitamin_d)&&
+         (item.vitamin_e - item.vitamin_e * 0.15..item.vitamin_e + item.vitamin_e * 0.15).include?(canidate.vitamin_e)&&
+         (item.vitamin_k - item.vitamin_k * 0.15..item.vitamin_k + item.vitamin_k * 0.15).include?(canidate.vitamin_k)&&
+         (item.protein - item.protein * 0.15..item.protein + item.protein * 0.15).include?(canidate.protein)&&
+         (item.carbohydrate - item.carbohydrate * 0.15..item.carbohydrate + item.carbohydrate * 0.15).include?(canidate.carbohydrate)&&
+         (item.fat - item.fat * 0.15..item.fat + item.fat * 0.15).include?(canidate.fat)&&
+         (item.calcium - item.calcium * 0.15..item.calcium + item.calcium * 0.15).include?(canidate.calcium))
         healthrecord.diseases.each do |dis|
           allowed&&= !dis.restricted_items.include?(canidate)
         end
