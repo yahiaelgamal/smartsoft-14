@@ -69,7 +69,7 @@ class TrucksController < ApplicationController
     respond_to do |format|
       if @truck.update_attributes(params[:truck])
     # Author: Andrew Khouzam
-    # Component: 1
+    # Team: 1
     # Functions: This route is used to redirect to the verify page that verify the arrived orders.
     # If the status is false it redirects to check the orders and if not it just shows the updated truck
     if @truck.status == false

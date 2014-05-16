@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Truck do
 
 #Author: Andrew Khouzam
-#Team : 1
+#Team: 1
 #Function: It tests if one Truck has many routes.
   it "has many routes" do
     truck = FactoryGirl.create(:truck)
@@ -16,7 +16,7 @@ describe Truck do
 end
 
 #Author: Andrew Khouzam
-#Team : 1
+#Team: 1
 #Function: It tests if one Truck has many routes and each routes contains many orders.
 # In this test we added two routes for one truck and each route contains two orders 
 # so the total orders must be 4.
