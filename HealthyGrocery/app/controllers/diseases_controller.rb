@@ -42,7 +42,9 @@ class DiseasesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @disease }
+
     end
+
 
   end
 
@@ -74,6 +76,7 @@ class DiseasesController < ApplicationController
     @reco = params[:ii]
     @rest = params[:r]
     @flag = true
+    @disease.date = Date.today
 
     if @reco != nil
         @reco.each do |s| 

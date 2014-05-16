@@ -49,6 +49,7 @@ class DriversController < ApplicationController
 
   def create
     @driver = Driver.new(params[:driver])
+    @driver.date = Date.today
 
     respond_to do |format|
       if @driver.save

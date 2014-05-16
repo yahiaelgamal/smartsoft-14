@@ -70,6 +70,7 @@
 
   def create
     @item = Item.new(params[:item])
+    @item.date = Date.today
 
     # initial value of paused
     if @item.amount <= 0

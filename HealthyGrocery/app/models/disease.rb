@@ -1,11 +1,12 @@
 class Disease
   include Mongoid::Document
-
+  
+  field :date ,type: Date
  field :name ,type: String
  validates_presence_of :name ,:message=> "must be Mentioned"
  validates_uniqueness_of :name, :message=> "must be unique"
  field :level ,type: String
- field :date ,type: Date
+ 
 
  field :information , type: String
  
