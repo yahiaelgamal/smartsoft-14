@@ -37,6 +37,7 @@
   <%= @item.rating %>
 </p>
 
+  <%= Item.get_alternative_stock(@item) %>
 
 <%-# a link redirecting to the edit page-%>
 <%= link_to 'Edit', edit_item_path(@item) %> |

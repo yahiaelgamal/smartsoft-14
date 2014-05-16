@@ -77,34 +77,34 @@ describe Item do
   describe "As a member, when I try to add an item to the shopping-cart
   that is almost out of stock"do
     it "sholud display item1 and item2 in the array" do
-      i1 = Item.new :name => item1, :protein =>  
+      i1 = Item.new :name => "item1", :protein =>  
       12, :carbohydrate => 12, :calcium => 12, :fat => 12, :vitamin_a => 12,:vitamin_b => 
-      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e: => 12, :vitamin_k=> 12, :stock => 100
+      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e => 12, :vitamin_k=> 12, :stock => 100
 
-      i2 = Item.new :name => item2, :protein => 12, :carbohydrate => 12, :calcium => 12, :fat => 
-      12, :vitamin_a => 12,:vitamin_b => 12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e: => 
+      i2 = Item.new :name => "item2", :protein => 12, :carbohydrate => 12, :calcium => 12, :fat => 
+      12, :vitamin_a => 12,:vitamin_b => 12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e => 
       12, :vitamin_k=> 12, :stock => 100
 
-      current_item = Item.new :name => item1, :protein =>  
+      current_item = Item.new :name => "item3", :protein =>  
       12, :carbohydrate => 12, :calcium => 12, :fat => 12, :vitamin_a => 12,:vitamin_b => 
-      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e: => 12, :vitamin_k=> 12, :stock => 1
+      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e => 12, :vitamin_k => 12, :stock => 1
 
-      current_item.get_alternative_stock.should == [i1,i2]
+      Item.get_alternative_stock(current_item).should == [i1,i2]
     end
     it "sholud not display any item in the array" do
-      i1 = Item.new :name => item1, :protein =>  
+      i1 = Item.new :name => "item1", :protein =>  
       12, :carbohydrate => 12, :calcium => 12, :fat => 12, :vitamin_a => 12,:vitamin_b => 
-      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e: => 12, :vitamin_k=> 12, :stock => 1
+      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e => 12, :vitamin_k => 12, :stock => 1
 
-      i2 = Item.new :name => item2, :protein => 12, :carbohydrate => 12, :calcium => 12, :fat => 
-      12, :vitamin_a => 12,:vitamin_b => 12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e: => 
+      i2 = Item.new :name => "item2", :protein => 12, :carbohydrate => 12, :calcium => 12, :fat => 
+      12, :vitamin_a => 12,:vitamin_b => 12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e => 
       12, :vitamin_k=> 12, :stock => 1
 
-      current_item = Item.new :name => item1, :protein =>  
+      current_item = Item.new :name => "item3", :protein =>  
       12, :carbohydrate => 12, :calcium => 12, :fat => 12, :vitamin_a => 12,:vitamin_b => 
-      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e: => 12, :vitamin_k=> 12, :stock => 1
+      12,:vitamin_c => 12,:vitamin_d => 12,:vitamin_e => 12, :vitamin_k=> 12, :stock => 1
 
-      current_item.get_alternative_stock.should == []
+      Item.get_alternative_stock(current_item).should == []
     end  
   end
 end

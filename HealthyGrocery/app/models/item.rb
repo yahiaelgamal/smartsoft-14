@@ -202,30 +202,34 @@ class Item
     return result
   end
 
-  def self.get_alternative_stock (item,healthrecord,member)
+  def self.get_alternative_stock (item)
     matching_items = Array.new
     Item.all.each do |canidate|
       allowed = true
-      if((item.vitamin_a - item.vitamin_a * 0.5..item.vitamin_a + item.vitamin_a * 0.5).include?(canidate.vitamin_a)&&
-         (item.vitamin_b - item.vitamin_b * 0.5..item.vitamin_b + item.vitamin_b * 0.5).include?(canidate.vitamin_b)&&
-         (item.vitamin_c - item.vitamin_c * 0.5..item.vitamin_c + item.vitamin_c * 0.5).include?(canidate.vitamin_c)&&
-         (item.vitamin_d - item.vitamin_d * 0.5..item.vitamin_d + item.vitamin_d * 0.5).include?(canidate.vitamin_d)&&
-         (item.vitamin_e - item.vitamin_e * 0.5..item.vitamin_e + item.vitamin_e * 0.5).include?(canidate.vitamin_e)&&
-         (item.vitamin_k - item.vitamin_k * 0.5..item.vitamin_k + item.vitamin_k * 0.5).include?(canidate.vitamin_k)&&
-         (item.protein - item.protein * 0.5..item.protein + item.protein * 0.5).include?(canidate.protein)&&
-         (item.carbohydrate - item.carbohydrate * 0.5..item.carbohydrate + item.carbohydrate * 0.5).include?(canidate.carbohydrate)&&
-         (item.fat - item.fat * 0.5..item.fat + item.fat * 0.5).include?(canidate.fat)&&
-         (item.calcium - item.calcium * 0.5..item.calcium + item.calcium * 0.5).include?(canidate.calcium))
-        healthrecord.diseases.each do |dis|
-          allowed&&= !dis.restricted_items.include?(canidate)
-        end
-        if(allowed && canidate!=item && Member.get_count(canidate,member) < Member.get_count(item,member))
-          matching_items.push(canidate)
-        end
+      if((item.vitamin_a - item.vitamin_a * 0.5..item.vitamin_a + item.vitamin_a * 0.5).include?
+      (canidate.vitamin_a)&&
+      (item.vitamin_b - item.vitamin_b * 0.5..item.vitamin_b + item.vitamin_b * 0.5).include?
+      (canidate.vitamin_b)&&
+      (item.vitamin_c - item.vitamin_c * 0.5..item.vitamin_c + item.vitamin_c * 0.5).include?
+      (canidate.vitamin_c)&&
+      (item.vitamin_d - item.vitamin_d * 0.5..item.vitamin_d + item.vitamin_d * 0.5).include?
+      (canidate.vitamin_d)&&
+      (item.vitamin_e - item.vitamin_e * 0.5..item.vitamin_e + item.vitamin_e * 0.5).include?
+      (canidate.vitamin_e)&&
+      (item.vitamin_k - item.vitamin_k * 0.5..item.vitamin_k + item.vitamin_k * 0.5).include?
+      (canidate.vitamin_k)&&
+      (item.protein - item.protein * 0.5..item.protein + item.protein * 0.5).include? 
+      (canidate.protein)&&
+      (item.carbohydrate - item.carbohydrate * 0.5..item.carbohydrate + item.carbohydrate * 
+      0.5).include?(canidate.carbohydrate)&&
+      (item.fat - item.fat * 0.5..item.fat + item.fat * 0.5).include?(canidate.fat)&&
+      (item.calcium - item.calcium * 0.5..item.calcium + item.calcium * 0.5).include?
+      (canidate.calcium))
+      if(allowed && canidate!=item && item.stock == 1 && canidate.stock > 1)
+        matching_items.push(canidate)
       end
     end
+  end
     return matching_items
   end
-end
-
 end
