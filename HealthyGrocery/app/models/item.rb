@@ -1,7 +1,6 @@
 class Item
   include Mongoid::Document
   include Mongoid::Paperclip
-
   field :price , type: Float
   field :amount , type: Integer
   field :name , type: String
@@ -9,24 +8,57 @@ class Item
   field :rating , type: Integer
   field :status , type: Boolean
   field :category , type: String
-  field :protein , type: Integer
-  field :carbohydrate , type: Integer
-  field :calcium , type: Integer
-  field :fat , type: Integer
+  # Author: Hazem Amin
+  # Team: 5
+  # Function: Added new needed attributes for the items-class
+  field :protein , type: Float
+  field :carbohydrate , type: Float
+  field :calcium , type: Float
+  field :fat , type: Float
+  # Author: Hazem
+  # Team: 5
+  # Attribute: paused, to keep track whether each and every item is
+  # paused or not (boolean)
   field :paused , type: Boolean
-  # Author : Mahmoud Eldesouky
+  # Author: Hazem Amin
+  # Team: 5
+  # Function: Added other needed attributes for the items-class
+  field :vitamin_a , type: Float
+  field :vitamin_b , type: Float
+  field :vitamin_c , type: Float
+  field :vitamin_d , type: Float
+  field :vitamin_e , type: Float
+  field :vitamin_k , type: Float
+  # Author: Hazem Amin
+  # Team: 5
+  # Function: Added other needed attributes in order to classify
+  # the items
+  field :vit_a_type, type: String
+  field :vit_b_type, type: String
+  field :vit_c_type, type: String
+  field :vit_d_type, type: String
+  field :vit_e_type, type: String
+  field :vit_k_type, type: String
+  field :protein_type, type: String
+  field :carbohydrate_type, type: String
+  field :calcium_type, type: String
+  field :fat_type, type: String
+  # Author: Hazem Amin
+  # Team: 5
+  #Function: Added validations to the different food supplements
+  validates :vitamin_a, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_b, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_c, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_d, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_e, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :vitamin_k, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :protein, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :carbohydrate, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :calcium, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :fat, :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  # Author: Mahmoud Eldesouky
   # Team : 5
   # added attributes for more item information
-  field :vitamin_a, type: Integer
-  field :vitamin_b, type: Integer
-  field :vitamin_c, type: Integer
-  field :vitamin_d, type: Integer
-  field :vitamin_e, type: Integer
-  field :vitamin_k, type: Integer
-
-  # Author: Hazem
-  #Component: 5
-  # Attribute: paused, to keep track whether each and every item is paused or not (boolean)
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # checks if name is present
@@ -42,9 +74,11 @@ class Item
   # checks the attachment type is image
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # checks if image is present
-  validates :image, :attachment_presence => true
-
-
+  #validates :image, :attachment_presence => true
+  validates_uniqueness_of :name
+  # Author: Hazem Amin
+  # Team : 5
+  # makes sure the names of items are unique
 
   # declares a relationship between packages and items
   has_and_belongs_to_many :packages , class_name: "Package" , inverse_of: :items
@@ -92,14 +126,16 @@ class Item
       @message = "This request with its quantity exceeds the acceptable range of the following: "
       v_counter = 1
       if healthrecord.acceptable_protein_per_week < ((item.protein * amount ) + healthrecord.protein_till_now)
-        @message = @message + "
-  " + v_counter.to_s + ".proteins "
+        @message = @message + "" + v_counter.to_s + ".proteins
+        "
+
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_carbohydrate_per_week < ((item.carbohydrate * amount) + healthrecord.carbohydrate_till_now)
         @message = @message + v_counter.to_s+".carbohydrates
-  "
+        "
 
 
 
@@ -108,7 +144,7 @@ class Item
       end
       if healthrecord.acceptable_calcium_per_week < ((item.calcium * amount) + healthrecord.calcium_till_now)
         @message = @message + v_counter.to_s + ".calcium
-  "
+        "
 
 
 
@@ -117,7 +153,7 @@ class Item
       end
       if healthrecord.acceptable_fat_per_week < ((item.fat * amount) + healthrecord.fat_till_now)
         @message = @message + v_counter.to_s + ".fats
-  "
+        "
 
 
 
@@ -126,7 +162,7 @@ class Item
       end
       if healthrecord.acceptable_vitamin_a_per_week < ((item.vitamin_a * amount) + healthrecord.vitamin_a_till_now)
         @message = @message + v_counter.to_s + ".vitamin A
-  "
+        "
 
 
 
@@ -135,7 +171,7 @@ class Item
       end
       if healthrecord.acceptable_vitamin_b_per_week < ((item.vitamin_b * amount) + healthrecord.vitamin_b_till_now)
         @message = @message + v_counter.to_s + ".vitamin B
-  "
+        "
 
 
 
@@ -144,7 +180,7 @@ class Item
       end
       if healthrecord.acceptable_vitamin_c_per_week < ((item.vitamin_c * amount) + healthrecord.vitamin_c_till_now)
         @message = @message + v_counter.to_s + ".vitamin C
-  "
+        "
 
 
 
@@ -153,7 +189,7 @@ class Item
       end
       if healthrecord.acceptable_vitamin_d_per_week < ((item.vitamin_d * amount) + healthrecord.vitamin_d_till_now)
         @message = @message + v_counter.to_s + ".vitamin D
-  "
+        "
 
 
 
@@ -162,7 +198,7 @@ class Item
       end
       if healthrecord.acceptable_vitamin_e_per_week < ((item.vitamin_e * amount) + healthrecord.vitamin_e_till_now)
         @message = @message + v_counter.to_s + ".vitamin E
-  "
+        "
 
 
 
@@ -171,7 +207,7 @@ class Item
       end
       if healthrecord.acceptable_vitamin_k_per_week < ((item.vitamin_k * amount) + healthrecord.vitamin_k_till_now)
         @message = @message + v_counter.to_s + ".vitamin K
-  "
+        "
 
 
 
@@ -215,6 +251,22 @@ class Item
     result.push(@message)
     return result
   end
+  #Author: Hazem Amin
+  #Team: 5
+  #Function: Testing the toggle_pause action
+  def self.toggle_pause(item_id)
+    @item = Item.find(item_id)
+
+
+    if @item.amount <= 0 && @item.paused == false
+      x = "Can't resume because stock equals #{@item.amount}"
+    else
+      @item.paused = !@item.paused
+      @item.save
+      x = "Item toggled successfully"
+    end
+    return x
+  end
 
   # Author: Mahmoud Walid
   # Team : 3
@@ -243,6 +295,7 @@ class Item
     end
     return matching_items
   end
+
 
 
   #Author: Abdelrahman Sakr

@@ -1,25 +1,16 @@
 <!--to check the adminstration level-->
 <%= csrf_meta_tag %>
-
 <% if current_member.email!='healthygrocery@gmail.com'%>
 <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
 <%= link_to_function "Back", "history.back()" %>
 <%else%>
-
 <head>
-
-
 <script type="text/javascript">
-
 </script>
-
-
 </head>
 <body>
 <!-- Title for the page -->
 <h1>My Warehouse</h1>
-
-
 <navigationbar>
 </br>
 Navigate Here </br></br>
@@ -86,10 +77,6 @@ Navigate Here </br></br>
     <% end %>
     </td>
     <td><%= link_to 'Remove Discount', removediscount_path(item) %></td>
-    
-    
-
-
     <!--the button used to add to the wish list but this is in the retailer page /author:lotfy team:1-->
     <td><% button_to 'Add to wishlist', wishlines_path(item_id: item)%></td>  
 
