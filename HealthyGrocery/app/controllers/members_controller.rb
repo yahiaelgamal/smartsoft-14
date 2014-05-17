@@ -26,12 +26,12 @@ end
 
 def hub
 
-  @itemsToday = Array.new 
-  @itemsOutOfStock = Array.new 
-  @itemsAddedThisWeek = Array.new
-  @trucksAddedThisWeek = Array.new  
-  @diseasesAddedThisWeek = Array.new
-  @driversAddedThisWeek = Array.new 
+  @items_Today = Array.new 
+  @items_Out_Of_Stock = Array.new 
+  @items_Added_This_Week = Array.new
+  @trucks_Added_This_Week = Array.new  
+  @diseases_Added_This_Week = Array.new
+  @drivers_Added_This_Week = Array.new 
   
 end  
 

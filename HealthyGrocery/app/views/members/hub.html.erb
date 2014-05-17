@@ -61,7 +61,7 @@
 <!-- showing the number of items that are purchased today-->
   <% @orderItems = Array.new %>		
   <% @allOrders = Order.all %>
-  <% @itemsTodayCount=0 %>
+  <% @ Count=0 %>
   <% @allOrders.each do |o| %>
     <%@orderDate = o.date%>
     <%@today=Date.today%>
@@ -69,7 +69,7 @@
       <% @orderItems = y.items %>
       <% @orderItems.each do |i| %>
         <% @itemsTodayCount += 1 %>  
-        <% members.itemsToday << i%>
+        <% members.items_Today << i%>
       <%end%>
     <%end%>
   <%end%>
@@ -97,7 +97,7 @@
   <% @itemsOutOfStockCount = 0%>
   <% @allItems.each do |i| %>
     <% if i.amount <= 0 %>
-      <% @itemsOutOfStock << i%>
+      <% @items_Out_Of_Stock << i%>
       <% @itemsOutOfStockCount += 1%>
     <%end%>
   <%end%>
@@ -141,7 +141,7 @@
     @itemDate == @fourDaysAgo  || @itemDate == @threeDaysAgo || 
     @itemDate == @twoDaysAgo || @itemDate == @yesterday ||
     @itemDate == @today%>
-      <% @itemsAddedThisWeek << i %>
+      <% @items_Added_This_Week << i %>
       <% @itemsAddedThisWeekCount += 1 %>
     <%end%>
   <%end%>
@@ -164,7 +164,7 @@
     @truckDate == @fourDaysAgo  || @truckDate == @threeDaysAgo || 
     @truckDate == @twoDaysAgo || @truckDate == @yesterday || 
     @truckDate == @today %>
-      <% @trucksAddedThisWeek << t %>
+      <% @trucks_Added_This_Week << t %>
       <% @trucksAddedThisWeekCount += 1 %>
     <%end%>
   <%end%>
@@ -185,7 +185,7 @@
     @diseaseDate == @fourDaysAgo || @diseaseDate == @threeDaysAgo || 
     @diseaseDate == @twoDaysAgo || @diseaseDate == @yesterday || 
     @diseaseDate == @today %>
-      <% @diseasesAddedThisWeek << d %>
+      <% @diseases_Added_This_Week << d %>
       <% @diseasesAddedThisWeekCount += 1 %>
     <%end%>
   <%end%>
@@ -207,7 +207,7 @@
     @driverDate == @fourDaysAgo|| @driverDate == @threeDaysAgo ||
     @driverDate == @twoDaysAgo || @driverDate == @yesterday || 
     @driverDate == @today %>
-      <% @driversAddedThisWeek << d %>
+      <% @drivers_Added_This_Week << d %>
       <% @driversAddedThisWeekCount += 1 %>
     <%end%>
   <%end%>
