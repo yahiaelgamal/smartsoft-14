@@ -7,11 +7,11 @@ class LineitemsController < ApplicationController
   #Function: This method adds lineitem to the shopping cart if it is available in stock.
   def add_to_cart
       @current_cart = current_cart_new
-      @item = Item.find(params[:item_id])
+      @item = Item.find(params[:itemidnew])
       if @item.amount > 0
           @lineitem = @current_cart.lineitems.build
           @lineitem.item = @item
-          @lineitem.quantity = params[:amount]
+          @lineitem.quantity = params[:amountnew]
           respond_to do |format|
               if @lineitem.save
                   format.html { redirect_to @lineitem.cart}

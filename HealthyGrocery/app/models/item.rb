@@ -93,18 +93,7 @@ class Item
       v_counter = 1
       if healthrecord.acceptable_protein_per_week < ((item.protein * amount ) + healthrecord.protein_till_now)
         @message = @message + "
-  " + v_counter.to_s + ".proteins 
-
-
-
-
-
-
-
-  "
-
-
-
+  " + v_counter.to_s + ".proteins "
         v_counter = v_counter + 1
         @flag = false
       end

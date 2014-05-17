@@ -538,14 +538,13 @@ class ItemsController < ApplicationController
     @flag = x[0]
     @message = x[1]
     flash[:flag] = @flag
-    
       #Author: Abdelrahman Sakr
       #Team: 1
       #Function: The following "if condition" checks if there are no violations found then the item will be
       #added to the user's shopping cart, else a popup message will appear without adding the item
       #to the cart.
       if @flag
-          redirect_to addtocart_path(:item_id => item_id, :amount => amount)
+          redirect_to addtocart_path(:itemidnew => params[:item], :amountnew => params[:amount].to_i)
       elsif
           flash[:message] = @message
           redirect_to :action => :members_items_index
