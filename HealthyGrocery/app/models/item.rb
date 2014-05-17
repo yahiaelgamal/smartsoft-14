@@ -74,7 +74,7 @@ class Item
   # checks the attachment type is image
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   # checks if image is present
-  #validates :image, :attachment_presence => true
+  validates :image, :attachment_presence => true
   validates_uniqueness_of :name
   # Author: Hazem Amin
   # Team : 5
