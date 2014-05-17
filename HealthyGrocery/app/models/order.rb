@@ -108,8 +108,13 @@ class Order
 
         
       for i in 0...chosen.length-1
-       rightorder << Orders.where(:address = chosen[i])
+       orders.each do |o|
+       rightorder << o if (o.address==chosen[i])
        end
+       
+
+
+
        rightorder << chosen[chosen.length-1] 
 
     return rightorder
