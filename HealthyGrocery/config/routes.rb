@@ -1,14 +1,36 @@
 HealthyGrocery::Application.routes.draw do
-  
-  resources :healthrecords
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR MEMBER
+#----------------------------------------------------------------------------------------------------#
+  #for user profile page
+  get 'welcome/index'
+  get 'members/hub'
+  get 'members/generate_routes'
 
+  get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
+  root :to => 'welcome#index' # so as to not for the member to root to the page containnng site members!!
+  devise_for :members, :controllers => {:registrations => "registrations", }
+  match 'user_root' => redirect("/member/show")
+   resources :members do
+   #Author: Ahmed Helali
+   #Team 2
+   # I added this path for the show_restricted_items
+   #controller and view
+   get :show_restricted_items, :on => :collection
+   get :show_ideal_calories, :on => :collection
+   get :calculated_ideal, :on => :collection
+   #Author:FatmaEmran
+   #T2
+   #Link to the health records of the people whom the user chose to order for
+    member do 
+    post :order_checkboxes
+    end 
+ end
 
-  # (GUI Team) This is added to be able to redirect to the hub.html.erb in members
-
- get 'members/hub'
- 
-resources :health_records
-  
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ITEMS
+#----------------------------------------------------------------------------------------------------#
+ post "items/members_items_index/add" => "items#add"
  resources :items do
    collection do
   get "members_items_index"
@@ -18,121 +40,100 @@ resources :health_records
    post 'toggle_pause'
   end
  end
-  # Author: Hazem Amin
-  # Component: 5
-  # A HTTP post request is made (when the item is called, i.e. when the button_to is clicked)
-  # it's invoked on a single item (member)
-
-
- 
-
-  resources :wishlines
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR HEALTHRECORDS
+#----------------------------------------------------------------------------------------------------#
+  resources :healthrecords
+  resources :health_records
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR WISHLINES
+#----------------------------------------------------------------------------------------------------#
+ resources :wishlines
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DRIVERS
+#----------------------------------------------------------------------------------------------------#
   resources :drivers
   # Author: Hazem Amin 
   # Component: 5
   # Drivers page
-
-   resources :wishlists
-
-get "/members/:id/get_records" , :to =>"members#get_records" , as: "indexhealthrecord"
-
- root :to => 'members#index' # so as to not for the member to root to the page containnng site members!!
-
- devise_for :members, :controllers => {:registrations => "registrations", }
-
-
-  
- resources :lineitems
-
-
-
- resources :carts
-
-
- root :to => "members#index"
- devise_for :members, :controllers => {:registrations => "registrations", }
-
-   #for user profile page
-   resources :members do
-   get 'edit'
-   
-   #Author: Ahmed Helali
-   #Team 2
-   # I added this path for the show_restricted_items
-   #controller and view
-   
-   get :show_restricted_items, :on => :collection
-   get :show_ideal_calories, :on => :collection
-   get :calculated_ideal, :on => :collection
-   
- end
-
-
- 
- # get "get_records"
-
-  match 'user_root' => redirect("/member/show")
-
-  
-
-
- 
-
-  
-
-#Author:FatmaEmran
-#T2
-#Link to the health records of the people whom the user chose to order for
-   
- #get "get_records"
-  resources :members do
-   member do 
-    post :order_checkboxes
-    end 
-  end
-  match 'user_root' => redirect("/member/show")
- 
-  
-  
-
-  match '/items' => 'items#index'
-  #Author : Amr Nabil
-  #Team 3 
-  #path for editing the price of an item  
-  get '/items/:id/editprice', to: 'items#editprice', as: 'editprice'
-  #Author : Amr Nabil
-  #Team : 3
-  #in order to update the price of an item
-  put 'items/:id/updateprice', to:'items#updateprice', as: 'updateprice'
-
-  resources :routes
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR WISHLISTS
+#----------------------------------------------------------------------------------------------------#
+ resources :wishlists
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR LINEITEMS
+#----------------------------------------------------------------------------------------------------#
+  resources :lineitems
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: Passing item_id and amount as parameters for add_to_cart method
+  get "/lineitems/:itemidnew/:amountnew/add_to_cart", :to =>"lineitems#add_to_cart", as:"addtocart"
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR CARTS
+#----------------------------------------------------------------------------------------------------#
+  resources :carts
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ROUTES
+#----------------------------------------------------------------------------------------------------#
+ resources :routes
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR SHIPMENTS
+#----------------------------------------------------------------------------------------------------#
   resources :shipments
-
-
-  resources :trucks 
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR TRUCKS
+#----------------------------------------------------------------------------------------------------#
+  resources :trucks
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ORDERS
+#----------------------------------------------------------------------------------------------------#
+ # Author: Mahmoud Walid
+ # Team: 3
+ # Function: adding routes for chaning pass and pass_billing attributes for updating shipping
+ # and billing addresses
+  get   '/orders/:id/choose', to:'orders#choose' , as: 'chooseOrder'
+  put '/orders/:id/submit' , to: 'orders#submit' , as: 'submit'
+  get '/orders/:id/change' , to: 'orders#change' , as: 'change'
+  match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
+  get "addresses/position"
   resources :orders
-
-
+  match '/orders/new' => 'orders#new'
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR USERS
+#----------------------------------------------------------------------------------------------------#
   resources :users
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DISEASES
+#----------------------------------------------------------------------------------------------------#
+ resources :diseases
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR GENERATEROUTES
+#----------------------------------------------------------------------------------------------------#
 
-
-    
-  
-  match '/generateroutes' => 'generateroutes#index'
-  post "generateroutes/shipmentupdate" => "generateroutes#shipmentupdate" 
-  post "generateroutes/gen" => "generateroutes#gen" 
-
-
-  resources :diseases
-
-  post "items/members_items_index/add" => "items#add"
-
-
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR HEALTH_RECORDS
+#----------------------------------------------------------------------------------------------------#
+  resources :health_records
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR ADDRESSES
+#----------------------------------------------------------------------------------------------------#
+  resources :addresses
+  # Author: Mahmoud Walid
+  # Team: 3
+  # Function: adding routes for showing orders and addresses of the member
+  get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
+  get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DISCOUNT
+#----------------------------------------------------------------------------------------------------#
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: This route is used to be able to make and remove discounts on items
+  post "/items/make_discount" , :to =>"items#make_discount" , as: "makediscount"  
+  get "/items/:discount_item_id/remove_discount" , :to =>"items#remove_discount" , as: "removediscount"
+#----------------------------------------------------------------------------------------------------#
+      #NOTHING GOES BELOW THIS
+#----------------------------------------------------------------------------------------------------#
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

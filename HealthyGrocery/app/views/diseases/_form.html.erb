@@ -1,55 +1,210 @@
+<!-- Author: Jihan Adel -->
+<!-- Team: 5 -->
 <%= form_for(@disease) do |f| %>
   <% if @disease.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@disease.errors.count, "error") %> prohibited this disease from being saved:</h2>
-
+      <h2><%= pluralize(@disease.errors.count, "error") %>
+        prohibited this disease from being saved:</h2>
       <ul>
-      <% @disease.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @disease.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
+  <style>
+    .table-striped  {
+      background-color: white;
+    }
+    .scrollbox
+    {
+          border:2px solid #ccc;
+          height: 200px;
+          overflow: auto;
+          width: 400px;
+    }
+  </style>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-
   <div class="field">
     <%= f.label :information %>
     <%= f.text_field :information %>
-  </div>       
-
-  <label>Recommended Items:</label>
-  <div class="scrollbox">
-    <%  Item.each do |i| %>
-      <div class="checkbox">
-        <% if @disease.recommended_items != nil &&  @disease.recommended_items.include?(i) %>
-         <%= check_box_tag "ii[]",i.id, true %> <label> <%= i.name %> </label>
-        <%else%>
-         <%= check_box_tag "ii[]",i.id %> <label> <%= i.name %> </label>
-        <%end%>
-      </div>
-    <% end %>
   </div>
   <br/>
-
-  <label>Restricted Items:</label>
-  <div class="scrollbox">
-    <%  Item.each do |i| %> 
-      <div class="checkbox">
-        <% if @disease.restricted_items != nil &&  @disease.restricted_items.include?(i) %>
-          <%= check_box_tag "r[]",i.id, true %> <label> <%= i.name %> </label>
-        <%else%>
-          <%= check_box_tag "r[]",i.id %> <label> <%= i.name %> </label>
-        <%end%>
-      </div>
-    <% end %>
-  </div>
-  <br />
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <label>Recommneded daily intake for patients:</label>
+</br>
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="1">should be up by</th>
+      <th colspan="1">should be down by</th>
+    </tr>
+  </thead>
+  <body>
+    <tr>
+      <td>fats</td>
+      <% if @disease.fat > 0 %>
+        <% @up = @disease.fat %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.fat%>
+      <%end%>
+      <td><%= text_field_tag 'fat_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'fat_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>protein</td>
+      <% if @disease.protein > 0 %>
+        <% @up = @disease.protein %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.protein%>
+      <%end%>
+      <td><%= text_field_tag 'protein_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'protein_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>calcium</td>
+      <% if @disease.calcium > 0 %>
+        <% @up = @disease.calcium %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.calcium%>
+      <%end%>
+      <td><%= text_field_tag 'calcium_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'calcium_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>carbohydrate</td>
+      <% if @disease.carbohydrate > 0 %>
+        <% @up = @disease.carbohydrate %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.carbohydrate%>
+      <%end%>
+      <td><%= text_field_tag 'carbohydrate_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'carbohydrate_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>vitamin A</td>
+      <% if @disease.vitamin_a > 0 %>
+        <% @up = @disease.vitamin_a %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_a%>
+      <%end%>
+      <td><%= text_field_tag 'vitamin_a_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'vitamin_a_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>vitamin B</td>
+      <% if @disease.vitamin_b > 0 %>
+        <% @up = @disease.vitamin_b %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_b%>
+      <%end%>
+      <td><%= text_field_tag 'vitamin_b_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'vitamin_b_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>vitamin C</td>
+      <% if @disease.vitamin_c > 0 %>
+        <% @up = @disease.vitamin_c %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_c%>
+      <%end%>
+      <td><%= text_field_tag 'vitamin_c_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'vitamin_c_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>vitamin D</td>
+      <% if @disease.vitamin_d > 0 %>
+        <% @up = @disease.vitamin_d %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_d%>
+      <%end%>
+      <td><%= text_field_tag 'vitamin_d_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'vitamin_d_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>vitamin E</td>
+      <% if @disease.vitamin_e > 0 %>
+        <% @up = @disease.vitamin_e %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_e%>
+      <%end%>
+      <td><%= text_field_tag 'vitamin_e_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'vitamin_e_down', @down, :class => "span1" %></td>
+    </tr>
+    <tr>
+      <td>vitamin K</td>
+      <% if @disease.vitamin_k > 0 %>
+        <% @up = @disease.vitamin_k %>
+        <% @down = 0 %>
+      <%else%>
+        <% @up = 0 %>
+        <% @down = 0 - @disease.vitamin_k%>
+      <%end%>
+      <td><%= text_field_tag 'vitamin_k_up', @up, :class => "span1" %></td>
+      <td><%= text_field_tag 'vitamin_k_down', @down, :class => "span1" %></td>
+    </tr>
+  </body>
+</table>
+<label>Famous Recommended Items:</label>
+<div class="scrollbox">
+  <% Item.asc(:name).each do |i| %>
+    <div class="checkbox">
+      <% if @disease.recommended_items != nil && @disease.recommended_items.include?(i) %>
+        <%= check_box_tag "checked_recommended[]",i.id, true %>
+        <label>
+          <%= i.name %>
+        </label>
+      <%else%>
+        <%= check_box_tag "checked_recommended[]",i.id %>
+        <label>
+          <%= i.name %>
+        </label>
+      <%end%>
+    </div>
+  <% end %>
+</div>
+<br/>
+<label>Famous Restricted Items:</label>
+<div class="scrollbox">
+  <% Item.asc(:name).each do |i| %>
+    <div class="checkbox">
+      <% if @disease.restricted_items != nil && @disease.restricted_items.include?(i) %>
+        <%= check_box_tag "checked_restricted[]",i.id, true %>
+        <label>
+          <%= i.name %>
+        </label>
+      <%else%>
+        <%= check_box_tag "checked_restricted[]",i.id %>
+        <label>
+          <%= i.name %>
+        </label>
+      <%end%>
+    </div>
+  <% end %>
+</div>
+<br />
+<div class="actions">
+  <%= f.submit %>
+</div>
+<%end%>

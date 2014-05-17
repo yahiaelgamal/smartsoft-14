@@ -1,53 +1,113 @@
-<h2>Edit Profile</h2>  
- <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>  
- <%= devise_error_messages! %>  
-   <div><%= f.label :email %><br />  
-   <%= f.email_field :email, autofocus: true , :value=> @member.email%></div>  
-   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>  
-   <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>  
- <% end %>  
-  <!-- <hr>  
-  <h3>Edit Security settings</h3>  
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />  
-   <%= f.password_field :password, autocomplete: "off" %></div>  
-  <div><%= f.label :password_confirmation %><br />  
-   <%= f.password_field :password_confirmation, autocomplete: "off" %></div>  
-  <hr> -->  
-  <%-# for First name-%>  
-    <div><%= f.label :first_name %> <i>(leave it if you don't want to change it)</i><br />  
-    <%= f.text_field :first_name, autocomplete: "off" , :value=> @member.first_name %></div>  
-  <%-# for last name-%>  
-    <div><%= f.label :last_name %> <i>(leave it if you don't want to change it)</i><br />  
-    <%= f.text_field :last_name, autocomplete: "off" , :value=> @member.last_name %></div>  
-  <%-# for phone num-%>  
-    <div><%= f.label :phone_num %> <i>(leave it if you don't want to change it)</i><br />  
-    <%= f.text_field :phone_num, autocomplete: "off" , :value=> @member.phone_num %></div>  
-  <%-# for birth date-%>  
-    <div><%= f.label :birth_date %> <i>(leave it if you don't want to change it)</i><br />  
-    <%= f.text_field :birth_date, autocomplete: "off", :value=> @member.birth_date %></div>  
-  <%-# for Address  but it is removed from the master -%>  
-   <!-- <div><%= f.label :address %> <i>(we need your current password to confirm your changes)</i><br />  
-   <%= f.text_field :address, autocomplete: "off" , :value=> @member.address%></div> -->  
-  <hr>  
-  <%-# for the current password to confrim the changes-%>  
-     <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />  
-    <%= f.password_field :current_password, autocomplete: "off" %></div>  
-    <div><%= f.submit "Update" %></div>  
- <% end %>  
- <h3>Cancel my account</h3>  
- <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" },
-	  method: :delete %></p>  
- <%= link_to "Back", :back %>  
- <%-  
- # auther: mostafa Adel mohamed   
- # component: C3  
- # user story: 3.10 "As a user I can edit my profile "       
- # describtion:i linked to this page with the current member and user can edit it's basic info 
- #"first name , last name , phone ...."  
- # and use the current password to verify the change.  
- # and user can change the current password by insert the new password and confirmation password  
- # user can leave the new password blank if user want to keep it   
- #  
- #  
- #  
- -%>  
+<!-- to edit user profile -->
+<%#
+    #Author: Mohamed Saeed
+    #Team: 1
+    #Function: Edit basic personal info that shows in member profile (email, password, 
+    first name, last name, birth date, phone number) and the option to delete the account
+    %>
+<center>
+  <font face="futura">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=futura">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+          <div class="well profile">
+            <div class="col-sm-12">
+              <div class="col-xs-12 col-sm-8">
+                <div class="col-xs-12 col-sm-4 text-center">
+                  <br>
+                  <br>
+                  <font face="futura" color="green" size="7"><strong>Edit Profile</font></strong>
+                  <br>
+                  <br>
+                  <br>
+                  <hr>
+                  <br>
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                    <center><%= devise_error_messages! %></center>
+                    <font face="futura" color="green" size="5"><strong>Edit Email</font></strong>
+                    <br>
+                    <br>
+                    <br>
+                    <center><div><%= f.label :email %>
+                      <%= f.email_field :email, autofocus: true , :value=> @member.email%></div></center>
+                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                      <div>Currently waiting confirmation for:
+                        <%= resource.unconfirmed_email %></div>
+                    <% end %>
+                    <hr>
+                    <br>
+                    <font face="futura" color="green" size="5"><strong>Edit Password</font></strong>
+                    <br>
+                    <br>
+                    <br>
+                    <center><div><%= f.label :new_Password %>
+                      <i>(leave blank if you don't want to change it)</i><br />
+                      <%= f.password_field :password, autocomplete: "off" %></div></center>
+                    <br>
+                    <center><div><%= f.label :confirm_new_password %>
+                      <%= f.password_field :password_confirmation, autocomplete: "off" %></div></center>
+                    <hr>
+                    <br>
+                    <font face="futura" color="green" size="5"><strong>Edit Personal Info</font></strong>
+                    <br>
+                    <br>
+                    <br>
+                    <%-# for First name-%>
+                    <center><div><%= f.label :first_name %>
+                      <%= f.text_field :first_name, autocomplete: "off" , :value=> @member.first_name %></div></center>
+                    <br>
+                    <%-# for last name-%>
+                    <center><div><%= f.label :last_name %>
+                      <%= f.text_field :last_name, autocomplete: "off" , :value=> @member.last_name %></div></center>
+                    <br>
+                    <%-# for phone num-%>
+                    <center><div><%= f.label :phone_number %>
+                      <%= f.text_field :phone_num, autocomplete: "off" , :value=> @member.phone_num %></div></center>
+                    <br>
+                    <%-# for birth date-%>
+                    <center><div><%= f.label :birth_date %>
+                      <%= f.text_field :birth_date, autocomplete: "off", :value=> @member.birth_date %></div></center>
+                    <hr>
+                    <br>
+                    <font face="futura" color="green" size="5"><strong>Confirm Changes</font></strong>
+                    <br>
+                    <br>
+                    <br>
+                    <%-# for the current password to confrim the changes-%>
+                    <center><div><%= f.label :current_password %>
+                        <%= f.password_field :current_password, autocomplete: "off" %></div></center>
+                    <!-- <div><%= f.submit "Save" %></div> -->
+                    <br>
+                    <%= link_to(member_path(@member), :class => 'btn btn-default') do %>
+                      <font face="futura">Cancel</font>
+                    <% end %>
+                    <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+                      <i class="icon-ok icon-white"></i>
+                      <font face="futura">Save</font>
+                    <% end %>
+                  <% end %>
+                  <hr>
+                  <br>
+                  <font face="futura" color="green" size="5"><strong>Delete Account</font></strong>
+                  <br>
+                  <br>
+                  <br>
+                  Unhappy?
+                  <br>
+                  <br>
+                  <%= link_to(registration_path(resource_name), data: { confirm: "Are you sure?" },method: :delete, :class => 'btn btn-danger') do %>
+                    <i class="icon-remove icon-white"></i><font face="futura" color="white">
+                      Delete</font>
+                  <% end %>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </font>
+    </center>

@@ -1,6 +1,8 @@
 source 'https://rubygems.org/'
-ruby '1.9.3'
+#ruby '1.9.3'
 gem 'rails', '3.2.11'
+
+
 
 
 gem 'mongoid'
@@ -17,8 +19,20 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise'
 
+# rspec testing gems 
+group :development, :test do
+  gem 'rspec-rails','~>3.0.0.beta'
+  gem 'factory_girl_rails'
+end
+#adding gem capyayara to test devise with Rspec!
+gem 'capybara', :group => :test
 
-
+group :test do 
+  gem 'faker' 
+  gem 'capybara' 
+  gem 'guard-rspec' 
+  gem 'launchy' 
+end
 
 #handle sorting of tabels for more info go to this link https://github.com/dadooda/handles_sortable_columns
 gem "handles_sortable_columns"
@@ -29,17 +43,34 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'formtastic'
 gem 'formtastic-bootstrap' 
-
-
+#This gem used to translate an address String to real coordinates of this place or vice versa
+gem 'geocoder', '~> 1.2.0' 
+#This gem used to help in intialising a map
+gem 'gmaps4rails', '~> 2.1.2' 
+#This gem used to pass values from rails controler to javascript
+#handles the pop up message in the member_item_index_page "go shopping"
 gem "gon" , '5.0.4'
+#handles the showen progress bar 
+gem 'css3-progress-bar-rails'
+
 
 gem 'kaminari' , '0.15.1'
 
 
+gem 'ruby-beautify', '~> 0.92.2'
 
 
-       
+gem 'prawn'
+gem 'prawn-print'
 
+gem 'rspec'
+gem 'prawnto_2', :require => 'prawnto'
+#gem 'rspec-rails', '~> 2.0'
+gem 'capybara'
+gem 'pdf-inspector'
+gem 'webmock'
+
+gem 'pdf-reader', :require => 'pdf/reader'
 
 # Gems used only for assets and not required
 # in production environments by default.
