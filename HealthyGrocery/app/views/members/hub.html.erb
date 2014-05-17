@@ -61,7 +61,7 @@
 <!-- showing the number of items that are purchased today-->
   <% @orderItems = Array.new %>		
   <% @allOrders = Order.all %>
-  <% @ Count=0 %>
+  <% @itemsTodayCount=0 %>
   <% @allOrders.each do |o| %>
     <%@orderDate = o.date%>
     <%@today=Date.today%>
