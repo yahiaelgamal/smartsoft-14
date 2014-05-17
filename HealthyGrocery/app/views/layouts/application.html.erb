@@ -94,7 +94,7 @@
                   <!--Author: Antoine Foti -->
                   <!--Team: 2 -->
                   <!--Function: This is the search bar in the top navbar where you can search for any item not just by exact matching but with case insensitive and for items starting with the searching keys the user provides-->
-                  <li style="padding-left: 1050px;padding-top: 4px; ">
+                  <li style="padding-left: 1046px;padding-top: 4px; ">
                     <%= form_tag '/items/members_items_index', :method => 'get', :class => "form-inline" do %>
                       <%= search_field_tag :name, params[:filter], placeholder: 'Search Items', size: 40, class: '  form-control'%>
                       <%#= submit_tag "Search" %>
