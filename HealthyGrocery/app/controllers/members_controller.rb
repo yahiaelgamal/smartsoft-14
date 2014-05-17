@@ -91,8 +91,9 @@ end
 #it shows the page of the member's healthrecord 
  def get_records
     @member = Member.find(params[:id])
-    @healthrecord = @member.records
-    respond_to do |format|
+    @health_records = @member.records 
+
+  respond_to do |format|
       format.html# show.html.erb
       format.json { render json: @healthrecord }
     end
