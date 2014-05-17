@@ -57,15 +57,14 @@ class Item
   #Team: 5
   #linking items to diseases
 
-  belongs_to :good_for_diseases , class_name: 'Disease' , inverse_of: :recommended_items
-  belongs_to :bad_for_diseases , class_name: 'Disease' , inverse_of: :restricted_items
+  has_and_belongs_to_many :good_for_diseases , class_name: 'Disease' , inverse_of: :recommended_items
+  has_and_belongs_to_many :bad_for_diseases , class_name: 'Disease' , inverse_of: :restricted_items
 
 
   #Author: Abdelrahman Sakr
   #Team : 1
   #Declaring a relationship between the two classes Item, and Lineitem.
   has_many :lineitems, class_name: "Lineitem"
-
   #AUTHOR: Mahmoud Eldesouky
   #Team: 5
   #Method name: add
@@ -97,7 +96,15 @@ class Item
         @message = @message + "
   " + v_counter.to_s + ".proteins 
 
+
+
+
+
+
+
   "
+
+
 
         v_counter = v_counter + 1
         @flag = false
@@ -106,12 +113,16 @@ class Item
         @message = @message + v_counter.to_s+".carbohydrates
   "
 
+
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_calcium_per_week < ((item.calcium * amount) + healthrecord.calcium_till_now)
         @message = @message + v_counter.to_s + ".calcium
   "
+
+
 
         v_counter = v_counter + 1
         @flag = false
@@ -120,12 +131,16 @@ class Item
         @message = @message + v_counter.to_s + ".fats
   "
 
+
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_a_per_week < ((item.vitamin_a * amount) + healthrecord.vitamin_a_till_now)
         @message = @message + v_counter.to_s + ".vitamin A
   "
+
+
 
         v_counter = v_counter + 1
         @flag = false
@@ -134,12 +149,16 @@ class Item
         @message = @message + v_counter.to_s + ".vitamin B
   "
 
+
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_c_per_week < ((item.vitamin_c * amount) + healthrecord.vitamin_c_till_now)
         @message = @message + v_counter.to_s + ".vitamin C
   "
+
+
 
         v_counter = v_counter + 1
         @flag = false
@@ -148,6 +167,8 @@ class Item
         @message = @message + v_counter.to_s + ".vitamin D
   "
 
+
+
         v_counter = v_counter + 1
         @flag = false
       end
@@ -155,12 +176,16 @@ class Item
         @message = @message + v_counter.to_s + ".vitamin E
   "
 
+
+
         v_counter = v_counter + 1
         @flag = false
       end
       if healthrecord.acceptable_vitamin_k_per_week < ((item.vitamin_k * amount) + healthrecord.vitamin_k_till_now)
         @message = @message + v_counter.to_s + ".vitamin K
   "
+
+
 
         v_counter = v_counter + 1
         @flag = false
@@ -203,4 +228,70 @@ class Item
     return result
   end
 
+  # Author: Mahmoud Walid
+  # Team : 3
+  # function takes an item a healthrecord and a member returns an array of alterenatives items for it
+  def self.get_alter (item,healthrecord,member)
+    matching_items = Array.new
+    Item.all.each do |canidate|
+      allowed = true
+      if((item.vitamin_a - item.vitamin_a * 0.15..item.vitamin_a + item.vitamin_a * 0.15).include?(canidate.vitamin_a)&&
+         (item.vitamin_b - item.vitamin_b * 0.15..item.vitamin_b + item.vitamin_b * 0.15).include?(canidate.vitamin_b)&&
+         (item.vitamin_c - item.vitamin_c * 0.15..item.vitamin_c + item.vitamin_c * 0.15).include?(canidate.vitamin_c)&&
+         (item.vitamin_d - item.vitamin_d * 0.15..item.vitamin_d + item.vitamin_d * 0.15).include?(canidate.vitamin_d)&&
+         (item.vitamin_e - item.vitamin_e * 0.15..item.vitamin_e + item.vitamin_e * 0.15).include?(canidate.vitamin_e)&&
+         (item.vitamin_k - item.vitamin_k * 0.15..item.vitamin_k + item.vitamin_k * 0.15).include?(canidate.vitamin_k)&&
+         (item.protein - item.protein * 0.15..item.protein + item.protein * 0.15).include?(canidate.protein)&&
+         (item.carbohydrate - item.carbohydrate * 0.15..item.carbohydrate + item.carbohydrate * 0.15).include?(canidate.carbohydrate)&&
+         (item.fat - item.fat * 0.15..item.fat + item.fat * 0.15).include?(canidate.fat)&&
+         (item.calcium - item.calcium * 0.15..item.calcium + item.calcium * 0.15).include?(canidate.calcium))
+        healthrecord.diseases.each do |dis|
+          allowed&&= !dis.restricted_items.include?(canidate)
+        end
+        if(allowed && canidate!=item && Member.get_count(canidate,member) < Member.get_count(item,member))
+          matching_items.push(canidate)
+        end
+      end
+    end
+    return matching_items
+  end
+
+
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: Adding new attributes for the item model, where:
+  #Boolean discount is whether a discount is applied on this item or not
+  #Float discount percentage is the amount of discount applied on the item
+  #Float price_before_discount is the price of the item before applying the discount
+  field :discount , type: Boolean 
+  field :discount_percentage , type: Float, default: 1
+  field :price_before_discount , type: Float, default: 0
+
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Method: self.make_discount
+  #Parameters: item_id,discount_amount
+  #Function: This method applies the discount on a specific item
+  def self.make_discount(item_id,discount_amount)
+      @discount_item = Item.find(item_id)
+      @discount_amount = (discount_amount.to_f)
+      @discount_item.update_attributes(:discount => true)
+      @newprice = @discount_item.price - (@discount_item.price*@discount_amount)
+      @discount_item.update_attributes(:price_before_discount => @discount_item.price)
+      @discount_item.update_attributes(:price => @newprice)
+      @discount_item.save
+      return @discount_item
+  end
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Method: self.remove_discount
+  #Parameters: item_id
+  #Function: This method removes the previously applied discount from a specific item
+  def self.remove_discount(item_id)
+      @discount_item = Item.find(item_id)
+      @discount_item.update_attributes(:discount => false)
+      @discount_item.update_attributes(:price => @discount_item.price_before_discount)
+      @discount_item.save
+      return @discount_item
+  end
 end

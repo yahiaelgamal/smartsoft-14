@@ -1,4 +1,5 @@
-<!-- This the Users/Admins Hub Page which is the Home page that shows New/Recommended Items -->
+<%matching=Item.all.limit(20)%>
+
 
 <!--#Author: Omar Tarek
 	 	#Team: 5
@@ -227,78 +228,92 @@
 <%else%>
 
 
-<h1 style="
+
+ <div class="container-fluid">
+      <h2 style="style="
+
 padding-top:30px;
-right:5px"> New Arrivals </h1>
-
- <!--	#Author: Andrew Khouzam
-	 	#Team: 1
-	 	#Method name: CSS for the items in the table.
-		#Function: make float on the 10 latest items of the tables
-	 	#Example:  -->
-
-
-<style>
-.thumbnail 
-{
-float:left;
-padding:25px 25px;
-width:90px;
-height:90px;
-margin:10px;
-}
-</style>
-
-
-
- <!--	#Author: Andrew Khouzam
-	 	#Team: 1
-	 	#Method name: 
-		#Function: to count all the items in the warehouse in the variable 'allItemsCounter'
-	 	#Example:  -->
-			<% @allItems = Item.all %>
-		<% allItemsCounter = 0 %>
-<% @allItems.each do |article| %>
- 	<% allItemsCounter +=1  %>
-<% end %>
-
-
-
- <!--#Author: Andrew Khouzam
-	 #Team: 1
-	 #Method name: 
-	 #Function: Decrementing the counter by 10, in order to show the latest 10 items in the warehouse
-	 #Example: allItemscounter = 23 => allItemscounter = 13 -->
-<% allItemsCounter = allItemsCounter - 10  %>
-
-
-
-
- <!--#Author: Andrew Khouzam
-	 #Team: 1
-	 #Method name: 
-	 #Function: comparing the counter to the allItemsCounter in order to get the latest 10 items.
-	 #Example: allItemscounter = 10 and the actual items are 20
-	 the counter will start off by 0 and then will increment and when it hits 10, it will 
-	 start showing the items in the hub. -->
-<table>
-	<% counter = 0 %>
-		<% @allItems.each do |item| %>
-			<% counter += 1 %>
-				<% if counter > allItemsCounter %>
-					<td class = "thumbnail"><%= image_tag item.image.url %>
-					<tag ><%= link_to item.name , item_path(item) %></tag>
-																			</td>
-   		
-  				<% end %>
-		<% end %>
-</table>
-
-
-
-
-<h1> Recommended Items </h1>
-<!-- This part of the code cannot be coded until the story 2.8 is finished because the calculations of the recommendations is not my user story.  
-2.8: As a user, I should see a recommendation section in the hub according to the information the user provided in the sign-up-->
+right:5px"">New arrivals</h2>
+      <div class="row-fluid">
+        <div id="slider-fluid-products" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="active item">
+              <ul class="thumbnails">
+                <%matching[0..3].each do |first_match|%>
+                <li class="span3">
+                  <div class="thumbnail">
+                    <%= image_tag first_match.image.url%>
+                    <div class="caption">
+                      <h3><%= first_match.name%></h3>
+                      <p>
+                        <b>Price: </b>
+                        <%=first_match.price%>
+                        <br>
+                        <b>Description: </b>
+                        <%=first_match.description%>
+                      </p>
+                      <p>
+                        <!--
+                        goes with deskoy's add
+                        <%= form_tag("../items/members_items_index/add", method: "post", multipart: true) do %>
+                        <%= hidden_field_tag(:item, first_match.id ) %>
+                        <%= text_field_tag :amount %>
+                        <br>
+                        <%= submit_tag "Buy now", :name => nil,class: "btn btn-primary"%>
+                        <%end%>
+                        goes with sakr's add
+                        <%= button_to "Add to cart", lineitems_path(item_id: first_match.id), class: "btn btn-primary" %>
+                         -->
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <%end%>
+              </ul>
+            </div>
+            <%(1..((matching.count)/4)-1).each do |i|%>
+            <div class="item">
+              <ul class="thumbnails">
+              <%start =i*4 %>
+              <%ending =start+3%>
+                <%matching[start..ending].each do |match|%> 
+                <li class="span3">
+                  <div class="thumbnail">
+                    <%= image_tag match.image.url%>
+                    <div class="caption">
+                      <h3><%=match.name%></h3>
+                      <p>
+                        <b>Price: </b>
+                        <%=match.price%>
+                        <br>
+                        <b>Description: </b>
+                        <%=match.description%>
+                      </p>
+                    </div>
+                       <p>
+                       <!--
+                        goes with deskoy's add
+                        <%= form_tag("../items/members_items_index/add", method: "post", multipart: true) do %>
+                        <%= hidden_field_tag(:item, match.id ) %>
+                        <%= text_field_tag :amount %>
+                        <br>
+                        <%= submit_tag "Buy now", :name => nil,class: "btn btn-primary"%>
+                        <%end%>
+                        goes with sakr's add
+                        <%= button_to "Add to cart", lineitems_path(item_id: match.id), class: "btn btn-primary" %>
+                         -->
+                    </p>
+                  </div>
+                </li>
+                <%end%>
+              </ul>
+            </div>
+            <%end%>
+          </div>
+          <a class="left carousel-control" href="#slider-fluid-products" data-slide="prev">&lsaquo;</a>
+          <a class="right carousel-control" href="#slider-fluid-products" data-slide="next">&rsaquo;</a>
+        </div>
+      </div>
+    </div>
 
 <%end%>

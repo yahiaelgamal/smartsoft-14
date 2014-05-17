@@ -12,7 +12,6 @@ HealthyGrocery::Application.routes.draw do
   devise_for :members, :controllers => {:registrations => "registrations", }
   match 'user_root' => redirect("/member/show")
    resources :members do
-   get 'edit'
    #Author: Ahmed Helali
    #Team 2
    # I added this path for the show_restricted_items
@@ -65,6 +64,10 @@ HealthyGrocery::Application.routes.draw do
       #ROUTES FOR LINEITEMS
 #----------------------------------------------------------------------------------------------------#
   resources :lineitems
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: Passing item_id and amount as parameters for add_to_cart method
+  get "/lineitems/:itemidnew/:amountnew/add_to_cart", :to =>"lineitems#add_to_cart", as:"addtocart"
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR CARTS
 #----------------------------------------------------------------------------------------------------#
@@ -94,6 +97,7 @@ HealthyGrocery::Application.routes.draw do
   match "/addresses/:id/position", :to => "addresses#position", as: 'addressesposition'
   get "addresses/position"
   resources :orders
+  match '/orders/new' => 'orders#new'
 #----------------------------------------------------------------------------------------------------#
       #ROUTES FOR USERS
 #----------------------------------------------------------------------------------------------------#
@@ -119,6 +123,14 @@ HealthyGrocery::Application.routes.draw do
   # Function: adding routes for showing orders and addresses of the member
   get '/member/showOrders', to: 'members#showOrders', as: 'showOrders'
   get '/member/show_addresses', to: 'members#show_addresses', as: 'showaddresses'
+#----------------------------------------------------------------------------------------------------#
+      #ROUTES FOR DISCOUNT
+#----------------------------------------------------------------------------------------------------#
+  #Author: Abdelrahman Sakr
+  #Team: 1
+  #Function: This route is used to be able to make and remove discounts on items
+  post "/items/make_discount" , :to =>"items#make_discount" , as: "makediscount"  
+  get "/items/:discount_item_id/remove_discount" , :to =>"items#remove_discount" , as: "removediscount"
 #----------------------------------------------------------------------------------------------------#
       #NOTHING GOES BELOW THIS
 #----------------------------------------------------------------------------------------------------#

@@ -55,7 +55,7 @@
                 'members_items_index'}, :class => "opt"%></li>
                    <li><%= link_to 'My Healthrecords',indexhealthrecord_path(current_member)%></li>
                    <li><%= link_to 'My Wishlist' , 'http://localhost:3000/wishlists/show'%></li>
-                  <li><%= link_to "My Shopping Cart", 'http://localhost:3000/carts/show' %></li>
+                  <li><a href="../../carts/show"><i class="icon-large icon-shopping-cart"></i></a></li>
       <% end %>
 
               <!--Author: Andrew Khouzam -->
@@ -66,12 +66,18 @@
                 <li><%= link_to "Items", items_path %></li>
                 <li><%= link_to "Generate Routes", { :controller => 'members', :action => 'generate_routes'}%></li>
               <% end %>
-              <!--Author: Andrew Khouzam -->
-              <!--Team: GUI -->
-              <!--Function: This is the search bar in the top navbar-->
-              <li style="padding-left: 30px;padding-top: 4px; "><input type="text" class="form-control" placeholder="Search"></li>
-              <li style="padding-left: 150px; "><%= link_to 'Logout', destroy_member_session_path, :method=> 'delete' %></li>
 
+              <!--Author: Antoine Foti -->
+              <!--Team: 2 -->
+              <!--Function: This is the search bar in the top navbar where you can search for any item not just by exact matching but with case insensitive and for items starting with the searching keys the user provides-->
+          <li style="padding-left: 30px;padding-top: 4px; ">
+            <%= form_tag '/items/members_items_index', :method => 'get', :class => "form-inline" do %>
+            <%= search_field_tag :name, params[:filter], placeholder: 'Search Items', size: 40, class: 'form-control'%>
+            <%#= submit_tag "Search" %>
+            <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+          <% end %>
+          </li>
+              <li style="padding-left: 100px; "><%= link_to 'Logout', destroy_member_session_path, :method=> 'delete' %></li>
             
             </ul>
           </div><!--/.nav-collapse -->

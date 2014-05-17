@@ -1,6 +1,5 @@
 class Member
   include Mongoid::Document
-
   #Author: Mohamed Lotfy
   #Team: 1
   #Function: model of the member#contains all the needed attributes and relations for the member
@@ -9,7 +8,7 @@ class Member
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable , :confirmable
+  :recoverable, :rememberable, :trackable, :validatable , :confirmable
 
 
   # Setup accessible (or protected) attributes for your model
@@ -18,11 +17,11 @@ class Member
   field :gender, type: String
   field :phone_num, type: Integer
   field :birth_date, type: Date
-
   field :confirmation_token,   type: String
   field :confirmed_at,         type: Time
   field :confirmation_sent_at, type: Time
   field :unconfirmed_email,    type: String # Only if using reconfirmable
+
 
   attr_accessible :email, :password, :password_confirmation, :remember_me ,:first_name , :last_name , :gender , :phone_num , :birth_date
 
@@ -45,7 +44,9 @@ class Member
   field :last_sign_in_at,    type: Time
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
+
   
+
   #relations  related to the member
   has_one :wishlist ,class_name: 'Wishlist'
   has_many :historyItems ,class_name: 'Item'
@@ -62,7 +63,8 @@ class Member
   #Team : 1
   #Declaring a new relationship between the User and the Cart.
   has_one :cart , class_name: 'Cart'
-  
+
+
   validates :first_name,
     :presence => true,
   :length => {
@@ -79,15 +81,42 @@ class Member
 
   validates :birth_date,
     :presence => true
-
   validates :phone_num,
     :presence => true
 
   validates_numericality_of :phone_num
   #validates_date :birth_date
 
+
+
+
+
+
+
+  ## Confirmable
+  # field :confirmation_token,   type: String
+  # field :confirmed_at,         type: Time
+  # field :confirmation_sent_at, type: Time
+  # field :unconfirmed_email,    type: String # Only if using reconfirmable
+
+
   ## Lockable
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  # Author: Mahmoud Walid
+  # Team : 3
+  # function takes an item and a member returns number of times this item was ordered by the member
+  def self.get_count(item,member)
+    count=0
+    member.orders.each do |ord|
+      ord.lines.each do |li|
+        if li.item==item
+          count+=1
+        end
+      end
+    end
+    return count
+  end
 end

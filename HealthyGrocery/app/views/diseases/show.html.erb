@@ -1,48 +1,230 @@
+<!-- Author: Jihan Adel -->
+<!-- Team: 5 -->
+<style>
+  .table-striped  {
+  background-color: white;
+  }
+</style>     
 <p id="notice"><%= notice %></p>
-
-<table class="table table-bordered table-responsive" width="625">
-  
+<table class="table table-striped table-bordered table-condensed" width="625">
   <tr>
     <th colspan="7 ">Name:</th>
     <td><%= @disease.name %></td>
   </tr>
-
   <tr>   
     <th colspan="7">Information:</th>
     <td><%= @disease.information %></td>
   </tr>
-
   <tr>  
     <th colspan="7">Recommended:</th>
     <td>
       <% @disease.recommended_items.each do |f| %>
-      <%= f.name %>
-    </br>
-    <% end %>
-  </td>
-</tr>
-
-<tr> 
-  <th colspan="7">Restricted:</th>
-  <td>
-    <% @disease.restricted_items.each do |c| %>
-    <%= c.name %>
-  </br>
-  <% end %>
-</td>
-</tr>
-<% if @admin == true%>
-
-<tr>
-  <th colspan="7">Actions:</th>
-  <td>
-    <%= link_to(edit_disease_path(@disease), class: "btn btn-small") do %>
-    Edit <i class="icon-edit icon-white"></i>
-    <% end %>
-    <%= link_to 'Destroy', @disease, method: :delete, :class => "btn btn-default" ,data: { confirm: 'Are you sure?' } %> 
-  </td>
-  
-</tr>
-<% end %>                                 
+        <%= f.name %>
+        </br>
+      <% end %>
+    </td>
+  </tr>
+  <tr> 
+    <th colspan="7">Restricted:</th>
+    <td>
+      <% @disease.restricted_items.each do |c| %>
+        <%= c.name %>
+        </br>
+      <% end %>
+    </td>
+  </tr>
+  <% if current_member.email == 'admin@gmail.com' %>
+  <tr>
+    <th colspan="7">Actions:</th>
+      <td>
+        <%= link_to(edit_disease_path(@disease), class: "btn btn-small") do %>
+          Edit <i class="icon-edit icon-white"></i>
+        <% end %>
+        <%= link_to 'Destroy', @disease, method: :delete, :class => "btn btn-default" ,data: { confirm: 'Are you sure?' } %> 
+      </td>
+  </tr>
+  <%end%>       
 </table>
-
+<label>Recommneded daily intake for patients:</label>
+</br>
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="1">should be up by</th>
+      <th colspan="1">should be down by</th>
+    </tr>
+  </thead>
+  <body>
+    <tr>
+      <td>fats</td>
+      <td>
+        <%if @disease.fat > 0 %>
+          <%=@disease.fat%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.fat < 0 %>
+          <%= 0 - @disease.fat%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>protein</td>
+      <td>
+        <%if @disease.protein > 0 %>
+          <%=@disease.protein%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.protein < 0 %>
+          <%= 0 - @disease.protein%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>calcium</td>
+      <td>
+        <%if @disease.calcium > 0 %>
+          <%=@disease.calcium%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.calcium < 0 %>
+          <%= 0 - @disease.calcium%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>carbohydrate</td>
+      <td>
+        <%if @disease.carbohydrate > 0 %>
+          <%=@disease.carbohydrate%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.carbohydrate < 0 %>
+          <%= 0 - @disease.carbohydrate%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>vitamin A</td>
+      <td>
+        <%if @disease.vitamin_a > 0 %>
+          <%=@disease.vitamin_a%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.vitamin_a < 0 %>
+          <%= 0 - @disease.vitamin_a%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>vitamin B</td>
+      <td>
+        <%if @disease.vitamin_b > 0 %>
+          <%=@disease.vitamin_b%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.vitamin_b < 0 %>
+          <%= 0 - @disease.vitamin_b%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>vitamin C</td>
+      <td>
+        <%if @disease.vitamin_c > 0 %>
+          <%=@disease.vitamin_c%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.vitamin_c < 0 %>
+          <%= 0 - @disease.vitamin_c%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>vitamin D</td>
+      <td>
+        <%if @disease.vitamin_d > 0 %>
+          <%=@disease.vitamin_d%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.vitamin_d < 0 %>
+          <%= 0 - @disease.vitamin_d%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>vitamin E</td>
+      <td>
+        <%if @disease.vitamin_e > 0 %>
+          <%=@disease.vitamin_e%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.vitamin_e < 0 %>
+          <%= 0 - @disease.vitamin_e%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td>vitamin K</td>
+      <td>
+        <%if @disease.vitamin_k > 0 %>
+          <%=@disease.vitamin_k%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+      <td>
+        <%if @disease.vitamin_k < 0 %>
+          <%= 0 - @disease.vitamin_k%>
+        <%else%>
+          0
+        <%end%>
+      </td>
+    </tr>
+  </body>
+</table>
