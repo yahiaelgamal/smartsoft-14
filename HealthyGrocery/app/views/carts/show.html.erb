@@ -104,7 +104,7 @@
         <td>
         </td>
         <td>
-          <%= button_to "continue shopping" , members_items_index_items_path , class: "btn btn-default"%>
+          <%= button_to "continue shopping" , members_items_index_items_path , class: "btn btn-default" , method: :get%>
         </td>
         <td>
           <%= button_to  "checkout" ,checkout_path(current_member) , class: "btn btn-success"%>
