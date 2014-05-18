@@ -12,6 +12,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout
+    member = Member.find(params[:id])
+    redirect_to chooseOrder_path( Order.checkout(member))
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show

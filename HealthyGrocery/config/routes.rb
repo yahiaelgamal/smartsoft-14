@@ -91,6 +91,8 @@ HealthyGrocery::Application.routes.draw do
  # Team: 3
  # Function: adding routes for chaning pass and pass_billing attributes for updating shipping
  # and billing addresses
+  get 'orders/:id/checkout' , to: 'orders#checkout' , as: 'checkout'
+  post 'orders/:id/checkout' , to: 'orders#checkout' , as: 'checkout'
   get   '/orders/:id/choose', to:'orders#choose' , as: 'chooseOrder'
   put '/orders/:id/submit' , to: 'orders#submit' , as: 'submit'
   get '/orders/:id/change' , to: 'orders#change' , as: 'change'

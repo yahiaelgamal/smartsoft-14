@@ -507,7 +507,7 @@ class ItemsController < ApplicationController
     user = current_member
     if current_member.email != 'healthygrocery@gmail.com'
     healthrecord = user.records.first
-  if(!healthrecord.acceptable_fat_per_week.nil? &&
+  if( !healthrecord.nil? && !healthrecord.acceptable_fat_per_week.nil? &&
     !healthrecord.acceptable_calcium_per_week.nil? &&
     !healthrecord.acceptable_carbohydrate_per_week.nil? &&
     !healthrecord.acceptable_protein_per_week.nil? &&

@@ -71,4 +71,20 @@ class Order
   def self.get_optimized_orders(orders,time)
     return orders
   end
+  def self.checkout(member)
+    order = Order.new
+    order.orderNo = member.orders.count
+    order.isfinished=false
+    order.lines=member.cart.lineitems
+    order.price=0
+    order.weight=0
+    order.volume=0
+    member.cart.lineitems.each do|li|
+      order.price+=li.quantity*li.item.price
+      order.weight+=li.quantity*li.item.weight
+      order.volume+=li.quantity*li.item.volume
+    end
+    order.save
+    return order
+  end
 end

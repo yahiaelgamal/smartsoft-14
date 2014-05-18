@@ -263,6 +263,93 @@ Here is the filter search form where the user can fill any desired field and sub
   document.getElementById('1').style.visibility = 'visible';
  }
 </script>
-
+<%matching=Item.all.limit(20)%>
+  <%if(matching.count >0)%>
+ <div class="container-fluid">
+      <h2 style="style="
+padding-top:30px;
+right:5px"">New arrivals</h2>
+      <div class="row-fluid">
+        <div id="slider-fluid-products" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="active item">
+              <ul class="thumbnails">
+                <%matching[0..3].each do |first_match|%>
+                <li class="span3">
+                  <div class="thumbnail">
+                    <%= image_tag first_match.image.url%>
+                    <div class="caption">
+                      <h3><%= first_match.name%></h3>
+                      <p>
+                        <b>Price: </b>
+                        <%=first_match.price%>
+                        <br>
+                        <b>Description: </b>
+                        <%=first_match.description%>
+                      </p>
+                      <p>
+                        <!--
+                        goes with deskoy's add
+                        <%= form_tag("../items/members_items_index/add", method: "post", multipart: true) do %>
+                        <%= hidden_field_tag(:item, first_match.id ) %>
+                        <%= text_field_tag :amount %>
+                        <br>
+                        <%= submit_tag "Buy now", :name => nil,class: "btn btn-primary"%>
+                        <%end%>
+                        goes with sakr's add
+                        <%= button_to "Add to cart", lineitems_path(item_id: first_match.id), class: "btn btn-primary" %>
+                         -->
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <%end%>
+              </ul>
+            </div>
+            <%(1..((matching.count)/4)-1).each do |i|%>
+            <div class="item">
+              <ul class="thumbnails">
+              <%start =i*4 %>
+              <%ending =start+3%>
+                <%matching[start..ending].each do |match|%> 
+                <li class="span3">
+                  <div class="thumbnail">
+                    <%= image_tag match.image.url%>
+                    <div class="caption">
+                      <h3><%=match.name%></h3>
+                      <p>
+                        <b>Price: </b>
+                        <%=match.price%>
+                        <br>
+                        <b>Description: </b>
+                        <%=match.description%>
+                      </p>
+                    </div>
+                       <p>
+                       <!--
+                        goes with deskoy's add
+                        <%= form_tag("../items/members_items_index/add", method: "post", multipart: true) do %>
+                        <%= hidden_field_tag(:item, match.id ) %>
+                        <%= text_field_tag :amount %>
+                        <br>
+                        <%= submit_tag "Buy now", :name => nil,class: "btn btn-primary"%>
+                        <%end%>
+                        goes with sakr's add
+                        <%= button_to "Add to cart", lineitems_path(item_id: match.id), class: "btn btn-primary" %>
+                         -->
+                    </p>
+                  </div>
+                </li>
+                <%end%>
+              </ul>
+            </div>
+            <%end%>
+          </div>
+          <a class="left carousel-control" href="#slider-fluid-products" data-slide="prev">&lsaquo;</a>
+          <a class="right carousel-control" href="#slider-fluid-products" data-slide="next">&rsaquo;</a>
+        </div>
+      </div>
+    </div>
+    <%end%>
 </html>
 
