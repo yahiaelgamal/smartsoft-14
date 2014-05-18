@@ -1,0 +1,22 @@
+<h1>Verifying Orders</h1>
+<!--# Author: Andrew Khouzam
+    # Team: 1
+    # Functions: This double loop to loop over the routes of the truck and to loop over each route to get the orders of each route then make checkboxes for the admin to  -->
+<% @truck.routes.each do |route| %>
+  <% route.orders.each do |order| %>
+    <%= form_for(order) do |orderForm| %>
+      <div class="field">
+        <%= orderForm.label :delivered %><%= order.delivered %>
+        <%= orderForm.check_box :delivered %>
+      </div>
+      <div class="actions">
+        <%= orderForm.submit %>
+      </div>
+    <%end%>
+  <%end%>
+<%end%>
+<br>
+<br>
+<%= link_to 'Show', @truck %>
+|
+<%= link_to 'Back', trucks_path %>

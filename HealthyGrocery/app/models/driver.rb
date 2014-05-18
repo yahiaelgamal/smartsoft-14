@@ -8,6 +8,7 @@ class Driver
   validates :name, presence: true
   validates :phone, presence: true, numericality: true
   validates :address, presence: true
+  has_one :truck , inverse_of: :driver
   # Author: Hazem Amin
   # Component: 5 
   #Added some validations in order not to get bad data

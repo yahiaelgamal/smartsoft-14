@@ -28,7 +28,7 @@ class TrucksController < ApplicationController
   # GET /trucks/new.json
   def new
     @truck = Truck.new
-
+    @truckless_drivers = Driver.where(truck: nil)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @truck }
@@ -38,6 +38,11 @@ class TrucksController < ApplicationController
   # GET /trucks/1/edit
   def edit
     @truck = Truck.find(params[:id])
+    
+  end
+
+  def verify
+        @truck = Truck.find(params[:id])
   end
 
   # POST /trucks
@@ -63,8 +68,18 @@ class TrucksController < ApplicationController
 
     respond_to do |format|
       if @truck.update_attributes(params[:truck])
-        format.html { redirect_to @truck, notice: 'Truck was successfully updated.' }
+    # Author: Andrew Khouzam
+    # Team: 1
+    # Functions: This route is used to redirect to the verify page that verify the arrived orders.
+    # If the status is false it redirects to check the orders and if not it just shows the updated truck
+    if @truck.status == false
+        format.html { redirect_to verifyOrder_path(@truck), notice: 'Please Verify the Orders' }
         format.json { head :no_content }
+      else
+         format.html { redirect_to @truck, notice: 'Your Truck Has Been Updated' }
+        format.json { head :no_content }
+      end
+
       else
         format.html { render action: "edit" }
         format.json { render json: @truck.errors, status: :unprocessable_entity }

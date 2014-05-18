@@ -1,27 +1,33 @@
 <h1>Listing trucks</h1>
-
 <table>
-  <tr>
-    <th><%= sortable_column "Driver" %></th>
-    <th><%= sortable_column "Capacity" %></th>
-    <th><%= sortable_column "Status" %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="panel panel-default">
+    <table class="table table-nonfluid">
+  <thead>
+    <tr>
+      <th>Driver</th>
+      <th>Capacity</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% @trucks.each do |truck| %>
-  <tr>
-    <td><%= truck.driver %></td>
-    <td><%= truck.capacity %></td>
-    <td><%= truck.status %></td>
-    <td><%= link_to 'Show', truck %></td>
-    <td><%= link_to 'Edit', edit_truck_path(truck) %></td>
-    <td><%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @trucks.each do |t| %>
+      <tr>
+        <td><%= t.driver.name %></td>
+        <td><%= t.capacity %></td>
+        <td><%= t.status %></td>
+        <td> <h5> <%= link_to 'Show', t %> </h5> </td>
+        <td> <h5> <%= link_to 'Edit', edit_truck_path(t) %> </h5> </td>
+        <td> <h5> <%= link_to 'Destroy', t, method: :delete, data: { confirm: 'Are you sure?' } %> </h5> </td>
+        <td> <h5> <%= link_to 'Show driver', t.driver %> </h5> </td>
+
+      </tr>
+
+    <% end %>
+  </tbody>
 </table>
-
-<br />
 
 <%= link_to 'New Truck', new_truck_path %>
