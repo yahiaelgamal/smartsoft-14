@@ -58,6 +58,23 @@
                       <i class="icon-home icon-white"></i><font face="futura" color="white">
                         Warehouse</font>
                     <% end %>
+                    <!--# Author : Karim El-Bawab
+                        # Team: 4 
+                        # Function: Add a button on the retailer profile page  
+                        # to give him the opportunity to either add/show his warehouse
+                        # warehouse location. 
+                    -->
+                    <% if Member.find_by(email:"healthygrocery@gmail.com").addresses.first%>
+                      <%= link_to(current_member.addresses[0], :class => 'btn btn-success') do %>
+                        <i class="icon-home icon-white"></i><font face="futura" color="white">
+                        My Warehouse Location</font>
+                      <% end %>
+                    <% else %>
+                      <%= link_to(new_address_path, :class => 'btn btn-success', data: { confirm: 'You did not add your warehouse Location yet. Would you like to add it now ?'}) do %>
+                        <i class="icon-home icon-white"></i><font face="futura" color="white">
+                        My Warehouse Location</font>
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,18 @@
-<h1>New address</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', showaddresses_path %>
+<!--# Author : Karim El-Bawab
+    # Team: 4
+    # View name: new 
+    # Function: gives the retailer the ability to add his 
+    # warehouse location once and gives the normal member the
+    # the ability to add many addresses.  
+-->
+<% if current_member.email == 'healthygrocery@gmail.com' && current_member.addresses[0] %>
+  <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
+<% else %>
+  <h1>New address</h1>
+  <%= render 'form' %>
+<% end %>
+<% if current_member.email == 'healthygrocery@gmail.com' %>
+  <%= link_to 'Back', current_member %>
+<% else %>
+  <%= link_to 'Back', showaddresses_path %>
+<% end %>
