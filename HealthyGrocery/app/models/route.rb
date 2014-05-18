@@ -48,4 +48,21 @@ class Route
   def test
     return "sameh"
   end
+ 
+  # Author : Karim El-Bawab
+  # Team: 4
+  # Method name: show
+  # Parameters: id 
+  # Function : This function is used to to swap the latiude and the
+  # longitude in order to be able to use them to get the real location
+  # on the map  
+  def self.show(id)
+    route = Route.find(id)
+    arr = []
+    route.arrOfPoints.each do |points|
+      arr1 = [points[1],points[0]]
+      arr.push(arr1)
+  end  
+    return arr
+  end 
 end

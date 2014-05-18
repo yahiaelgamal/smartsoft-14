@@ -1,16 +1,53 @@
-<body>
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Arrofpoints:</b>
-  <%= @route.arrOfPoints %>
-</p>
-
- <b>Route ID:</b>
-  <%= @route.id %>
-</p>
-<%= link_to 'Print Drivers instructions', route_path(@route, :format => "pdf") %><br>
-<a href="<%= @route.get_print_url() %>" target="_blank">Print Map</a><br>
-<%= link_to 'Edit', edit_route_path(@route) %> <br>
-<%= link_to 'Back', routes_path %><br>
-</body>
+<!--# Author : Karim El-Bawab
+    # Team: 4
+    # View name: show
+    # Function: This is the view that show the information
+    # of a specific with its map and its direction panel  
+-->
+<% if current_member.email != 'admin@gmail.com' %>
+  <h1>YOU ARE NOT AUTHOURIZED TO SEE THIS PAGE!</h1>
+  <%= link_to "Back", current_member %>
+<% else %>
+  <%= include_gon %>
+  <%= javascript_include_tag("google_maps_routes0") %>
+  <%= javascript_include_tag("google_maps_routes1") %>
+  <h1>Route Information</h1>
+  <br>
+  <p>
+    <b>Route ID:</b>
+    <%= @route.id %>
+  </p>
+  <p>
+    <b>Orders No:</b>
+    <% arr = [] %>
+    <% @route.arrOfPoints.each do |points|%>
+      <% arr.push(Order.find_by(coordinates: points).orderNo) %>
+    <% end %>
+    <%= arr %>
+  </p>
+  <p>
+    <b>Created at:</b>
+    <%= @route.created_at %>
+  </p>
+  <p>
+    <b>Shipment ID:</b>
+    <%= @route.shipment_id %>
+  </p>
+  <p>
+    <b>Truck ID:</b>
+    <%= @route.truck_id %>
+  </p>
+  <br>
+  <br>
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
+  <div>
+    <div id="directions-panel" ></div>
+  </div>
+  <%= javascript_include_tag("routes_show") %>
+  <br>
+  <%= link_to 'Print Drivers instructions', route_path(@route, :format => "pdf") %><br>
+  <a href="<%= @route.get_print_url() %>" target="_blank">Print Map</a><br>
+  <%= link_to 'Back', Shipment.find(@route.shipment_id) %>
+<% end %>

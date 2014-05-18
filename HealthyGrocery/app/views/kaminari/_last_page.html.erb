@@ -1,0 +1,9 @@
+<!--# Author : Karim El-Bawab
+    # Team: 4
+    # View name: _last_page 
+    # Function: This file used to add bootstrap style on the button
+    # of the last page of pagination related to kaminari gem  
+-->
+<li>
+  <%= link_to_unless current_page.last?, raw(t 'views.pagination.last'), url, {:remote => remote} %>
+</li>

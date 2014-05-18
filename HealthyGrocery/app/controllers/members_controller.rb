@@ -125,6 +125,11 @@ class MembersController < ApplicationController
   
   def generate_routes
     Shipment.generate_routes
-    redirect_to "/members/hub"
+    if Shipment.last.created_at.day == Time.now.day
+      redirect_to Shipment.last
+    else
+      redirect_to "/members/hub"
+      flash[:alert] = "Sorry you cannot generate routes now, please check if you have #{view_context.link_to "sufficient trucks",trucks_path} and #{view_context.link_to "valid orders",orders_path} ".html_safe
+    end  
   end
 end
