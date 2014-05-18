@@ -7,7 +7,7 @@
 <head>
   <%= stylesheet_link_tag "member" , :media => "all" %>
   <head/>
-  <body>
+  <body class = "minabody">
     <div class="contextual">
       <%= link_to(new_healthrecord_path, class: "btn btn-success") do %>
         New Healthrecord
@@ -18,9 +18,9 @@
       <p >
         <%= current_member.first_name %>
         's HEALTHRECORDS</p>
-      <table width="100%" >
+      <table class= "minatable"width="100%" >
         <% @health_records.each do |healthrecord| %>
-          <thead><tr>
+          <thead class = "minathead"><tr>
               <td>Name:
                 <%= healthrecord.name %></td>
               <!-- author : mina

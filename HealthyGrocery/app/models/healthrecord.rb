@@ -5,7 +5,7 @@ class Healthrecord
   #team : 2
   #model of the healthrecord
   #contains all the needed attributes and relations for the healthrecord
-  field :name, type: Integer
+  field :name, type: String
   field :bmi, type: Integer
   field :fats, type: Integer
   field :height, type: Integer
