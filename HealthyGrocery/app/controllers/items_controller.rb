@@ -1,20 +1,36 @@
 class ItemsController < ApplicationController
+
   # GET /items
   # GET /items.json
   # shows all the items in the table item
   def index
+
+
+    #Author: Amr Nabil 
+    #Team: 3
+    #paginating items in the warehouse to be displayed  
+                  
+    @items = Item.all.page(params[:page]).per(5)
+
     if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
     else
       @admin = false
-    end
+
+    end    
     @items = Item.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
     end
   end
-
+  #Author : Amr Nabil
+  #Team 3
+  # GET /items/1/editprice
+  # gets the item with the price to be edited and store it in variable @item
+  def editprice
+    @item = Item.find(params[:id])
+  end
   # GET /items/1
   # GET /items/1.json
   # show a certain item from a table item using the attribute id
@@ -111,6 +127,23 @@ class ItemsController < ApplicationController
       end
     end
   end
+  #Author : Amr Nabil
+  #Team 3
+  #Put /items/1
+  #put /items/1.json
+  #update the existing price for an item taking its value from the def editprice
+  def updateprice
+    @item = Item.find(params[:id])
+    respond_to do |format|
+      if @item.update_attributes(params[:item])
+        format.html {redirect_to @item, notice: 'Items price was successfully updated.'}
+        format.json {head :no_content}
+      else
+        format.html { render action: "editprice" } 
+        format.json { render json: @item.errors, status: :unprocessable_entity}
+      end
+    end
+  end       
 
   # DELETE /items/1
   # DELETE /items/1.json
@@ -472,6 +505,7 @@ class ItemsController < ApplicationController
       filter_5
 
     user = current_member
+    if current_member.email != 'healthygrocery@gmail.com'
     healthrecord = user.records.first
   if( !healthrecord.nil? && !healthrecord.acceptable_fat_per_week.nil? &&
     !healthrecord.acceptable_calcium_per_week.nil? &&
@@ -509,6 +543,7 @@ class ItemsController < ApplicationController
     @vitamin_d_bar = (healthrecord.vitamin_d_till_now / healthrecord.acceptable_vitamin_d_per_week) * 100
     @vitamin_e_bar = (healthrecord.vitamin_e_till_now / healthrecord.acceptable_vitamin_e_per_week) * 100
     @vitamin_k_bar = (healthrecord.vitamin_k_till_now / healthrecord.acceptable_vitamin_k_per_week) * 100
+  end
   end
   end
 
