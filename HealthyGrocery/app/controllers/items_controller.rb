@@ -473,7 +473,7 @@ class ItemsController < ApplicationController
 
     user = current_member
     healthrecord = user.records.first
-  if(!healthrecord.acceptable_fat_per_week.nil? &&
+  if( !healthrecord.nil? && !healthrecord.acceptable_fat_per_week.nil? &&
     !healthrecord.acceptable_calcium_per_week.nil? &&
     !healthrecord.acceptable_carbohydrate_per_week.nil? &&
     !healthrecord.acceptable_protein_per_week.nil? &&

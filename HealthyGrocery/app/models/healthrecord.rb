@@ -15,10 +15,10 @@ class Healthrecord
   field :acceptable_calcium_per_week, type: Float
   field :acceptable_carbohydrate_per_week, type: Float
   field :acceptable_protein_per_week, type: Float
-  field :protein_till_now, type: Float
-  field :carbohydrate_till_now, type: Float
-  field :calcium_till_now, type: Float
-  field :fat_till_now, type: Float
+  field :protein_till_now, type: Float , default: 0
+  field :carbohydrate_till_now, type: Float, default: 0
+  field :calcium_till_now, type: Float, default: 0
+  field :fat_till_now, type: Float, default: 0
   field :age , type: Integer
   field :gender , type: String
   field :race , type: String
@@ -69,11 +69,11 @@ class Healthrecord
   field :acceptable_vitamin_d_per_week, type: Float
   field :acceptable_vitamin_e_per_week, type: Float
   field :acceptable_vitamin_k_per_week, type: Float
-  field :vitamin_a_till_now, type: Float
-  field :vitamin_b_till_now, type: Float
-  field :vitamin_c_till_now, type: Float
-  field :vitamin_d_till_now, type: Float
-  field :vitamin_e_till_now, type: Float
-  field :vitamin_k_till_now, type: Float
+  field :vitamin_a_till_now, type: Float, default: 0
+  field :vitamin_b_till_now, type: Float, default: 0
+  field :vitamin_c_till_now, type: Float, default: 0
+  field :vitamin_d_till_now, type: Float, default: 0
+  field :vitamin_e_till_now, type: Float, default: 0
+  field :vitamin_k_till_now, type: Float, default: 0
 end
 
