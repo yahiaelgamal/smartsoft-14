@@ -115,12 +115,21 @@
                         <br>
                         <br>
                         <%= link_to(edit_member_path(@member), :class => 'btn btn-success') do %>
-                          <i class="icon-cog icon-white"></i><font face="futura" color="white">
+                          <i class="icon-cog icon-white icon-large"></i><font face="futura" color="white">
                             Edit Profile</font>
                         <% end %>
-                        <!-- Author: Mahmoud Walid
-       Team: 3
-       Function: show alerts if there is any order without an address-->
+                        <%= link_to(showOrders_path, :class => 'btn btn-success') do %>
+                          <i class="icon-tags icon-large"></i><font face="futura" color="white">
+                            My orders</font>
+                        <% end %>
+                        <%= link_to(showaddresses_path, :class => 'btn btn-success') do %>
+                          <i class="icon-map-marker icon-large"></i><font face="futura" color="white">
+                            My address book</font>
+                        <% end %>
+
+                        <!--Author: Mahmoud Walid
+                            Team: 3
+                            Function: show alerts if there is any order without an address-->
                         <%if @member%>
                           <% @count = true%>
                           <% @member.orders.each do |ord|%>

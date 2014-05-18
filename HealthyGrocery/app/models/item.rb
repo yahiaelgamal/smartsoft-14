@@ -8,6 +8,8 @@ class Item
   field :rating , type: Integer
   field :status , type: Boolean
   field :category , type: String
+  field :weight , type: Float
+  field :volume , type: Float
   # Author: Hazem Amin
   # Team: 5
   # Function: Added new needed attributes for the items-class
@@ -61,6 +63,8 @@ class Item
   # added attributes for more item information
   # checks if price is a number greater than 0
   validates :price , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :volume , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
+  validates :weight , :presence => true , :numericality => { :greater_than_or_equal_to => 0 }
   # checks if name is present
   validates :name, :presence => true
   # checks if category  is present

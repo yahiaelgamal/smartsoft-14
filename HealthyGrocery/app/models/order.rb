@@ -14,6 +14,9 @@ class Order
   field :district , type: String
   field :date  ,type: Date
   field :coordinates ,type: Array
+  field :coordinates_billing ,type: Array
+  field :pass , type: String
+  field :pass_billing , type: String
   #Author : Ahmed AbdElsattar
   #Team: 4
   #attr :   isfinished , delivered

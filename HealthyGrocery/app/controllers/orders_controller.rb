@@ -118,10 +118,10 @@ class OrdersController < ApplicationController
   # with the choosed addresses and adding the two addresses to the order
   def change
     @order = Order.find(params[:id])
-    @shipping=Address.find(@order.pass)
+    @shipping=Address.find(@order.coordinates)
     @order.address.push(@shipping)
     @order.update_attribute(:coordinates,@shipping.coordinates)
-    @billing =Address.find(@order.pass_billing)
+    @billing =Address.find(@order.coordinates_billing)
     @order.address.push(@billing)
     @order.update_attribute(:coordinates_billing , @billing.coordinates)
     if(@order.address)
