@@ -7,7 +7,7 @@
 input.form-control{
   width:auto;
 }
-input{
+input.walid{
   width:30px;
 }
 input#item_name{

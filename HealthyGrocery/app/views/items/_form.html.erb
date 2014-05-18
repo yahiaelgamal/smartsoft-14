@@ -28,7 +28,7 @@
           <tr>
             <th colspan="3" class="small-info">
               <b>Name:</b>
-              <%= f.text_field :name %>
+              <%= f.text_field :name  %>
             </th>
           </tr>
         </thead>
@@ -62,7 +62,7 @@
             <th>
               <b>Price:
               </b>
-              <%= f.text_field :price %>
+              <%= f.text_field :price , class: "walid"%>
             </th>
             <td>
               <b>LE</b>
@@ -74,7 +74,7 @@
             <th>
               <b>Stock:
               </b>
-              <%= f.text_field :amount %>
+              <%= f.text_field :amount, class: "walid" %>
             </th>
             <td>
               <b>Unit</b>
@@ -86,7 +86,7 @@
             <th>
               <b>Category:
               </b>
-              <%= f.text_field :category %>
+              <%= f.text_field :category, class: "walid" %>
             </th>
             <td>
             </td>
@@ -101,7 +101,7 @@
             <th colspan="2">
               <b>Carbohydrate:
               </b>
-              <%= f.text_field :carbohydrate %>
+              <%= f.text_field :carbohydrate, class: "walid" %>
             </th>
             <td>
               <b>g</b>
@@ -111,7 +111,7 @@
             <th colspan="2">
               <b>Fat:
               </b>
-              <%= f.text_field :fat %>
+              <%= f.text_field :fat, class: "walid" %>
             </th>
             <td>
               <b>g</b>
@@ -121,7 +121,7 @@
             <th colspan="2">
               <b>Calcium:
               </b>
-              <%= f.text_field :calcium %>
+              <%= f.text_field :calcium, class: "walid" %>
             </th>
             <td>
               <b>g</b>
@@ -130,7 +130,7 @@
           <tr class="thick-end">
             <th colspan="2">
               <b>Protein:</b>
-              <%= f.text_field :protein %>
+              <%= f.text_field :protein, class: "walid" %>
             </th>
             <td>
               <b>g</b>
@@ -143,36 +143,36 @@
           <tr>
             <td colspan="2">
               Vitamin A
-              <%= f.text_field :vitamin_a %>
+              <%= f.text_field :vitamin_a, class: "walid" %>
               <b>IU</b>
             </td>
             <td>
               Vitamin B
-              <%= f.text_field :vitamin_b %>
+              <%= f.text_field :vitamin_b, class: "walid" %>
               <b>IU</b>
             </td>
           </tr>
           <tr>
             <td colspan="2">
               Vitamin C
-              <%= f.text_field :vitamin_c %>
+              <%= f.text_field :vitamin_c, class: "walid" %>
               <b>IU</b>
             </td>
             <td>
               Vitamin D
-              <%= f.text_field :vitamin_d %>
+              <%= f.text_field :vitamin_d, class: "walid" %>
               <b>IU</b>
             </td>
           </tr>
           <tr class="thin-end">
             <td colspan="2">
               Vitamin E
-              <%= f.text_field :vitamin_e %>
+              <%= f.text_field :vitamin_e, class: "walid" %>
               <b>IU</b>
             </td>
             <td>
               Vitamin K
-              <%= f.text_field :vitamin_k %>
+              <%= f.text_field :vitamin_k, class: "walid" %>
               <b>IU</b>
             </td>
           </tr>
@@ -180,7 +180,7 @@
       </table>
       <b>Description:
       </b>
-      <%= f.text_field :description%>
+      <%= f.text_field :description , class: "walid"%>
       <table class="performance-facts__table--small small-info">
         <thead>
           <tr>
