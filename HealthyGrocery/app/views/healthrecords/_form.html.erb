@@ -49,6 +49,7 @@
     <div class="field">
       <%= f.label :race %><br /><span  style="color:red">✼</span>
       <%=  f.select :race, [['Caucasion','Caucasion'],['Mongoloid','Mongoloid'],['Negroid','Negroid']]%>
+      <label>Medical issues:</label>
       <div class="scrollbox">
         <%  Disease.each do |d| %>
           <div class="checkbox">
