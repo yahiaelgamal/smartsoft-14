@@ -2,7 +2,7 @@ source 'https://rubygems.org/'
 #ruby '1.9.3'
 gem 'rails', '3.2.11'
 
-gem 'kaminari'
+
 
 
 gem 'mongoid'
@@ -53,11 +53,16 @@ gem "gon" , '5.0.4'
 gem 'css3-progress-bar-rails'
 
 
+
 gem 'bootstrap-addons-rails'
        
 
+gem 'kaminari' , '0.15.1'
+
+
 
 gem 'ruby-beautify', '~> 0.92.2'
+
 
 gem 'prawn'
 gem 'prawn-print'
