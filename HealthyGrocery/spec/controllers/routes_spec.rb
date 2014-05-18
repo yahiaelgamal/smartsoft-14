@@ -8,7 +8,7 @@ describe RoutesController do
   before do
     Route.all.destroy
     Member.all.destroy
-    @member = FactoryGirl.create(:member, email: "admin@gmail.com")
+    @member = FactoryGirl.create(:member, email: "healthygrocery@gmail.com")
     sign_in @member
     Address.all.destroy
     address = Address.where(:name => "house" ,:first => "Ahmed", :firstname => "Hamada",

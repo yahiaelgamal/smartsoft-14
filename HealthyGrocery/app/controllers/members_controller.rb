@@ -22,7 +22,7 @@ class MembersController < ApplicationController
   #it shows the page of the user signed in or signed up it has the same check to differentiate between the admin and the user page
   #def show
   #   @member = Member.find(params[:id])
-  #if current_member.email == 'admin@gmail.com'
+  #if current_member.email == 'healthygrocery@gmail.com'
   #end
 
   def edit
@@ -83,7 +83,7 @@ class MembersController < ApplicationController
 
 # def show_ideal_calories
 # @member = current_member
-# if current_member.email == 'admin@gmail.com'
+# if current_member.email == 'healthygrocery@gmail.com'
 #@admin = true
   #   else
   #     @admin = false
@@ -129,7 +129,9 @@ class MembersController < ApplicationController
       redirect_to Shipment.last
     else
       redirect_to "/members/hub"
-      flash[:alert] = "Sorry you cannot generate routes now, please check if you have #{view_context.link_to "sufficient trucks",trucks_path} and #{view_context.link_to "valid orders",orders_path} ".html_safe
+      flash[:alert] = "Sorry you cannot generate routes now, please check if you have 
+      #{view_context.link_to "sufficient trucks",trucks_path} 
+      and #{view_context.link_to "valid orders",orders_path} ".html_safe
     end  
   end
 end

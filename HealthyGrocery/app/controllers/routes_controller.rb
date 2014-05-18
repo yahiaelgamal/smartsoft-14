@@ -27,8 +27,8 @@ class RoutesController < ApplicationController
   def show
     @route = Route.find(params[:id])
     gon.arrOfPoints = Route.show(params[:id])
-    gon.retailerLat = Member.find_by(email:"admin@gmail.com").addresses[0].coordinates[1]
-    gon.retailerLng = Member.find_by(email:"admin@gmail.com").addresses[0].coordinates[0]
+    gon.retailerLat = Member.find_by(email:"healthygrocery@gmail.com").addresses[0].coordinates[1]
+    gon.retailerLng = Member.find_by(email:"healthygrocery@gmail.com").addresses[0].coordinates[0]
 
     respond_to do |format|
       format.html # show.html.erb

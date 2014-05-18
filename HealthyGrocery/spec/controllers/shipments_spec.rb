@@ -8,7 +8,7 @@ describe ShipmentsController do
   before do
     Shipment.all.destroy
     Member.all.destroy
-    @member = FactoryGirl.create(:member, email: "admin@gmail.com")
+    @member = FactoryGirl.create(:member, email: "healthygrocery@gmail.com")
     sign_in @member
     Address.all.destroy
     address = Address.where(:name => "house" ,:first => "Ahmed", :firstname => "Hamada", 
@@ -32,7 +32,7 @@ describe ShipmentsController do
 
     it "assigns the requested shipment to @shipment" do	
       
-      if @member.email = "admin@gmail.com"
+      if @member.email = "healthygrocery@gmail.com"
         shipment = FactoryGirl.create(:shipment)
         get :show, id: shipment 
         assigns(:shipment).should eq(shipment)	
