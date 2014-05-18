@@ -5,6 +5,12 @@ class Order
   #attr :     include Mongoid::Timestamps::Created
   #function:  indicating the time of creating the order
   include Mongoid::Timestamps::Created
+  include Geocoder::Model::Mongoid
+
+  reverse_geocoded_by :coordinates
+  after_validation :reverse_geocode
+
+  field :address ,type: String
   field :orderNo ,type: Integer
   field :price   ,type: Integer
   #has_many :items ,class 'Item'
@@ -39,8 +45,8 @@ class Order
   end
   #Author : Ahmed AbdElsattar
   #Team: 4
-  #attr :   array of orders 
-  #function: returns an array of arrays each array contains the order from one district 
+  #attr :   array of orders
+  #function: returns an array of arrays each array contains the order from one district
   def self.order_district (orders)
     arr_of_orders_district = Array.new
     arr_of_district = Array.new
@@ -61,11 +67,61 @@ class Order
     end
     return arr_of_orders_district
   end
-  #Author : Ahmed AbdElsattar
+  #Author : Omar Sherif
   #Team: 4
-  #attr :   array of orders and wanted time 
-  #function:  this is just a temp and the full one will be done by omar  
-  def self.get_optimized_orders(orders,time)
-    return orders
+  #attr :   array of orders and wanted time
+  #function: takes the orders and computes the ordering that will take the least distance while staying under
+  #the timelimit
+
+  def self.get_optimized_orders(orders,timelimit)
+    addresses = Array.new
+
+    orders.each do |order|
+      addresses << order.address
+    end
+
+    permutations=addresses.permutation.to_a
+    mindistance=100000000000000000
+    chosen=permutations[0]
+
+    permutations.each do |permutation|
+
+      time=0
+      distance=0
+
+
+      for i in 0...permutation.length-1
+        directions = GoogleDirections.new(addresses[i],addresses[i+1])
+
+        time += directions.drive_time_in_minutes
+
+        distance += directions.distance_in_miles
+
+        break if time>timelimit
+        break if distance>mindistance
+      end
+      chosen = permutation << time if (distance < mindistance && time<timelimit)
+      mindistance = distance if (distance < mindistance && time<timelimit)
+
+
+    end
+
+        
+      for i in 0...chosen.length-1
+       orders.each do |o|
+       rightorder << o if (o.address==chosen[i])
+       end
+       
+
+
+
+       rightorder << chosen[chosen.length-1] 
+
+    return rightorder
+
+
+
+
   end
+
 end

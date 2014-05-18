@@ -86,6 +86,8 @@ GEM
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
+    google_directions (0.1.6.2)
+      nokogiri (>= 1.4.1)
     handles_sortable_columns (0.1.4)
     hashery (2.1.1)
     hike (1.2.3)
@@ -259,6 +261,7 @@ DEPENDENCIES
   geocoder (~> 1.2.0)
   gmaps4rails (~> 2.1.2)
   gon (= 5.0.4)
+  google_directions
   handles_sortable_columns
   jquery-rails
   less-rails
