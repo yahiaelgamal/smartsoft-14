@@ -38,6 +38,7 @@ HealthyGrocery::Application.routes.draw do
   end
   member do
    post 'toggle_pause'
+   get 'toggle_pause'
   end
  end
 #----------------------------------------------------------------------------------------------------#

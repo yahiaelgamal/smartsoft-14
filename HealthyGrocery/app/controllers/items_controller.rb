@@ -576,13 +576,15 @@ class ItemsController < ApplicationController
   #Method: make_discount
   #Function: This method redirects to the make_discount method in item model to apply discount
   def make_discount
-      redirect_to edit_item_path(Item.make_discount(params[:discount_item_id],params[:discount_amount]))
+      Item.make_discount(params[:discount_item_id],params[:discount_amount])
+      redirect_to items_path
   end   
   #Author: Abdelrahman Sakr
   #Team: 1
   #Method: remove_discount
   #Function: This method redirects to the remove_discount method in item model to remove discount
   def remove_discount
-      redirect_to edit_item_path(Item.remove_discount(params[:discount_item_id]))
+      Item.remove_discount(params[:discount_item_id])
+      redirect_to items_path
   end
 end

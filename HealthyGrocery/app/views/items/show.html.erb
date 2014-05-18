@@ -2,7 +2,7 @@
 <p id="notice"><%= notice %>
   <%-# desplaying the image of the item floating next to the text-%>
   <div style="float:right; text-align:center;">
-    <%= image_tag @item.image.url %>
+    <%= image_tag @item.image.url , width: 350  , height: 350%>
     <br/>
   </div>
   <head>
@@ -19,6 +19,14 @@
     <p>
       <b>Price:</b>
       <%= @item.price %>
+    </p>
+    <p>
+      <b>Weigh:</b>
+      <%= @item.weight %>
+    </p>
+    <p>
+      <b>Volume:</b>
+      <%= @item.volume %>
     </p>
     <p>
       <b>Category:</b>
