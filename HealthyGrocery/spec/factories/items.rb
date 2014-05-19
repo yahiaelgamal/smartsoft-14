@@ -21,5 +21,7 @@ FactoryGirl.define do
     f.vitamin_k 20
     f.paused false 
     f.image { fixture_file_upload(Rails.root.join('spec', 'photos', 'test.png'), 'image/png') }
+    f.volume 32
+    f.weight 32
   end
 end

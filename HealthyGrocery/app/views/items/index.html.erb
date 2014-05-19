@@ -60,7 +60,7 @@
   <!--Team: GUI -->
   <!--Function: the page for items in the warehouse displaying only items in the warehouse with no other links-->
   <img src="http://iconizer.net/files/Containers/orig/fork3.png" style="width:100px">
-  <h1 style="position:absolute;top:140px; right:350px">My Warehouse</h1>
+  <h1 style="position:absolute;top:170px; right:320px">My Warehouse</h1>
   <!--Author: Amr Nabil -->
   <!--Team: 3 -->
   <!--Function : paginates items to be displayed in the warehouse -->
@@ -86,7 +86,9 @@
     <!-- looping on the items in the items model in the DB-->
     <%= javascript_include_tag "application" %>
     <tbody>
+
       <% unless @items.empty? %>
+      <%= paginate @items %>
 
         <% @items.each do |item| %>
           <tr>

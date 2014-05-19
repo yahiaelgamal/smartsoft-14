@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
     #Team: 3
     #paginating items in the warehouse to be displayed  
                   
-    @items = Item.all.page(params[:page]).per(5)
 
     if current_member.email == 'healthygrocery@gmail.com'
       @admin = true
@@ -18,7 +17,7 @@ class ItemsController < ApplicationController
       @admin = false
 
     end    
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(1)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
