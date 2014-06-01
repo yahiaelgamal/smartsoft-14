@@ -1,0 +1,6 @@
+<ul>
+    <% @trucks.each do |truck| %>
+  <li><%= link_to truck.title, 
+    :action => 'show', :id => truck.id  %></li>
+  <% end %>
+  </ul>
