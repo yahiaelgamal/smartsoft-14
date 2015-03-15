@@ -81,6 +81,8 @@ class TrucksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to trucks_url }
       format.json { head :no_content }
+      #As a retailer I can delete a truck of the list of My Trucks
+      #Menna's Task
     end
   end
 end
