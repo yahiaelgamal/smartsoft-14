@@ -64,6 +64,42 @@ self.password = Digest::MD5.hexdigest(password)
 end
 
 
+<<<<<<< HEAD
+
+
+  #show the total calories and the average intake
+  
+def show_calories
+  
+db = Mongo::Connection.new.db("mydb")
+  
+mongoose.connect('mongodb://localhost:3000/users')
+  
+  
+@user = User.find(params[:id])
+
+  
+  
+@age = @user.age
+  
+@weight = @user.Healthrecord.weight
+  
+@calories = (@age + @weight) * 2
+  
+@intake = (@age + @weight) / 2
+
+  
+puts "your total calories are : %d" %@calories
+  
+puts "your average intake is : %d"  %@intake
+  
+  
+
+end
+
+
+
+=======
 #Additional attributes needed for the user to complete sign-up
 field :firstname  ,type: String
 field :lastname  ,type: String
@@ -97,6 +133,7 @@ def self.validate_login(email, password)
 	end
 end
 
+>>>>>>> 6c4e06152b3fe0d72284cf8b21a7319d936a1bf4
 end
 
 
